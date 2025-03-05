@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class PlayerIdleState : PlayerState
+public class PlayerMovingState : PlayerState
 {
-    public PlayerIdleState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
+    public PlayerMovingState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
     {
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        //Debug.Log("je start");
+        Debug.Log("je start moove");
     }
 
     public override void ExitState()
@@ -23,6 +23,8 @@ public class PlayerIdleState : PlayerState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
+        //Debug.Log(_player.Input.GetMoveDirection());
+        
         //Debug.Log("je FrameUpdate");
     }
 
@@ -32,16 +34,12 @@ public class PlayerIdleState : PlayerState
         //Debug.Log("je PhysicsUpdate");
     }
 
-    public override void ChangeStateChecks()
-    {
+    public override void ChangeStateChecks() {
         base.ChangeStateChecks();
-
-
-        if (_player.IsMoving())
+        if (_player.IsMoving() == false)
         {
-            _playerStateMachine.ChangeState(_player.MovingState);
-            
+            _playerStateMachine.ChangeState(_player.IdleState);
+
         }
-        
     }
 }
