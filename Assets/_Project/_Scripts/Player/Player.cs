@@ -17,11 +17,17 @@ public class Player : MonoBehaviour
 
 
     public InputManager Input {  get; set; }
+    public Rigidbody RB { get; private set; }
+
+    public float Speed;
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine);
         MovingState = new PlayerMovingState(this, StateMachine);
+
+        RB = GetComponent<Rigidbody>();
+        Speed = 5f;
     }
     // Start is called before the first frame update
     void Start()
@@ -48,5 +54,19 @@ public class Player : MonoBehaviour
     public bool IsMoving()
     {
         return (Input.GetMoveDirection() != Vector2.zero);
+    }
+
+
+    public Vector3 GetMoveDirection()
+    {
+        Camera camera = Camera.main;
+        Vector3 cameraForward = Vector3.ProjectOnPlane(camera.transform.forward, Vector3.up).normalized;
+        Vector3 cameraRight = Vector3.ProjectOnPlane(camera.transform.right, Vector3.up).normalized;
+
+        Vector2 inputDirection = Input.GetMoveDirection().normalized;
+
+        Vector3 movedir = (inputDirection.y * cameraForward) + (inputDirection.x * cameraRight);
+
+        return movedir;
     }
 }
