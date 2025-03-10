@@ -12,12 +12,14 @@ public class PlayerIdleState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        //Debug.Log("je start");
+        _player.Input.OnUseSkill += OnSkill;
+        
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        _player.Input.OnUseSkill -= OnSkill;
     }
 
     public override void FrameUpdate()
@@ -44,4 +46,10 @@ public class PlayerIdleState : PlayerState
         }
         
     }
+
+    private void OnSkill()
+    {
+        _playerStateMachine.ChangeState(_player.SkillState);
+    }
+
 }

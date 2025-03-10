@@ -11,21 +11,30 @@ public class Player : MonoBehaviour
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerIdleState IdleState { get; set; }
     public PlayerMovingState MovingState { get; set; }
+    public PlayerSkillState SkillState { get; set; }
 
 
     #endregion
 
 
+
+    private Skill _currentSkill;
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
+    public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
 
     public float Speed;
+
+    
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine);
         MovingState = new PlayerMovingState(this, StateMachine);
+        SkillState = new PlayerSkillState(this, StateMachine);
 
+
+        _currentSkill = new Skill();
         RB = GetComponent<Rigidbody>();
         Speed = 5f;
     }
@@ -68,5 +77,11 @@ public class Player : MonoBehaviour
         Vector3 movedir = (inputDirection.y * cameraForward) + (inputDirection.x * cameraRight);
 
         return movedir;
+    }
+
+
+    public void UseCurrentSkill()
+    {
+        _currentSkill.UseSkill();
     }
 }

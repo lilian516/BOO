@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 
 
@@ -14,6 +15,9 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+
+        SceneManager.LoadScene("WorkCharacter", LoadSceneMode.Additive);
+        SceneManager.LoadScene("UIInGame", LoadSceneMode.Additive);
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());

@@ -26,6 +26,10 @@ public class InputManager : Singleton<InputManager>
     public event InteractEvent OnInteract;
 
 
+    public delegate void UseSkillEvent();
+    public event UseSkillEvent OnUseSkill;
+
+
     #endregion
 
     protected override void Awake()
@@ -33,20 +37,31 @@ public class InputManager : Singleton<InputManager>
         base.Awake();
         _controls = new PlayerControls();
 
+        
         _characterEnabled = true;
-       
+        OnEnable();
+
     }
 
     private void OnEnable()
     {
         _controls.Enable();
         InputSystem.onDeviceChange += OnDeviceChange;
+        BindCharacterEvents();
     }
 
     private void OnDisable()
     {
         _controls.Disable();
         InputSystem.onDeviceChange -= OnDeviceChange;
+    }
+
+
+    private void BindCharacterEvents()
+    {
+        _controls.Player.UseSkill.performed += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
+       
+       
     }
 
     #region Device Change
@@ -117,5 +132,17 @@ public class InputManager : Singleton<InputManager>
     }
     #endregion
 
+
+    #region Event Callers
+
+    private void UseSkillPerformed()
+    {
+        //Debug.Log("on appelle compétence");
+        OnUseSkill?.Invoke();
+    } 
+
+   
+
+    #endregion
 
 }
