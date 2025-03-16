@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
@@ -17,8 +18,25 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
 
-        //SceneManager.LoadScene("WorkCharacter", LoadSceneMode.Additive);
+        //SceneManager.LoadScene("AssetImplementation", LoadSceneMode.Additive);
         //SceneManager.LoadScene("UIInGame", LoadSceneMode.Additive);
+        //MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
+        //SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
+        //Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        //SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+
+        StartCoroutine(WaitForScenesAndInitialize());
+    }
+
+    
+
+    private IEnumerator WaitForScenesAndInitialize()
+    {
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "AssetImplementation", "UIInGame" });
+
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
@@ -27,7 +45,6 @@ public class GameManager : Singleton<GameManager>
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
 
     public GameObject SpawnObject(GameObject obj)
     {
