@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
+enum PlayerSkill
+{
+    BubbleSkill,
+    WindSkill
+}
 public static class Helpers
 {
     private static Camera _camera;

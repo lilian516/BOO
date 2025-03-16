@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Skill
 {
-    // Start is called before the first frame update
-    void Start()
-    {   
+    protected Player _player;
+    public Skill(Player player)
+    {
+        _player = player;
     }
+    
 
     public virtual void UseSkill()
     {
-        Debug.Log("j'utilise mon skill");
+        //Debug.Log("j'utilise mon skill");
     }
 }

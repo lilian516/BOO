@@ -25,7 +25,12 @@ public class Player : MonoBehaviour
 
     public float Speed;
 
-    
+    [Header("Skills Descriptors")]
+    [Space(10f)]
+
+    [SerializeField] BubbleSkill.Descriptor _bubbleSkillDescriptor;
+
+
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
@@ -34,7 +39,10 @@ public class Player : MonoBehaviour
         SkillState = new PlayerSkillState(this, StateMachine);
 
 
-        _currentSkill = new Skill();
+
+        BubbleSkill skill = new BubbleSkill(this, _bubbleSkillDescriptor);
+        AddSkill(skill);
+        
         RB = GetComponent<Rigidbody>();
         Speed = 5f;
     }
@@ -82,6 +90,15 @@ public class Player : MonoBehaviour
 
     public void UseCurrentSkill()
     {
-        _currentSkill.UseSkill();
+        if(_currentSkill != null)
+        {
+            _currentSkill.UseSkill();
+        }
+    }
+
+    public void AddSkill(Skill skill)
+    {
+        //skill = new Skill(this);
+        _currentSkill = skill;
     }
 }

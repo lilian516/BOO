@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class BubbleSkill : Skill
+{
+
+    [System.Serializable]
+    public class Descriptor
+    {
+        public GameObject BubblePrefab;
+    }
+
+    Descriptor _desc;
+
+    public BubbleSkill(Player player, Descriptor desc) : base(player)
+    {
+        _desc = desc;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    public override void UseSkill()
+    {
+        /* Cette fonction devra remplacer la création manuelle d'un plane et d'ajouter sa texture 
+         * par l'instanciation d'un GameObject Type "Bubble" possédant les propriétés correspondantes.
+         * De même, la position de spawn devra être changée et la direction donnée à la bulle ajoutée 
+         * donnant le forward vector du joueur.
+        */
+
+        Debug.Log("j'utilise mon skill bubble");
+        Vector3 BubbleSpawnPos = _player.transform.position; // à remplacer avec la position du joueur
+
+        //Instantiate(BubblePrefab);
+
+        GameObject BubbleInstance = GameManager.Instance.SpawnObject(_desc.BubblePrefab);
+
+        //GameObject BubblePlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+
+        BubbleInstance.transform.position = BubbleSpawnPos;
+        BubbleInstance.transform.localScale = Vector3.one;
+
+        //BubblePlane.GetComponent<Renderer>().material = BubbleMaterial;
+    }
+}
