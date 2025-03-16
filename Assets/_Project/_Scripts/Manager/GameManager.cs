@@ -20,15 +20,15 @@ public class GameManager : Singleton<GameManager>
 
         //SceneManager.LoadScene("AssetImplementation", LoadSceneMode.Additive);
         //SceneManager.LoadScene("UIInGame", LoadSceneMode.Additive);
-        //MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
-        //SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
-        //Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
-        //SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+        MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
+        SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
+        Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
 
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-        StartCoroutine(WaitForScenesAndInitialize());
+        //StartCoroutine(WaitForScenesAndInitialize());
     }
 
     
