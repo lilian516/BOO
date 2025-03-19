@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     [Space(10f)]
 
     [SerializeField] BubbleSkill.Descriptor _bubbleSkillDescriptor;
+    [SerializeField] WindmillSkill.Descriptor _windSkillDescriptor;
 
 
     private void Awake()
@@ -40,8 +41,10 @@ public class Player : MonoBehaviour
 
 
 
-        BubbleSkill skill = new BubbleSkill(this, _bubbleSkillDescriptor);
-        AddSkill(skill);
+        BubbleSkill bubbleSkill = new BubbleSkill(this, _bubbleSkillDescriptor);
+        WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
+        AddSkill(bubbleSkill);
+        AddSkill(windSkill);
         
         RB = GetComponent<Rigidbody>();
         Speed = 5f;
