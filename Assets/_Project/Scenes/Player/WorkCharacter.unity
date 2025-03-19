@@ -841,7 +841,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _windSkillDescriptor.WindPrefab
       value: 
-      objectReference: {fileID: 1674402513575454279, guid: 9a434ea5e92e86a49a78998eef610941,
+      objectReference: {fileID: 1035563824390858650, guid: 9a434ea5e92e86a49a78998eef610941,
         type: 3}
     - target: {fileID: 2900781405036674409, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
