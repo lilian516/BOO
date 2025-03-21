@@ -39,12 +39,10 @@ public class Bubble : MonoBehaviour
     {
         IInteractable interactable = other.GetComponent<IInteractable>();
 
-       
         if (interactable != null)
         {
-            Debug.Log("L'objet a l'interface IInteractable.");
-            
-            interactable.Interact( PlayerSkill.BubbleSkill);
+            interactable.Interact(PlayerSkill.BubbleSkill);
+            Destroy(gameObject);
         }
     }
 }
