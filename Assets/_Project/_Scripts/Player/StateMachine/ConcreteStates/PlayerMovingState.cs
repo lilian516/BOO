@@ -14,12 +14,14 @@ public class PlayerMovingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        _player.Input.OnUseSkill += OnSkill;
         Debug.Log("je start moove");
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        _player.Input.OnUseSkill -= OnSkill;
     }
 
     public override void FrameUpdate()
@@ -52,5 +54,10 @@ public class PlayerMovingState : PlayerState
     private void WalkingMove()
     {
         _player.RB.AddForce(_moveDirection * _player.Speed * 1.5f, ForceMode.Force);
+    }
+
+    private void OnSkill()
+    {
+        _playerStateMachine.ChangeState(_player.SkillState);
     }
 }

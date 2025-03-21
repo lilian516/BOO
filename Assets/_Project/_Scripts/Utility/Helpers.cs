@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-enum PlayerSkill
+public enum PlayerSkill
 {
     BubbleSkill,
     WindSkill
