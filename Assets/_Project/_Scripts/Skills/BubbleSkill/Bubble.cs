@@ -37,6 +37,14 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+       
+        if (interactable != null)
+        {
+            Debug.Log("L'objet a l'interface IInteractable.");
+            
+            interactable.Interact( PlayerSkill.BubbleSkill);
+        }
     }
 }
