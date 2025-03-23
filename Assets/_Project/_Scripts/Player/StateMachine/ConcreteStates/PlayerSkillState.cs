@@ -43,6 +43,10 @@ public class PlayerSkillState : PlayerState
             _playerStateMachine.ChangeState(_player.IdleState);
 
         }
+        else
+        {
+            _playerStateMachine.ChangeState(_player.MovingState);
+        }
     }
 
    
