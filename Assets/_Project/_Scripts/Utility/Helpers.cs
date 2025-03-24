@@ -9,7 +9,8 @@ public enum PlayerSkill
 {
     None,
     BubbleSkill,
-    WindSkill
+    WindSkill,
+    StickSkill
 }
 public static class Helpers
 {

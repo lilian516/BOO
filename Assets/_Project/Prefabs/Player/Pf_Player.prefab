@@ -185,3 +185,8 @@ MonoBehaviour:
   _bubbleSkillDescriptor:
     BubblePrefab: {fileID: 8021510982704328969, guid: 95fa5fe798e8e9643863396d32c98e4a,
       type: 3}
+  _stickSkillDescriptor:
+    Radius: 2
+    Mask:
+      serializedVersion: 2
+      m_Bits: 64

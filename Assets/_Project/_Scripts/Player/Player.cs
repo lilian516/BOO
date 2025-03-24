@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     [Space(10f)]
 
     [SerializeField] BubbleSkill.Descriptor _bubbleSkillDescriptor;
+    [SerializeField] StickSkill.Descriptor _stickSkillDescriptor;
 
 
     private void Awake()
@@ -41,7 +42,9 @@ public class Player : MonoBehaviour
 
 
         BubbleSkill skill = new BubbleSkill(this, _bubbleSkillDescriptor);
-        AddSkill(skill);
+
+        StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);
+        AddSkill(stickSkill);
         
         RB = GetComponent<Rigidbody>();
         Speed = 5f;
