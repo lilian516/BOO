@@ -13,10 +13,10 @@ variable delegate : IntEvent
 variable event : OnNomdelEvent
 
 private int MethodPascalCase(int paramCamelCase = 1)
-    {
-        int variableCamelCase = paramCamelCase++;
-        return variableCamelCase;
-    }
+{
+         int variableCamelCase = paramCamelCase++;
+         return variableCamelCase;
+}
 
 Création d'Assets / Object dans unity : initial du type_nom (M_monMaterial) sauf pour scène et script
 
