@@ -3,6 +3,8 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using Unity.VisualScripting;
+using System.Collections;
+using static InputManager;
 
 [DefaultExecutionOrder(-9)]
 public class InputManager : Singleton<InputManager>
@@ -13,6 +15,8 @@ public class InputManager : Singleton<InputManager>
     public bool IsController;
 
     private bool _characterEnabled;
+
+    public PlayerControls Controls { get => _controls; set => _controls = value; }
 
     #region Events
 
@@ -29,6 +33,8 @@ public class InputManager : Singleton<InputManager>
     public delegate void UseSkillEvent();
     public event UseSkillEvent OnUseSkill;
 
+    public delegate void OpenSkillMenu();
+    public event UseSkillEvent OnOpenSkillMenu;
 
     #endregion
 
@@ -56,12 +62,14 @@ public class InputManager : Singleton<InputManager>
         InputSystem.onDeviceChange -= OnDeviceChange;
     }
 
+    private void Update()
+    {
+    }
+
 
     private void BindCharacterEvents()
     {
-        _controls.Player.UseSkill.performed += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
-       
-       
+        _controls.Player.UseSkill.started += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
     }
 
     #region Device Change
@@ -130,6 +138,19 @@ public class InputManager : Singleton<InputManager>
 
         return activeControl;
     }
+
+
+    public bool GetPerformedButton()
+    {
+        if (_controls.Player.UseSkill.ReadValue<float>() > 0) 
+        {
+            return true;
+        }
+        return false;
+    }
+
+
+    
     #endregion
 
 
@@ -137,11 +158,13 @@ public class InputManager : Singleton<InputManager>
 
     private void UseSkillPerformed()
     {
+
+        OnOpenSkillMenu?.Invoke();
+        
         //Debug.Log("on appelle compétence");
         OnUseSkill?.Invoke();
+        
     } 
-
-   
 
     #endregion
 

@@ -165,10 +165,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.516012
-  m_Height: 1.032024
+  m_Radius: 0.4
+  m_Height: 0.8614588
   m_Direction: 1
-  m_Center: {x: -0.05374986, y: 0.07674605, z: 0}
+  m_Center: {x: -0.05374986, y: -0.008536577, z: 0}
 --- !u!114 &122024494719183058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +190,6 @@ MonoBehaviour:
     Mask:
       serializedVersion: 2
       m_Bits: 64
+  _windSkillDescriptor:
+    WindPrefab: {fileID: 1035563824390858650, guid: 9a434ea5e92e86a49a78998eef610941,
+      type: 3}

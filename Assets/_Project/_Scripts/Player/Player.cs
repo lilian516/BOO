@@ -65,6 +65,8 @@ public class Player : MonoBehaviour
         // 9 minutes 37 video tuto
 
         StateMachine.Initialize(IdleState);
+
+        Input.OnOpenSkillMenu += CheckMenuIsOpen;
     }
 
     // Update is called once per frame
@@ -111,5 +113,29 @@ public class Player : MonoBehaviour
     {
         //skill = new Skill(this);
         _currentSkill = skill;
+    }
+
+
+    private void CheckMenuIsOpen()
+    {
+        StartCoroutine(GetTimePerformedButton());
+    }
+
+
+    private IEnumerator GetTimePerformedButton()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 2f)
+        {
+            elapsedTime += Time.deltaTime;
+            
+            
+            
+
+        }
+        Debug.Log("le menu est ouvert !!");
+        yield return null;
+
     }
 }
