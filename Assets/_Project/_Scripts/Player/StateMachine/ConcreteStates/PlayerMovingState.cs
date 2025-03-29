@@ -15,6 +15,7 @@ public class PlayerMovingState : PlayerState
     {
         base.EnterState();
         _player.Input.OnUseSkill += OnSkill;
+        
         Debug.Log("je start moove");
     }
 

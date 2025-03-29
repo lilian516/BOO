@@ -33,8 +33,11 @@ public class InputManager : Singleton<InputManager>
     public delegate void UseSkillEvent();
     public event UseSkillEvent OnUseSkill;
 
-    public delegate void OpenSkillMenu();
-    public event UseSkillEvent OnOpenSkillMenu;
+    public delegate void OpenSkillMenuEvent();
+    public event OpenSkillMenuEvent OnOpenSkillMenu;
+
+    public delegate void CloseSkillMenuEvent();
+    public event CloseSkillMenuEvent OnCloseSkillMenu;
 
     #endregion
 
@@ -69,7 +72,8 @@ public class InputManager : Singleton<InputManager>
 
     private void BindCharacterEvents()
     {
-        _controls.Player.UseSkill.started += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
+        _controls.Player.UseSkill.started += ctx => { UpdateControlMethod(ctx.control); OpenSkillPerformed(); };
+        _controls.Player.UseSkill.canceled += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
     }
 
     #region Device Change
@@ -159,12 +163,20 @@ public class InputManager : Singleton<InputManager>
     private void UseSkillPerformed()
     {
 
-        OnOpenSkillMenu?.Invoke();
+        
         
         //Debug.Log("on appelle compétence");
         OnUseSkill?.Invoke();
-        
-    } 
+        OnCloseSkillMenu?.Invoke();
+
+
+
+    }
+    
+    private void OpenSkillPerformed()
+    {
+        OnOpenSkillMenu?.Invoke();
+    }
 
     #endregion
 

@@ -18,12 +18,14 @@ public class Player : MonoBehaviour
 
 
 
-    private Skill _currentSkill;
+    
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
-    public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
+    
 
     public float Speed;
+
+    private Inventory _inventory;
 
     [Header("Skills Descriptors")]
     [Space(10f)]
@@ -41,10 +43,10 @@ public class Player : MonoBehaviour
         MovingState = new PlayerMovingState(this, StateMachine);
         SkillState = new PlayerSkillState(this, StateMachine);
 
+        _inventory = GetComponent<Inventory>();
 
 
-
-        //BubbleSkill skill = new BubbleSkill(this, _bubbleSkillDescriptor);
+        
 
         StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);
         AddSkill(stickSkill);
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
 
         
         RB = GetComponent<Rigidbody>();
+        
         Speed = 5f;
     }
     // Start is called before the first frame update
@@ -67,6 +70,9 @@ public class Player : MonoBehaviour
         StateMachine.Initialize(IdleState);
 
         Input.OnOpenSkillMenu += CheckMenuIsOpen;
+        Input.OnCloseSkillMenu += CloseSkillMenu;
+
+
     }
 
     // Update is called once per frame
@@ -103,16 +109,16 @@ public class Player : MonoBehaviour
 
     public void UseCurrentSkill()
     {
-        if(_currentSkill != null)
+        if(_inventory.CurrentSkill != null)
         {
-            _currentSkill.UseSkill();
+            _inventory.CurrentSkill.UseSkill();
         }
     }
 
     public void AddSkill(Skill skill)
     {
-        //skill = new Skill(this);
-        _currentSkill = skill;
+        _inventory.AddSkill(skill);
+        
     }
 
 
@@ -126,16 +132,21 @@ public class Player : MonoBehaviour
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < 2f)
+        while (elapsedTime < 1f)
         {
             elapsedTime += Time.deltaTime;
-            
-            
-            
-
+            yield return null;
+            if (!Input.GetPerformedButton())
+            {
+                yield break;
+            }
         }
-        Debug.Log("le menu est ouvert !!");
-        yield return null;
+        Debug.Log("Le menu est ouvert !!");
+        _inventory.OpenInventory();
+    }
 
+    private void CloseSkillMenu()
+    {
+        //_inventory.CloseInventory();
     }
 }

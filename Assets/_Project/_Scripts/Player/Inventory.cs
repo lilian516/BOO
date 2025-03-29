@@ -1,55 +1,71 @@
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
 
-    private bool _isPressing;
-    private float _timer = 0f;
-    private float _pressTime = 1f;
+    private List<GameObject> _skillImages = new List<GameObject>();
 
+    private List<Skill> _skills = new List<Skill>();
+
+    private Skill _currentSkill;
+
+    public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
 
     void Start()
     {
-        
+        _skillImages.Add(GameObject.Find("ImageSkill1"));
+        _skillImages.Add(GameObject.Find("ImageSkill2"));
+        _skillImages.Add(GameObject.Find("ImageSkill3"));
+
+        foreach(GameObject item in _skillImages)
+        {
+            item.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (InputManager.Instance.Controls.Player.UseSkill.ReadValue<float>() > 0) // Vérifie si l'utilisateur appuie sur le bouton
-        {
-            if (!_isPressing)
-            {
-                _isPressing = true;
-                _timer = 0f;
-                
-                //skillMenu.SetActive(false); // Ferme le menu au début
-            }
-            else
-            {
-                _timer += Time.deltaTime;
+        
+    }
 
-                // Si la pression dure plus longtemps que le seuil (par exemple 1 seconde), on affiche le menu
-                if (_timer >= _pressTime)  // && !skillMenu.activeSelf
-                {
-                    Debug.Log("on ouvre le menu");
-                    //OpenSkillMenu();
-                }
-            }
-        }
-        else
+    public void OpenInventory()
+    {
+        for(int i = 0; i < _skillImages.Count; i++)
         {
-            if (_isPressing)
-            {
-                // Si la pression a duré moins de 1 seconde, exécute la compétence par défaut
-                if (_timer < _pressTime)
-                {
-                    //ExecuteSkill();
-                }
-
-                _isPressing = false; // Réinitialiser l'état de pression
-            }
+            Debug.Log(_skillImages.Count);
+            _skillImages[i].SetActive(true);
+            int skillIndex = i;
+            _skillImages[i].GetComponent<Button>().onClick.AddListener(() => ChangeCurrentSkill(_skills[skillIndex]));
         }
+        
+    }
+
+    public void CloseInventory()
+    {
+        foreach (GameObject item in _skillImages)
+        {
+            item.SetActive(false);
+        }
+    }
+
+    private void ChangeCurrentSkill(Skill skill)
+    {
+        _currentSkill = skill;
+
+        CloseInventory();
+    }
+
+    public void AddSkill(Skill skill)
+    {
+        _skills.Add(skill);
+        Debug.Log(_skills.Count);
+        _currentSkill = skill;
     }
 }
