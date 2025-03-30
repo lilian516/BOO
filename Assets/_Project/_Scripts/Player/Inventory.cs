@@ -14,18 +14,25 @@ public class Inventory : MonoBehaviour
 
     private Skill _currentSkill;
 
+    private CanvasGroup _skillCanvaGroup;
+
     public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
 
     void Start()
     {
-        _skillImages.Add(GameObject.Find("ImageSkill1"));
-        _skillImages.Add(GameObject.Find("ImageSkill2"));
-        _skillImages.Add(GameObject.Find("ImageSkill3"));
+        _skillCanvaGroup = GameObject.Find("InventorySkill").GetComponent<CanvasGroup>();
 
-        foreach(GameObject item in _skillImages)
+        for(int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
-            item.SetActive(false);
+            _skillImages.Add(_skillCanvaGroup.transform.GetChild(i).gameObject);
         }
+
+        for (int i = 0; i < _skillImages.Count; i++)
+        {
+            int skillIndex = i;
+            _skillImages[i].GetComponent<Button>().onClick.AddListener(() => ChangeCurrentSkill(_skills[skillIndex]));
+        }
+       
     }
 
     // Update is called once per frame
@@ -37,22 +44,20 @@ public class Inventory : MonoBehaviour
 
     public void OpenInventory()
     {
-        for(int i = 0; i < _skillImages.Count; i++)
-        {
-            Debug.Log(_skillImages.Count);
-            _skillImages[i].SetActive(true);
-            int skillIndex = i;
-            _skillImages[i].GetComponent<Button>().onClick.AddListener(() => ChangeCurrentSkill(_skills[skillIndex]));
-        }
+
+        _skillCanvaGroup.alpha = 1;
+        _skillCanvaGroup.interactable = true;
+        _skillCanvaGroup.blocksRaycasts = true;
         
+
     }
 
     public void CloseInventory()
     {
-        foreach (GameObject item in _skillImages)
-        {
-            item.SetActive(false);
-        }
+        _skillCanvaGroup.alpha = 0;
+        _skillCanvaGroup.interactable = false;
+        _skillCanvaGroup.blocksRaycasts = false;
+        
     }
 
     private void ChangeCurrentSkill(Skill skill)
