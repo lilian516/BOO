@@ -13,13 +13,16 @@ public class PlayerIdleState : PlayerState
     {
         base.EnterState();
         _player.Input.OnUseSkill += OnSkill;
-        
+        _player.Input.OnSpeak += OnCheckSpeak;
+
+
     }
 
     public override void ExitState()
     {
         base.ExitState();
         _player.Input.OnUseSkill -= OnSkill;
+        _player.Input.OnSpeak -= OnCheckSpeak;
     }
 
     public override void FrameUpdate()
@@ -50,6 +53,20 @@ public class PlayerIdleState : PlayerState
     private void OnSkill()
     {
         _playerStateMachine.ChangeState(_player.SkillState);
+    }
+
+    private void OnCheckSpeak()
+    {
+        Vector2 position = _player.Input.GetTouchPosition();
+
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(position), out RaycastHit hit))
+        {
+            if(hit.collider.gameObject.GetComponent<ISpeakable>() != null)
+            {
+                _playerStateMachine.ChangeState(_player.SpeakingState);
+                hit.collider.gameObject.GetComponent<ISpeakable>().Speak();
+            }
+        }
     }
 
 }

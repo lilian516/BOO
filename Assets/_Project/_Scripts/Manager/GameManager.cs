@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
+using TMPro;
 
 
 [DefaultExecutionOrder(-10)]
@@ -10,10 +11,13 @@ public class GameManager : Singleton<GameManager>
     private const string PLAYER_TAG = "Player";
     private const string SOUND_MANAGER_TAG = "SoundManager";
     private const string MAIN_CAMERA_TAG = "MainCamera";
+    private const string DIALOGUE_UI_TAG = "DialogueUI";
 
     [HideInInspector] public GameObject MainCamera;
     [HideInInspector] public GameObject Player;
     [HideInInspector] public SoundSystem SoundSystem;
+    [HideInInspector] public GameObject DialogueUI;
+    
 
     private void Start()
     {
@@ -25,6 +29,10 @@ public class GameManager : Singleton<GameManager>
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
 
+        DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
+
+        DialogueSystem.Instance.Init();
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -41,6 +49,8 @@ public class GameManager : Singleton<GameManager>
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+        DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
+        DialogueSystem.Instance.Init();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

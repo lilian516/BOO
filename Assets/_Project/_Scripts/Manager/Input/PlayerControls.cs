@@ -44,6 +44,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Speak"",
+                    ""type"": ""Value"",
+                    ""id"": ""3a4b505d-b904-4bb2-8d1d-e415ac3e3bfb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""UseSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf758c6a-89d1-4801-a5c1-41ff6277e071"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Speak"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_UseSkill = m_Player.FindAction("UseSkill", throwIfNotFound: true);
+        m_Player_Speak = m_Player.FindAction("Speak", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_UseSkill;
+    private readonly InputAction m_Player_Speak;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @UseSkill => m_Wrapper.m_Player_UseSkill;
+        public InputAction @Speak => m_Wrapper.m_Player_Speak;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @UseSkill.started += instance.OnUseSkill;
             @UseSkill.performed += instance.OnUseSkill;
             @UseSkill.canceled += instance.OnUseSkill;
+            @Speak.started += instance.OnSpeak;
+            @Speak.performed += instance.OnSpeak;
+            @Speak.canceled += instance.OnSpeak;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -172,6 +198,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @UseSkill.started -= instance.OnUseSkill;
             @UseSkill.performed -= instance.OnUseSkill;
             @UseSkill.canceled -= instance.OnUseSkill;
+            @Speak.started -= instance.OnSpeak;
+            @Speak.performed -= instance.OnSpeak;
+            @Speak.canceled -= instance.OnSpeak;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -193,5 +222,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnUseSkill(InputAction.CallbackContext context);
+        void OnSpeak(InputAction.CallbackContext context);
     }
 }

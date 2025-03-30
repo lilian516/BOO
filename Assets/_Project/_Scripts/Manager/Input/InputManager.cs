@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.Controls;
 using Unity.VisualScripting;
 using System.Collections;
 using static InputManager;
+using UnityEditor.ShaderGraph;
 
 [DefaultExecutionOrder(-9)]
 public class InputManager : Singleton<InputManager>
@@ -32,6 +33,9 @@ public class InputManager : Singleton<InputManager>
 
     public delegate void UseSkillEvent();
     public event UseSkillEvent OnUseSkill;
+
+    public delegate void CheckSpeakEvent();
+    public event CheckSpeakEvent OnSpeak;
 
     public delegate void OpenSkillMenuEvent();
     public event OpenSkillMenuEvent OnOpenSkillMenu;
@@ -74,6 +78,7 @@ public class InputManager : Singleton<InputManager>
     {
         _controls.Player.UseSkill.started += ctx => { UpdateControlMethod(ctx.control); OpenSkillPerformed(); };
         _controls.Player.UseSkill.canceled += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
+        _controls.Player.Speak.performed += ctx => { UpdateControlMethod(ctx.control); CheckSpeakingPerformed(); };
     }
 
     #region Device Change
@@ -153,6 +158,11 @@ public class InputManager : Singleton<InputManager>
         return false;
     }
 
+    public Vector2 GetTouchPosition()
+    {
+        return _controls.Player.Speak.ReadValue<Vector2>();
+    }
+
 
     
     #endregion
@@ -176,6 +186,13 @@ public class InputManager : Singleton<InputManager>
     private void OpenSkillPerformed()
     {
         OnOpenSkillMenu?.Invoke();
+    }
+
+    private void CheckSpeakingPerformed()
+    {
+        OnSpeak?.Invoke();
+        //Vector2 test = _controls.Player.Speak.ReadValue<Vector2>();
+        //Debug.Log(test);
     }
 
     #endregion
