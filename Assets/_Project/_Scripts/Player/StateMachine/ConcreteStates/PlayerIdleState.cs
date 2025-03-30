@@ -63,8 +63,9 @@ public class PlayerIdleState : PlayerState
         {
             if(hit.collider.gameObject.GetComponent<ISpeakable>() != null)
             {
-                _playerStateMachine.ChangeState(_player.SpeakingState);
                 hit.collider.gameObject.GetComponent<ISpeakable>().Speak();
+                _playerStateMachine.ChangeState(_player.SpeakingState);
+                
             }
         }
     }

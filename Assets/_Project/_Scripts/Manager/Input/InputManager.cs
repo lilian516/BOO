@@ -2,10 +2,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
-using Unity.VisualScripting;
-using System.Collections;
-using static InputManager;
-using UnityEditor.ShaderGraph;
+
 
 [DefaultExecutionOrder(-9)]
 public class InputManager : Singleton<InputManager>

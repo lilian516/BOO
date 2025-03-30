@@ -19,7 +19,7 @@ MonoBehaviour:
   Sections:
   - Sentences:
     - Bonjour
-    - Oui
+    - Test de dialogue
     TriggerEvent: 0
     EventType: 0
   - Sentences:

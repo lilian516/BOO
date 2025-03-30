@@ -17,22 +17,25 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject Player;
     [HideInInspector] public SoundSystem SoundSystem;
     [HideInInspector] public GameObject DialogueUI;
-    
+    [HideInInspector] public GameObject InventoryUI;
+    [HideInInspector] public Inventory InventorySkill;
+
 
     private void Start()
     {
 
-        //SceneManager.LoadScene("AssetImplementation", LoadSceneMode.Additive);
-        //SceneManager.LoadScene("UIInGame", LoadSceneMode.Additive);
+
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
 
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
-
+        InventoryUI = GameObject.Find("InventorySkill");
         DialogueSystem.Instance.Init();
-        
+        InventorySkill.Init();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -48,10 +51,13 @@ public class GameManager : Singleton<GameManager>
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
-        DialogueSystem.Instance.Init();
 
+        InventoryUI = GameObject.Find("InventorySkill");
+        DialogueSystem.Instance.Init();
+        InventorySkill.Init();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

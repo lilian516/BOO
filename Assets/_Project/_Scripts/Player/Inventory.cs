@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
+
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 
 public class Inventory : MonoBehaviour
 {
@@ -20,9 +19,15 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        _skillCanvaGroup = GameObject.Find("InventorySkill").GetComponent<CanvasGroup>();
+        
+       
+    }
 
-        for(int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
+    public void Init()
+    {
+        _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
+
+        for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
             _skillImages.Add(_skillCanvaGroup.transform.GetChild(i).gameObject);
         }
@@ -32,7 +37,6 @@ public class Inventory : MonoBehaviour
             int skillIndex = i;
             _skillImages[i].GetComponent<Button>().onClick.AddListener(() => ChangeCurrentSkill(_skills[skillIndex]));
         }
-       
     }
 
     // Update is called once per frame
