@@ -8,17 +8,22 @@ champ Static : s_camelCase
 Nom de classe : PascalCase
 
 Variable privée : int _camelCase
+
 variable protected : int _camelCase
+
 Variable publique : int PascalCase
 
 variable delegate : IntEvent
 variable event : OnNomdelEvent
 
 private int MethodPascalCase(int paramCamelCase = 1)
-    {
+{
+
         int variableCamelCase = paramCamelCase++;
+        
         return variableCamelCase;
-    }
+        
+}
 
 Création d'Assets / Object dans unity : initial du type_nom (M_monMaterial) sauf pour scène et script
 
@@ -29,9 +34,13 @@ lorsque vous devrez préciser le chemin d'accès d'un effet audio indiquez bien 
 Commit Github:
 
 [ADD] New feature
+
 [UPT] Update feature
+
 [FIX] Fix de feature
+
 [REF] Refactor/Rework code
+
 [CLEAN] Clean code
 [DOC] Documentation code
 
