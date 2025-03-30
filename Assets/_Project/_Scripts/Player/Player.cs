@@ -12,13 +12,11 @@ public class Player : MonoBehaviour
     public PlayerIdleState IdleState { get; set; }
     public PlayerMovingState MovingState { get; set; }
     public PlayerSkillState SkillState { get; set; }
+    public PlayerSpeakingState SpeakingState { get; set; }
 
 
     #endregion
 
-
-
-    
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
     
@@ -42,16 +40,14 @@ public class Player : MonoBehaviour
         IdleState = new PlayerIdleState(this, StateMachine);
         MovingState = new PlayerMovingState(this, StateMachine);
         SkillState = new PlayerSkillState(this, StateMachine);
+        SpeakingState = new PlayerSpeakingState(this, StateMachine);
 
-        _inventory = GetComponent<Inventory>();
+        _inventory = GetComponent<Inventory>();    
 
-
-        
-
-        StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);
-        AddSkill(stickSkill);
+        StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);  
         BubbleSkill bubbleSkill = new BubbleSkill(this, _bubbleSkillDescriptor);
         WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
+        AddSkill(stickSkill);
         AddSkill(bubbleSkill);
         AddSkill(windSkill);
 
