@@ -5,6 +5,7 @@ champ Static : s_camelCase
 
 Nom de classe : PascalCase
 
+
 Variable privée : int _camelCase
 variable protected : int _camelCase
 Variable publique : int PascalCase
