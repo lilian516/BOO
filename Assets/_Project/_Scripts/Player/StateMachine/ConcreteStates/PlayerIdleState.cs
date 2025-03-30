@@ -58,11 +58,13 @@ public class PlayerIdleState : PlayerState
     private void OnCheckSpeak()
     {
         Vector2 position = _player.Input.GetTouchPosition();
+
         if (Physics.Raycast(Camera.main.ScreenPointToRay(position), out RaycastHit hit))
         {
             if(hit.collider.gameObject.GetComponent<ISpeakable>() != null)
             {
                 _playerStateMachine.ChangeState(_player.SpeakingState);
+                hit.collider.gameObject.GetComponent<ISpeakable>().Speak();
             }
         }
     }

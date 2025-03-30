@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
 
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
-    
 
+    public DialogueAsset Dialogue;
     public float Speed;
 
     private Inventory _inventory;

@@ -16,10 +16,16 @@ public class PlayerSpeakingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+
+        _player.Input.OnSpeak += DialogueSystem.Instance.AdvanceDialogue;
+        DialogueSystem.Instance.OnEndDialogue += OnExitSpeakState;
+
     }
 
     public override void ExitState()
     {
+        _player.Input.OnSpeak -= DialogueSystem.Instance.AdvanceDialogue;
+        DialogueSystem.Instance.OnEndDialogue -= OnExitSpeakState;
         base.ExitState();
     }
 
@@ -31,5 +37,10 @@ public class PlayerSpeakingState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    private void OnExitSpeakState()
+    {
+        _playerStateMachine.ChangeState(_player.IdleState);
     }
 }
