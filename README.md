@@ -28,8 +28,7 @@ private int MethodPascalCase(int paramCamelCase = 1)
 Création d'Assets / Object dans unity : initial du type_nom (M_monMaterial) sauf pour scène et script
 
 Pour rajouter un son :
-mettre son fichier au chemin d'accès -> Ressources/Audio/Catégorie/VotreJeu/VotreSon.mp3
-lorsque vous devrez préciser le chemin d'accès d'un effet audio indiquez bien VotreJeu/VotreSon et pas juste VotreSon
+mettre son fichier au chemin d'accès -> Ressources/Audio/Catégorie/VotreSon.mp3
 
 Commit Github:
 
