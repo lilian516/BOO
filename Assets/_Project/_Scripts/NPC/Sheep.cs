@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sheep : MonoBehaviour, IInteractable
+public class Sheep : MonoBehaviour, IInteractable, IChangeable
 {
     private PlayerSkill _currentInteract;
 
@@ -13,6 +13,9 @@ public class Sheep : MonoBehaviour, IInteractable
     void Start()
     {
         _currentInteract = PlayerSkill.None;
+
+        AngrySystem.Instance.OnChangeElements += Change;
+        AngrySystem.Instance.OnResetElements += ResetChange;
     }
     
     // Update is called once per frame
@@ -57,5 +60,15 @@ public class Sheep : MonoBehaviour, IInteractable
             yield return null;
         }
         
+    }
+
+    public void Change()
+    {
+        transform.Rotate(Vector3.right * 180);
+    }
+
+    public void ResetChange()
+    {
+        transform.Rotate(Vector3.right * -180);
     }
 }
