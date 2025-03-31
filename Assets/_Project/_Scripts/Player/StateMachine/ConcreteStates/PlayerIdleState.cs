@@ -61,9 +61,10 @@ public class PlayerIdleState : PlayerState
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(position), out RaycastHit hit))
         {
-            if(hit.collider.gameObject.GetComponent<ISpeakable>() != null)
+            ISpeakable speakable = hit.collider.gameObject.GetComponent<ISpeakable>();
+            if (speakable != null)
             {
-                hit.collider.gameObject.GetComponent<ISpeakable>().Speak();
+                speakable.Speak();
                 _playerStateMachine.ChangeState(_player.SpeakingState);
                 
             }
