@@ -40,9 +40,14 @@ public class Inventory : MonoBehaviour
             //_skillImages[i].GetComponent<Button>().onClick.AddListener(() => CanChangeSkill(_skillImages[i].GetComponent<Button>()));
 
             EventTrigger eventTrigger = _skillImages[i].GetComponent<EventTrigger>();
+            Debug.Log(eventTrigger);
             EventTrigger.Entry entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
             entry.callback.AddListener((data) => { OnSkillOver((PointerEventData)data, _skills[skillIndex]); });
             eventTrigger.triggers.Add(entry);
+
+            // PB -> Le btn / stick est devant les btn de l'inventaire ducoup le trigger marche pas et si on fait l'inverse le menu se ferme car le btn passe deriere l'inventaire
+            // Ducoup faudrait -> soit pouvoir activer le trigger meme si y'a quelque chose devant
+            //                    soit fermer le menu uniquement quand le bouton est relacher et le joystick en position de base -> J'aime bien
         }
     }
 
