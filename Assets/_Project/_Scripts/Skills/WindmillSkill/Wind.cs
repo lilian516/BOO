@@ -27,4 +27,20 @@ public class Wind : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if (interactable != null)
+        {
+            interactable.Interact(PlayerSkill.WindSkill);
+
+            if (other.GetComponent<Sheep>() != null)
+            {
+                other.GetComponent<Sheep>().PushedDirection = _forward;
+            }
+
+            Destroy(gameObject);
+        }
+    }
 }

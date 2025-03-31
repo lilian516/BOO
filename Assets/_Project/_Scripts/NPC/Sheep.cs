@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sheep : MonoBehaviour, IInteractable
 {
     private PlayerSkill _currentInteract;
+    public Vector3 PushedDirection;
 
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
@@ -29,6 +30,18 @@ public class Sheep : MonoBehaviour, IInteractable
                
                 PackedSheep();
                 break;
+
+            case PlayerSkill.WindSkill:
+                MoveSheep();
+                break;
+        }
+    }
+
+    private void MoveSheep()
+    {
+        if (_currentInteract == PlayerSkill.BubbleSkill)
+        {
+            StartCoroutine(Pushed());
         }
     }
 
@@ -57,5 +70,17 @@ public class Sheep : MonoBehaviour, IInteractable
             yield return null;
         }
         
+    }
+
+    private IEnumerator Pushed()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 1f)
+        {
+            transform.Translate(PushedDirection * _speed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }
