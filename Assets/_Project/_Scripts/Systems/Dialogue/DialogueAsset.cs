@@ -23,4 +23,5 @@ public struct DialogueSection
 public enum DialogueEventType
 {
     None,
+    GetUnderwear,
 }

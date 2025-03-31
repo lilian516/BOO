@@ -516,6 +516,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   SoundSystem: {fileID: 0}
   DialogueUI: {fileID: 0}
+  InventoryUI: {fileID: 0}
+  InventorySkill: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
