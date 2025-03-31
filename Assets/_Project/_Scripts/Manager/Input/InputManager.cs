@@ -170,9 +170,6 @@ public class InputManager : Singleton<InputManager>
     private void UseSkillPerformed()
     {
 
-        
-        
-        //Debug.Log("on appelle compétence");
         OnUseSkill?.Invoke();
         OnCloseSkillMenu?.Invoke();
 
@@ -182,6 +179,7 @@ public class InputManager : Singleton<InputManager>
     
     private void OpenSkillPerformed()
     {
+        Debug.Log("started");
         OnOpenSkillMenu?.Invoke();
     }
 

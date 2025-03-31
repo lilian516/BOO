@@ -143,6 +143,6 @@ public class Player : MonoBehaviour
 
     private void CloseSkillMenu()
     {
-        //_inventory.CloseInventory();
+        _inventory.CloseInventory();
     }
 }

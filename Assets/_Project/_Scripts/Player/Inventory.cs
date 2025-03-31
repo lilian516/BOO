@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -25,6 +26,7 @@ public class Inventory : MonoBehaviour
 
     public void Init()
     {
+        
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
@@ -35,7 +37,12 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < _skillImages.Count; i++)
         {
             int skillIndex = i;
-            _skillImages[i].GetComponent<Button>().onClick.AddListener(() => ChangeCurrentSkill(_skills[skillIndex]));
+            //_skillImages[i].GetComponent<Button>().onClick.AddListener(() => CanChangeSkill(_skillImages[i].GetComponent<Button>()));
+
+            EventTrigger eventTrigger = _skillImages[i].GetComponent<EventTrigger>();
+            EventTrigger.Entry entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+            entry.callback.AddListener((data) => { OnSkillOver((PointerEventData)data, _skills[skillIndex]); });
+            eventTrigger.triggers.Add(entry);
         }
     }
 
@@ -62,6 +69,11 @@ public class Inventory : MonoBehaviour
         _skillCanvaGroup.interactable = false;
         _skillCanvaGroup.blocksRaycasts = false;
         
+    }
+
+    private void OnSkillOver(PointerEventData data, Skill skill)
+    {
+        ChangeCurrentSkill(skill);
     }
 
     private void ChangeCurrentSkill(Skill skill)
