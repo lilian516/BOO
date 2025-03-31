@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
@@ -13,6 +14,7 @@ public class PlayerMovingState : PlayerState
     {
         public AnimationCurve SpeedCurve;
         public float Speed;
+        public float DurationAcceleration;
     }
 
     Descriptor _desc;
@@ -64,11 +66,13 @@ public class PlayerMovingState : PlayerState
 
     private void WalkingMove()
     {
-        if(_time < 1f)
+        if(_time < _desc.DurationAcceleration)
         {
-            float CurrentSpeed = _desc.SpeedCurve.Evaluate(_time) * _desc.Speed;
+            float CurrentSpeed = _desc.SpeedCurve.Evaluate(_time/ _desc.DurationAcceleration) * _desc.Speed;
 
             _time += Time.deltaTime;
+            Vector3 vectorSpeed = _moveDirection * CurrentSpeed; 
+            vectorSpeed.y = vectorSpeed.y * 0;
             _player.RB.velocity = _moveDirection * CurrentSpeed;
         }
 

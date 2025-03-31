@@ -3749,6 +3749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
+      propertyPath: _playerMovingStateDescriptor.DurationAcceleration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
       propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.size
       value: 2
       objectReference: {fileID: 0}
