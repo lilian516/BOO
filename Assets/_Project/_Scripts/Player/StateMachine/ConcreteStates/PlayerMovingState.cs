@@ -29,6 +29,7 @@ public class PlayerMovingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        _player.PlayerAnimator.SetBool("IsMoving",true);
         _player.Input.OnUseSkill += OnSkill;
         _time = 0;
 
@@ -39,6 +40,7 @@ public class PlayerMovingState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
+        _player.PlayerAnimator.SetBool("IsMoving", false);
         _player.Input.OnUseSkill -= OnSkill;
     }
 

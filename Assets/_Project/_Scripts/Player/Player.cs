@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -20,7 +21,9 @@ public class Player : MonoBehaviour
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
 
-    
+    public Animator PlayerAnimator;
+
+    [SerializeField] AnimatorController _darkBoo;
     
 
     private Inventory _inventory;
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
     [Header("State Descriptors")]
     [Space(10f)]
 
+    [SerializeField] PlayerIdleState.Descriptor _playerIdleStateDescriptor;
     [SerializeField] PlayerMovingState.Descriptor _playerMovingStateDescriptor;
     
 
@@ -43,7 +47,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
-        IdleState = new PlayerIdleState(this, StateMachine);
+        IdleState = new PlayerIdleState(this, StateMachine, _playerIdleStateDescriptor);
         MovingState = new PlayerMovingState(this, StateMachine, _playerMovingStateDescriptor);
         SkillState = new PlayerSkillState(this, StateMachine);
         SpeakingState = new PlayerSpeakingState(this, StateMachine);

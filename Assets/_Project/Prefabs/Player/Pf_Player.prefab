@@ -204,6 +204,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5c7ec223db61c4c809190a00a90c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAnimator: {fileID: 6616850642561177915}
+  _darkBoo: {fileID: 9100000, guid: 36e10ae8084acc44392f0a5e827ff3b0, type: 2}
+  _playerIdleStateDescriptor:
+    SpeedCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    DurationStop: 0
   _playerMovingStateDescriptor:
     SpeedCurve:
       serializedVersion: 2
