@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -20,10 +21,19 @@ public class Player : MonoBehaviour
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
 
-    public DialogueAsset Dialogue;
-    public float Speed;
+    public Animator PlayerAnimator;
+
+    [SerializeField] AnimatorController _darkBoo;
+    
 
     private Inventory _inventory;
+
+    [Header("State Descriptors")]
+    [Space(10f)]
+
+    [SerializeField] PlayerIdleState.Descriptor _playerIdleStateDescriptor;
+    [SerializeField] PlayerMovingState.Descriptor _playerMovingStateDescriptor;
+    
 
     [Header("Skills Descriptors")]
     [Space(10f)]
@@ -36,8 +46,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
-        IdleState = new PlayerIdleState(this, StateMachine);
-        MovingState = new PlayerMovingState(this, StateMachine);
+        IdleState = new PlayerIdleState(this, StateMachine, _playerIdleStateDescriptor);
+        MovingState = new PlayerMovingState(this, StateMachine, _playerMovingStateDescriptor);
         SkillState = new PlayerSkillState(this, StateMachine);
         SpeakingState = new PlayerSpeakingState(this, StateMachine);
 
@@ -55,7 +65,7 @@ public class Player : MonoBehaviour
         
         RB = GetComponent<Rigidbody>();
         
-        Speed = 5f;
+       
     }
     // Start is called before the first frame update
     void Start()

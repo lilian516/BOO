@@ -1,27 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerMovingState : PlayerState
 {
-    public PlayerMovingState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
+
+    [System.Serializable]
+    public class Descriptor
     {
+        public AnimationCurve SpeedCurve;
+        public float Speed;
+        public float DurationAcceleration;
+    }
+
+    Descriptor _desc;
+
+    public PlayerMovingState(Player player, PlayerStateMachine playerStateMachine, Descriptor desc) : base(player, playerStateMachine)
+    {
+        _desc = desc;
     }
     private Vector3 _moveDirection;
+    private float _time;
 
     public override void EnterState()
     {
         base.EnterState();
+        _player.PlayerAnimator.SetBool("IsMoving",true);
         _player.Input.OnUseSkill += OnSkill;
-        
+        _time = 0;
+
+
         Debug.Log("je start moove");
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        _player.PlayerAnimator.SetBool("IsMoving", false);
         _player.Input.OnUseSkill -= OnSkill;
     }
 
@@ -29,16 +48,12 @@ public class PlayerMovingState : PlayerState
     {
         base.FrameUpdate();
         _moveDirection = _player.GetMoveDirection();
-        //Debug.Log(_player.Input.GetMoveDirection());
-
-        //Debug.Log("je FrameUpdate");
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
         WalkingMove();
-        //Debug.Log("je PhysicsUpdate");
     }
 
 
@@ -48,13 +63,24 @@ public class PlayerMovingState : PlayerState
         if (_player.IsMoving() == false)
         {
             _playerStateMachine.ChangeState(_player.IdleState);
-
         }
     }
 
     private void WalkingMove()
     {
-        _player.RB.AddForce(_moveDirection * _player.Speed * 1.5f, ForceMode.Force);
+        if(_time < _desc.DurationAcceleration)
+        {
+            float CurrentSpeed = _desc.SpeedCurve.Evaluate(_time/ _desc.DurationAcceleration) * _desc.Speed;
+
+            _time += Time.deltaTime;
+            Vector3 vectorSpeed = _moveDirection * CurrentSpeed; 
+            vectorSpeed.y = vectorSpeed.y * 0;
+            _player.RB.velocity = _moveDirection * CurrentSpeed;
+        }
+
+        _player.RB.velocity = _moveDirection * _desc.Speed;
+
+
     }
 
     private void OnSkill()

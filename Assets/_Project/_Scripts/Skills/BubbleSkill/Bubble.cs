@@ -6,7 +6,8 @@ public class Bubble : MonoBehaviour
 {
 
     private Vector3 _forward;
-    [SerializeField] float _speed;
+    [SerializeField] float _maxSpeed;
+    [SerializeField] float _timeMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +24,18 @@ public class Bubble : MonoBehaviour
 
     IEnumerator BubbleMovement()
     {
-        float elapsedTime = 0f;
+        float elapsedTime = 0.1f;
 
-        while (elapsedTime < 3f)
+        while (elapsedTime < _timeMovement)
         {
-            transform.Translate(_forward * _speed * Time.deltaTime);
+            transform.Translate(_forward * (_maxSpeed / elapsedTime) * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null; 
         }
-        Destroy(gameObject);
+        Destroy(gameObject,2f);
     }
+
+    
 
 
     private void OnTriggerEnter(Collider other)
