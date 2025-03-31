@@ -3852,6 +3852,11 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6616850642561177915, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 36e10ae8084acc44392f0a5e827ff3b0, type: 2}
     - target: {fileID: 9057785889209715369, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
       propertyPath: m_Name

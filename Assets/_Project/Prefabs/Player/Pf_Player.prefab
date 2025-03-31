@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9078259945155868295}
   - component: {fileID: 1740286793460431746}
+  - component: {fileID: 6616850642561177915}
   m_Layer: 0
   m_Name: T_Boo
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6616850642561177915
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219736572106204003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36e10ae8084acc44392f0a5e827ff3b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9057785889209715369
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +230,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     Speed: 3
+    DurationAcceleration: 0
   _bubbleSkillDescriptor:
     BubblePrefab: {fileID: 8021510982704328969, guid: 95fa5fe798e8e9643863396d32c98e4a,
       type: 3}
