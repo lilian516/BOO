@@ -58,10 +58,11 @@ public class Player : MonoBehaviour
         WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
         PantsSkill pantsSkill = new PantsSkill(this, _pantsSkillDescriptor);
 
+        AddSkill(pantsSkill);
         AddSkill(stickSkill);
         AddSkill(bubbleSkill);
         AddSkill(windSkill);
-        AddSkill(pantsSkill);
+        
         
         RB = GetComponent<Rigidbody>();
         
