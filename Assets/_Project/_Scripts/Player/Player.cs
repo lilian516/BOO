@@ -20,10 +20,16 @@ public class Player : MonoBehaviour
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
 
-    public DialogueAsset Dialogue;
-    public float Speed;
+    
+    
 
     private Inventory _inventory;
+
+    [Header("State Descriptors")]
+    [Space(10f)]
+
+    [SerializeField] PlayerMovingState.Descriptor _playerMovingStateDescriptor;
+    
 
     [Header("Skills Descriptors")]
     [Space(10f)]
@@ -38,7 +44,7 @@ public class Player : MonoBehaviour
     {
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine);
-        MovingState = new PlayerMovingState(this, StateMachine);
+        MovingState = new PlayerMovingState(this, StateMachine, _playerMovingStateDescriptor);
         SkillState = new PlayerSkillState(this, StateMachine);
         SpeakingState = new PlayerSpeakingState(this, StateMachine);
 
@@ -54,7 +60,7 @@ public class Player : MonoBehaviour
         
         RB = GetComponent<Rigidbody>();
         
-        Speed = 5f;
+       
     }
     // Start is called before the first frame update
     void Start()

@@ -311,7 +311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &26000168
 Transform:
   m_ObjectHideFlags: 0
@@ -3737,6 +3737,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2132806046}
     m_Modifications:
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _playerMovingStateDescriptor.SpeedCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2900781405036674409, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3786,6 +3841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815773998647208798, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9057785889209715369, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
