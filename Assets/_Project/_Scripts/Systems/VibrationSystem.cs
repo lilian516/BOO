@@ -19,10 +19,10 @@ public class VibrationSystem : Singleton<VibrationSystem>
 
     public void TriggerVibration(float intensity, float vibrationTime)
     {
-        Handheld.Vibrate();
+        VibratePhone(intensity, vibrationTime);
     }
 
-    public void VibratePhone(float intensity, float vibrationTime)
+    private void VibratePhone(float intensity, float vibrationTime)
     {
         if (Application.platform == RuntimePlatform.Android)
         {
