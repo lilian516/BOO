@@ -80,7 +80,7 @@ public class PlayerMovingState : PlayerState
         }
         
         _player.RB.velocity = _moveDirection * _desc.Speed;
-        Debug.Log(_player.RB.velocity);
+        Debug.Log(_moveDirection);
         float animSpeed = Mathf.Abs(_player.RB.velocity.x) + Mathf.Abs(_player.RB.velocity.z);
         animSpeed = animSpeed / 2;
         _player.PlayerAnimator.SetFloat("Speed", animSpeed);
