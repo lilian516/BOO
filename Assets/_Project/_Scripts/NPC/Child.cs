@@ -6,10 +6,12 @@ public class Child : MonoBehaviour, ISpeakable
 {
 
     [SerializeField] DialogueAsset _dialogue;
+    [SerializeField] Animator _animator;
 
     public void Speak()
     {
         DialogueSystem.Instance.BeginDialogue(_dialogue);
+        DialogueSystem.Instance.OnDialogueEvent += OnEventTakeSkill;
     }
 
     // Start is called before the first frame update
@@ -22,5 +24,17 @@ public class Child : MonoBehaviour, ISpeakable
     void Update()
     {
         
+    }
+
+    private void OnEventTakeSkill(DialogueEventType type)
+    {
+        switch (type)
+        {
+            case DialogueEventType.GetBubble:
+                _animator.SetTrigger("HasTakeBubble");
+                break;
+        }
+            
+
     }
 }

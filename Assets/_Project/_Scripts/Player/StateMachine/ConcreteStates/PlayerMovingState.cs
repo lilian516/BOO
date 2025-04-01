@@ -36,7 +36,7 @@ public class PlayerMovingState : PlayerState
         _time = 0;
 
 
-        Debug.Log("je start moove");
+        
     }
 
     public override void ExitState()
@@ -87,7 +87,7 @@ public class PlayerMovingState : PlayerState
         }
         
         _player.RB.velocity = _moveDirection * _desc.Speed;
-        Debug.Log(_moveDirection);
+        
         float animSpeed = Mathf.Abs(_player.RB.velocity.x) / 3 + Mathf.Abs(_player.RB.velocity.z) / 3;
         animSpeed *= _desc.Speed / 2;
         _player.PlayerAnimator.SetFloat("Speed", animSpeed);

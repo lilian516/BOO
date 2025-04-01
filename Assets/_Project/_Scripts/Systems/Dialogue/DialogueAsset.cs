@@ -24,4 +24,5 @@ public enum DialogueEventType
 {
     None,
     GetUnderwear,
+    GetBubble,
 }

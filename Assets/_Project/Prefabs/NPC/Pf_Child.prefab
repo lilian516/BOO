@@ -176,3 +176,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogue: {fileID: 11400000, guid: 11a07f21e08aaca41851828b7700a4ab, type: 2}
+  _animator: {fileID: 6744763081128767128}
