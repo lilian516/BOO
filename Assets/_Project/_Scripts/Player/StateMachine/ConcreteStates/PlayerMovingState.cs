@@ -29,6 +29,7 @@ public class PlayerMovingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        //_player.PlayerAnimator.SetFloat("Speed", 1);
         _player.PlayerAnimator.SetBool("IsMoving",true);
         _player.Input.OnUseSkill += OnSkill;
         _time = 0;
@@ -71,15 +72,18 @@ public class PlayerMovingState : PlayerState
         if(_time < _desc.DurationAcceleration)
         {
             float CurrentSpeed = _desc.SpeedCurve.Evaluate(_time/ _desc.DurationAcceleration) * _desc.Speed;
-
+            
             _time += Time.deltaTime;
             Vector3 vectorSpeed = _moveDirection * CurrentSpeed; 
             vectorSpeed.y = vectorSpeed.y * 0;
             _player.RB.velocity = _moveDirection * CurrentSpeed;
         }
-
+        
         _player.RB.velocity = _moveDirection * _desc.Speed;
-
+        Debug.Log(_player.RB.velocity);
+        float animSpeed = Mathf.Abs(_player.RB.velocity.x) + Mathf.Abs(_player.RB.velocity.z);
+        animSpeed = animSpeed / 2;
+        _player.PlayerAnimator.SetFloat("Speed", animSpeed);
 
     }
 
