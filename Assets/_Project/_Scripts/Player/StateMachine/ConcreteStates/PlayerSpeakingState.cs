@@ -16,7 +16,6 @@ public class PlayerSpeakingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-
         _player.Input.OnSpeak += DialogueSystem.Instance.AdvanceDialogue;
         DialogueSystem.Instance.OnEndDialogue += OnExitSpeakState;
 

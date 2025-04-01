@@ -25,18 +25,18 @@
                 },
                 {
                     "name": "Speak",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "3a4b505d-b904-4bb2-8d1d-e415ac3e3bfb",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "SelectSkill",
+                    "name": "Touch",
                     "type": "Value",
-                    "id": "69f19fa5-e7b2-4bec-b787-7557f28d07c3",
-                    "expectedControlType": "Vector2",
+                    "id": "2b7bee75-d5b9-4109-b969-eb2de5940f1b",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -68,7 +68,7 @@
                 {
                     "name": "",
                     "id": "bf758c6a-89d1-4801-a5c1-41ff6277e071",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -78,12 +78,12 @@
                 },
                 {
                     "name": "",
-                    "id": "87b29afe-1639-471d-9ea0-575883615dc4",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "50c2e555-3588-4957-a787-594c94f00e18",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectSkill",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

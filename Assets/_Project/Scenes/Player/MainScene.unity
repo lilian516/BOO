@@ -4697,6 +4697,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
+      propertyPath: _boo
+      value: 
+      objectReference: {fileID: 9100000, guid: 506c3e72a61c24e4a83e08952dae8d7d, type: 2}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
       propertyPath: _pantsSkillDescriptor.Radius
       value: 1.5
       objectReference: {fileID: 0}

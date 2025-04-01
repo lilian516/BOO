@@ -47,18 +47,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Speak"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""3a4b505d-b904-4bb2-8d1d-e415ac3e3bfb"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SelectSkill"",
+                    ""name"": ""Touch"",
                     ""type"": ""Value"",
-                    ""id"": ""69f19fa5-e7b2-4bec-b787-7557f28d07c3"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""id"": ""2b7bee75-d5b9-4109-b969-eb2de5940f1b"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -90,7 +90,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""bf758c6a-89d1-4801-a5c1-41ff6277e071"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -100,12 +100,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""87b29afe-1639-471d-9ea0-575883615dc4"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""50c2e555-3588-4957-a787-594c94f00e18"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectSkill"",
+                    ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -119,7 +119,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_UseSkill = m_Player.FindAction("UseSkill", throwIfNotFound: true);
         m_Player_Speak = m_Player.FindAction("Speak", throwIfNotFound: true);
-        m_Player_SelectSkill = m_Player.FindAction("SelectSkill", throwIfNotFound: true);
+        m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -184,7 +184,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_UseSkill;
     private readonly InputAction m_Player_Speak;
-    private readonly InputAction m_Player_SelectSkill;
+    private readonly InputAction m_Player_Touch;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -192,7 +192,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @UseSkill => m_Wrapper.m_Player_UseSkill;
         public InputAction @Speak => m_Wrapper.m_Player_Speak;
-        public InputAction @SelectSkill => m_Wrapper.m_Player_SelectSkill;
+        public InputAction @Touch => m_Wrapper.m_Player_Touch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,9 +211,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Speak.started += instance.OnSpeak;
             @Speak.performed += instance.OnSpeak;
             @Speak.canceled += instance.OnSpeak;
-            @SelectSkill.started += instance.OnSelectSkill;
-            @SelectSkill.performed += instance.OnSelectSkill;
-            @SelectSkill.canceled += instance.OnSelectSkill;
+            @Touch.started += instance.OnTouch;
+            @Touch.performed += instance.OnTouch;
+            @Touch.canceled += instance.OnTouch;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -227,9 +227,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Speak.started -= instance.OnSpeak;
             @Speak.performed -= instance.OnSpeak;
             @Speak.canceled -= instance.OnSpeak;
-            @SelectSkill.started -= instance.OnSelectSkill;
-            @SelectSkill.performed -= instance.OnSelectSkill;
-            @SelectSkill.canceled -= instance.OnSelectSkill;
+            @Touch.started -= instance.OnTouch;
+            @Touch.performed -= instance.OnTouch;
+            @Touch.canceled -= instance.OnTouch;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -252,6 +252,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnUseSkill(InputAction.CallbackContext context);
         void OnSpeak(InputAction.CallbackContext context);
-        void OnSelectSkill(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
     }
 }

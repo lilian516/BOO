@@ -162,7 +162,7 @@ public class InputManager : Singleton<InputManager>
 
     public Vector2 GetTouchPosition()
     {
-        return _controls.Player.Speak.ReadValue<Vector2>();
+        return _controls.Player.Touch.ReadValue<Vector2>();
     }
 
 
