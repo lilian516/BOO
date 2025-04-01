@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
         AddSkill(stickSkill);
         AddSkill(bubbleSkill);
         AddSkill(windSkill);
-
         
         RB = GetComponent<Rigidbody>();
         

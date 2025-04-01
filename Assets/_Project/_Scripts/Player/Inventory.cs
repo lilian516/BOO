@@ -32,10 +32,13 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
             _skillImages.Add(_skillCanvaGroup.transform.GetChild(i).gameObject);
+            _skillCanvaGroup.transform.GetChild(i).gameObject.SetActive(false);
+
+
         }
-        for (int i = 0; i < _skillImages.Count; i++)
+        for (int i = 0; i < _skills.Count; i++)
         {
-            int skillIndex = i;
+            _skillImages[i].gameObject.SetActive(true);
         }
     }
 
@@ -64,7 +67,7 @@ public class Inventory : MonoBehaviour
             {
                 if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[i].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
                 {
-                ChangeCurrentSkill(_skills[i]);
+                    ChangeCurrentSkill(_skills[i]);
                 }
             }
 
@@ -82,7 +85,6 @@ public class Inventory : MonoBehaviour
     public void AddSkill(Skill skill)
     {
         _skills.Add(skill);
-        Debug.Log(_skills.Count);
         _currentSkill = skill;
     }
 }
