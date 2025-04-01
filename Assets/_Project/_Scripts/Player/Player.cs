@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IChangeable
 {
 
 
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public Animator PlayerAnimator;
 
     [SerializeField] AnimatorController _darkBoo;
+    [SerializeField] AnimatorController _boo;
     
 
     private Inventory _inventory;
@@ -42,6 +43,9 @@ public class Player : MonoBehaviour
     [SerializeField] StickSkill.Descriptor _stickSkillDescriptor;
     [SerializeField] WindmillSkill.Descriptor _windSkillDescriptor;
     [SerializeField] PantsSkill.Descriptor _pantsSkillDescriptor;
+    [SerializeField] SmashSkill.Descriptor _smashSkillDescriptor;
+
+    private SmashSkill _smashSkill;
 
     private void Awake()
     {
@@ -57,6 +61,7 @@ public class Player : MonoBehaviour
         BubbleSkill bubbleSkill = new BubbleSkill(this, _bubbleSkillDescriptor);
         WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
         PantsSkill pantsSkill = new PantsSkill(this, _pantsSkillDescriptor);
+        _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
 
         AddSkill(pantsSkill);
         AddSkill(stickSkill);
@@ -78,6 +83,8 @@ public class Player : MonoBehaviour
 
         Input.OnOpenSkillMenu += CheckMenuIsOpen;
         Input.OnCloseSkillMenu += CloseSkillMenu;
+        AngrySystem.Instance.OnChangeElements += Change;
+        AngrySystem.Instance.OnResetElements += ResetChange;
 
 
     }
@@ -127,7 +134,11 @@ public class Player : MonoBehaviour
         _inventory.AddSkill(skill);
         
     }
+    public void RemoveSkill(Skill skill)
+    {
+        _inventory.RemoveSkill(skill);
 
+    }
 
     private void CheckMenuIsOpen()
     {
@@ -155,5 +166,14 @@ public class Player : MonoBehaviour
     private void CloseSkillMenu()
     {
         _inventory.CloseInventory();
+    }
+
+    public void Change()
+    {
+        AddSkill(_smashSkill);
+    }
+    public void ResetChange()
+    {
+        RemoveSkill(_smashSkill);
     }
 }

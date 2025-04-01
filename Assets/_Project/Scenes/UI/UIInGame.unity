@@ -578,16 +578,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1818079100}
     m_Modifications:
-    - target: {fileID: 336622005799654941, guid: 05be6567d1432604aa5879351af0b3d6,
-        type: 3}
-      propertyPath: m_ControlPath
-      value: <Gamepad>/rightStick
-      objectReference: {fileID: 0}
-    - target: {fileID: 336622005799654941, guid: 05be6567d1432604aa5879351af0b3d6,
-        type: 3}
-      propertyPath: m_MovementRange
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 622191729440050436, guid: 05be6567d1432604aa5879351af0b3d6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -797,11 +787,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8824764408339862444, guid: 05be6567d1432604aa5879351af0b3d6,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.18431373
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

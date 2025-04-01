@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
 
     public void OpenInventory()
     {
-        if (AngrySystem.Instance.IsAngry)
+        if (AngrySystem.Instance.IsAngry || _skills.Count <= 1)
             return;
 
         _skillCanvaGroup.alpha = 1;
@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour
 
     public void CloseInventory()
     {
-        if (AngrySystem.Instance.IsAngry)
+        if (AngrySystem.Instance.IsAngry || _skills.Count <= 1)
             return;
 
         if (InputManager.Instance.GetSelectDirection() != Vector2.zero && _skillCanvaGroup.alpha == 1)
@@ -91,5 +91,14 @@ public class Inventory : MonoBehaviour
     {
         _skills.Add(skill);
         _currentSkill = skill;
+    }
+
+    public void RemoveSkill(Skill skill)
+    {
+        _skills.Remove(skill);
+        if (_currentSkill == skill)
+        {
+            _currentSkill = null;
+        }
     }
 }

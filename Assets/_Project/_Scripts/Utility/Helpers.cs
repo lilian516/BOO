@@ -11,7 +11,8 @@ public enum PlayerSkill
     BubbleSkill,
     WindSkill,
     StickSkill,
-    PantsSkill
+    PantsSkill,
+    SmashSkill
 }
 public static class Helpers
 {
