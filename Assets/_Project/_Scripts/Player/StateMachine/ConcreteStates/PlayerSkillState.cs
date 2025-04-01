@@ -12,6 +12,8 @@ public class PlayerSkillState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+
+        _player.PlayerAnimator.SetTrigger("UseSkill");
         //Debug.Log("je start use Skill");
         _player.UseCurrentSkill();
     }

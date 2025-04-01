@@ -1,12 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
 
 public class PlayerIdleState : PlayerState
 {
-    public PlayerIdleState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
+
+    [System.Serializable]
+    public class Descriptor
     {
+        public AnimationCurve SpeedCurve;
+        public float DurationStop;
+    }
+
+    Descriptor _desc;
+    
+    public PlayerIdleState(Player player, PlayerStateMachine playerStateMachine, Descriptor desc) : base(player, playerStateMachine)
+    {
+        _desc = desc;
     }
 
     public override void EnterState()
@@ -28,13 +40,13 @@ public class PlayerIdleState : PlayerState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        //Debug.Log("je FrameUpdate");
+        
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        //Debug.Log("je PhysicsUpdate");
+        
     }
 
     public override void ChangeStateChecks()
@@ -49,6 +61,8 @@ public class PlayerIdleState : PlayerState
         }
         
     }
+
+    
 
     private void OnSkill()
     {

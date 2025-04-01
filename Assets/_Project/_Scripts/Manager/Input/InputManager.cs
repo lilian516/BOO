@@ -17,7 +17,6 @@ public class InputManager : Singleton<InputManager>
     public PlayerControls Controls { get => _controls; set => _controls = value; }
 
     #region Events
-
     public delegate void ChangeDeviceEvent();
     public event ChangeDeviceEvent OnChangedDevice;
 

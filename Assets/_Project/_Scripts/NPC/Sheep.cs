@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sheep : MonoBehaviour, IInteractable
+public class Sheep : MonoBehaviour, IInteractable, IChangeable
 {
     private PlayerSkill _currentInteract;
+    public Vector3 PushedDirection;
 
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
@@ -13,6 +14,9 @@ public class Sheep : MonoBehaviour, IInteractable
     void Start()
     {
         _currentInteract = PlayerSkill.None;
+
+        AngrySystem.Instance.OnChangeElements += Change;
+        AngrySystem.Instance.OnResetElements += ResetChange;
     }
     
     // Update is called once per frame
@@ -29,6 +33,18 @@ public class Sheep : MonoBehaviour, IInteractable
                
                 PackedSheep();
                 break;
+
+            case PlayerSkill.WindSkill:
+                MoveSheep();
+                break;
+        }
+    }
+
+    private void MoveSheep()
+    {
+        if (_currentInteract == PlayerSkill.BubbleSkill)
+        {
+            StartCoroutine(Pushed());
         }
     }
 
@@ -40,7 +56,7 @@ public class Sheep : MonoBehaviour, IInteractable
             StartCoroutine(GoUp());
             _currentInteract = PlayerSkill.BubbleSkill;
             
-            Debug.Log("je suis embullé !!");
+            Debug.Log("je suis embullï¿½ !!");
         }
         
     }
@@ -57,5 +73,30 @@ public class Sheep : MonoBehaviour, IInteractable
             yield return null;
         }
         
+    }
+
+
+    public void Change()
+    {
+        transform.Rotate(Vector3.right * 180);
+    }
+
+    public void ResetChange()
+    {
+        transform.Rotate(Vector3.right * -180);
+
+    }
+
+    private IEnumerator Pushed()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 1f)
+        {
+            transform.Translate(PushedDirection * _speed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
     }
 }

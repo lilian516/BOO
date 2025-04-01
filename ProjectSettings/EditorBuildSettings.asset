@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Player/AssetImplementation.unity
     guid: 0c8c1f63a9cfa954895d7a08c2ab1cf7
   - enabled: 1
-    path: Assets/_Project/Scenes/Player/MainScene.unity
+    path: Assets/_Project/Scenes/SampleScene.unity
     guid: 55d1657db96b6e942aa5a0b5693ad1f0
   m_configObjects: {}
