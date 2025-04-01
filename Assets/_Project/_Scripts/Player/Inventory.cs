@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -25,17 +26,19 @@ public class Inventory : MonoBehaviour
 
     public void Init()
     {
+        
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
             _skillImages.Add(_skillCanvaGroup.transform.GetChild(i).gameObject);
-        }
+            _skillCanvaGroup.transform.GetChild(i).gameObject.SetActive(false);
 
-        for (int i = 0; i < _skillImages.Count; i++)
+
+        }
+        for (int i = 0; i < _skills.Count; i++)
         {
-            int skillIndex = i;
-            _skillImages[i].GetComponent<Button>().onClick.AddListener(() => ChangeCurrentSkill(_skills[skillIndex]));
+            _skillImages[i].gameObject.SetActive(true);
         }
     }
 
@@ -48,6 +51,8 @@ public class Inventory : MonoBehaviour
 
     public void OpenInventory()
     {
+        if (AngrySystem.Instance.IsAngry || _skills.Count <= 1)
+            return;
 
         _skillCanvaGroup.alpha = 1;
         _skillCanvaGroup.interactable = true;
@@ -58,23 +63,42 @@ public class Inventory : MonoBehaviour
 
     public void CloseInventory()
     {
+        if (AngrySystem.Instance.IsAngry || _skills.Count <= 1)
+            return;
+
+        if (InputManager.Instance.GetSelectDirection() != Vector2.zero && _skillCanvaGroup.alpha == 1)
+        {
+            for(int i = 0; i < _skillImages.Count; i++)
+            {
+                if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[i].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
+                {
+                    ChangeCurrentSkill(_skills[i]);
+                }
+            }
+
+        }
         _skillCanvaGroup.alpha = 0;
         _skillCanvaGroup.interactable = false;
         _skillCanvaGroup.blocksRaycasts = false;
         
     }
-
     private void ChangeCurrentSkill(Skill skill)
     {
         _currentSkill = skill;
-
-        CloseInventory();
     }
 
     public void AddSkill(Skill skill)
     {
         _skills.Add(skill);
-        Debug.Log(_skills.Count);
         _currentSkill = skill;
+    }
+
+    public void RemoveSkill(Skill skill)
+    {
+        _skills.Remove(skill);
+        if (_currentSkill == skill)
+        {
+            _currentSkill = null;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class AngrySystem : Singleton<AngrySystem>
     private int _baseAngryLimits;
     private int _calmLimits;
     private int _baseCalmLimits;
+    public bool IsAngry;
 
     public delegate void ChangeElements();
     public event ChangeElements OnChangeElements;
@@ -17,6 +18,7 @@ public class AngrySystem : Singleton<AngrySystem>
 
     void Start()
     {
+        IsAngry = false;
         _baseAngryLimits = 3;
         _baseCalmLimits = 3;
         _angryLimits = 3;
@@ -31,6 +33,7 @@ public class AngrySystem : Singleton<AngrySystem>
         if (_angryLimits == 0)
         {
             OnChangeElements?.Invoke();
+            IsAngry = true;
             _angryLimits = _baseAngryLimits;
 
             VibrationSystem.Instance.TriggerVibration(0.7f, 3.0f);
@@ -45,6 +48,7 @@ public class AngrySystem : Singleton<AngrySystem>
 
         if (_calmLimits == 0)
         {
+            IsAngry = false;
             OnResetElements?.Invoke();
             _calmLimits= _baseCalmLimits;
         }

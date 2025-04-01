@@ -114,13 +114,19 @@ public class InputManager : Singleton<InputManager>
 
     public Vector2 GetMoveDirection()
     {
-        var moveDirection = _controls.Player.Move.ReadValue<Vector2>();
+        Vector2 moveDirection = _controls.Player.Move.ReadValue<Vector2>();
         if (moveDirection != Vector2.zero)
         {
             var activeControl = GetActiveControl(_controls.Player.Move);
             UpdateControlMethod(activeControl);
         }
         return moveDirection;
+    }
+
+    public Vector2 GetSelectDirection()
+    {
+        Vector2 selectDirection = _controls.Player.SelectSkill.ReadValue<Vector2>();
+        return selectDirection;
     }
 
     private InputControl GetActiveControl(InputAction action)
@@ -169,18 +175,13 @@ public class InputManager : Singleton<InputManager>
     private void UseSkillPerformed()
     {
 
-        
-        
-        //Debug.Log("on appelle compétence");
         OnUseSkill?.Invoke();
         OnCloseSkillMenu?.Invoke();
-
-
-
     }
     
     private void OpenSkillPerformed()
     {
+        Debug.Log("started");
         OnOpenSkillMenu?.Invoke();
     }
 
