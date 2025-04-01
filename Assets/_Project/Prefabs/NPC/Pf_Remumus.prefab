@@ -69,7 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8b78fa90152554aaa42545647888d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogue: {fileID: 11400000, guid: 738a1928db02deb40ac8854bf2fd77d0, type: 2}
+  _basicDialogue: {fileID: 0}
+  _dryUnderwearDialogue: {fileID: 0}
 --- !u!1 &9082052043802535640
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,6 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8285083377123055913}
   - component: {fileID: 463089301272384399}
+  - component: {fileID: 9051479647462538539}
   m_Layer: 0
   m_Name: T_Remumus
   m_TagString: Untagged
@@ -154,3 +156,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &9051479647462538539
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9082052043802535640}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e310b8850af039b4eae5b16f05dd7eb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
