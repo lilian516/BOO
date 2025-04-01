@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
@@ -20,17 +21,22 @@ public class DialogueSystem : Singleton<DialogueSystem>
     private int _sectionIndex;
     private int _sentenceIndex;
 
+    [SerializeField] float timeBtwnChars;
+    private bool _isPlayingSentence;
+    private bool _skipSentence;
+
     public delegate void DialogueEvent(DialogueEventType eventType);
     public event DialogueEvent OnDialogueEvent;
 
     public delegate void EndDialogueEvent();
     public event EndDialogueEvent OnEndDialogue;
-
     public void Init()
     {
         ProcessingDialogue = null;
         _fadeCanvasBox = GameManager.Instance.DialogueUI.GetComponent<CanvasGroup>();
         _dialogueTextBox = _fadeCanvasBox.transform.Find("TextDialogue").GetComponent<TextMeshProUGUI>();
+        _isPlayingSentence = false;
+        _skipSentence = false;
     }
 
     private void OnEnable()
@@ -62,11 +68,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
             OnDialogueEvent?.Invoke(ProcessingDialogue.OpeningEventType);
         }
 
-
         UpdateSentence();
-
-
-
     }
 
     public void EndDialogue()
@@ -85,7 +87,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     public void AdvanceDialogue()
     {
-        _sentenceIndex++;
+        if(_skipSentence || !_isPlayingSentence)
+        {
+            _sentenceIndex++;
+        }
         if (_sentenceIndex >= GetSentenceCount())
         {
             UpdateSection();
@@ -117,11 +122,48 @@ public class DialogueSystem : Singleton<DialogueSystem>
         }
         
     }
-
     public void UpdateSentence()
     {
         string sentence = GetSentence();
-        _dialogueTextBox.SetText(sentence);
+        Debug.Log("Update sentence called with sentence: ");
+        Debug.Log(sentence);
+
+        if (!_isPlayingSentence)
+        {
+            StartCoroutine(ShowProgressiveText(sentence));
+        }
+        else
+        {
+            _skipSentence = true;
+        }
+    }
+
+
+    private IEnumerator ShowProgressiveText(string sentence)
+    {
+        _dialogueTextBox.text = sentence;
+        int totalVisibleCharacters = sentence.Length;
+        int counter = 0;
+        _isPlayingSentence = true;
+        _skipSentence = false;
+
+        while (_isPlayingSentence)
+        {
+            int visibleCount = counter % (totalVisibleCharacters + 1);
+            _dialogueTextBox.maxVisibleCharacters = visibleCount;
+
+            counter++;
+            if (!_skipSentence)
+            {
+                yield return new WaitForSeconds(timeBtwnChars);
+            }
+
+            if (visibleCount >= totalVisibleCharacters)
+            {
+                _isPlayingSentence=false;
+                break;
+            }
+        }
     }
 
     private int GetSectionCount() => ProcessingDialogue.Sections.Length;
