@@ -69,8 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8b78fa90152554aaa42545647888d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _basicDialogue: {fileID: 0}
-  _dryUnderwearDialogue: {fileID: 0}
+  _basicDialogue: {fileID: 11400000, guid: 738a1928db02deb40ac8854bf2fd77d0, type: 2}
+  _dryUnderwearDialogue: {fileID: 11400000, guid: 5d49d22097c299642be0246516edc570,
+    type: 2}
 --- !u!1 &9082052043802535640
 GameObject:
   m_ObjectHideFlags: 0
