@@ -23,8 +23,8 @@ public class Player : MonoBehaviour, IChangeable
 
     public Animator PlayerAnimator;
 
-    [SerializeField] AnimatorController _darkBoo;
-    [SerializeField] AnimatorController _boo;
+    [SerializeField] RuntimeAnimatorController _darkBoo;
+    [SerializeField] RuntimeAnimatorController _boo;
     
 
     private Inventory _inventory;
@@ -171,9 +171,12 @@ public class Player : MonoBehaviour, IChangeable
     public void Change()
     {
         AddSkill(_smashSkill);
+        PlayerAnimator.runtimeAnimatorController = _darkBoo;
+
     }
     public void ResetChange()
     {
         RemoveSkill(_smashSkill);
+        PlayerAnimator.runtimeAnimatorController = _boo;
     }
 }
