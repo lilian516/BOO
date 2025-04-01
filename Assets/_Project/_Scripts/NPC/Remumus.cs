@@ -6,11 +6,12 @@ public class Remumus : MonoBehaviour, ISpeakable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] DialogueAsset _dryUnderwearDialogue;
+    private bool _dryUnderwear = false;
 
     public void Speak()
     {
         DialogueSystem.Instance.BeginDialogue(_basicDialogue);
-        if (1 == 1)
+        if (_dryUnderwear)
         {
             DialogueSystem.Instance.BeginDialogue(_dryUnderwearDialogue);
         }
