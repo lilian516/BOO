@@ -51,6 +51,8 @@ public class Inventory : MonoBehaviour
 
     public void OpenInventory()
     {
+        if (AngrySystem.Instance.IsAngry)
+            return;
 
         _skillCanvaGroup.alpha = 1;
         _skillCanvaGroup.interactable = true;
@@ -61,6 +63,9 @@ public class Inventory : MonoBehaviour
 
     public void CloseInventory()
     {
+        if (AngrySystem.Instance.IsAngry)
+            return;
+
         if (InputManager.Instance.GetSelectDirection() != Vector2.zero && _skillCanvaGroup.alpha == 1)
         {
             for(int i = 0; i < _skillImages.Count; i++)
