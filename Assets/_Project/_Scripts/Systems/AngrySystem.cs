@@ -32,6 +32,8 @@ public class AngrySystem : Singleton<AngrySystem>
         {
             OnChangeElements?.Invoke();
             _angryLimits = _baseAngryLimits;
+
+            VibrationSystem.Instance.TriggerVibration(0.7f, 3.0f);
         }
     }
 
