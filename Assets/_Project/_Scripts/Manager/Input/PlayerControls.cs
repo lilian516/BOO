@@ -62,6 +62,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SelectSkill"",
+                    ""type"": ""Value"",
+                    ""id"": ""272c169a-a535-4102-87ad-9acba62aad06"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90e7ce6c-b8b0-4fa9-9b78-16b38c71c886"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_UseSkill = m_Player.FindAction("UseSkill", throwIfNotFound: true);
         m_Player_Speak = m_Player.FindAction("Speak", throwIfNotFound: true);
         m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
+        m_Player_SelectSkill = m_Player.FindAction("SelectSkill", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +206,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_UseSkill;
     private readonly InputAction m_Player_Speak;
     private readonly InputAction m_Player_Touch;
+    private readonly InputAction m_Player_SelectSkill;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -193,6 +215,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @UseSkill => m_Wrapper.m_Player_UseSkill;
         public InputAction @Speak => m_Wrapper.m_Player_Speak;
         public InputAction @Touch => m_Wrapper.m_Player_Touch;
+        public InputAction @SelectSkill => m_Wrapper.m_Player_SelectSkill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +237,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Touch.started += instance.OnTouch;
             @Touch.performed += instance.OnTouch;
             @Touch.canceled += instance.OnTouch;
+            @SelectSkill.started += instance.OnSelectSkill;
+            @SelectSkill.performed += instance.OnSelectSkill;
+            @SelectSkill.canceled += instance.OnSelectSkill;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -230,6 +256,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Touch.started -= instance.OnTouch;
             @Touch.performed -= instance.OnTouch;
             @Touch.canceled -= instance.OnTouch;
+            @SelectSkill.started -= instance.OnSelectSkill;
+            @SelectSkill.performed -= instance.OnSelectSkill;
+            @SelectSkill.canceled -= instance.OnSelectSkill;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -253,5 +282,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnUseSkill(InputAction.CallbackContext context);
         void OnSpeak(InputAction.CallbackContext context);
         void OnTouch(InputAction.CallbackContext context);
+        void OnSelectSkill(InputAction.CallbackContext context);
     }
 }
