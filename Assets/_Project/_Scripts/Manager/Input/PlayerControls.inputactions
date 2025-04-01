@@ -25,8 +25,17 @@
                 },
                 {
                     "name": "Speak",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "3a4b505d-b904-4bb2-8d1d-e415ac3e3bfb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Touch",
+                    "type": "Value",
+                    "id": "2b7bee75-d5b9-4109-b969-eb2de5940f1b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -59,11 +68,22 @@
                 {
                     "name": "",
                     "id": "bf758c6a-89d1-4801-a5c1-41ff6277e071",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Speak",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50c2e555-3588-4957-a787-594c94f00e18",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
