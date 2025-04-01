@@ -25,6 +25,7 @@ public class PlayerMovingState : PlayerState
     }
     private Vector3 _moveDirection;
     private float _time;
+    private bool _facingRight = true;
 
     public override void EnterState()
     {
@@ -55,6 +56,12 @@ public class PlayerMovingState : PlayerState
     {
         base.PhysicsUpdate();
         WalkingMove();
+
+        float h = _player.RB.velocity.x;
+        if (h > 0 && !_facingRight)
+            Flip();
+        else if (h < 0 && _facingRight)
+            Flip();
     }
 
 
@@ -81,14 +88,24 @@ public class PlayerMovingState : PlayerState
         
         _player.RB.velocity = _moveDirection * _desc.Speed;
         Debug.Log(_moveDirection);
-        float animSpeed = Mathf.Abs(_player.RB.velocity.x) + Mathf.Abs(_player.RB.velocity.z);
-        animSpeed = animSpeed / 2;
+        float animSpeed = Mathf.Abs(_player.RB.velocity.x) / 3 + Mathf.Abs(_player.RB.velocity.z) / 3;
+        animSpeed *= _desc.Speed / 2;
         _player.PlayerAnimator.SetFloat("Speed", animSpeed);
 
+        if (_player.RB.velocity.x < 0)
+            Flip();
     }
 
     private void OnSkill()
     {
         _playerStateMachine.ChangeState(_player.SkillState);
+    }
+
+    private void Flip()
+    {
+        _facingRight = !_facingRight;
+        Vector3 theScale = _player.transform.localScale;
+        theScale.x *= -1;
+        _player.transform.localScale = theScale;
     }
 }
