@@ -17,6 +17,7 @@ public class PlayerSpeakingState : PlayerState
     {
         base.EnterState();
         _player.Input.OnSpeak += DialogueSystem.Instance.AdvanceDialogue;
+        DialogueSystem.Instance.OnChoice += OnChoiceSelection;
         DialogueSystem.Instance.OnEndDialogue += OnExitSpeakState;
 
     }
@@ -24,6 +25,7 @@ public class PlayerSpeakingState : PlayerState
     public override void ExitState()
     {
         _player.Input.OnSpeak -= DialogueSystem.Instance.AdvanceDialogue;
+        DialogueSystem.Instance.OnChoice -= OnChoiceSelection;
         DialogueSystem.Instance.OnEndDialogue -= OnExitSpeakState;
         base.ExitState();
     }
@@ -41,5 +43,10 @@ public class PlayerSpeakingState : PlayerState
     private void OnExitSpeakState()
     {
         _playerStateMachine.ChangeState(_player.IdleState);
+    }
+
+    private void OnChoiceSelection()
+    {
+        _player.Input.OnSpeak -= DialogueSystem.Instance.AdvanceDialogue;
     }
 }

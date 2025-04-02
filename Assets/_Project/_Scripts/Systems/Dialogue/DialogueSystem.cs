@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 [DefaultExecutionOrder(-2)]
@@ -16,6 +17,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
     
     private CanvasGroup _fadeCanvasBox;
     private TextMeshProUGUI _dialogueTextBox;
+    private Image _leftImage;
+    private Image _rightImage;
+    private Button _cancelButton;
+    private Button _choiceButton;
     public DialogueAsset ProcessingDialogue { get; private set; }
 
     private int _sectionIndex;
@@ -30,13 +35,30 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     public delegate void EndDialogueEvent();
     public event EndDialogueEvent OnEndDialogue;
+<<<<<<< Updated upstream
+=======
+
+    public delegate void ChoiceEvent();
+    public event ChoiceEvent OnChoice;
+
+>>>>>>> Stashed changes
     public void Init()
     {
         ProcessingDialogue = null;
         _fadeCanvasBox = GameManager.Instance.DialogueUI.GetComponent<CanvasGroup>();
         _dialogueTextBox = _fadeCanvasBox.transform.Find("TextDialogue").GetComponent<TextMeshProUGUI>();
+<<<<<<< Updated upstream
         _isPlayingSentence = false;
         _skipSentence = false;
+=======
+        _leftImage = _fadeCanvasBox.transform.Find("LeftSprite").GetComponent<Image>();
+        _rightImage = _fadeCanvasBox.transform.Find("RightSprite").GetComponent<Image>();
+        _choiceButton = _fadeCanvasBox.transform.Find("SkillChoice").GetComponent<Button>();
+        _cancelButton = _fadeCanvasBox.transform.Find("QuitChoice").GetComponent<Button>();
+
+        _choiceButton.onClick.AddListener(TakeChoice);
+        _cancelButton.onClick.AddListener(EndDialogue);
+>>>>>>> Stashed changes
     }
 
     private void OnEnable()
@@ -63,12 +85,19 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.interactable = true;
         _fadeCanvasBox.blocksRaycasts = true;
 
+        _leftImage.sprite = ProcessingDialogue.LeftCharacter;
+        _rightImage.sprite = ProcessingDialogue.RightCharacter;
+
         if (ProcessingDialogue.OpeningTriggerEvent)
         {
             OnDialogueEvent?.Invoke(ProcessingDialogue.OpeningEventType);
         }
 
         UpdateSentence();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 
     public void EndDialogue()
@@ -77,6 +106,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
         {
             OnDialogueEvent?.Invoke(ProcessingDialogue.ClosureEventType);
         }
+
+        _choiceButton.gameObject.SetActive(false);
+        _cancelButton.gameObject.SetActive(false);
 
         _fadeCanvasBox.alpha = 0;
         _fadeCanvasBox.interactable = false;
@@ -114,7 +146,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _sectionIndex++;
         if(_sectionIndex >= GetSectionCount())
         {
-            EndDialogue();
+            if (ProcessingDialogue.ChoiceOnEnd)
+                ShowChoice();
+            else
+                EndDialogue();
         }
         else
         {
@@ -122,6 +157,26 @@ public class DialogueSystem : Singleton<DialogueSystem>
         }
         
     }
+<<<<<<< Updated upstream
+=======
+
+    private void ShowChoice()
+    {
+        OnChoice?.Invoke();
+
+        _dialogueTextBox.text = "Que faire ?";
+
+        _choiceButton.gameObject.SetActive(true);
+        _cancelButton.gameObject.SetActive(true);
+    }
+
+    private void TakeChoice()
+    {
+        GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive);
+        EndDialogue();
+    }
+
+>>>>>>> Stashed changes
     public void UpdateSentence()
     {
         string sentence = GetSentence();

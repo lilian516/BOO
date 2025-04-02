@@ -16,6 +16,8 @@ MonoBehaviour:
   OpeningEventType: 0
   ClosureTriggerEvent: 0
   ClosureEventType: 0
+  RightCharacter: {fileID: 21300000, guid: f34cc76ae20e29f4485d7b5d482c7ee0, type: 3}
+  LeftCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
   Sections:
   - Sentences:
     - Bonjour
@@ -26,3 +28,5 @@ MonoBehaviour:
     - Je suis un enfant
     TriggerEvent: 1
     EventType: 2
+  ChoiceOnEnd: 0
+  SkillToGive: 0

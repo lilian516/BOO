@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
 
     private CanvasGroup _skillCanvaGroup;
 
+    public List<PlayerSkill> PlayerSkills = new List<PlayerSkill>();
     public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
 
     void Start()
@@ -93,12 +94,15 @@ public class Inventory : MonoBehaviour
         _currentSkill = skill;
     }
 
-    public void RemoveSkill(Skill skill)
+    public void RemoveSkill(PlayerSkill skill)
     {
-        _skills.Remove(skill);
-        if (_currentSkill == skill)
+        int index = PlayerSkills.IndexOf(skill);
+
+        if (_currentSkill == _skills[index])
         {
             _currentSkill = null;
         }
+        _skills.RemoveAt(index);
+        PlayerSkills.Remove(skill);
     }
 }
