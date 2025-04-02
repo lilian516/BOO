@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButton()
     {
+        StartCoroutine(GameManager.Instance.LaunchGame());
         Debug.Log("on start le jeu");
     }
 

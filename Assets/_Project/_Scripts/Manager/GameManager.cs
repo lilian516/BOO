@@ -31,54 +31,59 @@ public class GameManager : Singleton<GameManager>
     {
 
 
-        MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
-        SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
-        Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
-        InventorySkill = Player.GetComponent<Inventory>();
-        SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
-        SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
+        //MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
+        //SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
+        //Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        //InventorySkill = Player.GetComponent<Inventory>();
+        //SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+        //SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
 
-        DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
-        InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
-        DialogueSystem.Instance.Init();
-        InventorySkill.Init();
+        //DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
+        //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
+        //DialogueSystem.Instance.Init();
+        //InventorySkill.Init();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
-        //StartCoroutine(WaitForScenesAndInitialize());
+        StartCoroutine(WaitForScenesAndInitialize());
     }
 
     
 
     private IEnumerator WaitForScenesAndInitialize()
     {
-        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene", "UIInGame" });
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene", "MainMenu" });
 
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+        
+        //DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
+
+        //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
+        
+        //InventorySkill.Init();
+        
+    }
+
+    public IEnumerator LaunchGame()
+    {
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "UIInGame"});
+
         SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
-
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
 
-    private void LaunchGame()
-    {
+        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" });
 
-        LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "UIInGame" });
 
-        DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
-        InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
-
-        InventorySkill.Init();
+        
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
