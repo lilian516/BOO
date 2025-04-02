@@ -2,12 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using System.Collections.Generic;
+using System.Collections;
 
 public class UIUtility : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private List<string> audioParameters; 
-    [SerializeField] private List<Slider> sliders; 
+    [SerializeField] private List<Slider> sliders;
+
+    private bool CanManageAudio;
+
+    public void Start()
+    {
+        CanManageAudio = true;
+    }
 
     public void HideUI(GameObject uiElement)
     {
@@ -28,24 +36,28 @@ public class UIUtility : MonoBehaviour
     #region Audio
     public void ManageVolume()
     {
-        for (int index = 0; index < sliders.Count; index++)
+        if (CanManageAudio)
         {
-            audioMixer.SetFloat(audioParameters[index], Mathf.Log10(sliders[index].value) * 20);
+            for (int index = 0; index < sliders.Count; index++)
+            {
+                audioMixer.SetFloat(audioParameters[index], Mathf.Log10(sliders[index].value) * 20);
+            }
         }
     }
 
     public void SliderValueCorrespondToVolume()
     {
+        CanManageAudio = false;
         for (int index = 0; index < sliders.Count; index++)
         {
             if (audioMixer.GetFloat(audioParameters[index], out float volume))
             {
                 Debug.Log($"Volume for {audioParameters[index]}: {volume} dB");
                 sliders[index].value = Mathf.Pow(10, volume / 20);
-                sliders[index].onValueChanged.Invoke(sliders[index].value);
                 Debug.Log($"Slider value set to: {sliders[index].value}");
             }
         }
+        CanManageAudio = true;
     }
     #endregion
 
@@ -53,12 +65,26 @@ public class UIUtility : MonoBehaviour
 
     public void DesactiveCanvas(Canvas ThisCanva)
     {
-        ThisCanva.enabled = false;
+        CanvasGroup groupCanva = ThisCanva.GetComponent<CanvasGroup>();
+        if (groupCanva != null)
+        {
+            groupCanva.alpha = 0;
+            groupCanva.interactable = false;
+            groupCanva.blocksRaycasts = false;
+        }
     }
 
     public void ActivateCanvas(Canvas ThisCanva)
     {
-        ThisCanva.enabled = true;
+        CanvasGroup groupCanva = ThisCanva.GetComponent<CanvasGroup>();
+        if (groupCanva != null)
+        {
+            groupCanva.alpha = 1;
+            groupCanva.interactable = true;
+            groupCanva.blocksRaycasts = true;
+        }
     }
     #endregion
 }
+
+
