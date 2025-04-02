@@ -333,7 +333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBtwnChars: 0.2
-  timeBtwnWords: 0
 --- !u!1 &695945568
 GameObject:
   m_ObjectHideFlags: 0
