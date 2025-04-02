@@ -6,7 +6,8 @@ using UnityEngine.TextCore.Text;
 
 public class PlayerIdleState : PlayerState
 {
-
+    private bool _isSpeakingToSomeone;
+    
     [System.Serializable]
     public class Descriptor
     {
@@ -23,11 +24,10 @@ public class PlayerIdleState : PlayerState
 
     public override void EnterState()
     {
+        _isSpeakingToSomeone = false;
         base.EnterState();
         _player.Input.OnUseSkill += OnSkill;
         _player.Input.OnSpeak += OnCheckSpeak;
-
-
     }
 
     public override void ExitState()
@@ -73,11 +73,12 @@ public class PlayerIdleState : PlayerState
     {
         Vector2 position = _player.Input.GetTouchPosition();
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(position), out RaycastHit hit))
+        if (!_isSpeakingToSomeone && Physics.Raycast(Camera.main.ScreenPointToRay(position), out RaycastHit hit))
         {
             ISpeakable speakable = hit.collider.gameObject.GetComponent<ISpeakable>();
             if (speakable != null)
             {
+                _isSpeakingToSomeone = true;
                 speakable.Speak();
                 _playerStateMachine.ChangeState(_player.SpeakingState);
                 
