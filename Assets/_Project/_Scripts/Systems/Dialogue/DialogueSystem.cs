@@ -39,6 +39,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
     public delegate void ChoiceEvent();
     public event ChoiceEvent OnChoice;
 
+    public delegate void TakeEvent(DialogueEventType eventType);
+    public event TakeEvent OnTakeEvent;
+
     public void Init()
     {
         ProcessingDialogue = null;
@@ -161,8 +164,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     private void TakeChoice()
     {
-        GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive);
+        OnTakeEvent?.Invoke(ProcessingDialogue.TakeEventType);
         EndDialogue();
+        GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive);
     }
     
     public void UpdateSentence()

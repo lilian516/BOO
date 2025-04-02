@@ -16,6 +16,8 @@ public class DialogueAsset : ScriptableObject
     [Space]
     public bool ChoiceOnEnd;
     public PlayerSkill SkillToGive;
+    public DialogueEventType TakeEventType;
+    public DialogueAsset NextDialogue;
 }
 
 [System.Serializable]
@@ -31,4 +33,5 @@ public enum DialogueEventType
     None,
     GetUnderwear,
     GetBubble,
+    GetWindmill,
 }

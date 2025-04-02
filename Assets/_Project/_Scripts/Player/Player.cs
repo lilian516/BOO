@@ -127,29 +127,27 @@ public class Player : MonoBehaviour, IChangeable
 
     public void AddSkill(PlayerSkill playerSkill)
     {
-        if (_inventory.PlayerSkills.Contains(playerSkill))
-            return;
 
         switch(playerSkill)
         {
             case PlayerSkill.BubbleSkill:
                 BubbleSkill bubbleSkill = new BubbleSkill(this, _bubbleSkillDescriptor);
-                _inventory.AddSkill(bubbleSkill);
+                _inventory.AddSkill(bubbleSkill, playerSkill);
                 break;
             case PlayerSkill.PantsSkill:
                 PantsSkill pantsSkill = new PantsSkill(this, _pantsSkillDescriptor);
-                _inventory.AddSkill(pantsSkill);
+                _inventory.AddSkill(pantsSkill, playerSkill);
                 break;
             case PlayerSkill.StickSkill:
                 StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);
-                _inventory.AddSkill(stickSkill);
+                _inventory.AddSkill(stickSkill, playerSkill);
                 break;
             case PlayerSkill.WindSkill:
                 WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
-                _inventory.AddSkill(windSkill);
+                _inventory.AddSkill(windSkill, playerSkill);
                 break;
             case PlayerSkill.SmashSkill:
-                _inventory.AddSkill(_smashSkill);
+                _inventory.AddSkill(_smashSkill, playerSkill);
                 break;
         }
 
