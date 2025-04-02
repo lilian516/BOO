@@ -28,7 +28,7 @@ public class UIUtility : MonoBehaviour
     #region Audio
     public void ManageVolume()
     {
-        for (int index = 0; index < sliders.Count; index++) 
+        for (int index = 0; index < sliders.Count; index++)
         {
             audioMixer.SetFloat(audioParameters[index], Mathf.Log10(sliders[index].value) * 20);
         }
@@ -36,12 +36,13 @@ public class UIUtility : MonoBehaviour
 
     public void SliderValueCorrespondToVolume()
     {
-        for (int index = 0; index < sliders.Count ; index++)
+        for (int index = 0; index < sliders.Count; index++)
         {
             if (audioMixer.GetFloat(audioParameters[index], out float volume))
             {
                 Debug.Log($"Volume for {audioParameters[index]}: {volume} dB");
                 sliders[index].value = Mathf.Pow(10, volume / 20);
+                sliders[index].onValueChanged.Invoke(sliders[index].value);
                 Debug.Log($"Slider value set to: {sliders[index].value}");
             }
         }
