@@ -27,7 +27,7 @@ public class VibrationSystem : Singleton<VibrationSystem>
 
     }
 
-    private void VibratePhone(float intensity, float vibrationTime)
+    public void VibratePhone(float intensity, float vibrationTime)
     {
         if (Application.platform == RuntimePlatform.Android)
         {
