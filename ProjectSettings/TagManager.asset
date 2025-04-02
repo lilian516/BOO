@@ -8,6 +8,7 @@ TagManager:
   - DialogueUI
   - SkillStickUI
   - UIController
+  - InventoryUI
   layers:
   - Default
   - TransparentFX
