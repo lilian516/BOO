@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33fd61f4c6c9a304c8a7462f3774dfc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,10 +188,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
-  m_Height: 0.8614588
+  m_Radius: 0.38111353
+  m_Height: 0.9040835
   m_Direction: 1
-  m_Center: {x: -0.05374986, y: -0.008536577, z: 0}
+  m_Center: {x: -0.05374986, y: -0.41363728, z: -0.50560045}
 --- !u!114 &122024494719183058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 6616850642561177915}
   _darkBoo: {fileID: 9100000, guid: 36e10ae8084acc44392f0a5e827ff3b0, type: 2}
+  _boo: {fileID: 0}
   _playerIdleStateDescriptor:
     SpeedCurve:
       serializedVersion: 2
@@ -253,6 +254,11 @@ MonoBehaviour:
     WindPrefab: {fileID: 1035563824390858650, guid: 9a434ea5e92e86a49a78998eef610941,
       type: 3}
   _pantsSkillDescriptor:
+    Radius: 0
+    Mask:
+      serializedVersion: 2
+      m_Bits: 0
+  _smashSkillDescriptor:
     Radius: 0
     Mask:
       serializedVersion: 2
