@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoundManager
   - DialogueUI
+  - InventoryUI
   layers:
   - Default
   - TransparentFX

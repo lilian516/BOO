@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     private const string SOUND_MANAGER_TAG = "SoundManager";
     private const string MAIN_CAMERA_TAG = "MainCamera";
     private const string DIALOGUE_UI_TAG = "DialogueUI";
+    private const string INVENTORY_UI_TAG = "InventoryUI";
 
     [HideInInspector] public GameObject MainCamera;
     [HideInInspector] public GameObject Player;
@@ -32,7 +33,7 @@ public class GameManager : Singleton<GameManager>
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
 
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
-        InventoryUI = GameObject.Find("InventorySkill");
+        InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
 
@@ -55,8 +56,21 @@ public class GameManager : Singleton<GameManager>
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
 
-        InventoryUI = GameObject.Find("InventorySkill");
+        InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         DialogueSystem.Instance.Init();
+        InventorySkill.Init();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void LaunchGame()
+    {
+
+        LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "UIInGame" });
+
+        DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
+        InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
+
         InventorySkill.Init();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
