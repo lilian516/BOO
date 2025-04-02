@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager>
     {
 
 
-        MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
+        /*MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
@@ -44,9 +44,9 @@ public class GameManager : Singleton<GameManager>
         InventorySkill.Init();
 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = false;*/
 
-        //StartCoroutine(WaitForScenesAndInitialize());
+        StartCoroutine(WaitForScenesAndInitialize());
     }
 
     
