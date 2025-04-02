@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
 
 
@@ -54,6 +55,8 @@ public class Inventory : MonoBehaviour
         if (AngrySystem.Instance.IsAngry || _skills.Count <= 1)
             return;
 
+        GameManager.Instance.SkillStickUI.GetComponent<OnScreenStick>().movementRange = 90;
+
         _skillCanvaGroup.alpha = 1;
         _skillCanvaGroup.interactable = true;
         _skillCanvaGroup.blocksRaycasts = true;
@@ -65,6 +68,8 @@ public class Inventory : MonoBehaviour
     {
         if (AngrySystem.Instance.IsAngry || _skills.Count <= 1)
             return;
+
+        GameManager.Instance.SkillStickUI.GetComponent<OnScreenStick>().movementRange = 0;
 
         if (InputManager.Instance.GetSelectDirection() != Vector2.zero && _skillCanvaGroup.alpha == 1)
         {
