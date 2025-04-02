@@ -2,6 +2,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.OnScreen;
 
 
 [DefaultExecutionOrder(-9)]
@@ -76,6 +77,38 @@ public class InputManager : Singleton<InputManager>
         _controls.Player.UseSkill.canceled += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
         _controls.Player.Speak.performed += ctx => { UpdateControlMethod(ctx.control); CheckSpeakingPerformed(); };
     }
+
+    public void DisableSticksAndButtons()
+    {
+        foreach(GameObject controller in GameManager.Instance.GameControllers)
+        {
+            Debug.Log(controller);
+            OnScreenButton button = controller.GetComponent<OnScreenButton>();
+            OnScreenStick stick = controller.GetComponent<OnScreenStick>();
+
+            if (button)
+                button.enabled = false;
+            if (stick) 
+                stick.enabled = false;
+
+        }
+    }
+
+    public void EnableSticksAndButtons()
+    {
+        foreach (GameObject controller in GameManager.Instance.GameControllers)
+        {
+            OnScreenButton button = controller.GetComponent<OnScreenButton>();
+            OnScreenStick stick = controller.GetComponent<OnScreenStick>();
+
+            if (button)
+                button.enabled = true;
+            if (stick)
+                stick.enabled = true;
+
+        }
+    }
+        
 
     #region Device Change
 
@@ -165,8 +198,6 @@ public class InputManager : Singleton<InputManager>
         return _controls.Player.Touch.ReadValue<Vector2>();
     }
 
-
-    
     #endregion
 
 
@@ -175,21 +206,19 @@ public class InputManager : Singleton<InputManager>
     private void UseSkillPerformed()
     {
 
-        OnUseSkill?.Invoke();
         OnCloseSkillMenu?.Invoke();
+        OnUseSkill?.Invoke();
     }
     
     private void OpenSkillPerformed()
     {
-        
+
         OnOpenSkillMenu?.Invoke();
     }
 
     private void CheckSpeakingPerformed()
     {
         OnSpeak?.Invoke();
-        //Vector2 test = _controls.Player.Speak.ReadValue<Vector2>();
-        //Debug.Log(test);
     }
 
     #endregion

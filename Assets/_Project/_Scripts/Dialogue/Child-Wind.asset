@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1a2eaa57dcb92a45b9dfc54dad22e44, type: 3}
-  m_Name: Test
+  m_Name: Child-Wind
   m_EditorClassIdentifier: 
   OpeningTriggerEvent: 0
   OpeningEventType: 0
@@ -20,15 +20,11 @@ MonoBehaviour:
   LeftCharacter: {fileID: 21300000, guid: f34cc76ae20e29f4485d7b5d482c7ee0, type: 3}
   Sections:
   - Sentences:
-    - Bonjour
-    - Test de dialogue
+    - Pffff Pfffffff
+    - Je fais du vent
     TriggerEvent: 0
     EventType: 0
-  - Sentences:
-    - Je suis un enfant
-    TriggerEvent: 1
-    EventType: 2
   ChoiceOnEnd: 1
-  SkillToGive: 1
-  TakeEventType: 2
-  NextDialogue: {fileID: 11400000, guid: 8007a1068c10f1648ae2350ae5dc3b6c, type: 2}
+  SkillToGive: 2
+  TakeEventType: 3
+  NextDialogue: {fileID: 11400000, guid: 11a07f21e08aaca41851828b7700a4ab, type: 2}

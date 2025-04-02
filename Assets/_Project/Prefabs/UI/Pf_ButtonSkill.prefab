@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 8824764408339862444}
   m_Layer: 0
   m_Name: controller
-  m_TagString: SkillStickUI
+  m_TagString: UIController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementRange: 0
+  m_MovementRange: 90
   m_DynamicOriginRange: 100
   m_ControlPath: <Gamepad>/rightStick
   m_Behaviour: 0
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 833449677696451866}
   m_Layer: 0
   m_Name: InventorySkill
-  m_TagString: InventoryUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

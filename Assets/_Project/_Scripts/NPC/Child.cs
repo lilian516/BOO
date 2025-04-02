@@ -11,7 +11,7 @@ public class Child : MonoBehaviour, ISpeakable
     public void Speak()
     {
         DialogueSystem.Instance.BeginDialogue(_dialogue);
-        DialogueSystem.Instance.OnDialogueEvent += OnEventTakeSkill;
+        DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
     }
 
     // Start is called before the first frame update
@@ -33,8 +33,11 @@ public class Child : MonoBehaviour, ISpeakable
             case DialogueEventType.GetBubble:
                 _animator.SetTrigger("HasTakeBubble");
                 break;
+            case DialogueEventType.GetWindmill:
+                _animator.SetTrigger("HasTakeBubble");
+                break;
         }
-            
-
+        _dialogue = _dialogue.NextDialogue;
+        DialogueSystem.Instance.OnTakeEvent -= OnEventTakeSkill;
     }
 }

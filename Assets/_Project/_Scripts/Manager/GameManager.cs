@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using TMPro;
+using System.Collections.Generic;
 
 
 [DefaultExecutionOrder(-10)]
@@ -12,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     private const string SOUND_MANAGER_TAG = "SoundManager";
     private const string MAIN_CAMERA_TAG = "MainCamera";
     private const string DIALOGUE_UI_TAG = "DialogueUI";
+    private const string GAME_CONTROLLER_TAG = "UIController";
 
     private const string SKILL_STICK_UI_TAG = "SkillStickUI";
 
@@ -24,7 +26,11 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject DialogueUI;
     [HideInInspector] public GameObject InventoryUI;
     [HideInInspector] public GameObject SkillStickUI;
+
+    
     [HideInInspector] public Inventory InventorySkill;
+    [HideInInspector] public GameObject[] GameControllers;
+    [HideInInspector] public GameObject UIBackground;
 
 
     private void Start()
@@ -33,6 +39,8 @@ public class GameManager : Singleton<GameManager>
 
 
         StartCoroutine(WaitForScenesAndInitialize());
+
+      
     }
 
     
@@ -46,8 +54,9 @@ public class GameManager : Singleton<GameManager>
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+
         
-        //DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
+
 
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         
@@ -64,6 +73,9 @@ public class GameManager : Singleton<GameManager>
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
+
+        
+        GameControllers = GameObject.FindGameObjectsWithTag(GAME_CONTROLLER_TAG);
 
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" });
 

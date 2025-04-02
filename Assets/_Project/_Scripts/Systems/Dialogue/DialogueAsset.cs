@@ -8,8 +8,16 @@ public class DialogueAsset : ScriptableObject
     public DialogueEventType OpeningEventType;
     public bool ClosureTriggerEvent;
     public DialogueEventType ClosureEventType;
+    [Header("Sprites")]
+    public Sprite RightCharacter;
+    public Sprite LeftCharacter;
     [Space]
     public DialogueSection[] Sections;
+    [Space]
+    public bool ChoiceOnEnd;
+    public PlayerSkill SkillToGive;
+    public DialogueEventType TakeEventType;
+    public DialogueAsset NextDialogue;
 }
 
 [System.Serializable]
@@ -25,4 +33,5 @@ public enum DialogueEventType
     None,
     GetUnderwear,
     GetBubble,
+    GetWindmill,
 }

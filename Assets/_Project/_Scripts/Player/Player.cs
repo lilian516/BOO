@@ -57,16 +57,12 @@ public class Player : MonoBehaviour, IChangeable
 
         _inventory = GetComponent<Inventory>();    
 
-        StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);  
-        BubbleSkill bubbleSkill = new BubbleSkill(this, _bubbleSkillDescriptor);
-        WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
-        PantsSkill pantsSkill = new PantsSkill(this, _pantsSkillDescriptor);
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
 
-        AddSkill(pantsSkill);
-        AddSkill(stickSkill);
-        AddSkill(bubbleSkill);
-        AddSkill(windSkill);
+        //AddSkill(pantsSkill);
+        //AddSkill(stickSkill);
+        //AddSkill(bubbleSkill);
+        //AddSkill(windSkill);
         
         RB = GetComponent<Rigidbody>();
         
@@ -129,14 +125,39 @@ public class Player : MonoBehaviour, IChangeable
         }
     }
 
-    public void AddSkill(Skill skill)
+    public void AddSkill(PlayerSkill playerSkill)
     {
-        _inventory.AddSkill(skill);
-        
+
+        switch(playerSkill)
+        {
+            case PlayerSkill.BubbleSkill:
+                BubbleSkill bubbleSkill = new BubbleSkill(this, _bubbleSkillDescriptor);
+                _inventory.AddSkill(bubbleSkill, playerSkill);
+                break;
+            case PlayerSkill.PantsSkill:
+                PantsSkill pantsSkill = new PantsSkill(this, _pantsSkillDescriptor);
+                _inventory.AddSkill(pantsSkill, playerSkill);
+                break;
+            case PlayerSkill.StickSkill:
+                StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);
+                _inventory.AddSkill(stickSkill, playerSkill);
+                break;
+            case PlayerSkill.WindSkill:
+                WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
+                _inventory.AddSkill(windSkill, playerSkill);
+                break;
+            case PlayerSkill.SmashSkill:
+                _inventory.AddSkill(_smashSkill, playerSkill);
+                break;
+        }
+
     }
-    public void RemoveSkill(Skill skill)
+    public void RemoveSkill(PlayerSkill playerSkill)
     {
-        _inventory.RemoveSkill(skill);
+        if (!_inventory.PlayerSkills.Contains(playerSkill))
+            return;
+
+        _inventory.RemoveSkill(playerSkill);
 
     }
 
@@ -170,13 +191,13 @@ public class Player : MonoBehaviour, IChangeable
 
     public void Change()
     {
-        AddSkill(_smashSkill);
+        AddSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _darkBoo;
 
     }
     public void ResetChange()
     {
-        RemoveSkill(_smashSkill);
+        RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
     }
 }
