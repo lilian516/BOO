@@ -9,6 +9,7 @@ TagManager:
   - SkillStickUI
   - UIController
   - InventoryUI
+  - BackgroundUI
   layers:
   - Default
   - TransparentFX

@@ -124,7 +124,7 @@ public class Inventory : MonoBehaviour
     private void ManageInventory(Skill skill, PlayerSkill playerSkill)
     {
         InputManager.Instance.DisableSticksAndButtons();
-        GameManager.Instance.UIBackground.SetActive(true);
+        Helpers.ShowCanva(GameManager.Instance.UIBackground.GetComponent<CanvasGroup>());
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
@@ -138,7 +138,7 @@ public class Inventory : MonoBehaviour
         Time.timeScale = 1;
         InputManager.Instance.EnableSticksAndButtons();
         CloseInventory();
-        GameManager.Instance.UIBackground.SetActive(false);
+        Helpers.HideCanva(GameManager.Instance.UIBackground.GetComponent<CanvasGroup>());
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
@@ -152,7 +152,7 @@ public class Inventory : MonoBehaviour
             _currentSkill = skill;
 
         _skills.RemoveAt(index);
-        PlayerSkills.Remove(playerSkill);
+        PlayerSkills.RemoveAt(index);
 
         _skills.Insert(index,skill);
         PlayerSkills.Insert(index, playerSkill);

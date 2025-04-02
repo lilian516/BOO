@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     private const string SKILL_STICK_UI_TAG = "SkillStickUI";
 
     private const string INVENTORY_UI_TAG = "InventoryUI";
+    private const string BACKGROUND_UI_TAG = "BackgroundUI";
 
 
     [HideInInspector] public GameObject MainCamera;
@@ -29,7 +30,7 @@ public class GameManager : Singleton<GameManager>
 
     
     [HideInInspector] public Inventory InventorySkill;
-    [HideInInspector] public GameObject[] GameControllers;
+    [HideInInspector] public GameObject GameController;
     [HideInInspector] public GameObject UIBackground;
 
 
@@ -71,11 +72,12 @@ public class GameManager : Singleton<GameManager>
         SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
+        UIBackground = GameObject.FindGameObjectWithTag(BACKGROUND_UI_TAG);
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
 
         
-        GameControllers = GameObject.FindGameObjectsWithTag(GAME_CONTROLLER_TAG);
+        GameController = GameObject.FindGameObjectWithTag(GAME_CONTROLLER_TAG);
 
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" });
 

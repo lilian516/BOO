@@ -80,33 +80,30 @@ public class InputManager : Singleton<InputManager>
 
     public void DisableSticksAndButtons()
     {
-        foreach(GameObject controller in GameManager.Instance.GameControllers)
-        {
-            Debug.Log(controller);
-            OnScreenButton button = controller.GetComponent<OnScreenButton>();
-            OnScreenStick stick = controller.GetComponent<OnScreenStick>();
+        GameObject controller = GameManager.Instance.GameController;
+        OnScreenStick controllerStick = controller.GetComponent<OnScreenStick>();
+        controllerStick.enabled = false;
 
-            if (button)
-                button.enabled = false;
-            if (stick) 
-                stick.enabled = false;
+        GameObject skill = GameManager.Instance.SkillStickUI;
+        OnScreenStick skillStick = skill.GetComponent<OnScreenStick>();
+        OnScreenButton skillButton = skill.GetComponent<OnScreenButton>();
+        skillStick.enabled = false;
+        skillButton.enabled = false;
 
-        }
+
     }
 
     public void EnableSticksAndButtons()
     {
-        foreach (GameObject controller in GameManager.Instance.GameControllers)
-        {
-            OnScreenButton button = controller.GetComponent<OnScreenButton>();
-            OnScreenStick stick = controller.GetComponent<OnScreenStick>();
+        GameObject controller = GameManager.Instance.GameController;
+        OnScreenStick controllerStick = controller.GetComponent<OnScreenStick>();
+        controllerStick.enabled = true;
 
-            if (button)
-                button.enabled = true;
-            if (stick)
-                stick.enabled = true;
-
-        }
+        GameObject skill = GameManager.Instance.SkillStickUI;
+        OnScreenStick skillStick = skill.GetComponent<OnScreenStick>();
+        OnScreenButton skillButton = skill.GetComponent<OnScreenButton>();
+        skillStick.enabled = true;
+        skillButton.enabled = true;
     }
         
 
