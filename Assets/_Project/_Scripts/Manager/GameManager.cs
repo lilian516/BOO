@@ -12,12 +12,14 @@ public class GameManager : Singleton<GameManager>
     private const string SOUND_MANAGER_TAG = "SoundManager";
     private const string MAIN_CAMERA_TAG = "MainCamera";
     private const string DIALOGUE_UI_TAG = "DialogueUI";
+    private const string SKILL_STICK_UI_TAG = "SkillStickUI";
 
     [HideInInspector] public GameObject MainCamera;
     [HideInInspector] public GameObject Player;
     [HideInInspector] public SoundSystem SoundSystem;
     [HideInInspector] public GameObject DialogueUI;
     [HideInInspector] public GameObject InventoryUI;
+    [HideInInspector] public GameObject SkillStickUI;
     [HideInInspector] public Inventory InventorySkill;
 
 
@@ -30,6 +32,7 @@ public class GameManager : Singleton<GameManager>
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+        SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
 
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
         InventoryUI = GameObject.Find("InventorySkill");

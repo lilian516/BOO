@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoundManager
   - DialogueUI
+  - SkillStickUI
   layers:
   - Default
   - TransparentFX
