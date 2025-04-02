@@ -35,22 +35,18 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     public delegate void EndDialogueEvent();
     public event EndDialogueEvent OnEndDialogue;
-<<<<<<< Updated upstream
-=======
 
     public delegate void ChoiceEvent();
     public event ChoiceEvent OnChoice;
 
->>>>>>> Stashed changes
     public void Init()
     {
         ProcessingDialogue = null;
         _fadeCanvasBox = GameManager.Instance.DialogueUI.GetComponent<CanvasGroup>();
         _dialogueTextBox = _fadeCanvasBox.transform.Find("TextDialogue").GetComponent<TextMeshProUGUI>();
-<<<<<<< Updated upstream
         _isPlayingSentence = false;
         _skipSentence = false;
-=======
+
         _leftImage = _fadeCanvasBox.transform.Find("LeftSprite").GetComponent<Image>();
         _rightImage = _fadeCanvasBox.transform.Find("RightSprite").GetComponent<Image>();
         _choiceButton = _fadeCanvasBox.transform.Find("SkillChoice").GetComponent<Button>();
@@ -58,7 +54,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
         _choiceButton.onClick.AddListener(TakeChoice);
         _cancelButton.onClick.AddListener(EndDialogue);
->>>>>>> Stashed changes
     }
 
     private void OnEnable()
@@ -94,10 +89,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
         }
 
         UpdateSentence();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     }
 
     public void EndDialogue()
@@ -157,8 +148,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
         }
         
     }
-<<<<<<< Updated upstream
-=======
 
     private void ShowChoice()
     {
@@ -175,8 +164,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
         GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive);
         EndDialogue();
     }
-
->>>>>>> Stashed changes
+    
     public void UpdateSentence()
     {
         string sentence = GetSentence();
