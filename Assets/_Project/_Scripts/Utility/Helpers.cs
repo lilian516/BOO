@@ -29,5 +29,20 @@ public static class Helpers
         _waitDictionay[time] = new WaitForSeconds(time);
         return _waitDictionay[time];
     }
+
+
+    public static void ShowCanva(CanvasGroup canva)
+    {
+        canva.alpha = 1f;
+        canva.interactable = true;
+        canva.blocksRaycasts = true;
+    }
+
+    public static void HideCanva(CanvasGroup canva)
+    {
+        canva.alpha = 0f;
+        canva.interactable = false;
+        canva.blocksRaycasts = false;
+    }
 }
 
