@@ -19,7 +19,12 @@ public class VibrationSystem : Singleton<VibrationSystem>
 
     public void TriggerVibration(float intensity, float vibrationTime)
     {
+        if (!_isToggled) return;
+#if UNITY_ANDROID
         VibratePhone(intensity, vibrationTime);
+
+#endif
+
     }
 
     private void VibratePhone(float intensity, float vibrationTime)

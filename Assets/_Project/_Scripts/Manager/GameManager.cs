@@ -60,6 +60,7 @@ public class GameManager : Singleton<GameManager>
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
+        SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
 
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
