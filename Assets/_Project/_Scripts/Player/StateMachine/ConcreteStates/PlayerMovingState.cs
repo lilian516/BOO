@@ -86,8 +86,10 @@ public class PlayerMovingState : PlayerState
             _player.RB.velocity = _moveDirection * CurrentSpeed;
         }
         
-        _player.RB.velocity = _moveDirection * _desc.Speed;
-        
+        _player.RB.velocity = new Vector3( _moveDirection.x * _desc.Speed, _player.RB.velocity.y, _moveDirection.z * _desc.Speed);
+       
+
+
         float animSpeed = Mathf.Abs(_player.RB.velocity.x) / 3 + Mathf.Abs(_player.RB.velocity.z) / 3;
         animSpeed *= _desc.Speed / 2;
         _player.PlayerAnimator.SetFloat("Speed", animSpeed);
