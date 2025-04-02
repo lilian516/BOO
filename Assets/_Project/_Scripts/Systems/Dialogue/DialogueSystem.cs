@@ -125,8 +125,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
     public void UpdateSentence()
     {
         string sentence = GetSentence();
-        Debug.Log("Update sentence called with sentence: ");
-        Debug.Log(sentence);
+        
 
         if (!_isPlayingSentence)
         {
