@@ -10,6 +10,7 @@ public class BubbleSkill : Skill
     public class Descriptor
     {
         public GameObject BubblePrefab;
+        public Sprite Sprite;
     }
 
     Descriptor _desc;
@@ -46,5 +47,10 @@ public class BubbleSkill : Skill
         BubbleInstance.transform.localScale = Vector3.one;
 
         //BubblePlane.GetComponent<Renderer>().material = BubbleMaterial;
+    }
+
+    public override Sprite GetSprite()
+    {
+        return _desc.Sprite;
     }
 }

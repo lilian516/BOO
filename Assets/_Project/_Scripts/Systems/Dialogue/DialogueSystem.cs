@@ -83,8 +83,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.interactable = true;
         _fadeCanvasBox.blocksRaycasts = true;
 
-        _leftImage.sprite = ProcessingDialogue.LeftCharacter;
-        _rightImage.sprite = ProcessingDialogue.RightCharacter;
+        if (_leftImage != null)
+            _leftImage.sprite = ProcessingDialogue.LeftCharacter;
+        if (_rightImage != null)
+            _rightImage.sprite = ProcessingDialogue.RightCharacter;
 
         if (ProcessingDialogue.OpeningTriggerEvent)
         {

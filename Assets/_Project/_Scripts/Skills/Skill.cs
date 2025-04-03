@@ -15,4 +15,9 @@ public class Skill
     {
         //Debug.Log("j'utilise mon skill");
     }
+
+    public virtual Sprite GetSprite()
+    {
+        return null;
+    }
 }

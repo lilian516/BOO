@@ -38,6 +38,7 @@ public class Child : MonoBehaviour, ISpeakable
                 _animator.SetTrigger("HasTakeBubble");
                 break;
         }
+        Debug.Log("TAKE");
         _dialogue = _dialogue.NextDialogue;
         DialogueSystem.Instance.OnTakeEvent -= OnEventTakeSkill;
     }

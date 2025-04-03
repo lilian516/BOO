@@ -4722,9 +4722,39 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 506c3e72a61c24e4a83e08952dae8d7d, type: 2}
     - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
+      propertyPath: _windSkillDescriptor.Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 34dea5961815a664a860b2bf9fb54ba9,
+        type: 3}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
       propertyPath: _pantsSkillDescriptor.Radius
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _pantsSkillDescriptor.Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c0e33b7dcbb23624ab19c97870f419ee,
+        type: 3}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _smashSkillDescriptor.Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 659611ca3a369064ea4b4740b7996fbc,
+        type: 3}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _stickSkillDescriptor.Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 53f971e1d0b83264ea95c7c0a43bca25,
+        type: 3}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _bubbleSkillDescriptor.Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80b0f47380e677e488d8146eda542635,
+        type: 3}
     - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
       propertyPath: _pantsSkillDescriptor.Mask.m_Bits

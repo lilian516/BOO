@@ -9,6 +9,7 @@ public class WindmillSkill : Skill
     public class Descriptor
     {
         public GameObject WindPrefab;
+        public Sprite Sprite;
     }
 
     Descriptor _desc;
@@ -25,5 +26,10 @@ public class WindmillSkill : Skill
         GameObject wind = GameManager.Instance.SpawnObject(_desc.WindPrefab);
 
         wind.transform.position = spawnPos;
+    }
+
+    public override Sprite GetSprite()
+    {
+        return _desc.Sprite;
     }
 }

@@ -10,6 +10,7 @@ public class StickSkill : Skill
     {
         public float Radius;
         public LayerMask Mask;
+        public Sprite Sprite;
     }
 
     Descriptor _desc;
@@ -34,5 +35,10 @@ public class StickSkill : Skill
             }
             Debug.Log("Objet détecté : " + hitCollider.gameObject.name);
         }
+    }
+
+    public override Sprite GetSprite()
+    {
+        return _desc.Sprite;
     }
 }

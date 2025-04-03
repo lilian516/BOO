@@ -13,8 +13,6 @@ public class PlayerSkillState : PlayerState
     {
         base.EnterState();
 
-        _player.PlayerAnimator.SetTrigger("UseSkill");
-        //Debug.Log("je start use Skill");
         _player.UseCurrentSkill();
     }
 
