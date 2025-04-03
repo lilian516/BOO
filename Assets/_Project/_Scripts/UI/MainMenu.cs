@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
 
     private CanvasGroup _canvasGroup;
+    [SerializeField] Sprite _buttonPlayClicked;
+    [SerializeField] Sprite _buttonSettingsClicked;
+    [SerializeField] Sprite _buttonCreditClicked;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,27 +22,36 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void PlayButton()
+    public void PlayButton(Image image)
     {
-        StartCoroutine(GameManager.Instance.LaunchGame());
+        //image.sprite = _buttonPlayClicked;
+        image.gameObject.GetComponent<Animator>().SetTrigger("Click");
+
+        StartCoroutine(WaitEndAnim());
+        
         Debug.Log("on start le jeu");
     }
 
-    public void CloseMainMenu()
+    private IEnumerator WaitEndAnim()
     {
+        yield return new WaitForSeconds(0.53f);
+        StartCoroutine(GameManager.Instance.LaunchGame());
 
-        Helpers.HideCanva(_canvasGroup);
-       
     }
 
     public void OpenMainMenu()
     {
         Helpers.ShowCanva(_canvasGroup);
+    }
+
+    public void OpenCredit(Image image)
+    {
+        image.gameObject.GetComponent<Animator>().SetTrigger("Click");
+        Debug.Log("on va dans les credit");
         
     }
 
-    public void OpenCredit()
-    {
-        Debug.Log("on va dans les credit");
+    public void OpenLegal(Animator animator) {
+        animator.SetTrigger("Click");
     }
 }

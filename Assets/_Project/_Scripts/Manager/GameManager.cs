@@ -80,10 +80,6 @@ public class GameManager : Singleton<GameManager>
         GameController = GameObject.FindGameObjectWithTag(GAME_CONTROLLER_TAG);
 
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" });
-
-
-        
-        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
