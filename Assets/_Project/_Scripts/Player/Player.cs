@@ -81,8 +81,6 @@ public class Player : MonoBehaviour, IChangeable
         Input.OnCloseSkillMenu += CloseSkillMenu;
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
-
-
     }
 
     // Update is called once per frame

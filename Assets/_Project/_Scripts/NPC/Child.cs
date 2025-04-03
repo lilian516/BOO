@@ -10,6 +10,7 @@ public class Child : MonoBehaviour, ISpeakable
 
     public void Speak()
     {
+        //CinematicSystem.Instance.PlayCinematic("Min");
         DialogueSystem.Instance.BeginDialogue(_dialogue);
         DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
     }
