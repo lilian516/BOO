@@ -24,9 +24,19 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButton(Image image)
     {
-        image.sprite = _buttonPlayClicked;
-        StartCoroutine(GameManager.Instance.LaunchGame());
+        //image.sprite = _buttonPlayClicked;
+        image.gameObject.GetComponent<Animator>().SetTrigger("Click");
+
+        StartCoroutine(WaitEndAnim());
+        
         Debug.Log("on start le jeu");
+    }
+
+    private IEnumerator WaitEndAnim()
+    {
+        yield return new WaitForSeconds(0.50f);
+        StartCoroutine(GameManager.Instance.LaunchGame());
+
     }
 
     public void CloseMainMenu()
