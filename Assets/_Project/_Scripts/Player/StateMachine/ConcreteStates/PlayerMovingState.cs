@@ -32,6 +32,7 @@ public class PlayerMovingState : PlayerState
         base.EnterState();
         //_player.PlayerAnimator.SetFloat("Speed", 1);
         _player.PlayerAnimator.SetBool("IsMoving",true);
+        _player.PlayerFaceAnimator.SetBool("IsMoving", true);
         _player.Input.OnUseSkill += OnSkill;
         _time = 0;
 
@@ -43,6 +44,7 @@ public class PlayerMovingState : PlayerState
     {
         base.ExitState();
         _player.PlayerAnimator.SetBool("IsMoving", false);
+        _player.PlayerFaceAnimator.SetBool("IsMoving", false);
         _player.Input.OnUseSkill -= OnSkill;
     }
 

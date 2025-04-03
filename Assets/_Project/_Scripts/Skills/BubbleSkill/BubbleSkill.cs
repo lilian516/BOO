@@ -42,8 +42,10 @@ public class BubbleSkill : Skill
 
         //GameObject BubblePlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
 
+        float randomValue = Random.Range(0.8f, 1.2f);
+
         BubbleInstance.transform.position = BubbleSpawnPos;
-        BubbleInstance.transform.localScale = Vector3.one;
+        BubbleInstance.transform.localScale = Vector3.one * randomValue;
 
         //BubblePlane.GetComponent<Renderer>().material = BubbleMaterial;
     }

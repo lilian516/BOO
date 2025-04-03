@@ -22,6 +22,7 @@ public class Player : MonoBehaviour, IChangeable
     public Rigidbody RB { get; private set; }
 
     public Animator PlayerAnimator;
+    public Animator PlayerFaceAnimator;
 
     [SerializeField] RuntimeAnimatorController _darkBoo;
     [SerializeField] RuntimeAnimatorController _boo;
