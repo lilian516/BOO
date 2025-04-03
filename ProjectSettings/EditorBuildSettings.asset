@@ -8,16 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/Systems.unity
     guid: 530bef73fd27e5e4a88c5fbbc3c1ce54
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/SampleScene.unity
     guid: 332211e393b3d124e9e1cd432df6b974
   - enabled: 1
     path: Assets/_Project/Scenes/UI/UIInGame.unity
     guid: 095c6e8fbddce4c4d8ca5c2b72137938
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/SampleSceneUI.unity
     guid: 1368448651c106b4390dbd783a1eed68
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Player/WorkCharacter.unity
     guid: 354ec408eca85d349923e6adf2b7912b
   - enabled: 1
@@ -25,7 +25,7 @@ EditorBuildSettings:
     guid: 0c8c1f63a9cfa954895d7a08c2ab1cf7
   - enabled: 1
     path: Assets/_Project/Scenes/SampleScene.unity
-    guid: 55d1657db96b6e942aa5a0b5693ad1f0
+    guid: 332211e393b3d124e9e1cd432df6b974
   - enabled: 1
     path: Assets/_Project/Scenes/Player/MainScene.unity
     guid: 492d0256b44c3934d90e343f7fbec20c
