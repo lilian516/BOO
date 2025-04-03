@@ -4727,7 +4727,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
+      propertyPath: _smashSkillDescriptor.Radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
       propertyPath: _pantsSkillDescriptor.Mask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _smashSkillDescriptor.Mask.m_Bits
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 2900781405036674409, guid: 0d812cef23b3e7549be23a1908bb609d,

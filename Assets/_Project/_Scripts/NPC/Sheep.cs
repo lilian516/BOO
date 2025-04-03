@@ -37,6 +37,10 @@ public class Sheep : MonoBehaviour, IInteractable, IChangeable
             case PlayerSkill.WindSkill:
                 MoveSheep();
                 break;
+
+            case PlayerSkill.SmashSkill:
+                Destroy(this.gameObject);
+                break;
         }
     }
 
