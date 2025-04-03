@@ -6,6 +6,7 @@ public class Settings : MonoBehaviour
 {
 
     private CanvasGroup _canvasGroup;
+    private CanvasGroup _canvasMainMenuGroup;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +18,23 @@ public class Settings : MonoBehaviour
     {
         
     }
-
-    public void OpenSettings()
+    public void SetMainMenuCanvaGroup(CanvasGroup canvasGroup)
     {
+        _canvasMainMenuGroup = canvasGroup;
+    }
+    public void OpenSettings(Animator animator)
+    {
+        animator.SetTrigger("Click");
+
+        StartCoroutine(WaitOpenSettings());
+    }
+
+    private IEnumerator WaitOpenSettings()
+    {
+        yield return new WaitForSeconds(0.45f);
 
         Helpers.ShowCanva(_canvasGroup);
-        
+        Helpers.HideCanva(_canvasMainMenuGroup);
     }
     public void CloseSettings()
     {

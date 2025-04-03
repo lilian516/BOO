@@ -34,28 +34,24 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator WaitEndAnim()
     {
-        yield return new WaitForSeconds(0.50f);
+        yield return new WaitForSeconds(0.53f);
         StartCoroutine(GameManager.Instance.LaunchGame());
 
-    }
-
-    public void CloseMainMenu()
-    {
-
-        Helpers.HideCanva(_canvasGroup);
-       
     }
 
     public void OpenMainMenu()
     {
         Helpers.ShowCanva(_canvasGroup);
-        
     }
 
     public void OpenCredit(Image image)
     {
-        image.sprite = _buttonCreditClicked;
+        image.gameObject.GetComponent<Animator>().SetTrigger("Click");
         Debug.Log("on va dans les credit");
         
+    }
+
+    public void OpenLegal(Animator animator) {
+        animator.SetTrigger("Click");
     }
 }
