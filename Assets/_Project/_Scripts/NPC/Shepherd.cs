@@ -4,12 +4,20 @@ using UnityEngine;
 public class Shepherd : MonoBehaviour, ISpeakable
 {
     #region Speak 
-    [SerializeField] DialogueAsset _dialogue;
+    [SerializeField] private DialogueAsset _dialogue;
+    [SerializeField] private DialogueAsset _sadDialogue;
 
 
     public void Speak()
     {
-        DialogueSystem.Instance.BeginDialogue(_dialogue);
+        if (GameManager.Instance.KilledSheep >= 3)
+        {
+            DialogueSystem.Instance.BeginDialogue(_sadDialogue);
+        }
+        else
+        {
+            DialogueSystem.Instance.BeginDialogue(_dialogue);
+        }
     }
 
     #endregion

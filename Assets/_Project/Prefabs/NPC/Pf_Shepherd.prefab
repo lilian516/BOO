@@ -69,7 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d9164be842fa3449f0b1f758080d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogue: {fileID: 11400000, guid: 11a07f21e08aaca41851828b7700a4ab, type: 2}
+  _dialogue: {fileID: 11400000, guid: 7b900f4459c98a2479253b1067bcb57f, type: 2}
+  _sadDialogue: {fileID: 11400000, guid: ce4257ece9d527048b476354edaf5992, type: 2}
 --- !u!1 &5012196804389491166
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,15 +33,13 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject GameController;
     [HideInInspector] public GameObject UIBackground;
 
+    [HideInInspector] public int KilledSheep;
 
     private void Start()
     {
-
-
-
         StartCoroutine(WaitForScenesAndInitialize());
 
-      
+        KilledSheep = 0;
     }
 
     
