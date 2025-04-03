@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 6616850642561177915}
+  PlayerFaceAnimator: {fileID: 3724807917296775379}
   _darkBoo: {fileID: 9100000, guid: 36e10ae8084acc44392f0a5e827ff3b0, type: 2}
   _boo: {fileID: 0}
   _playerIdleStateDescriptor:

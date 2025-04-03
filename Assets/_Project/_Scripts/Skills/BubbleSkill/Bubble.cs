@@ -8,6 +8,7 @@ public class Bubble : MonoBehaviour
     private Vector3 _forward;
     [SerializeField] float _maxSpeed;
     [SerializeField] float _timeMovement;
+    [SerializeField] Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class Bubble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DestroyBubble();
     }
 
     IEnumerator BubbleMovement()
@@ -32,9 +33,26 @@ public class Bubble : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null; 
         }
-        Destroy(gameObject,2f);
+
+        StartCoroutine(WaitBeforeDead());
+        
     }
 
+    IEnumerator WaitBeforeDead()
+    {
+        yield return new WaitForSeconds(1f);
+        _animator.SetTrigger("Explosion");
+    }
+
+    private void DestroyBubble()
+    {
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+
+        if (stateInfo.IsName("A_Bubble_Explosion") && stateInfo.normalizedTime >= 1.0f)
+        {
+            Destroy(gameObject);
+        }
+    }
     
 
 
