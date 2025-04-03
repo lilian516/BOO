@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_water
+  m_Shader: {fileID: -6465566751694194690, guid: e3781a1f11bd5c24dad8d180e74b2d45,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _mainNormal:
+        m_Texture: {fileID: 2800000, guid: 28cf3878259ce0641b94b29b1dd2391c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _secondNormal:
+        m_Texture: {fileID: 2800000, guid: 98546c11e9a76224f8cbf48945daef3e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _depth: 0
+    - _displacement: 0
+    - _foamAmount: 0.8
+    - _foamCutoff: 1.5
+    - _foamScale: 500
+    - _foamSpeed: 0.001
+    - _rippleDensity: 30
+    - _rippleSlimness: 5
+    - _rippleSpeed: 1
+    - _smoothness: 0.35
+    - _strength: 0
+    m_Colors:
+    - _deepWaterColor: {r: 0.17380556, g: 0.79293096, b: 0.89433956, a: 0.8}
+    - _foamColor: {r: 1.6625506, g: 1.6625506, b: 1.6625506, a: 0.39215687}
+    - _shallowWaterColor: {r: 0.36348164, g: 0.83396226, b: 0.74240106, a: 0.8}
+  m_BuildTextureStacks: []
+--- !u!114 &1642573667010626997
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
