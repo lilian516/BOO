@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AngrySystem : Singleton<AngrySystem>
 {
+    private int _remainingLives;
     private int _angryLimits;
     private int _baseAngryLimits;
     private int _calmLimits;
@@ -23,6 +24,7 @@ public class AngrySystem : Singleton<AngrySystem>
         _baseCalmLimits = 3;
         _angryLimits = 3;
         _calmLimits = 3;
+        _remainingLives = 3;
     }
     [ContextMenu("Change Angry Limits")]
     public void ChangeAngryLimits()
@@ -32,7 +34,7 @@ public class AngrySystem : Singleton<AngrySystem>
 
         if (_angryLimits == 0)
         {
-            _angryLimits = 3;
+            _angryLimits = _baseAngryLimits;
 
             OnChangeElements?.Invoke();
             IsAngry = true;
@@ -50,13 +52,28 @@ public class AngrySystem : Singleton<AngrySystem>
 
         if (_calmLimits == 0)
         {
-            _calmLimits = 3;
+            _calmLimits = _baseCalmLimits;
 
             IsAngry = false;
             OnResetElements?.Invoke();
             _calmLimits= _baseCalmLimits;
+
+            _remainingLives--;
         }
     }
 
+    private void Update()
+    {
+        CheckRemainingLives();
+    }
 
+    private void CheckRemainingLives()
+    {
+        if (_remainingLives <= 0)
+        {
+            // Faire charger l'écran de Lose ou reset la game directement mais on a pas encore ce qu'il faut donc petit debug log cadeau la famille
+
+            Debug.Log("You got mad too many times... too bad");
+        }
+    }
 }
