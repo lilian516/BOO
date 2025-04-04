@@ -39,7 +39,7 @@ public class Sheep : MonoBehaviour, IInteractable, IChangeable
                 break;
 
             case PlayerSkill.SmashSkill:
-                //GameManager.Instance.KilledSheep++;
+                GameManager.Instance.KilledSheep++;
                 Destroy(this.gameObject);
                 break;
         }
