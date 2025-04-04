@@ -10,7 +10,7 @@ public class Wind : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _forward = GameManager.Instance.Player.transform.forward;
+        _forward = GameManager.Instance.Player.GetComponent<Player>().LookDir.normalized;
 
         StartCoroutine(WindMovement());
     }
@@ -40,7 +40,7 @@ public class Wind : MonoBehaviour
                 other.GetComponent<Sheep>().PushedDirection = _forward;
             }
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

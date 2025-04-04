@@ -96,7 +96,7 @@ public class Sheep : MonoBehaviour, IInteractable, IChangeable
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < 1f)
+        while (elapsedTime < 2f)
         {
             transform.Translate(PushedDirection * _speed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
