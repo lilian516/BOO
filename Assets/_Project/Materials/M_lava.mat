@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7471494612577718950
+--- !u!114 &-8148345973223761162
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,8 +37,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _normal:
-        m_Texture: {fileID: 2800000, guid: 68670cea39c87764489afaef25cff64d, type: 3}
+    - _distortTexture:
+        m_Texture: {fileID: 2800000, guid: 4895a9a663f4169438f45ddab6abc9fb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _mainTexture:
+        m_Texture: {fileID: 2800000, guid: fdcf847a8e5107f4eb21931706096c56, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -57,9 +61,17 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _movementSpeed: 0.005
-    - _noiseScale: 50
+    - _distortScale: -0.06
+    - _distortionStrength: 0.1
+    - _mainTextureScale: 0.1
+    - _movementSpeed: 0.1
+    - _noiseScale: 0
+    - _speedDistortX: 0.02
+    - _speedDistortY: 0.05
+    - _speedMainX: 0
+    - _speedMainY: 0
+    - _tintOffset: 3
     m_Colors:
-    - _baseColor: {r: 1.3624747, g: 0.22627835, b: 0.006426783, a: 0}
-    - _secondaryColor: {r: 1.4518814, g: 0.2445274, b: 0, a: 0}
+    - _baseColor: {r: 0.24266574, g: 0.00931051, b: 0, a: 0}
+    - _secondaryColor: {r: 2.687521, g: 0.32759264, b: 0.03803089, a: 0}
   m_BuildTextureStacks: []

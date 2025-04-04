@@ -51,8 +51,8 @@ Material:
     - _depth: 0
     - _displacement: 0
     - _foamAmount: 1.5
-    - _foamCutoff: 1.5
-    - _foamScale: 500
+    - _foamCutoff: 3
+    - _foamScale: 200
     - _foamSpeed: 0.001
     - _rippleDensity: 100
     - _rippleSlimness: 5
