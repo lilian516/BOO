@@ -19,6 +19,8 @@ public class Inventory : MonoBehaviour
     public List<PlayerSkill> PlayerSkills = new List<PlayerSkill>();
     public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
 
+    private bool _achievementObtained;
+
     void Start()
     {
         
@@ -101,6 +103,13 @@ public class Inventory : MonoBehaviour
             return;
         }
 
+        if ( !_achievementObtained)
+        {
+            VerifyAchivement(playerSkill);
+        }
+
+       
+
         PlayerSkills.Add(playerSkill);
         _skills.Add(skill);
         _currentSkill = skill;
@@ -161,4 +170,14 @@ public class Inventory : MonoBehaviour
 
         StopManageInventory();
     }
+
+    private void VerifyAchivement(PlayerSkill skill)
+    {
+        if (skill == PlayerSkill.BubbleSkill && PlayerSkills.Contains(skill))
+        {
+            AchievementSystem.Instance.SucceedAchievement(AchievementCondition.Two_Bubbles_In_Inventory);
+            _achievementObtained = true;
+        }
+    }
+
 }
