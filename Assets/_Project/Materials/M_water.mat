@@ -50,11 +50,11 @@ Material:
     - _QueueOffset: 0
     - _depth: 0
     - _displacement: 0
-    - _foamAmount: 0.8
+    - _foamAmount: 1.5
     - _foamCutoff: 1.5
     - _foamScale: 500
     - _foamSpeed: 0.001
-    - _rippleDensity: 30
+    - _rippleDensity: 100
     - _rippleSlimness: 5
     - _rippleSpeed: 1
     - _smoothness: 0.35
