@@ -32,6 +32,8 @@ public class AngrySystem : Singleton<AngrySystem>
 
         if (_angryLimits == 0)
         {
+            _angryLimits = 3;
+
             OnChangeElements?.Invoke();
             IsAngry = true;
             _angryLimits = _baseAngryLimits;
@@ -48,6 +50,8 @@ public class AngrySystem : Singleton<AngrySystem>
 
         if (_calmLimits == 0)
         {
+            _calmLimits = 3;
+
             IsAngry = false;
             OnResetElements?.Invoke();
             _calmLimits= _baseCalmLimits;

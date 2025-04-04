@@ -39,6 +39,10 @@ public class Sheep : MonoBehaviour, IInteractable, IChangeable
                 break;
 
             case PlayerSkill.SmashSkill:
+                AngrySystem.Instance.OnChangeElements -= Change;
+                AngrySystem.Instance.OnResetElements -= ResetChange;
+                AngrySystem.Instance.ChangeCalmLimits();
+
                 GameManager.Instance.KilledSheep++;
                 Destroy(this.gameObject);
                 break;
