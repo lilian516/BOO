@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.OnScreen;
@@ -133,6 +133,9 @@ public class Inventory : MonoBehaviour
         InputManager.Instance.DisableSticksAndButtons();
         Helpers.ShowCanva(GameManager.Instance.UIBackground.GetComponent<CanvasGroup>());
         Helpers.ShowCanva(GameManager.Instance.InventoryFullMenu.GetComponent<CanvasGroup>());
+
+        GameManager.Instance.InventoryFullMenu.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = skill.GetSprite();
+        GameManager.Instance.InventoryFullMenu.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = skill.GetName();
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {

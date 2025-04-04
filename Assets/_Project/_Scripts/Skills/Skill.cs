@@ -20,4 +20,9 @@ public class Skill
     {
         return null;
     }
+
+    public virtual string GetName()
+    {
+        return null;
+    }
 }

@@ -11,6 +11,7 @@ public class BubbleSkill : Skill
     {
         public GameObject BubblePrefab;
         public Sprite Sprite;
+        public string Name;
     }
 
     Descriptor _desc;
@@ -52,5 +53,9 @@ public class BubbleSkill : Skill
     public override Sprite GetSprite()
     {
         return _desc.Sprite;
+    }
+    public override string GetName()
+    {
+        return _desc.Name;
     }
 }
