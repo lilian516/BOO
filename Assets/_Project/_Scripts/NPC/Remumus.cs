@@ -6,14 +6,18 @@ public class Remumus : MonoBehaviour, ISpeakable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] DialogueAsset _dryUnderwearDialogue;
-    private bool _dryUnderwear = false;
+    [SerializeField] bool _dryUnderwear = false;
 
     public void Speak()
     {
-        DialogueSystem.Instance.BeginDialogue(_basicDialogue);
-        if (_dryUnderwear)
+        if (!_dryUnderwear)
+        {
+            DialogueSystem.Instance.BeginDialogue(_basicDialogue);
+        }
+        else
         {
             DialogueSystem.Instance.BeginDialogue(_dryUnderwearDialogue);
+            DialogueSystem.Instance.OnEndDialogue += OnEventEndDialogue;
         }
     }
 
@@ -28,5 +32,13 @@ public class Remumus : MonoBehaviour, ISpeakable
     void Update()
     {
         
+    }
+
+    private void OnEventEndDialogue()
+    {
+        if (_dryUnderwear)
+        {
+            _dryUnderwearDialogue = _dryUnderwearDialogue.NextDialogue;
+        }
     }
 }
