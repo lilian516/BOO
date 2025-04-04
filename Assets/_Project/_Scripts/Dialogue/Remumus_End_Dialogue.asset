@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1a2eaa57dcb92a45b9dfc54dad22e44, type: 3}
-  m_Name: Remumus_Dry_Underwear_Dialogue
+  m_Name: Remumus_End_Dialogue
   m_EditorClassIdentifier: 
   OpeningTriggerEvent: 0
   OpeningEventType: 0
@@ -20,11 +20,10 @@ MonoBehaviour:
   LeftCharacter: {fileID: 21300000, guid: c0e33b7dcbb23624ab19c97870f419ee, type: 3}
   Sections:
   - Sentences:
-    - "Tu as r\xE9ussi \xE0 s\xE9cher mes slips ? Trop fort !"
-    - "Pour te r\xE9compenser, en voil\xE0 un."
+    - A la revoyure mon petit !
     TriggerEvent: 0
-    EventType: 1
-  ChoiceOnEnd: 1
-  SkillToGive: 4
-  TakeEventType: 1
-  NextDialogue: {fileID: 11400000, guid: c8cf61c923367ca4aafa40d28648a64c, type: 2}
+    EventType: 0
+  ChoiceOnEnd: 0
+  SkillToGive: 0
+  TakeEventType: 0
+  NextDialogue: {fileID: 11400000}
