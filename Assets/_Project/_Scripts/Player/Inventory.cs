@@ -93,7 +93,7 @@ public class Inventory : MonoBehaviour
 
     public void AddSkill(Skill skill, PlayerSkill playerSkill)
     {
-        if (_skills.Count == 2)
+        if (_skills.Count == 7)
         {
             Time.timeScale = 0;
             OpenInventory();

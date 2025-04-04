@@ -22,9 +22,11 @@ MonoBehaviour:
   - Sentences:
     - "O\xF9 sont mes moutons"
     - C'est la prunelle de mes yeux..
+    - "Merci des les avoir \xE9pargn\xE9es."
+    - Jaimerai te faire un cadeau
     TriggerEvent: 0
     EventType: 0
-  ChoiceOnEnd: 0
-  SkillToGive: 0
+  ChoiceOnEnd: 1
+  SkillToGive: 3
   TakeEventType: 0
   NextDialogue: {fileID: 0}

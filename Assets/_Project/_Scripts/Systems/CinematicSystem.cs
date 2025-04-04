@@ -9,6 +9,9 @@ public class CinematicSystem : Singleton<CinematicSystem>
 
     private CanvasGroup _cinematicCanvasGroup;
 
+    public delegate void EndCinematicEvent();
+    public event EndCinematicEvent OnEndCinematic;
+
     private bool _isPlaying;
 
     protected override void Awake()
@@ -61,6 +64,7 @@ public class CinematicSystem : Singleton<CinematicSystem>
         ToggleVideo();
         _videoPlayer.Stop();
         _videoPlayer.targetTexture.Release();
+        OnEndCinematic?.Invoke();
     }
 
     private void OnApplicationQuit()

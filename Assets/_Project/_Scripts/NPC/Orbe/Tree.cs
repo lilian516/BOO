@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour, IInteractable
 {
+    [SerializeField] Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +21,9 @@ public class Tree : MonoBehaviour, IInteractable
     {
         switch (playerSkill)
         {
-            case PlayerSkill.PantsSkill:
-                Debug.Log("On m'a fouetté avec un slip");
-
+            case PlayerSkill.StickSkill:
+                Debug.Log("On m'a fouetté avec un batton");
+                rb.isKinematic = false;
                 break;
         }
     }

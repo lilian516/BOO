@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
@@ -89,8 +90,8 @@ public class PlayerMovingState : PlayerState
         }
         
         _player.RB.velocity = new Vector3( _moveDirection.x * _desc.Speed, _player.RB.velocity.y, _moveDirection.z * _desc.Speed);
-       
 
+        _player.LookDir = _player.RB.velocity;
 
         float animSpeed = Mathf.Abs(_player.RB.velocity.x) / 3 + Mathf.Abs(_player.RB.velocity.z) / 3;
         animSpeed *= _desc.Speed / 2;
@@ -108,6 +109,7 @@ public class PlayerMovingState : PlayerState
     private void Flip()
     {
         _facingRight = !_facingRight;
+        
         Vector3 theScale = _player.transform.localScale;
         theScale.x *= -1;
         _player.transform.localScale = theScale;

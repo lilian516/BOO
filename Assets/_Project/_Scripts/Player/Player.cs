@@ -14,6 +14,7 @@ public class Player : MonoBehaviour, IChangeable
     public PlayerMovingState MovingState { get; set; }
     public PlayerSkillState SkillState { get; set; }
     public PlayerSpeakingState SpeakingState { get; set; }
+    public PlayerWaitingState WaitingState { get; set; }
 
 
     #endregion
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour, IChangeable
 
     private SmashSkill _smashSkill;
 
+    public Vector3 LookDir;
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
@@ -55,7 +57,7 @@ public class Player : MonoBehaviour, IChangeable
         MovingState = new PlayerMovingState(this, StateMachine, _playerMovingStateDescriptor);
         SkillState = new PlayerSkillState(this, StateMachine);
         SpeakingState = new PlayerSpeakingState(this, StateMachine);
-
+        WaitingState = new PlayerWaitingState(this, StateMachine);
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
