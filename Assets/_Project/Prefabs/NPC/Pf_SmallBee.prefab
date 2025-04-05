@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 543322166261221917}
   - component: {fileID: 617371392874252593}
   - component: {fileID: 1421151783460952588}
+  - component: {fileID: 5504396873967249795}
   m_Layer: 0
   m_Name: Pf_SmallBee
   m_TagString: Untagged
@@ -98,7 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4987ff9132944b418a27545360c725d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pathReferences: []
+  _pathReferences:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Speed: 1
 --- !u!65 &1421151783460952588
 BoxCollider:
@@ -119,5 +123,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.670003, y: 8.53, z: 2.04}
-  m_Center: {x: 0, y: -2.1, z: 0}
+  m_Size: {x: 6.7718534, y: 8.53, z: 3.3419108}
+  m_Center: {x: 0.5509246, y: -2.0999997, z: 0.650956}
+--- !u!95 &5504396873967249795
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7670419913732171176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec294ae0b8bd7bb4897cd02a957c0468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
