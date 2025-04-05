@@ -68,6 +68,8 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
+        Debug.Log(_controls.Player.Speak.IsPressed());
+        Debug.Log(_controls.Player.Speak.phase);
     }
 
 
@@ -75,7 +77,7 @@ public class InputManager : Singleton<InputManager>
     {
         _controls.Player.UseSkill.started += ctx => { UpdateControlMethod(ctx.control); OpenSkillPerformed(); };
         _controls.Player.UseSkill.canceled += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
-        _controls.Player.Speak.performed += ctx => { UpdateControlMethod(ctx.control); CheckSpeakingPerformed(); };
+        _controls.Player.Speak.performed += ctx => { UpdateControlMethod(ctx.control);CheckSpeakingPerformed(); };
     }
 
     public void DisableSticksAndButtons()
@@ -89,8 +91,6 @@ public class InputManager : Singleton<InputManager>
         OnScreenButton skillButton = skill.GetComponent<OnScreenButton>();
         skillStick.enabled = false;
         skillButton.enabled = false;
-
-
     }
 
     public void EnableSticksAndButtons()
@@ -202,14 +202,12 @@ public class InputManager : Singleton<InputManager>
 
     private void UseSkillPerformed()
     {
-
         OnCloseSkillMenu?.Invoke();
         OnUseSkill?.Invoke();
     }
     
     private void OpenSkillPerformed()
     {
-
         OnOpenSkillMenu?.Invoke();
     }
 

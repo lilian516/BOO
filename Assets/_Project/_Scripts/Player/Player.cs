@@ -125,6 +125,7 @@ public class Player : MonoBehaviour, IChangeable
         if(_inventory.CurrentSkill != null)
         {
             _inventory.CurrentSkill.UseSkill();
+            PlayerAnimator.SetTrigger("UseSkill");
         }
         //CinematicSystem.Instance.PlayCinematic("Test");
     }

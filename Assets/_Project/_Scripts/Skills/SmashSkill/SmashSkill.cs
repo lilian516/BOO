@@ -43,4 +43,5 @@ public class SmashSkill : Skill
         }
         Debug.Log("Objet TAPER : " + hitColliders[0].gameObject.name);
     }
+
 }

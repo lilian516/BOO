@@ -10,6 +10,7 @@ TagManager:
   - UIController
   - InventoryUI
   - BackgroundUI
+  - InventoryFull
   layers:
   - Default
   - TransparentFX

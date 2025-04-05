@@ -9,6 +9,8 @@ public class PantsSkill : Skill
     {
         public float Radius;
         public LayerMask Mask;
+        public Sprite Sprite;
+        public string Name;
     }
 
     Descriptor _desc;
@@ -33,5 +35,14 @@ public class PantsSkill : Skill
             }
             Debug.Log("Objet détecté slip : " + hitCollider.gameObject.name);
         }
+    }
+
+    public override Sprite GetSprite()
+    {
+        return _desc.Sprite;
+    }
+    public override string GetName()
+    {
+        return _desc.Name;
     }
 }

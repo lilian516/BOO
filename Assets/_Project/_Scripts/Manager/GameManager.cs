@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.OnScreen;
 
 
 [DefaultExecutionOrder(-10)]
@@ -19,6 +20,7 @@ public class GameManager : Singleton<GameManager>
 
     private const string INVENTORY_UI_TAG = "InventoryUI";
     private const string BACKGROUND_UI_TAG = "BackgroundUI";
+    private const string INVENTORY_FULL_TAG = "InventoryFull";
 
 
     [HideInInspector] public GameObject MainCamera;
@@ -32,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public Inventory InventorySkill;
     [HideInInspector] public GameObject GameController;
     [HideInInspector] public GameObject UIBackground;
+    [HideInInspector] public GameObject InventoryFullMenu;
 
     [HideInInspector] public int KilledSheep;
 
@@ -40,6 +43,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(WaitForScenesAndInitialize());
 
         KilledSheep = 0;
+
     }
 
     
@@ -71,13 +75,18 @@ public class GameManager : Singleton<GameManager>
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         UIBackground = GameObject.FindGameObjectWithTag(BACKGROUND_UI_TAG);
+        InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
+
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
+        SkillStickUI.GetComponent<OnScreenStick>().movementRange = 0;
 
-        
         GameController = GameObject.FindGameObjectWithTag(GAME_CONTROLLER_TAG);
 
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" });
+
+
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
