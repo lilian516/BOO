@@ -68,8 +68,8 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
-        Debug.Log(_controls.Player.Speak.IsPressed());
-        Debug.Log(_controls.Player.Speak.phase);
+        //Debug.Log(_controls.Player.Speak.IsPressed());
+        //Debug.Log(_controls.Player.Speak.phase);
     }
 
 
