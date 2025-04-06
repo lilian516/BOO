@@ -21,7 +21,7 @@ MonoBehaviour:
   Sections:
   - Sentences:
     - "*souffle sur l'\xE9tendoir*\t"
-    - Oh, bonjour mon petit, que puis-je pour toi?
+    - "Il faut mes slips s\xE8chent..."
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 0

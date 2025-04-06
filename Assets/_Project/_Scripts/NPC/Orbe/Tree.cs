@@ -22,7 +22,7 @@ public class Tree : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.StickSkill:
-                Debug.Log("On m'a fouetté avec un batton");
+                //Debug.Log("On m'a fouetté avec un batton");
                 rb.isKinematic = false;
                 break;
         }

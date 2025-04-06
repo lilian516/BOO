@@ -741,6 +741,7 @@ MonoBehaviour:
   InventorySkill: {fileID: 0}
   GameController: {fileID: 0}
   UIBackground: {fileID: 0}
+  InventoryFullMenu: {fileID: 0}
   KilledSheep: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

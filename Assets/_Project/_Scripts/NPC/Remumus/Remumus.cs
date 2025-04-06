@@ -8,6 +8,8 @@ public class Remumus : MonoBehaviour, ISpeakable
     [SerializeField] DialogueAsset _dryUnderwearDialogue;
     [SerializeField] bool _dryUnderwear = false;
 
+    public bool DryUnderwear { get => _dryUnderwear; set => _dryUnderwear = value; }
+
     public void Speak()
     {
         if (!_dryUnderwear)
