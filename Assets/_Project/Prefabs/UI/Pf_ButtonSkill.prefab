@@ -776,9 +776,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5717227709687116895}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &5979166108513990738
 GameObject:
@@ -789,9 +789,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 622191729440050436}
+  - component: {fileID: 6687556459791958607}
   m_Layer: 0
   m_Name: Pf_ButtonSkill
-  m_TagString: Untagged
+  m_TagString: SkillStick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -817,6 +818,18 @@ RectTransform:
   m_AnchoredPosition: {x: -66, y: 62}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0}
+--- !u!225 &6687556459791958607
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979166108513990738}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &6273612570840923836
 GameObject:
   m_ObjectHideFlags: 0

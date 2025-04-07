@@ -61,11 +61,6 @@ public class Player : MonoBehaviour, IChangeable
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
-
-        //AddSkill(pantsSkill);
-        //AddSkill(stickSkill);
-        //AddSkill(bubbleSkill);
-        //AddSkill(windSkill);
         
         RB = GetComponent<Rigidbody>();
         
@@ -80,8 +75,8 @@ public class Player : MonoBehaviour, IChangeable
 
         StateMachine.Initialize(IdleState);
 
-        Input.OnOpenSkillMenu += CheckMenuIsOpen;
-        Input.OnCloseSkillMenu += CloseSkillMenu;
+        
+        //Input.OnSkillMenu += SelectSkill;
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
 
@@ -122,12 +117,14 @@ public class Player : MonoBehaviour, IChangeable
 
     public void UseCurrentSkill()
     {
-        if(_inventory.CurrentSkill != null)
+        if (!_inventory.SelectSkill())
+            return;
+
+        if (_inventory.CurrentSkill != null)
         {
             _inventory.CurrentSkill.UseSkill();
             PlayerAnimator.SetTrigger("UseSkill");
         }
-        //CinematicSystem.Instance.PlayCinematic("Test");
     }
 
     public void AddSkill(PlayerSkill playerSkill)
@@ -164,34 +161,6 @@ public class Player : MonoBehaviour, IChangeable
 
         _inventory.RemoveSkill(playerSkill);
 
-    }
-
-    private void CheckMenuIsOpen()
-    {
-        StartCoroutine(GetTimePerformedButton());
-    }
-
-
-    private IEnumerator GetTimePerformedButton()
-    {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < 1f)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-            if (!Input.GetPerformedButton())
-            {
-                yield break;
-            }
-        }
-        Debug.Log("Le menu est ouvert !!");
-        _inventory.OpenInventory();
-    }
-
-    private void CloseSkillMenu()
-    {
-        _inventory.CloseInventory();
     }
 
     public void Change()

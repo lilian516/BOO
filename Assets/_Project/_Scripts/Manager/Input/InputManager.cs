@@ -27,18 +27,11 @@ public class InputManager : Singleton<InputManager>
     public delegate void InteractEvent();
     public event InteractEvent OnInteract;
 
-
-    public delegate void UseSkillEvent();
-    public event UseSkillEvent OnUseSkill;
-
     public delegate void CheckSpeakEvent();
     public event CheckSpeakEvent OnSpeak;
 
-    public delegate void OpenSkillMenuEvent();
-    public event OpenSkillMenuEvent OnOpenSkillMenu;
-
-    public delegate void CloseSkillMenuEvent();
-    public event CloseSkillMenuEvent OnCloseSkillMenu;
+    public delegate void SkillMenuEvent();
+    public event SkillMenuEvent OnSkillMenu;
 
     #endregion
 
@@ -75,7 +68,6 @@ public class InputManager : Singleton<InputManager>
 
     private void BindCharacterEvents()
     {
-        _controls.Player.UseSkill.started += ctx => { UpdateControlMethod(ctx.control); OpenSkillPerformed(); };
         _controls.Player.UseSkill.canceled += ctx => { UpdateControlMethod(ctx.control); UseSkillPerformed(); };
         _controls.Player.Speak.performed += ctx => { UpdateControlMethod(ctx.control);CheckSpeakingPerformed(); };
     }
@@ -86,9 +78,9 @@ public class InputManager : Singleton<InputManager>
         OnScreenStick controllerStick = controller.GetComponent<OnScreenStick>();
         controllerStick.enabled = false;
 
-        GameObject skill = GameManager.Instance.SkillStickUI;
-        OnScreenStick skillStick = skill.GetComponent<OnScreenStick>();
-        OnScreenButton skillButton = skill.GetComponent<OnScreenButton>();
+        GameObject skill = GameManager.Instance.SkillStickParent;
+        OnScreenStick skillStick = skill.transform.GetComponentInChildren<OnScreenStick>();
+        OnScreenButton skillButton = skill.transform.GetComponentInChildren<OnScreenButton>();
         skillStick.enabled = false;
         skillButton.enabled = false;
     }
@@ -99,9 +91,9 @@ public class InputManager : Singleton<InputManager>
         OnScreenStick controllerStick = controller.GetComponent<OnScreenStick>();
         controllerStick.enabled = true;
 
-        GameObject skill = GameManager.Instance.SkillStickUI;
-        OnScreenStick skillStick = skill.GetComponent<OnScreenStick>();
-        OnScreenButton skillButton = skill.GetComponent<OnScreenButton>();
+        GameObject skill = GameManager.Instance.SkillStickParent;
+        OnScreenStick skillStick = skill.transform.GetComponentInChildren<OnScreenStick>();
+        OnScreenButton skillButton = skill.transform.GetComponentInChildren<OnScreenButton>();
         skillStick.enabled = true;
         skillButton.enabled = true;
     }
@@ -202,13 +194,7 @@ public class InputManager : Singleton<InputManager>
 
     private void UseSkillPerformed()
     {
-        OnCloseSkillMenu?.Invoke();
-        OnUseSkill?.Invoke();
-    }
-    
-    private void OpenSkillPerformed()
-    {
-        OnOpenSkillMenu?.Invoke();
+        OnSkillMenu?.Invoke();
     }
 
     private void CheckSpeakingPerformed()
