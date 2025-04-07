@@ -785,9 +785,12 @@ MonoBehaviour:
   DialogueUI: {fileID: 0}
   InventoryUI: {fileID: 0}
   SkillStickUI: {fileID: 0}
+  SkillStickParent: {fileID: 0}
   InventorySkill: {fileID: 0}
   GameController: {fileID: 0}
   UIBackground: {fileID: 0}
+  InventoryFullMenu: {fileID: 0}
+  UIAchievement: {fileID: 0}
   KilledSheep: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
