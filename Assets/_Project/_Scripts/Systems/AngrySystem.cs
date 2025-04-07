@@ -32,9 +32,11 @@ public class AngrySystem : Singleton<AngrySystem>
         if (_angryLimits > 0)
             _angryLimits--;
 
-        if (_angryLimits == 0)
+        if (_angryLimits == 0 && !IsAngry)
         {
             _angryLimits = _baseAngryLimits;
+
+            StartCoroutine(WaitForChange());
 
             OnChangeElements?.Invoke();
             IsAngry = true;
@@ -44,17 +46,29 @@ public class AngrySystem : Singleton<AngrySystem>
         }
     }
 
+    private IEnumerator WaitForChange()
+    {
+        InputManager.Instance.Controls.Disable();
+
+        yield return new WaitForSeconds(4);
+
+        InputManager.Instance.Controls.Enable();
+    }
+
     [ContextMenu("Reset Calm Limits")]
     public void ChangeCalmLimits()
     {
         if (_calmLimits > 0)
             _calmLimits--;
 
-        if (_calmLimits == 0)
+        if (_calmLimits == 0 && IsAngry)
         {
             _calmLimits = _baseCalmLimits;
 
             IsAngry = false;
+
+            StartCoroutine(WaitForChange());
+
             OnResetElements?.Invoke();
             _calmLimits= _baseCalmLimits;
 
