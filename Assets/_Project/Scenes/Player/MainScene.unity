@@ -182,7 +182,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.9196235, y: 0.5, z: -0.00000013609338}
+  m_ConnectedAnchor: {x: -0.91962415, y: 0.5, z: -0.00000013609339}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -590,7 +590,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.7255873, y: 0.49999943, z: 0.0000002177494}
+  m_ConnectedAnchor: {x: -0.7255873, y: 0.4999994, z: 0.00000021774942}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -763,7 +763,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.8325063, y: 0.49999925, z: -0.00000027899142}
+  m_ConnectedAnchor: {x: -0.8325063, y: 0.49999923, z: -0.00000027899145}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1051,6 +1051,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FBX_Archipet_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 6059339695217518012, guid: 54235c601e75bf54bb4c5b6bd9b976c7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7288616100918522817, guid: 54235c601e75bf54bb4c5b6bd9b976c7,
         type: 3}
       propertyPath: m_IsActive
@@ -1096,6 +1101,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1226777452}
+    - targetCorrespondingSourceObject: {fileID: 6059339695217518012, guid: 54235c601e75bf54bb4c5b6bd9b976c7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 797035501}
+    - targetCorrespondingSourceObject: {fileID: 6059339695217518012, guid: 54235c601e75bf54bb4c5b6bd9b976c7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 797035502}
     - targetCorrespondingSourceObject: {fileID: -3370641240728991547, guid: 54235c601e75bf54bb4c5b6bd9b976c7,
         type: 3}
       insertIndex: -1
@@ -1244,7 +1257,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.70974946, y: 0.4999995, z: -0.0000002177494}
+  m_ConnectedAnchor: {x: -0.70974946, y: 0.49999946, z: -0.00000021774942}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1387,7 +1400,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.882004, y: 0.5, z: -0.000000488235}
+  m_ConnectedAnchor: {x: -0.8820046, y: 0.5, z: -0.000000488235}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -1882,6 +1895,45 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3576535f08d0e24f8e8749d9445e704, type: 3}
+--- !u!1 &797035500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6059339695217518012, guid: 54235c601e75bf54bb4c5b6bd9b976c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 441166167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &797035501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797035500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33fdc2e720b9f64e9dd8e1718c6ba5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &797035502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797035500}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 180, y: 400, z: 180}
+  m_Center: {x: 70, y: 200, z: 100}
 --- !u!4 &816498356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2900781405036674409, guid: 0d812cef23b3e7549be23a1908bb609d,
@@ -2066,7 +2118,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.7255886, y: 0.5, z: -0.0000004155101}
+  m_ConnectedAnchor: {x: -0.7255888, y: 0.5, z: -0.00000041551013}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -2226,7 +2278,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.767166, y: 0.5, z: 0.0000002024389}
+  m_ConnectedAnchor: {x: -0.7671672, y: 0.5, z: 0.00000020243891}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -2670,7 +2722,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.71172833, y: 0.5, z: -0.0000007315019}
+  m_ConnectedAnchor: {x: -0.71172893, y: 0.5, z: -0.0000007315019}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -3100,7 +3152,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.70974857, y: 0.5, z: 0.000000022965757}
+  m_ConnectedAnchor: {x: -0.70974886, y: 0.5, z: 0.000000022965759}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -3388,7 +3440,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.79092836, y: 0.4999998, z: -0.00000059881086}
+  m_ConnectedAnchor: {x: -0.79092836, y: 0.49999976, z: -0.0000005988109}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -3561,7 +3613,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.8127058, y: 0.5, z: -0.0000006047649}
+  m_ConnectedAnchor: {x: -0.8127064, y: 0.5, z: -0.000000604765}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -3969,7 +4021,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.7909256, y: 0.5, z: -0.00000017479493}
+  m_ConnectedAnchor: {x: -0.790926, y: 0.5, z: -0.00000017479495}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -4233,7 +4285,7 @@ HingeJoint:
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.83250433, y: 0.5, z: -0.00000047218023}
+  m_ConnectedAnchor: {x: -0.83250433, y: 0.5, z: -0.00000047218026}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -4974,6 +5026,12 @@ PrefabInstance:
       propertyPath: _smashSkillDescriptor.Radius
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
+        type: 3}
+      propertyPath: _smashSkillDescriptor.Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f8a63ad2c314ca4a89fad40de4678f4,
+        type: 3}
     - target: {fileID: 122024494719183058, guid: 0d812cef23b3e7549be23a1908bb609d,
         type: 3}
       propertyPath: _pantsSkillDescriptor.Mask.m_Bits
