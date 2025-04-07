@@ -4,7 +4,7 @@ using Cinemachine;
 public class LockCamera : MonoBehaviour
 {
     private CinemachineVirtualCamera _virtualCamera;
-    [SerializeField] private CinemachineVirtualCamera _triggerCamera;
+    public CinemachineVirtualCamera TriggerCamera;
     private LockXCameraPosition _lockXExtension;
     private bool _isLocked;
     private Transform _lookAtGameObject;
@@ -43,7 +43,7 @@ public class LockCamera : MonoBehaviour
             if (_isLocked)
             {
                 _virtualCamera.LookAt = _playerShadow;
-                _triggerCamera.gameObject.SetActive(true); 
+                TriggerCamera.gameObject.SetActive(true); 
                 _virtualCamera.gameObject.SetActive(false); 
 
                 _lockXExtension.LockedX = transform.position.x;
@@ -51,8 +51,8 @@ public class LockCamera : MonoBehaviour
             else
             {
                 _virtualCamera.LookAt = _lookAtGameObject;
-                _virtualCamera.gameObject.SetActive(true); 
-                _triggerCamera.gameObject.SetActive(false);
+                _virtualCamera.gameObject.SetActive(true);
+                TriggerCamera.gameObject.SetActive(false);
 
                 _lockXExtension.LockedX = 0.0f;
             }
