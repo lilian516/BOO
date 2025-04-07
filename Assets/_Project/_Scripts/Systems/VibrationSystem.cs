@@ -6,6 +6,8 @@ public class VibrationSystem : Singleton<VibrationSystem>
 {
     private bool _isToggled;
 
+    public bool IsToggled { get => _isToggled; set => _isToggled = value; }
+
     // Start is called before the first frame update
     void Start()
     {
