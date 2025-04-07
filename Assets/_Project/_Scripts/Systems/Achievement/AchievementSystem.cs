@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AchievementSystem : Singleton<AchievementSystem>
@@ -24,11 +25,35 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
         _achievementList[index].IsUnlocked = true;
 
+        GameObject panel = GameManager.Instance.UIAchievement;
+        StartCoroutine(ShowAchievement(index, panel));
+        StartCoroutine(MovePanel(-panel.transform.up, panel));
+
         Debug.Log("Unlock : " + _achievementList[index].Name);
         Debug.Log(_achievementList[index].Description);
     }
-
     
+    private IEnumerator ShowAchievement(int index, GameObject panel)
+    {
+        panel.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = _achievementList[index].Name;
+        
+        yield return new WaitForSeconds(3);
+
+        StartCoroutine(MovePanel(panel.transform.up, panel));
+    }
+
+    private IEnumerator MovePanel(Vector3 dir, GameObject panel)
+    {
+        float elapsedTime = 0.1f;
+
+        while (elapsedTime < 1)
+        {
+            panel.transform.Translate(dir * (100 / elapsedTime) * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
 }
 
 public enum AchievementCondition

@@ -10,6 +10,7 @@ TagManager:
   - UIController
   - InventoryUI
   - BackgroundUI
+  - AchievementUI
   layers:
   - Default
   - TransparentFX
