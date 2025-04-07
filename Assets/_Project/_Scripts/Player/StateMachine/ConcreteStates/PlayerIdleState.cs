@@ -26,14 +26,14 @@ public class PlayerIdleState : PlayerState
     {
         _isSpeakingToSomeone = false;
         base.EnterState();
-        _player.Input.OnUseSkill += OnSkill;
+        _player.Input.OnSkillMenu += OnSkill;
         _player.Input.OnSpeak += OnCheckSpeak;
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        _player.Input.OnUseSkill -= OnSkill;
+        _player.Input.OnSkillMenu -= OnSkill;
         _player.Input.OnSpeak -= OnCheckSpeak;
     }
 

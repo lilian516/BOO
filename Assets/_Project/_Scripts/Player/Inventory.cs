@@ -49,43 +49,19 @@ public class Inventory : MonoBehaviour
         
     }
 
-    public void OpenInventory()
+    public bool SelectSkill()
     {
-        if (AngrySystem.Instance.IsAngry || _skills.Count == 0)
-            return;
-
-        GameManager.Instance.SkillStickUI.GetComponent<OnScreenStick>().movementRange = 90;
-
-        _skillCanvaGroup.alpha = 1;
-        _skillCanvaGroup.interactable = true;
-        _skillCanvaGroup.blocksRaycasts = true;
-        
-
-    }
-
-    public void CloseInventory()
-    {
-        if (AngrySystem.Instance.IsAngry || _skills.Count == 0)
-            return;
-
-        GameManager.Instance.SkillStickUI.GetComponent<OnScreenStick>().movementRange = 0;
-
-        if (InputManager.Instance.GetSelectDirection() != Vector2.zero && _skillCanvaGroup.alpha == 1)
+        for (int i = 0; i < _skills.Count; i++)
         {
-            for(int i = 0; i < _skillImages.Count; i++)
+            if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[i].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
             {
-                if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[i].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
-                {
-                    ChangeCurrentSkill(_skills[i]);
-                }
+                ChangeCurrentSkill(_skills[i]);
+                return true ;
             }
-
         }
-        _skillCanvaGroup.alpha = 0;
-        _skillCanvaGroup.interactable = false;
-        _skillCanvaGroup.blocksRaycasts = false;
-        
+        return false;
     }
+
     private void ChangeCurrentSkill(Skill skill)
     {
         _currentSkill = skill;
@@ -96,9 +72,12 @@ public class Inventory : MonoBehaviour
         if (_skills.Count == 7)
         {
             Time.timeScale = 0;
-            OpenInventory();
             ManageInventory(skill, playerSkill);
             return;
+        }
+        if (_skills.Count == 0)
+        {
+            Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
         }
 
         PlayerSkills.Add(playerSkill);
@@ -148,7 +127,6 @@ public class Inventory : MonoBehaviour
     {
         Time.timeScale = 1;
         InputManager.Instance.EnableSticksAndButtons();
-        CloseInventory();
         Helpers.HideCanva(GameManager.Instance.UIBackground.GetComponent<CanvasGroup>());
         Helpers.HideCanva(GameManager.Instance.InventoryFullMenu.GetComponent<CanvasGroup>());
 

@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     private const string GAME_CONTROLLER_TAG = "UIController";
 
     private const string SKILL_STICK_UI_TAG = "SkillStickUI";
+    private const string SKILL_STICK_PARENT_TAG = "SkillStick";
 
     private const string INVENTORY_UI_TAG = "InventoryUI";
     private const string BACKGROUND_UI_TAG = "BackgroundUI";
@@ -29,6 +30,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject DialogueUI;
     [HideInInspector] public GameObject InventoryUI;
     [HideInInspector] public GameObject SkillStickUI;
+    [HideInInspector] public GameObject SkillStickParent;
 
     
     [HideInInspector] public Inventory InventorySkill;
@@ -71,7 +73,7 @@ public class GameManager : Singleton<GameManager>
     {
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "UIInGame"});
 
-        SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
+        SkillStickParent = GameObject.FindGameObjectWithTag(SKILL_STICK_PARENT_TAG);
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         UIBackground = GameObject.FindGameObjectWithTag(BACKGROUND_UI_TAG);
@@ -79,7 +81,6 @@ public class GameManager : Singleton<GameManager>
 
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
-        SkillStickUI.GetComponent<OnScreenStick>().movementRange = 0;
 
         GameController = GameObject.FindGameObjectWithTag(GAME_CONTROLLER_TAG);
 
