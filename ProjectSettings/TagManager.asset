@@ -12,6 +12,7 @@ TagManager:
   - BackgroundUI
   - InventoryFull
   - SkillStick
+  - AchievementUI
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     private const string INVENTORY_UI_TAG = "InventoryUI";
     private const string BACKGROUND_UI_TAG = "BackgroundUI";
     private const string INVENTORY_FULL_TAG = "InventoryFull";
+    private const string ACHIEVEMENT_UI_TAG = "AchievementUI";
 
 
     [HideInInspector] public GameObject MainCamera;
@@ -37,6 +38,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject GameController;
     [HideInInspector] public GameObject UIBackground;
     [HideInInspector] public GameObject InventoryFullMenu;
+    [HideInInspector] public GameObject UIAchievement;
 
     [HideInInspector] public int KilledSheep;
 
@@ -60,9 +62,6 @@ public class GameManager : Singleton<GameManager>
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
 
-        
-
-
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         
         //InventorySkill.Init();
@@ -79,6 +78,7 @@ public class GameManager : Singleton<GameManager>
         UIBackground = GameObject.FindGameObjectWithTag(BACKGROUND_UI_TAG);
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
 
+        UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
 
