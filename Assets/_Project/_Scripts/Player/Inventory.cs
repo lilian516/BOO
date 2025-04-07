@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.OnScreen;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 
 
@@ -60,12 +61,24 @@ public class Inventory : MonoBehaviour, IChangeable
             if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[i].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
             {
                 if (AngrySystem.Instance.IsAngry)
+                {
                     ChangeCurrentSkill(_angrySkills);
+                    return true;
+                }
 
                 ChangeCurrentSkill(_skills[i]);
                 return true ;
             }
         }
+        if (AngrySystem.Instance.IsAngry && _skills.Count == 0)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[0].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
+            {
+                ChangeCurrentSkill(_angrySkills);
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -194,6 +207,7 @@ public class Inventory : MonoBehaviour, IChangeable
             _skillCanvaGroup.transform.GetChild(0).gameObject.SetActive(true);
             _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = _angrySkills.GetSprite();
         }
+
     }
 
     public void ResetChange()
@@ -209,5 +223,6 @@ public class Inventory : MonoBehaviour, IChangeable
             _skillCanvaGroup.transform.GetChild(0).gameObject.SetActive(false);
             _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
         }
+        
     }
 }
