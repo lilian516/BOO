@@ -36,11 +36,21 @@ public class Settings : MonoBehaviour
         Helpers.ShowCanva(_canvasGroup);
         Helpers.HideCanva(_canvasMainMenuGroup);
     }
-    public void CloseSettings()
+    public void CloseSettings(Animator animator)
     {
+        animator.SetTrigger("Click");
+
+        StartCoroutine(WaitCloseSettings());
+        //Helpers.HideCanva(_canvasGroup);
+        
+    }
+
+    private IEnumerator WaitCloseSettings()
+    {
+        yield return new WaitForSeconds(0.40f);
 
         Helpers.HideCanva(_canvasGroup);
-        
+        Helpers.ShowCanva(_canvasMainMenuGroup);
     }
 
     public void SetMusicVolume(float level)
