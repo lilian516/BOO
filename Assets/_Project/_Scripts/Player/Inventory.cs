@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,11 +7,12 @@ using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
 
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IChangeable
 {
     private List<GameObject> _skillImages = new List<GameObject>();
 
     private List<Skill> _skills = new List<Skill>();
+    private Skill _angrySkills;
 
     private Skill _currentSkill;
 
@@ -23,8 +25,8 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        
-       
+        AngrySystem.Instance.OnChangeElements += Change;
+        AngrySystem.Instance.OnResetElements += ResetChange;
     }
 
     public void Init()
@@ -57,6 +59,9 @@ public class Inventory : MonoBehaviour
         {
             if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[i].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
             {
+                if (AngrySystem.Instance.IsAngry)
+                    ChangeCurrentSkill(_angrySkills);
+
                 ChangeCurrentSkill(_skills[i]);
                 return true ;
             }
@@ -69,8 +74,14 @@ public class Inventory : MonoBehaviour
         _currentSkill = skill;
     }
 
-    public void AddSkill(Skill skill, PlayerSkill playerSkill)
+    public void AddSkill(Skill skill, PlayerSkill playerSkill, bool isAngry = false)
     {
+        if (isAngry)
+        {
+            _angrySkills = skill;
+            return;
+        }
+
         if (_skills.Count == 7)
         {
             Time.timeScale = 0;
@@ -170,4 +181,33 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void Change()
+    {
+        for(int i = 0; i < _skills.Count; i++)
+        {
+            _skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = _angrySkills.GetSprite();
+        }
+
+        if (_skills.Count == 0)
+        {
+            Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
+            _skillCanvaGroup.transform.GetChild(0).gameObject.SetActive(true);
+            _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = _angrySkills.GetSprite();
+        }
+    }
+
+    public void ResetChange()
+    {
+        for (int i = 0; i < _skills.Count; i++)
+        {
+            _skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = _skills[i].GetSprite();
+        }
+
+        if (_skills.Count == 0)
+        {
+            Helpers.HideCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
+            _skillCanvaGroup.transform.GetChild(0).gameObject.SetActive(false);
+            _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
+        }
+    }
 }

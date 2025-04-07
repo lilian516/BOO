@@ -63,8 +63,9 @@ public class Player : MonoBehaviour, IChangeable
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
+        _inventory.AddSkill(_smashSkill, PlayerSkill.SmashSkill, true);
 
-        
+
         RB = GetComponent<Rigidbody>();
         
        
@@ -153,9 +154,6 @@ public class Player : MonoBehaviour, IChangeable
             case PlayerSkill.WindSkill:
                 WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
                 _inventory.AddSkill(windSkill, playerSkill);
-                break;
-            case PlayerSkill.SmashSkill:
-                _inventory.AddSkill(_smashSkill, playerSkill);
                 break;
         }
 

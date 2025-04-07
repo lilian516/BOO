@@ -10,6 +10,7 @@ public class SmashSkill : Skill
     public class Descriptor
     {
         public float Radius;
+        public Sprite Sprite;
         public LayerMask Mask;
     }
 
@@ -44,4 +45,8 @@ public class SmashSkill : Skill
         Debug.Log("Objet TAPER : " + hitColliders[0].gameObject.name);
     }
 
+    public override Sprite GetSprite()
+    {
+        return _desc.Sprite;
+    }
 }
