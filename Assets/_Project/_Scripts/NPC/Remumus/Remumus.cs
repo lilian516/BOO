@@ -7,11 +7,13 @@ public class Remumus : MonoBehaviour, ISpeakable
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] DialogueAsset _dryUnderwearDialogue;
     [SerializeField] bool _dryUnderwear = false;
+    [SerializeField] Animator _animator;
 
     public bool DryUnderwear { get => _dryUnderwear; set => _dryUnderwear = value; }
 
     public void Speak()
     {
+        _animator.SetBool("IsTalking", true);
         if (!_dryUnderwear)
         {
             DialogueSystem.Instance.BeginDialogue(_basicDialogue);
@@ -27,7 +29,7 @@ public class Remumus : MonoBehaviour, ISpeakable
     // Start is called before the first frame update
     void Start()
     {
-        
+        DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
     }
 
     // Update is called once per frame
@@ -42,5 +44,10 @@ public class Remumus : MonoBehaviour, ISpeakable
         {
             _dryUnderwearDialogue = _dryUnderwearDialogue.NextDialogue;
         }
+    }
+
+    private void StopTalkAnimation()
+    {
+        _animator.SetBool("IsTalking", false);
     }
 }

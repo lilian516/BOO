@@ -74,6 +74,7 @@ MonoBehaviour:
   _dryUnderwearDialogue: {fileID: 11400000, guid: 5d49d22097c299642be0246516edc570,
     type: 2}
   _dryUnderwear: 0
+  _animator: {fileID: 9051479647462538539}
 --- !u!1 &9082052043802535640
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpeningTriggerEvent: 0
   OpeningEventType: 0
-  ClosureTriggerEvent: 0
-  ClosureEventType: 0
+  ClosureTriggerEvent: 1
+  ClosureEventType: 4
   RightCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
   LeftCharacter: {fileID: 21300000, guid: c0e33b7dcbb23624ab19c97870f419ee, type: 3}
   Sections:
