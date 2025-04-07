@@ -31,16 +31,26 @@ public class Settings : MonoBehaviour
 
     private IEnumerator WaitOpenSettings()
     {
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.55f);
 
         Helpers.ShowCanva(_canvasGroup);
         Helpers.HideCanva(_canvasMainMenuGroup);
     }
-    public void CloseSettings()
+    public void CloseSettings(Animator animator)
     {
+        animator.SetTrigger("Click");
+
+        StartCoroutine(WaitCloseSettings());
+        //Helpers.HideCanva(_canvasGroup);
+        
+    }
+
+    private IEnumerator WaitCloseSettings()
+    {
+        yield return new WaitForSeconds(0.40f);
 
         Helpers.HideCanva(_canvasGroup);
-        
+        Helpers.ShowCanva(_canvasMainMenuGroup);
     }
 
     public void SetMusicVolume(float level)
@@ -53,4 +63,11 @@ public class Settings : MonoBehaviour
         SoundMixerManager.Instance.SetSoundFXVolume(level);
     }
 
+
+    public void ClickVibration(Animator animator)
+    {
+        animator.SetTrigger("Click");
+
+        VibrationSystem.Instance.IsToggled = !VibrationSystem.Instance.IsToggled;
+    }
 }
