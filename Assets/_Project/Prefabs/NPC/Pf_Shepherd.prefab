@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogue: {fileID: 11400000, guid: 7b900f4459c98a2479253b1067bcb57f, type: 2}
+  _happyDialogue: {fileID: 11400000, guid: 69114a8c4e511384c858f54016c4c1c1, type: 2}
   _sadDialogue: {fileID: 11400000, guid: ce4257ece9d527048b476354edaf5992, type: 2}
 --- !u!1 &5012196804389491166
 GameObject:

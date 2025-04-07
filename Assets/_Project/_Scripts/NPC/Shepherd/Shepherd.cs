@@ -1,10 +1,14 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shepherd : MonoBehaviour, ISpeakable
 {
+    [SerializeField] private SheepDetector _detector;
+
     #region Speak 
     [SerializeField] private DialogueAsset _dialogue;
+    [SerializeField] private DialogueAsset _happyDialogue;
     [SerializeField] private DialogueAsset _sadDialogue;
 
 
@@ -13,6 +17,10 @@ public class Shepherd : MonoBehaviour, ISpeakable
         if (GameManager.Instance.KilledSheep >= 3)
         {
             DialogueSystem.Instance.BeginDialogue(_sadDialogue);
+        }
+        else if (_detector.SheepCount >= 3)
+        {
+            DialogueSystem.Instance.BeginDialogue(_happyDialogue);
         }
         else
         {
