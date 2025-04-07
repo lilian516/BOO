@@ -27,6 +27,8 @@ public class Player : MonoBehaviour, IChangeable
 
     [SerializeField] RuntimeAnimatorController _darkBoo;
     [SerializeField] RuntimeAnimatorController _boo;
+
+    public float DetectorRadius;
     
 
     private Inventory _inventory;
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour, IChangeable
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
+
         
         RB = GetComponent<Rigidbody>();
         
@@ -80,7 +83,10 @@ public class Player : MonoBehaviour, IChangeable
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
 
-        
+        NPC_Detector detector = transform.GetComponentInChildren<NPC_Detector>();
+        detector.SetDetectorRadius(DetectorRadius);
+        detector.OnDetectNPC += ChangeAnimatorToCurious;
+        detector.OnStopDetectNPC += ChangeAnimatorToNormal;
     }
 
     // Update is called once per frame
@@ -163,6 +169,7 @@ public class Player : MonoBehaviour, IChangeable
 
     }
 
+
     public void Change()
     {
         AddSkill(PlayerSkill.SmashSkill);
@@ -173,5 +180,16 @@ public class Player : MonoBehaviour, IChangeable
     {
         RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
+    }
+
+    private void ChangeAnimatorToCurious()
+    {
+        PlayerFaceAnimator.SetLayerWeight(0,0);
+        PlayerFaceAnimator.SetLayerWeight(1,1);
+    }
+    private void ChangeAnimatorToNormal()
+    {
+        PlayerFaceAnimator.SetLayerWeight(0, 1);
+        PlayerFaceAnimator.SetLayerWeight(1, 0);
     }
 }

@@ -78,9 +78,12 @@ public class PlayerIdleState : PlayerState
             ISpeakable speakable = hit.collider.gameObject.GetComponent<ISpeakable>();
             if (speakable != null)
             {
-                _isSpeakingToSomeone = true;
-                speakable.Speak();
-                _playerStateMachine.ChangeState(_player.SpeakingState);
+                if (Vector3.Distance(_player.transform.position, hit.transform.position) <= _player.DetectorRadius)
+                {
+                    _isSpeakingToSomeone = true;
+                    speakable.Speak();
+                    _playerStateMachine.ChangeState(_player.SpeakingState);
+                }
                 
             }
 
