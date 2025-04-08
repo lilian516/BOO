@@ -1291,15 +1291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pf_ButtonSkill
       objectReference: {fileID: 0}
-    - target: {fileID: 7382625696217912650, guid: 05be6567d1432604aa5879351af0b3d6,
+    - target: {fileID: 6687556459791958607, guid: 05be6567d1432604aa5879351af0b3d6,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7382625696217912650, guid: 05be6567d1432604aa5879351af0b3d6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      propertyPath: m_Alpha
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

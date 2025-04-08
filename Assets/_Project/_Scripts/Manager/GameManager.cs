@@ -16,7 +16,6 @@ public class GameManager : Singleton<GameManager>
     private const string DIALOGUE_UI_TAG = "DialogueUI";
     private const string GAME_CONTROLLER_TAG = "UIController";
 
-    private const string SKILL_STICK_UI_TAG = "SkillStickUI";
     private const string SKILL_STICK_PARENT_TAG = "SkillStick";
 
     private const string INVENTORY_UI_TAG = "InventoryUI";
@@ -30,7 +29,6 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public SoundSystem SoundSystem;
     [HideInInspector] public GameObject DialogueUI;
     [HideInInspector] public GameObject InventoryUI;
-    [HideInInspector] public GameObject SkillStickUI;
     [HideInInspector] public GameObject SkillStickParent;
 
     

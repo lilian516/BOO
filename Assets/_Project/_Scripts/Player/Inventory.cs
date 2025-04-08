@@ -36,13 +36,13 @@ public class Inventory : MonoBehaviour, IChangeable
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
             _skillImages.Add(_skillCanvaGroup.transform.GetChild(i).gameObject);
-            _skillCanvaGroup.transform.GetChild(i).gameObject.SetActive(false);
+            Helpers.HideCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
 
 
         }
         for (int i = 0; i < _skills.Count; i++)
         {
-            _skillImages[i].gameObject.SetActive(true);
+            Helpers.ShowCanva(_skillImages[i].gameObject.GetComponent<CanvasGroup>());
         }
     }
 
@@ -106,7 +106,7 @@ public class Inventory : MonoBehaviour, IChangeable
 
         GameObject inventoryItem = _skillCanvaGroup.transform.GetChild(_skills.Count - 1).gameObject;
 
-        inventoryItem.SetActive(true);
+        Helpers.ShowCanva(inventoryItem.GetComponent<CanvasGroup>());
         inventoryItem.GetComponent<Image>().sprite = skill.GetSprite();
     }
 
@@ -120,7 +120,7 @@ public class Inventory : MonoBehaviour, IChangeable
         }
         GameObject inventoryItem = _skillCanvaGroup.transform.GetChild(index).gameObject;
 
-        inventoryItem.SetActive(false);
+        Helpers.ShowCanva(inventoryItem.GetComponent<CanvasGroup>());
         inventoryItem.GetComponent<Image>().sprite = null;
 
         _skills.RemoveAt(index);
@@ -191,7 +191,7 @@ public class Inventory : MonoBehaviour, IChangeable
         if (_skills.Count == 0)
         {
             Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
-            _skillCanvaGroup.transform.GetChild(0).gameObject.SetActive(true);
+            Helpers.ShowCanva(_skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<CanvasGroup>());
             _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = _angrySkills.GetSprite();
         }
     }
@@ -206,7 +206,7 @@ public class Inventory : MonoBehaviour, IChangeable
         if (_skills.Count == 0)
         {
             Helpers.HideCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
-            _skillCanvaGroup.transform.GetChild(0).gameObject.SetActive(false);
+            Helpers.HideCanva(_skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<CanvasGroup>());
             _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
         }
     }
