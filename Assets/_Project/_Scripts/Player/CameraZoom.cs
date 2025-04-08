@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
+
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+
 
 public class CameraZoom : MonoBehaviour ,IChangeable
 {
