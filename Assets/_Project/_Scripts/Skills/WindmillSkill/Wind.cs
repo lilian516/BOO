@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class Wind : MonoBehaviour
@@ -11,6 +12,10 @@ public class Wind : MonoBehaviour
     void Start()
     {
         _forward = GameManager.Instance.Player.GetComponent<Player>().LookDir.normalized;
+
+
+        if (_forward.x < 0)
+            transform.GetChild(0).eulerAngles =  new Vector3(35,0,0);
 
         StartCoroutine(WindMovement());
     }
