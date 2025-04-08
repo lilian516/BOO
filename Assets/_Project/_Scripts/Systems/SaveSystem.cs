@@ -18,7 +18,8 @@ public class SaveSystem : Singleton<SaveSystem>
         // Put default keys and values in the declaration below
         Data = new Dictionary<string, object>{
             {"test", 1},
-            {"AAAAAH", false}
+            {"AAAAAH", false},
+            {"MusicVolume", 1}
         };
     }
 

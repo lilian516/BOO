@@ -77,6 +77,12 @@ public class SoundSystem : Singleton<SoundSystem>
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
+
+    private void Start()
+    {
+       
+    }
+
     private void GenerateKeys()
     {
         GenerateSFXKeys();
