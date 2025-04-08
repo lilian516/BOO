@@ -21,12 +21,6 @@ public class InputManager : Singleton<InputManager>
     public delegate void ChangeDeviceEvent();
     public event ChangeDeviceEvent OnChangedDevice;
 
-    public delegate void DashEvent();
-    public event DashEvent OnDash;
-
-    public delegate void InteractEvent();
-    public event InteractEvent OnInteract;
-
     public delegate void CheckSpeakEvent();
     public event CheckSpeakEvent OnSpeak;
 
