@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9631d2ed0b0aaaa46ad0dd0d1d3c86ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerCamera: {fileID: 0}
+  TriggerCamera: {fileID: 1680742420889988939}
   CanTrigger: 1
 --- !u!1 &9179853313474395214
 GameObject:

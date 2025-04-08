@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour, IInteractable
+public class OrbTree : MonoBehaviour, IInteractable
 {
     [SerializeField] Rigidbody rb;
     // Start is called before the first frame update
@@ -19,10 +19,11 @@ public class Tree : MonoBehaviour, IInteractable
 
     public void Interact(PlayerSkill playerSkill)
     {
+        Debug.Log("On m'a fouetté avec un batton bas y");
         switch (playerSkill)
         {
             case PlayerSkill.StickSkill:
-                //Debug.Log("On m'a fouetté avec un batton");
+                Debug.Log("On m'a fouetté avec un batton");
                 rb.isKinematic = false;
                 break;
         }

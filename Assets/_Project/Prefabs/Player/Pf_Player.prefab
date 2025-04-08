@@ -444,7 +444,7 @@ MonoBehaviour:
     Name: Pants
   _smashSkillDescriptor:
     Radius: 2
-    Sprite: {fileID: 0}
+    Sprite: {fileID: 21300000, guid: c9f96f74d894cab4c80f912bb53f039d, type: 3}
     Mask:
       serializedVersion: 2
       m_Bits: 0
