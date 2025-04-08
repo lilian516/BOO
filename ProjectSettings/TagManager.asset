@@ -13,6 +13,9 @@ TagManager:
   - InventoryFull
   - SkillStick
   - AchievementUI
+  - AchievementButton
+  - AchievementMenu
+  - AchievementList
   layers:
   - Default
   - TransparentFX

@@ -21,7 +21,11 @@ public class GameManager : Singleton<GameManager>
     private const string INVENTORY_UI_TAG = "InventoryUI";
     private const string BACKGROUND_UI_TAG = "BackgroundUI";
     private const string INVENTORY_FULL_TAG = "InventoryFull";
+
     private const string ACHIEVEMENT_UI_TAG = "AchievementUI";
+    private const string ACHIEVEMENT_BUTTON_TAG = "AchievementButton";
+    private const string ACHIEVEMENT_MENU_TAG = "AchievementMenu";
+    private const string ACHIEVEMENT_LIST_TAG = "AchievementList";
 
 
     [HideInInspector] public GameObject MainCamera;
@@ -37,6 +41,9 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject UIBackground;
     [HideInInspector] public GameObject InventoryFullMenu;
     [HideInInspector] public GameObject UIAchievement;
+    [HideInInspector] public GameObject UIAchievementButton;
+    [HideInInspector] public GameObject UIAchievementMenu;
+    [HideInInspector] public GameObject UIAchievementList;
 
     [HideInInspector] public int KilledSheep;
 
@@ -77,6 +84,11 @@ public class GameManager : Singleton<GameManager>
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
 
         UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);
+        UIAchievementButton = GameObject.FindGameObjectWithTag(ACHIEVEMENT_BUTTON_TAG);
+        UIAchievementMenu = GameObject.FindGameObjectWithTag(ACHIEVEMENT_MENU_TAG);
+        UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
+        AchievementSystem.Instance.Init();
+
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
 
