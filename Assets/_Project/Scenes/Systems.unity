@@ -645,7 +645,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _achievementList:
   - {fileID: 11400000, guid: 338b79a7741ee6744b114855b8486751, type: 2}
-  - {fileID: 11400000, guid: f59bbdab6a7f72843a1519e212a94a36, type: 2}
   _achievementUIPrefab: {fileID: 8493308933992633672, guid: 24162c6ffd608d14b83677b32b828b53,
     type: 3}
 --- !u!1 &1574867856
@@ -787,7 +786,6 @@ MonoBehaviour:
   SoundSystem: {fileID: 0}
   DialogueUI: {fileID: 0}
   InventoryUI: {fileID: 0}
-  SkillStickUI: {fileID: 0}
   SkillStickParent: {fileID: 0}
   InventorySkill: {fileID: 0}
   GameController: {fileID: 0}
