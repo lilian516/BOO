@@ -787,7 +787,6 @@ MonoBehaviour:
   SoundSystem: {fileID: 0}
   DialogueUI: {fileID: 0}
   InventoryUI: {fileID: 0}
-  SkillStickUI: {fileID: 0}
   SkillStickParent: {fileID: 0}
   InventorySkill: {fileID: 0}
   GameController: {fileID: 0}
