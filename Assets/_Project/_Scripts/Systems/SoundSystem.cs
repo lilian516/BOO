@@ -350,7 +350,12 @@ public class SoundSystem : Singleton<SoundSystem>
 
     public void PlaySoundFXClipByKey(string key, float volume = 1.0f)
     {
-        PlaySoundFXClipByKey(key, _player.transform.position, volume);
+        AudioSource audioSource = GetAvailableAudioSource();
+        AudioClip audioClip = GetSFXByKey(key);
+
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
     }
 
     public void PlayRandomSoundFXClipByKeys(string[] keys, Vector3 spawnPosition, float volume = 1.0f) {

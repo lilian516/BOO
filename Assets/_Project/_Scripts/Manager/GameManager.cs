@@ -66,11 +66,11 @@ public class GameManager : Singleton<GameManager>
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
-
+        SoundSystem.ChangeMusicByKey("Main Music");
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
-        
+
         //InventorySkill.Init();
-        
+
     }
 
     public IEnumerator LaunchGame()
