@@ -34,8 +34,11 @@ public class Child : MonoBehaviour, ISpeakable
         {
             case DialogueEventType.GetBubble:
                 _animator.SetTrigger("HasTakeBubble");
+                _animator.SetBool("HasTakenWind", false);
                 break;
             case DialogueEventType.GetWindmill:
+                _animator.SetTrigger("HasTakeBubble");
+                _animator.SetBool("HasTakenWind", true);
                 break;
         }
         _dialogue = _dialogue.NextDialogue;

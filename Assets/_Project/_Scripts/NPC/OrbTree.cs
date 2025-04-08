@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour, IInteractable
+public class OrbTree : MonoBehaviour, IInteractable
 {
     [SerializeField] Rigidbody rb;
     // Start is called before the first frame update
