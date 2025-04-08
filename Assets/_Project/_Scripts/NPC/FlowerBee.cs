@@ -53,11 +53,20 @@ public class FlowerBee : MonoBehaviour
 
         if (transform.position == _pathReferences[DestinationIndex].position)
         {
+
+            if (_pathReferences[(DestinationIndex + 1) % _pathReferences.Length].position.x < transform.position.x)
+                transform.eulerAngles = new Vector3(30, 0, 0);
+            else
+                transform.eulerAngles = new Vector3(-30, 180, 0);
+
             _currentIndex++;
 
             if (_currentIndex == _pathReferences.Length)
                 _currentIndex = 0;
 
+
+            Debug.Log(_pathReferences[(_currentIndex + 1) % _pathReferences.Length].position);
+            Debug.Log("Tposition: "+transform.position);
             _timeStep = 0.0f;
 
             StartCoroutine(Rest());
