@@ -9,6 +9,7 @@ public class CameraZoom : MonoBehaviour ,IChangeable
 {
     private float _baseFOV;
     private float _currentFOV;
+    private float _zoomFOV;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class CameraZoom : MonoBehaviour ,IChangeable
 
         _baseFOV = GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView;
         _currentFOV = _baseFOV;
+        _zoomFOV = 24;
     }
 
     public void Change()
@@ -33,7 +35,7 @@ public class CameraZoom : MonoBehaviour ,IChangeable
     {
         float elapsedTime = 0.1f;
 
-        while (elapsedTime < 1)
+        while (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView > _zoomFOV)
         {
             GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= (15 / elapsedTime) * Time.deltaTime;
             elapsedTime += Time.deltaTime;
@@ -53,7 +55,7 @@ public class CameraZoom : MonoBehaviour ,IChangeable
     {
         float elapsedTime = 0.1f;
 
-        while (elapsedTime < 1)
+        while (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView < _baseFOV)
         {
             GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += (15 / elapsedTime) * Time.deltaTime;
             elapsedTime += Time.deltaTime;
