@@ -172,12 +172,17 @@ public class Player : MonoBehaviour, IChangeable
     {
         AddSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _darkBoo;
+       
+        PlayerFaceAnimator.enabled = false;
+        PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
     }
     public void ResetChange()
     {
         RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
+        PlayerFaceAnimator.enabled = true;
+        
     }
 
     private void ChangeAnimatorToCurious()
