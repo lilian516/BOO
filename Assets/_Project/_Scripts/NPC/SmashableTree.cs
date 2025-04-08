@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SmashableTree : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
+    private Animator _animator;
     void Start()
     {
-
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -21,7 +21,8 @@ public class SmashableTree : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.SmashSkill:
-                Debug.Log("TAPER ARBRE, ARBRE TOMBER, BOO GAGNER");
+                Debug.Log(_animator);
+                _animator.SetTrigger("Fall");
                 break;
         }
     }
