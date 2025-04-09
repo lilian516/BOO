@@ -18,7 +18,7 @@ public class SoundMixerManager : Singleton<SoundMixerManager>
     {
         audioMixer.SetFloat("MusicVolume", level == 0f ? -80f : Mathf.Log10(level) * 20f);
 
-        //SaveSystem.Instance.SaveElement<float>("MusicVolume", level);
+        SaveSystem.Instance.SaveElement<float>("MusicVolume", level);
         //audioMixer.SetFloat("MusicVolume", Mathf.Log10(level) * 20f);
         
     }
