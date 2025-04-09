@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, IChangeable
     public PlayerSkillState SkillState { get; set; }
     public PlayerSpeakingState SpeakingState { get; set; }
     public PlayerWaitingState WaitingState { get; set; }
+    public PlayerAutoMovingState AutoMovingState { get; set; }
 
 
     #endregion
@@ -72,6 +73,8 @@ public class Player : MonoBehaviour, IChangeable
         SkillState = new PlayerSkillState(this, StateMachine);
         SpeakingState = new PlayerSpeakingState(this, StateMachine);
         WaitingState = new PlayerWaitingState(this, StateMachine);
+        AutoMovingState = new PlayerAutoMovingState(this, StateMachine);
+
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);

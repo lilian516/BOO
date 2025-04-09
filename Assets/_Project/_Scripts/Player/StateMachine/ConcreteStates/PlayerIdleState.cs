@@ -90,6 +90,17 @@ public class PlayerIdleState : PlayerState
                 }
                 
             }
+            IClickable clickable = hit.collider.gameObject.GetComponent<IClickable>();
+
+            if(clickable != null)
+            {
+                if (Vector3.Distance(_player.transform.position, hit.transform.position) <= _player.DetectorRadius)
+                {
+                    clickable.OnClick();
+                    _playerStateMachine.ChangeState(_player.AutoMovingState);
+                }
+            }
+
 
             Orbe orbe = hit.collider.gameObject.GetComponent<Orbe>();
             if (orbe != null)
