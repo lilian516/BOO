@@ -31,7 +31,7 @@ public class SaveSystem : Singleton<SaveSystem>
 
     public void SaveElement<T>(string key, T value)
     {
-        Data[key] = value;
+        Data.Add(key, value);
     }
 
     public T LoadElement<T>(string key)

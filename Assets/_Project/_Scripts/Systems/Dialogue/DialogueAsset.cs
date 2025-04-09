@@ -34,4 +34,5 @@ public enum DialogueEventType
     GetUnderwear,
     GetBubble,
     GetWindmill,
+    EndDialogue
 }

@@ -11,6 +11,7 @@ public class Child : MonoBehaviour, ISpeakable
     public void Speak()
     {
         //CinematicSystem.Instance.PlayCinematic("Min");
+        _animator.SetBool("IsTalking", true);
         DialogueSystem.Instance.BeginDialogue(_dialogue);
         DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
     }
@@ -18,7 +19,7 @@ public class Child : MonoBehaviour, ISpeakable
     // Start is called before the first frame update
     void Start()
     {
-        
+        DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
     }
 
     // Update is called once per frame
@@ -33,13 +34,19 @@ public class Child : MonoBehaviour, ISpeakable
         {
             case DialogueEventType.GetBubble:
                 _animator.SetTrigger("HasTakeBubble");
+                _animator.SetBool("HasTakenWind", false);
                 break;
             case DialogueEventType.GetWindmill:
                 _animator.SetTrigger("HasTakeBubble");
+                _animator.SetBool("HasTakenWind", true);
                 break;
         }
-        Debug.Log("TAKE");
         _dialogue = _dialogue.NextDialogue;
         DialogueSystem.Instance.OnTakeEvent -= OnEventTakeSkill;
+    }
+
+    private void StopTalkAnimation()
+    {
+        _animator.SetBool("IsTalking", false);
     }
 }
