@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Speed: 0.4
+  Speed: 0.3
 --- !u!65 &8176583931046924520
 BoxCollider:
   m_ObjectHideFlags: 0
