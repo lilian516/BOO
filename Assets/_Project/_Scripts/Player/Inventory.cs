@@ -36,10 +36,23 @@ public class Inventory : MonoBehaviour, IChangeable
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
-            _skillImages.Add(_skillCanvaGroup.transform.GetChild(i).gameObject);
+            GameObject skillUI = _skillCanvaGroup.transform.GetChild(i).gameObject;
+            _skillImages.Add(skillUI);
             Helpers.HideCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
 
+            EventTrigger eventTrigger;
+            eventTrigger = skillUI.GetComponent<EventTrigger>();
 
+            if (eventTrigger == null)
+            {
+                eventTrigger = skillUI.gameObject.AddComponent<EventTrigger>();
+            }
+
+            EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
+            pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
+            pointerEnterEntry.callback.AddListener((eventData) => SelectSkill());
+
+            eventTrigger.triggers.Add(pointerEnterEntry);
         }
         for (int i = 0; i < _skills.Count; i++)
         {
@@ -47,39 +60,32 @@ public class Inventory : MonoBehaviour, IChangeable
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
         
     }
 
-    public bool SelectSkill()
+    private void SelectSkill()
     {
         for (int i = 0; i < _skills.Count; i++)
         {
-            if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[i].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
+            if (AngrySystem.Instance.IsAngry)
             {
-                if (AngrySystem.Instance.IsAngry)
-                {
-                    ChangeCurrentSkill(_angrySkills);
-                    return true;
-                }
-
-                ChangeCurrentSkill(_skills[i]);
-                return true ;
+                ChangeCurrentSkill(_angrySkills);
+                return;
             }
+
+            ChangeCurrentSkill(_skills[i]);
+            return;
         }
         if (AngrySystem.Instance.IsAngry && _skills.Count == 0)
         {
-            if (RectTransformUtility.RectangleContainsScreenPoint(_skillImages[0].GetComponent<Button>().GetComponent<RectTransform>(), InputManager.Instance.GetTouchPosition()))
-            {
-                ChangeCurrentSkill(_angrySkills);
-                return true;
-            }
+            ChangeCurrentSkill(_angrySkills);
+            return;
         }
 
-        return false;
+        return;
     }
 
     private void ChangeCurrentSkill(Skill skill)
@@ -94,7 +100,6 @@ public class Inventory : MonoBehaviour, IChangeable
             _angrySkills = skill;
             return;
         }
-
         if (_skills.Count == 7)
         {
             Time.timeScale = 0;
@@ -111,11 +116,8 @@ public class Inventory : MonoBehaviour, IChangeable
             VerifyAchivement(playerSkill);
         }
 
-       
-
         PlayerSkills.Add(playerSkill);
         _skills.Add(skill);
-        _currentSkill = skill;
 
         GameObject inventoryItem = _skillCanvaGroup.transform.GetChild(_skills.Count - 1).gameObject;
 

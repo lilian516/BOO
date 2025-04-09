@@ -26,6 +26,7 @@ public class PlayerIdleState : PlayerState
     {
         _isSpeakingToSomeone = false;
         base.EnterState();
+
         _player.Input.OnSkillMenu += OnSkill;
         _player.Input.OnSpeak += OnCheckSpeak;
     }

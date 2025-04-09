@@ -3,6 +3,7 @@ using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.OnScreen;
+using TMPro;
 
 
 [DefaultExecutionOrder(-9)]
@@ -55,8 +56,6 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
-        //Debug.Log(_controls.Player.Speak.IsPressed());
-        //Debug.Log(_controls.Player.Speak.phase);
     }
 
 

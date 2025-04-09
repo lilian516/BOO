@@ -137,12 +137,11 @@ public class Player : MonoBehaviour, IChangeable
 
     public void UseCurrentSkill()
     {
-        if (!_inventory.SelectSkill())
-            return;
 
         if (_inventory.CurrentSkill != null)
         {
             _inventory.CurrentSkill.UseSkill();
+            _inventory.CurrentSkill = null;
             PlayerAnimator.SetTrigger("UseSkill");
         }
     }
