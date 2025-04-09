@@ -71,6 +71,9 @@ public class PlayerIdleState : PlayerState
 
     private void OnCheckSpeak()
     {
+        if (AngrySystem.Instance.IsAngry)
+            return;
+
         Vector2 position = _player.Input.GetTouchPosition();
 
         if (!_isSpeakingToSomeone && Physics.Raycast(Camera.main.ScreenPointToRay(position), out RaycastHit hit))

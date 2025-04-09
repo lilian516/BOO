@@ -25,7 +25,7 @@ public class Child : MonoBehaviour, ISpeakable
     // Update is called once per frame
     void Update()
     {
-        
+        _animator.SetBool("IsBooMad", AngrySystem.Instance.IsAngry);
     }
 
     private void OnEventTakeSkill(DialogueEventType type)
