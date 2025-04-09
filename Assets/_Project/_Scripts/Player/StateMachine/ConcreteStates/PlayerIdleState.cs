@@ -69,9 +69,30 @@ public class PlayerIdleState : PlayerState
         _playerStateMachine.ChangeState(_player.SkillState);
     }
 
+    private bool IsTouchOverUI(Vector2 screenPosition)
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = screenPosition
+        };  
+
+        List<RaycastResult> RaycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, RaycastResults);
+
+        return RaycastResults.Count > 0;
+    }
+
     private void OnCheckSpeak()
     {
         Vector2 position = _player.Input.GetTouchPosition();
+        
+        if (IsTouchOverUI(position))
+        {
+            Debug.Log("UI touché avant de tenter un raycast");
+            return; 
+        }
+
+
 
         if (!_isSpeakingToSomeone && Physics.Raycast(Camera.main.ScreenPointToRay(position), out RaycastHit hit))
         {
