@@ -76,8 +76,6 @@ public class Player : MonoBehaviour, IChangeable
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
         _inventory.AddSkill(_smashSkill, PlayerSkill.SmashSkill, true);
-
-
         RB = GetComponent<Rigidbody>();
 
         _minSpeed = _playerMovingStateDescriptor.Speed;
@@ -92,7 +90,6 @@ public class Player : MonoBehaviour, IChangeable
 
         StateMachine.Initialize(IdleState);
 
-        
         //Input.OnSkillMenu += SelectSkill;
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;

@@ -70,7 +70,6 @@ public class GameManager : Singleton<GameManager>
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
 
         //InventorySkill.Init();
-
     }
 
     public IEnumerator LaunchGame()
