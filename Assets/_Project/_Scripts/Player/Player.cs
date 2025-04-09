@@ -39,7 +39,8 @@ public class Player : MonoBehaviour, IChangeable
 
     [SerializeField] PlayerIdleState.Descriptor _playerIdleStateDescriptor;
     [SerializeField] PlayerMovingState.Descriptor _playerMovingStateDescriptor;
-    
+    [SerializeField] PlayerAutoMovingState.Descriptor _playerAutoMovingStateDescriptor;
+
 
     [Header("Skills Descriptors")]
     [Space(10f)]
@@ -53,6 +54,10 @@ public class Player : MonoBehaviour, IChangeable
     private SmashSkill _smashSkill;
 
     public Vector3 LookDir;
+
+    public Vector3 PositionToGo { get; set; }
+
+    public IClickable CurrentClickable { get; set; }
 
     #region Velocity
 
@@ -73,7 +78,7 @@ public class Player : MonoBehaviour, IChangeable
         SkillState = new PlayerSkillState(this, StateMachine);
         SpeakingState = new PlayerSpeakingState(this, StateMachine);
         WaitingState = new PlayerWaitingState(this, StateMachine);
-        AutoMovingState = new PlayerAutoMovingState(this, StateMachine);
+        AutoMovingState = new PlayerAutoMovingState(this, StateMachine, _playerAutoMovingStateDescriptor);
 
         _inventory = GetComponent<Inventory>();    
 

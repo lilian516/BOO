@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 978421662239265901}
   - component: {fileID: 385189558947786397}
   - component: {fileID: 6998544778703455230}
+  - component: {fileID: 3669068918196893739}
   m_Layer: 0
   m_Name: FirstSeagull
   m_TagString: Untagged
@@ -106,6 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3669068918196893739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351429720146406421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228fc5cbd43f0fa439344008e5e5edcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
 --- !u!1 &557970079836667087
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +320,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1516834378155773240}
   - component: {fileID: 5964129491607430593}
-  - component: {fileID: 3963744470957030713}
   m_Layer: 0
   m_Name: Pf_Seagulls 1
   m_TagString: Untagged
@@ -353,16 +366,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 75.5817, y: 3.079998, z: 25.848179}
   m_Center: {x: -30.429146, y: -93.79978, z: 13.425951}
---- !u!114 &3963744470957030713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4079464447186079779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 228fc5cbd43f0fa439344008e5e5edcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 6998544778703455230}

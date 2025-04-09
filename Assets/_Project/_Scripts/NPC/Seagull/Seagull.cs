@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Seagull : MonoBehaviour
 {
-
-    [SerializeField] Animator _animator;
-    private void OnTriggerEnter(Collider other)
+   
+    public void EndVomit()
     {
-        if (other.GetComponent<Player>() != null)
-        {
-            // Ajouter l'animation de chier sur Boo
-            _animator.SetTrigger("Vomit");
-            AngrySystem.Instance.ChangeAngryLimits();
-        }
+
+        Debug.Log("je suis en test");
+        AngrySystem.Instance.ChangeAngryLimits();
+        Player player = GameManager.Instance.Player.GetComponent<Player>();
+        Debug.Log("je suis énervé");
+        player.StateMachine.ChangeState(player.IdleState);
     }
 }

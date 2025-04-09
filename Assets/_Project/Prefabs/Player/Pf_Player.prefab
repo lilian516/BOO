@@ -419,6 +419,8 @@ MonoBehaviour:
       m_RotationOrder: 4
     Speed: 3
     DurationAcceleration: 0
+  _playerAutoMovingStateDescriptor:
+    NavMeshAgentPlayer: {fileID: 7979833001575883866}
   _bubbleSkillDescriptor:
     BubblePrefab: {fileID: 8021510982704328969, guid: 95fa5fe798e8e9643863396d32c98e4a,
       type: 3}

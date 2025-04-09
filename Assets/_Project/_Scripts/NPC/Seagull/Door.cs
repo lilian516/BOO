@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IClickable
 {
+
+    [SerializeField] Animator _animator;
+
+    public bool IsKnocked = false;
+
+    
+    
     public void OnClick()
     {
-        Debug.Log("j'ai cliqué");
+        _animator.SetTrigger("Vomit");
+        IsKnocked = true;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

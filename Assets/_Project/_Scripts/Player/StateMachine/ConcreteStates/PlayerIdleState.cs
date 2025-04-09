@@ -54,13 +54,10 @@ public class PlayerIdleState : PlayerState
     {
         base.ChangeStateChecks();
 
-
         if (_player.IsMoving())
         {
             _playerStateMachine.ChangeState(_player.MovingState);
-            
         }
-        
     }
 
     
@@ -96,8 +93,11 @@ public class PlayerIdleState : PlayerState
             {
                 if (Vector3.Distance(_player.transform.position, hit.transform.position) <= _player.DetectorRadius)
                 {
-                    clickable.OnClick();
-                    _playerStateMachine.ChangeState(_player.AutoMovingState);
+                    
+                    _player.CurrentClickable = clickable;
+                    _player.PositionToGo = hit.transform.position;
+                   _playerStateMachine.ChangeState(_player.AutoMovingState);
+                   
                 }
             }
 
