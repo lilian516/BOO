@@ -575,6 +575,7 @@ Transform:
   - {fileID: 852333457}
   - {fileID: 1769278640}
   - {fileID: 1905812420}
+  - {fileID: 2107585957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!59 &686836517
@@ -3403,22 +3404,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 605468556}
     m_Modifications:
     - target: {fileID: 2706787369375984832, guid: 22f0139bdd211174a8e952dfffb91823,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.55
+      value: 22.948437
       objectReference: {fileID: 0}
     - target: {fileID: 2706787369375984832, guid: 22f0139bdd211174a8e952dfffb91823,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.15415
+      value: 0.6567335
       objectReference: {fileID: 0}
     - target: {fileID: 2706787369375984832, guid: 22f0139bdd211174a8e952dfffb91823,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.14118576
+      value: 2.3505611
       objectReference: {fileID: 0}
     - target: {fileID: 2706787369375984832, guid: 22f0139bdd211174a8e952dfffb91823,
         type: 3}
@@ -3482,6 +3483,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2107585957 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2706787369375984832, guid: 22f0139bdd211174a8e952dfffb91823,
+    type: 3}
+  m_PrefabInstance: {fileID: 2107585955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2111290603
 GameObject:
   m_ObjectHideFlags: 0
@@ -4372,4 +4379,3 @@ SceneRoots:
   - {fileID: 2132806046}
   - {fileID: 1060585288}
   - {fileID: 605468556}
-  - {fileID: 2107585955}

@@ -36,9 +36,10 @@ public class PlayerMovingState : PlayerState
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);
         _player.Input.OnSkillMenu += OnSkill;
         _time = 0;
+        _desc.Speed = _player.CurrentSpeed;
 
 
-        
+
     }
 
     public override void ExitState()

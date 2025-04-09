@@ -52,6 +52,18 @@ public class Player : MonoBehaviour, IChangeable
     private SmashSkill _smashSkill;
 
     public Vector3 LookDir;
+
+    #region Velocity
+
+    [SerializeField] float _maxSpeed;
+
+    private float _minSpeed;
+
+    public float CurrentSpeed;
+
+    #endregion
+
+
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
@@ -67,8 +79,9 @@ public class Player : MonoBehaviour, IChangeable
 
 
         RB = GetComponent<Rigidbody>();
-        
-       
+
+        _minSpeed = _playerMovingStateDescriptor.Speed;
+        CurrentSpeed = _minSpeed;
     }
     // Start is called before the first frame update
     void Start()
@@ -176,13 +189,17 @@ public class Player : MonoBehaviour, IChangeable
         PlayerFaceAnimator.enabled = false;
         PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
+        CurrentSpeed = _maxSpeed;
+
     }
     public void ResetChange()
     {
         RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
         PlayerFaceAnimator.enabled = true;
-        
+
+        CurrentSpeed = _minSpeed;
+
     }
 
     private void ChangeAnimatorToCurious()

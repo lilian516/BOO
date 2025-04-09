@@ -449,6 +449,8 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
   LookDir: {x: 0, y: 0, z: 0}
+  _maxSpeed: 4
+  CurrentSpeed: 0
 --- !u!114 &6841042318687812491
 MonoBehaviour:
   m_ObjectHideFlags: 0
