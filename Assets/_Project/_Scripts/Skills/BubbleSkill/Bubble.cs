@@ -57,14 +57,23 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<Player>())
+            return;
+
         IInteractable interactable = other.GetComponent<IInteractable>();
 
         if (interactable != null)
         {
             interactable.Interact(PlayerSkill.BubbleSkill);
             Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            _forward = Vector3.zero;
+            _animator.SetTrigger("Explosion");
         }
 
-        WaitBeforeDead();
+            WaitBeforeDead();
     }
 }

@@ -16,6 +16,8 @@ TagManager:
   - AchievementButton
   - AchievementMenu
   - AchievementList
+  - PauseMenu
+  - PauseButton
   layers:
   - Default
   - TransparentFX

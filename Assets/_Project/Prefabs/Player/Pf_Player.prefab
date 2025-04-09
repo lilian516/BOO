@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 8534692897701802906}
   - component: {fileID: 1304886917416549280}
   - component: {fileID: 4640755743272402849}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NPC_Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
