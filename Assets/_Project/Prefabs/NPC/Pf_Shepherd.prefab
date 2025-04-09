@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9192335398693020451}
   - component: {fileID: 7517085046672746634}
   - component: {fileID: 7293679709162161613}
+  - component: {fileID: 5336759302931737073}
   m_Layer: 0
   m_Name: Pf_Shepherd
   m_TagString: Untagged
@@ -69,9 +70,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d9164be842fa3449f0b1f758080d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _detector: {fileID: 0}
   _dialogue: {fileID: 11400000, guid: 7b900f4459c98a2479253b1067bcb57f, type: 2}
   _happyDialogue: {fileID: 11400000, guid: 69114a8c4e511384c858f54016c4c1c1, type: 2}
   _sadDialogue: {fileID: 11400000, guid: ce4257ece9d527048b476354edaf5992, type: 2}
+--- !u!54 &5336759302931737073
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078679422635951954}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5012196804389491166
 GameObject:
   m_ObjectHideFlags: 0

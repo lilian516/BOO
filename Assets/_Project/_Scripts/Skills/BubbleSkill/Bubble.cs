@@ -64,5 +64,7 @@ public class Bubble : MonoBehaviour
             interactable.Interact(PlayerSkill.BubbleSkill);
             Destroy(gameObject);
         }
+
+        WaitBeforeDead();
     }
 }
