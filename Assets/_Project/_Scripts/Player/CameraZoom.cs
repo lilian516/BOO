@@ -17,6 +17,7 @@ public class CameraZoom : MonoBehaviour ,IChangeable
         AngrySystem.Instance.OnResetElements += ResetChange;
 
         _baseFOV = GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView;
+
         _currentFOV = _baseFOV;
         _zoomFOV = 24;
     }
@@ -35,9 +36,14 @@ public class CameraZoom : MonoBehaviour ,IChangeable
     {
         float elapsedTime = 0.1f;
 
-        while (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView > _zoomFOV)
+        while (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView > _zoomFOV || GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y > -0.5)
         {
-            GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= (15 / elapsedTime) * Time.deltaTime;
+            if (GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y > -0.5)
+                GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y -= (0.3f / elapsedTime) * Time.deltaTime;
+            
+            if (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView > _zoomFOV)
+                GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView -= (15 / elapsedTime) * Time.deltaTime;
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -55,9 +61,14 @@ public class CameraZoom : MonoBehaviour ,IChangeable
     {
         float elapsedTime = 0.1f;
 
-        while (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView < _baseFOV)
+        while (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView < _baseFOV || GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y < 0)
         {
-            GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += (15 / elapsedTime) * Time.deltaTime;
+            if (GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y < 0)
+                GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y += (0.3f / elapsedTime) * Time.deltaTime;
+            
+            if (GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView < _baseFOV)
+                GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView += (15 / elapsedTime) * Time.deltaTime;
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
