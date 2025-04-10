@@ -30,7 +30,7 @@ public class Player : MonoBehaviour, IChangeable
     [SerializeField] RuntimeAnimatorController _boo;
 
     public float DetectorRadius;
-    
+    public GameObject DirectionalIndicator;
 
     private Inventory _inventory;
 
@@ -113,6 +113,8 @@ public class Player : MonoBehaviour, IChangeable
     {
         StateMachine.CurrentPlayerState.ChangeStateChecks();
         StateMachine.CurrentPlayerState.FrameUpdate();
+
+        RotateDirectionalIndicator();
     }
 
     private void FixedUpdate()
@@ -225,5 +227,12 @@ public class Player : MonoBehaviour, IChangeable
     {
         PlayerFaceAnimator.SetLayerWeight(0, 1);
         PlayerFaceAnimator.SetLayerWeight(1, 0);
+    }
+
+    private void RotateDirectionalIndicator()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(LookDir);
+
+        DirectionalIndicator.transform.rotation = targetRotation;
     }
 }
