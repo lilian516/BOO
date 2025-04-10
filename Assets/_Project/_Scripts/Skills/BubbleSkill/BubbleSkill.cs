@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,7 +37,7 @@ public class BubbleSkill : Skill
         */
 
         Debug.Log("j'utilise mon skill bubble");
-        Vector3 BubbleSpawnPos = _player.transform.position; // à remplacer avec la position du joueur
+        Vector3 BubbleSpawnPos = _player.transform.position + _player.LookDir.normalized;
 
         //Instantiate(BubblePrefab);
 
