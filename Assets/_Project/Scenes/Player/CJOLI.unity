@@ -708,6 +708,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 605468556}
     m_Modifications:
+    - target: {fileID: 51126225904781838, guid: c3576535f08d0e24f8e8749d9445e704,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 51126225904781838, guid: c3576535f08d0e24f8e8749d9445e704,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 51126225904781838, guid: c3576535f08d0e24f8e8749d9445e704,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d175838b72fda743a1000ab2b413623, type: 2}
     - target: {fileID: 3078679422635951954, guid: c3576535f08d0e24f8e8749d9445e704,
         type: 3}
       propertyPath: m_Name
@@ -4775,26 +4790,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -7.465
-      objectReference: {fileID: 0}
-    - target: {fileID: 5795789831644036476, guid: 469bc9d4895b22242a151d86ff96a0c6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5795789831644036476, guid: 469bc9d4895b22242a151d86ff96a0c6,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5795789831644036476, guid: 469bc9d4895b22242a151d86ff96a0c6,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.9659259
-      objectReference: {fileID: 0}
-    - target: {fileID: 5795789831644036476, guid: 469bc9d4895b22242a151d86ff96a0c6,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.258819
       objectReference: {fileID: 0}
     - target: {fileID: 5795789831644036476, guid: 469bc9d4895b22242a151d86ff96a0c6,
         type: 3}
