@@ -46,7 +46,7 @@ public class PlayerAutoMovingState : PlayerState
         _desc.NavMeshAgentPlayer.enabled = true;
         _desc.NavMeshAgentPlayer.SetDestination(_NewPosition);
 
-        Debug.Log("j'entre dans auto moving state");
+        //Debug.Log("j'entre dans auto moving state");
     }
 
     public override void ExitState()

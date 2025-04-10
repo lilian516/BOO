@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Sprite _buttonPlayClicked;
     [SerializeField] Sprite _buttonSettingsClicked;
     [SerializeField] Sprite _buttonCreditClicked;
+    [SerializeField] Animator _animatorTransition;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +24,13 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void PlayButton(Image image)
+    public void PlayButton(Animator animator)
     {
-        //image.sprite = _buttonPlayClicked;
-        image.gameObject.GetComponent<Animator>().SetTrigger("Click");
+        
 
+        animator.SetTrigger("ClickPlay");
+
+        Helpers.HideCanva(_canvasGroup);
         StartCoroutine(WaitEndAnim());
         
         Debug.Log("on start le jeu");
@@ -34,7 +38,7 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator WaitEndAnim()
     {
-        yield return new WaitForSeconds(0.53f);
+        yield return new WaitForSeconds(1f);
         StartCoroutine(GameManager.Instance.LaunchGame());
 
     }
@@ -46,12 +50,22 @@ public class MainMenu : MonoBehaviour
 
     public void OpenCredit(Image image)
     {
-        image.gameObject.GetComponent<Animator>().SetTrigger("Click");
+        _animatorTransition.SetTrigger("ClickCredit");
+        Helpers.HideCanva(_canvasGroup);
+        //image.gameObject.GetComponent<Animator>().SetTrigger("Click");
         Debug.Log("on va dans les credit");
         
     }
 
     public void OpenLegal(Animator animator) {
-        animator.SetTrigger("Click");
+        //animator.SetTrigger("Click");
+        _animatorTransition.SetTrigger("ClickLegal");
+        Helpers.HideCanva(_canvasGroup);
+    }
+
+    public void OpenTrophy()
+    {
+        _animatorTransition.SetTrigger("ClickTrophy");
+        Helpers.HideCanva(_canvasGroup);
     }
 }

@@ -24,7 +24,7 @@ public class Settings : MonoBehaviour
     }
     public void OpenSettings(Animator animator)
     {
-        animator.SetTrigger("Click");
+        animator.SetTrigger("ClickParam");
 
         StartCoroutine(WaitOpenSettings());
     }

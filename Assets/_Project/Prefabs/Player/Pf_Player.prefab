@@ -424,7 +424,7 @@ MonoBehaviour:
   _bubbleSkillDescriptor:
     BubblePrefab: {fileID: 8021510982704328969, guid: 95fa5fe798e8e9643863396d32c98e4a,
       type: 3}
-    Sprite: {fileID: 21300000, guid: 80b0f47380e677e488d8146eda542635, type: 3}
+    Sprite: {fileID: 21300000, guid: ee73d6718988665459e3bdac4349588b, type: 3}
     Name: Bubble
   _stickSkillDescriptor:
     Radius: 2
@@ -436,7 +436,7 @@ MonoBehaviour:
   _windSkillDescriptor:
     WindPrefab: {fileID: 1035563824390858650, guid: 9a434ea5e92e86a49a78998eef610941,
       type: 3}
-    Sprite: {fileID: 21300000, guid: 34dea5961815a664a860b2bf9fb54ba9, type: 3}
+    Sprite: {fileID: 21300000, guid: 26e721666f5478049a1b13136d31b04b, type: 3}
     Name: Wind
   _pantsSkillDescriptor:
     Radius: 1
