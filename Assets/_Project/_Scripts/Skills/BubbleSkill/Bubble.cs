@@ -58,7 +58,9 @@ public class Bubble : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
-            return;
+        {
+            AngrySystem.Instance.ChangeAngryLimits();
+        }
 
         IInteractable interactable = other.GetComponent<IInteractable>();
 

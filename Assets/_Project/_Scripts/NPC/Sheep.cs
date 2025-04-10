@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sheep : MonoBehaviour, IInteractable, IChangeable
+public class Sheep : MonoBehaviour, IInteractable
 {
     private PlayerSkill _currentInteract;
     public Vector3 PushedDirection;
@@ -14,9 +14,6 @@ public class Sheep : MonoBehaviour, IInteractable, IChangeable
     void Start()
     {
         _currentInteract = PlayerSkill.None;
-
-        AngrySystem.Instance.OnChangeElements += Change;
-        AngrySystem.Instance.OnResetElements += ResetChange;
     }
     
     // Update is called once per frame
@@ -39,8 +36,6 @@ public class Sheep : MonoBehaviour, IInteractable, IChangeable
                 break;
 
             case PlayerSkill.SmashSkill:
-                AngrySystem.Instance.OnChangeElements -= Change;
-                AngrySystem.Instance.OnResetElements -= ResetChange;
                 AngrySystem.Instance.ChangeCalmLimits();
 
                 GameManager.Instance.KilledSheep++;
@@ -84,17 +79,6 @@ public class Sheep : MonoBehaviour, IInteractable, IChangeable
         
     }
 
-
-    public void Change()
-    {
-        transform.Rotate(Vector3.right * 180);
-    }
-
-    public void ResetChange()
-    {
-        transform.Rotate(Vector3.right * -180);
-
-    }
 
     private IEnumerator Pushed()
     {

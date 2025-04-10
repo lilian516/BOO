@@ -48,9 +48,10 @@ public class Inventory : MonoBehaviour, IChangeable
                 eventTrigger = skillUI.gameObject.AddComponent<EventTrigger>();
             }
 
+            int index = i;
             EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
             pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
-            pointerEnterEntry.callback.AddListener((eventData) => SelectSkill());
+            pointerEnterEntry.callback.AddListener((eventData) => SelectSkill(index));
 
             eventTrigger.triggers.Add(pointerEnterEntry);
         }
@@ -66,26 +67,15 @@ public class Inventory : MonoBehaviour, IChangeable
         
     }
 
-    private void SelectSkill()
+    private void SelectSkill(int index)
     {
-        for (int i = 0; i < _skills.Count; i++)
-        {
-            if (AngrySystem.Instance.IsAngry)
-            {
-                ChangeCurrentSkill(_angrySkills);
-                return;
-            }
-
-            ChangeCurrentSkill(_skills[i]);
-            return;
-        }
-        if (AngrySystem.Instance.IsAngry && _skills.Count == 0)
-        {
+       if (AngrySystem.Instance.IsAngry)
+       {
             ChangeCurrentSkill(_angrySkills);
             return;
-        }
+       }
 
-        return;
+       ChangeCurrentSkill(_skills[index]);
     }
 
     private void ChangeCurrentSkill(Skill skill)
