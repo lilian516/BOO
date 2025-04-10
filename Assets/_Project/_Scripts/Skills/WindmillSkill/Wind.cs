@@ -12,7 +12,6 @@ public class Wind : MonoBehaviour
     {
         _forward = GameManager.Instance.Player.GetComponent<Player>().LookDir.normalized;
 
-
         if (_forward.x < 0)
             transform.GetChild(0).eulerAngles =  new Vector3(35,0,0);
 
