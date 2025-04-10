@@ -86,11 +86,11 @@ public class PlayerIdleState : PlayerState
             return;
 
         Vector2 position = _player.Input.GetTouchPosition();
-        
+
         if (IsTouchOverUI(position))
         {
             Debug.Log("UI touché avant de tenter un raycast");
-            return; 
+            return;
         }
 
 

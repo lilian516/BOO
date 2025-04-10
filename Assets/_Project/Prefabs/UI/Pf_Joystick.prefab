@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1980466980847889856}
   - component: {fileID: 9199248999855958211}
   - component: {fileID: 4543795176123358639}
+  - component: {fileID: 2404503302693788654}
   m_Layer: 0
   m_Name: Pf_Joystick
   m_TagString: Untagged
@@ -77,6 +78,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &2404503302693788654
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032017272627813053}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3848619595702078801
 GameObject:
   m_ObjectHideFlags: 0
