@@ -21,11 +21,6 @@ public class SmashSkill : Skill
         _desc = desc;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     public override void UseSkill()
     {
@@ -42,7 +37,7 @@ public class SmashSkill : Skill
             interactable.Interact(PlayerSkill.SmashSkill);
 
         }
-        Debug.Log("Objet TAPER : " + hitColliders[0].gameObject.name);
+        //Debug.Log("Objet TAPER : " + hitColliders[0].gameObject.name);
     }
 
     public override Sprite GetSprite()
