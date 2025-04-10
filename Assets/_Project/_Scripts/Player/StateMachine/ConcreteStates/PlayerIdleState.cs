@@ -54,13 +54,10 @@ public class PlayerIdleState : PlayerState
     {
         base.ChangeStateChecks();
 
-
         if (_player.IsMoving())
         {
             _playerStateMachine.ChangeState(_player.MovingState);
-            
         }
-        
     }
 
     
@@ -90,6 +87,20 @@ public class PlayerIdleState : PlayerState
                 }
                 
             }
+            IClickable clickable = hit.collider.gameObject.GetComponent<IClickable>();
+
+            if(clickable != null)
+            {
+                if (Vector3.Distance(_player.transform.position, hit.transform.position) <= _player.DetectorRadius)
+                {
+                    
+                    _player.CurrentClickable = clickable;
+                    _player.PositionToGo = hit.transform.position;
+                   _playerStateMachine.ChangeState(_player.AutoMovingState);
+                   
+                }
+            }
+
 
             Orbe orbe = hit.collider.gameObject.GetComponent<Orbe>();
             if (orbe != null)

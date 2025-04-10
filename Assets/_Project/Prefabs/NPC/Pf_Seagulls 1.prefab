@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 978421662239265901}
   - component: {fileID: 385189558947786397}
   - component: {fileID: 6998544778703455230}
+  - component: {fileID: 3669068918196893739}
   m_Layer: 0
   m_Name: FirstSeagull
   m_TagString: Untagged
@@ -106,6 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3669068918196893739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351429720146406421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228fc5cbd43f0fa439344008e5e5edcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
 --- !u!1 &557970079836667087
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,13 +146,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557970079836667087}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.3, y: 33.3, z: 3.1}
+  m_LocalRotation: {x: -0.0076572746, y: 0.1122922, z: -0.04166123, w: 0.992772}
+  m_LocalPosition: {x: -29.5, y: 41.7, z: 3.5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1516834378155773240}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.335, y: 12.921, z: -4.844}
 --- !u!212 &946732661488811705
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -306,7 +320,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1516834378155773240}
   - component: {fileID: 5964129491607430593}
-  - component: {fileID: 3963744470957030713}
   m_Layer: 0
   m_Name: Pf_Seagulls 1
   m_TagString: Untagged
@@ -353,16 +366,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 75.5817, y: 3.079998, z: 25.848179}
   m_Center: {x: -30.429146, y: -93.79978, z: 13.425951}
---- !u!114 &3963744470957030713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4079464447186079779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 228fc5cbd43f0fa439344008e5e5edcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 6998544778703455230}

@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 7936385292415116103}
   - component: {fileID: 122024494719183058}
   - component: {fileID: 6841042318687812491}
+  - component: {fileID: 7979833001575883866}
   m_Layer: 0
   m_Name: Pf_Player
   m_TagString: Player
@@ -418,6 +419,8 @@ MonoBehaviour:
       m_RotationOrder: 4
     Speed: 3
     DurationAcceleration: 0
+  _playerAutoMovingStateDescriptor:
+    NavMeshAgentPlayer: {fileID: 7979833001575883866}
   _bubbleSkillDescriptor:
     BubblePrefab: {fileID: 8021510982704328969, guid: 95fa5fe798e8e9643863396d32c98e4a,
       type: 3}
@@ -464,3 +467,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerSkills: 
+--- !u!195 &7979833001575883866
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057785889209715369}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
