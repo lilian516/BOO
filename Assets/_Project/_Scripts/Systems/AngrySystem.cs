@@ -16,6 +16,9 @@ public class AngrySystem : Singleton<AngrySystem>
     public GameObject EnvironmentCapsule;
     private int _amountOfFlames;
 
+    public int AngryLimits { get => _angryLimits; }
+    public int CalmLimits { get => _calmLimits; }
+
     public delegate void ChangeElements();
     public event ChangeElements OnChangeElements;
 
