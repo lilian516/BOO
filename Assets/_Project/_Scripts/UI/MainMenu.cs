@@ -26,8 +26,6 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButton(Animator animator)
     {
-        
-
         animator.SetTrigger("ClickPlay");
 
         Helpers.HideCanva(_canvasGroup);

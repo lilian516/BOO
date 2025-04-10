@@ -188,13 +188,23 @@ public class Player : MonoBehaviour, IChangeable
     public void Change()
     {
         AddSkill(PlayerSkill.SmashSkill);
-        PlayerAnimator.runtimeAnimatorController = _darkBoo;
+
+        PlayerAnimator.SetTrigger("IsAngry");
+        //PlayerAnimator.runtimeAnimatorController = _darkBoo;
        
         PlayerFaceAnimator.enabled = false;
         PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
         CurrentSpeed = _maxSpeed;
 
+        StartCoroutine(WaitBeforeAngry());
+
+    }
+
+    IEnumerator WaitBeforeAngry()
+    {
+        yield return new WaitForSeconds(1.1f);
+        PlayerAnimator.runtimeAnimatorController = _darkBoo;
     }
     public void ResetChange()
     {
