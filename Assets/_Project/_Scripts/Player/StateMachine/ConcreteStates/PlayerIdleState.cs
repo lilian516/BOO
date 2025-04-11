@@ -89,7 +89,6 @@ public class PlayerIdleState : PlayerState
 
         if (IsTouchOverUI(position))
         {
-            Debug.Log("UI touché avant de tenter un raycast");
             return;
         }
 
