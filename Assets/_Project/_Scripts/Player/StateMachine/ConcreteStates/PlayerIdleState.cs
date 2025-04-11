@@ -115,7 +115,7 @@ public class PlayerIdleState : PlayerState
                 {
                     
                     _player.CurrentClickable = clickable;
-                    _player.PositionToGo = hit.transform.position;
+                    _player.PositionToGo = clickable.PositionToGo;
                    _playerStateMachine.ChangeState(_player.AutoMovingState);
                    
                 }

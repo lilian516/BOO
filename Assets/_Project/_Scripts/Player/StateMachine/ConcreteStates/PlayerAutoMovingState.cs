@@ -15,12 +15,12 @@ public class PlayerAutoMovingState : PlayerState
 
     Descriptor _desc;
 
-    private Vector3 _NewPosition;
+    private Vector3 _newPosition;
     private float _stoppingDistance;
     public PlayerAutoMovingState(Player player, PlayerStateMachine playerStateMachine, Descriptor desc) : base(player, playerStateMachine)
     {
         _desc = desc;
-        _stoppingDistance = 0.5f;
+        _stoppingDistance = 0.25f;
     }
 
     public override void ChangeStateChecks()
@@ -40,13 +40,17 @@ public class PlayerAutoMovingState : PlayerState
         _player.PlayerAnimator.SetBool("IsMoving", true);
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);
 
-        _NewPosition = _player.PositionToGo;
+        _newPosition = _player.PositionToGo;
+
+        if (_newPosition.x < 0 && _player.LookDir.x > 0)
+            Flip();
+        else if (_newPosition.x > 0 && _player.LookDir.x < 0)
+            Flip();
 
         _desc.NavMeshAgentPlayer.updateRotation = false;
         _desc.NavMeshAgentPlayer.enabled = true;
-        _desc.NavMeshAgentPlayer.SetDestination(_NewPosition);
+        _desc.NavMeshAgentPlayer.SetDestination(_newPosition);
 
-        //Debug.Log("j'entre dans auto moving state");
     }
 
     public override void ExitState()
@@ -67,5 +71,14 @@ public class PlayerAutoMovingState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    private void Flip()
+    {
+        Vector3 theScale = _player.transform.localScale;
+        theScale.x *= -1;
+        _player.transform.localScale = theScale;
+
+        _player.LookDir = _newPosition.normalized;
     }
 }

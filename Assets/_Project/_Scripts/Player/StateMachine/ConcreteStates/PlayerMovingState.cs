@@ -38,7 +38,8 @@ public class PlayerMovingState : PlayerState
         _time = 0;
         _desc.Speed = _player.CurrentSpeed;
 
-
+        if (_player.transform.localScale.x == -1)
+            _facingRight = false;
 
     }
 
