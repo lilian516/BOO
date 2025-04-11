@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour, IChangeable
 
     private Skill _angrySkills;
     private Skill _currentSkill;
+    private Sprite _baseButtonSprite;
 
     private CanvasGroup _skillCanvaGroup;
 
@@ -35,6 +36,7 @@ public class Inventory : MonoBehaviour, IChangeable
     {
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
         _skillButtonUI = GameManager.Instance.SkillStickParent.transform.GetChild(0).GetChild(0).gameObject;
+        _baseButtonSprite = _skillButtonUI.GetComponent<Image>().sprite;
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
@@ -74,7 +76,7 @@ public class Inventory : MonoBehaviour, IChangeable
        if (AngrySystem.Instance.IsAngry)
        {
             ChangeCurrentSkill(_angrySkills);
-            _skillButtonUI.GetComponent<Image>().sprite = _skills[index].GetSprite();
+            _skillButtonUI.GetComponent<Image>().sprite = _angrySkills.GetSprite();
             return;
        }
         _skillButtonUI.GetComponent<Image>().sprite = _skills[index].GetSprite();
@@ -203,6 +205,12 @@ public class Inventory : MonoBehaviour, IChangeable
             _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = _angrySkills.GetSprite();
         }
 
+        if (_currentSkill != null)
+        {
+            _currentSkill = _angrySkills;
+            _skillButtonUI.GetComponent<Image>().sprite = _angrySkills.GetSprite();
+        }
+
     }
 
     public void ResetChange()
@@ -218,6 +226,8 @@ public class Inventory : MonoBehaviour, IChangeable
             Helpers.HideCanva(_skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<CanvasGroup>());
             _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
         }
-        
+
+        _currentSkill = null;
+        _skillButtonUI.GetComponent<Image>().sprite = _baseButtonSprite;
     }
 }
