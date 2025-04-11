@@ -37,7 +37,9 @@ public class AngrySystem : Singleton<AngrySystem>
 
         Islands = new GameObject[3];
 
-        StartCoroutine(FindEnvironmentObject());
+        // StartCoroutine(FindEnvironmentObject());
+
+        StartCoroutine(FindFlamSpawnpoints());
     }
     [ContextMenu("Change Angry Limits")]
     public void ChangeAngryLimits()
@@ -136,11 +138,16 @@ public class AngrySystem : Singleton<AngrySystem>
 
             GameObject flame = Instantiate(FlamePrefab, spawnPos, FlamePrefab.transform.rotation);
 
+            float newScale = Random.Range(0.25f, 1f);
+
+
+
             SceneManager.MoveGameObjectToScene(flame, EnvironmentCapsule.scene);
 
             flame.transform.SetParent(EnvironmentCapsule.transform, true);
         }
     }
+
 
 
     IEnumerator FindEnvironmentObject()
@@ -186,6 +193,20 @@ public class AngrySystem : Singleton<AngrySystem>
         {
             Debug.LogWarning("Couldn't find 'SM_Isle3' in scene CJOLI.");
         }
+    }
+
+    IEnumerator FindFlamSpawnpoints()
+    {
+        yield return new WaitForSeconds(2);
+
+        List<GameObject> list = FindAllObjectWithNameInScene("E_Flam_Spawnpoints");
+
+
+    }
+
+    List<GameObject> FindAllObjectWithNameInScene(string sceneName)
+    {
+        return null;
     }
 
     GameObject FindGameObjectInScene(string sceneName, string objectName)
