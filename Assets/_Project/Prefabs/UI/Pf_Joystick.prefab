@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4543795176123358639}
   - component: {fileID: 2404503302693788654}
   - component: {fileID: 5014857261027900762}
+  - component: {fileID: 8485436934758746653}
   m_Layer: 0
   m_Name: Pf_Joystick
   m_TagString: Untagged
@@ -104,6 +105,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0682f10f90d214d8b155970cf871b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8485436934758746653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032017272627813053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c548606302401a4f8e292f3b83d258d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteList:
+  - {fileID: 21300000, guid: ea03c4eb07399fe43a71dcf3d2262bf1, type: 3}
+  - {fileID: 21300000, guid: 2001f7d725660b84880ec616ab2d1b4c, type: 3}
+  - {fileID: 21300000, guid: 0d07790805598ef48bab3289d0f8bd16, type: 3}
+  - {fileID: 21300000, guid: 0a0ab8b4779627b48a27cf49c3a5d5bd, type: 3}
+  _joystickImage: {fileID: 2205052786796876173}
 --- !u!1 &1522276091131915100
 GameObject:
   m_ObjectHideFlags: 0
