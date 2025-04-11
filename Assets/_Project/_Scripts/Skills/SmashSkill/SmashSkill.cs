@@ -30,7 +30,24 @@ public class SmashSkill : Skill
         if (hitColliders.Length == 0)
             return;
 
-        IInteractable interactable = hitColliders[0].gameObject.GetComponent<IInteractable>();
+        int ClosestColliderIndex = 0;
+        float ClosestColliderLength = 10000.0f;
+        float CurrentColliderDistance;
+
+        foreach (Collider collider in hitColliders)
+        {
+            Vector3 ColliderPlayerDistance = collider.transform.position - GameManager.Instance.Player.transform.position;
+
+            CurrentColliderDistance = ColliderPlayerDistance.magnitude;
+
+            if (CurrentColliderDistance < ClosestColliderLength)
+            {
+                ClosestColliderLength = CurrentColliderDistance;
+                ClosestColliderIndex = System.Array.IndexOf(hitColliders, collider);
+            }
+        }
+
+        IInteractable interactable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<IInteractable>();
 
         if (interactable != null)
         {
