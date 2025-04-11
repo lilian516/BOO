@@ -12,8 +12,23 @@ public class Wind : MonoBehaviour
     {
         _forward = GameManager.Instance.Player.GetComponent<Player>().LookDir.normalized;
 
-        if (_forward.x < 0)
-            transform.GetChild(0).eulerAngles =  new Vector3(35,0,0);
+        Transform child = transform.GetChild(0);
+        child.rotation = GameManager.Instance.Player.transform.GetChild(3).rotation * Quaternion.Euler(0.0f, 90.0f, 0.0f);
+
+        float threshold = 0.25f;
+
+        if (_forward.x < -1f + threshold && Mathf.Abs(_forward.z) < threshold)
+        {
+            child.rotation *= Quaternion.Euler(35.0f, 0.0f, 0.0f);
+        }
+        else if (_forward.x > 1f - threshold && Mathf.Abs(_forward.z) < threshold)
+        {
+            child.rotation *= Quaternion.Euler(-35.0f, 0.0f, 0.0f);
+        }
+        else
+        {
+            child.rotation *= Quaternion.Euler(90.0f, 0.0f, 0.0f);
+        }
 
         StartCoroutine(WindMovement());
     }
