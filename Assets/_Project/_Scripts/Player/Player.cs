@@ -33,6 +33,7 @@ public class Player : MonoBehaviour, IChangeable
     public GameObject DirectionalIndicator;
 
     private Inventory _inventory;
+    [HideInInspector] public bool CanWalkForward;
 
     [Header("State Descriptors")]
     [Space(10f)]
@@ -88,6 +89,8 @@ public class Player : MonoBehaviour, IChangeable
 
         _minSpeed = _playerMovingStateDescriptor.Speed;
         CurrentSpeed = _minSpeed;
+
+        CanWalkForward = true;
     }
     // Start is called before the first frame update
     void Start()

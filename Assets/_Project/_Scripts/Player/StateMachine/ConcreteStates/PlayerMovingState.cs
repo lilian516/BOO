@@ -80,19 +80,27 @@ public class PlayerMovingState : PlayerState
 
     private void WalkingMove()
     {
-        if(_time < _desc.DurationAcceleration)
+        if (_time < _desc.DurationAcceleration)
         {
-            float CurrentSpeed = _desc.SpeedCurve.Evaluate(_time/ _desc.DurationAcceleration) * _desc.Speed;
-            
+            float currentSpeed = _desc.SpeedCurve.Evaluate(_time / _desc.DurationAcceleration) * _desc.Speed;
             _time += Time.deltaTime;
-            Vector3 vectorSpeed = _moveDirection * CurrentSpeed; 
-            vectorSpeed.y = vectorSpeed.y * 0;
-            _player.RB.velocity = _moveDirection * CurrentSpeed;
-        }
-        
-        _player.RB.velocity = new Vector3( _moveDirection.x * _desc.Speed, _player.RB.velocity.y, _moveDirection.z * _desc.Speed);
 
-        _player.LookDir = _player.RB.velocity;
+            Vector3 vectorSpeed = _moveDirection * currentSpeed;
+            vectorSpeed.y = 0; 
+            _player.RB.velocity = vectorSpeed;
+        }
+
+        _player.LookDir = _moveDirection;
+
+        if (_player.CanWalkForward)
+        {
+            Vector3 newVelocity = new Vector3(_moveDirection.x * _desc.Speed, _player.RB.velocity.y, _moveDirection.z * _desc.Speed);
+            _player.RB.velocity = newVelocity;
+        }
+        else
+        {
+            _player.RB.velocity = Vector3.zero;
+        }
 
         float animSpeed = Mathf.Abs(_player.RB.velocity.x) / 3 + Mathf.Abs(_player.RB.velocity.z) / 3;
         animSpeed *= _desc.Speed / 2;
