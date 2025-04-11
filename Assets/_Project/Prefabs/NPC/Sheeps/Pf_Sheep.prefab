@@ -54,10 +54,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3540125
+  m_Radius: 0.259638
   m_Height: 0.85299325
   m_Direction: 1
-  m_Center: {x: -0.050680637, y: -0.073503375, z: -0.1}
+  m_Center: {x: -0.050680637, y: -0.073503375, z: -0.005625546}
 --- !u!114 &1830400600800574193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 659611ca3a369064ea4b4740b7996fbc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c73c8d3dee815214d995ee44d0dcc57d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
