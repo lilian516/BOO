@@ -2718,7 +2718,7 @@ PrefabInstance:
     - target: {fileID: 622191729440050436, guid: 05be6567d1432604aa5879351af0b3d6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -66
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 622191729440050436, guid: 05be6567d1432604aa5879351af0b3d6,
         type: 3}
@@ -2844,16 +2844,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pf_ButtonSkill
-      objectReference: {fileID: 0}
-    - target: {fileID: 6687556459791958607, guid: 05be6567d1432604aa5879351af0b3d6,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6687556459791958607, guid: 05be6567d1432604aa5879351af0b3d6,
-        type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
