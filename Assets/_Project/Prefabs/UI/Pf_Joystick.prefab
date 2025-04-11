@@ -141,6 +141,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f354563c6b9d46a43bb5fbb465b5cb5b, type: 3}
   _imageObject: {fileID: 1980466980847889856}
   _toggleUIVibrationAnim: 1
+  _magnitudes:
+  - 3
+  - 6
+  - 10
+  _joystickAnger: {fileID: 8485436934758746653}
 --- !u!1 &1522276091131915100
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +238,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cc5b26437395e3e45a9d440f71b48d41, type: 3}
   - {fileID: 21300000, guid: 51b50eec06c4d78408111eae57499650, type: 3}
   _imageObject: {fileID: 3697464913698224378}
-  _toggleUIVibrationAnim: 0
+  _toggleUIVibrationAnim: 1
+  _magnitudes:
+  - 0
+  - 0
+  - 0
+  _joystickAnger: {fileID: 8485436934758746653}
 --- !u!1 &3848619595702078801
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +336,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 81a2ac6c5ec90e443aee4bfe68d52e42, type: 3}
   - {fileID: 21300000, guid: 368464c3fd25e8f4db886380a654cd55, type: 3}
   _imageObject: {fileID: 7444222809281815734}
-  _toggleUIVibrationAnim: 0
+  _toggleUIVibrationAnim: 1
+  _magnitudes:
+  - 0
+  - 0
+  - 0
+  _joystickAnger: {fileID: 8485436934758746653}
 --- !u!1 &5841482682367387997
 GameObject:
   m_ObjectHideFlags: 0

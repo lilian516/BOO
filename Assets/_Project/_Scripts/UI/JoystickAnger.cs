@@ -11,6 +11,9 @@ public class JoystickAnger : MonoBehaviour
     private int _booAngerStatus;
     private int _booCalmStatus;
 
+    public delegate void ChangeAngerLevel();
+    public event ChangeAngerLevel OnChangeAngerLevel;
+
     void Start()
     {
         if (_spriteList.Count <= 0)
@@ -61,38 +64,31 @@ public class JoystickAnger : MonoBehaviour
 
     void UpdateSprite()
     {
-        // Si on est en colère, utiliser AngryLimits
+        int index;
         if (!_isBooAngry)
         {
-            int index = _spriteList.Count - AngrySystem.Instance.AngryLimits  - 1;
+            index = _spriteList.Count - AngrySystem.Instance.AngryLimits  - 1;
             Debug.Log($"[JoystickAnger] IsAngry: {_isBooAngry}, Angry Sprite Index: {index}");
 
-            if (index >= 0 && index < _spriteList.Count)
-            {
-                Debug.Log($"[JoystickAnger] Sprite applied: {_spriteList[index].name}");
-                _joystickImage.sprite = _spriteList[index];
-            }
-            else
-            {
-                Debug.LogError($"[JoystickAnger] Index {index} invalide ou sprite manquant.");
-            }
+            
         }
         else
         {
-            int index = AngrySystem.Instance.CalmLimits;
+            index = AngrySystem.Instance.CalmLimits;
             Debug.Log($"[JoystickAnger] IsAngry: {_isBooAngry}, Calm Sprite Index: {index}");
-
-            if (index >= 0 && index < _spriteList.Count)
-            {
-                Debug.Log($"[JoystickAnger] Sprite applied: {_spriteList[index].name}");
-                _joystickImage.sprite = _spriteList[index];
-            }
-            else
-            {
-                Debug.LogError($"[JoystickAnger] Index {index} invalide ou sprite manquant.");
-            }
         }
 
-        
+        if (index >= 0 && index < _spriteList.Count)
+        {
+            Debug.Log($"[JoystickAnger] Sprite applied: {_spriteList[index].name}");
+            _joystickImage.sprite = _spriteList[index];
+            OnChangeAngerLevel?.Invoke();
+        }
+        else
+        {
+            Debug.LogError($"[JoystickAnger] Index {index} invalide ou sprite manquant.");
+        }
+
+
     }
 }
