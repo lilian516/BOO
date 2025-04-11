@@ -5,14 +5,22 @@ using UnityEngine.EventSystems;
 
 public class PlayerSkillState : PlayerState
 {
+
+
+    public SkillStateMachine StateMachine { get; set; }
+    public SkillLaunchState LaunchState { get; set; }
+    
     public PlayerSkillState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
     {
+        StateMachine = new SkillStateMachine();
+        LaunchState = new SkillLaunchState(this, StateMachine);
     }
 
     public override void EnterState()
     {
         base.EnterState();
 
+        StateMachine.Initialize(LaunchState);
         _player.UseCurrentSkill();
     }
 
@@ -24,13 +32,14 @@ public class PlayerSkillState : PlayerState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        
+        StateMachine.CurrentState.FrameUpdate();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-       
+        StateMachine.CurrentState.PhysicsUpdate();
+
     }
 
 
@@ -38,15 +47,26 @@ public class PlayerSkillState : PlayerState
     public override void ChangeStateChecks()
     {
         base.ChangeStateChecks();
-        if (_player.IsMoving() == false)
-        {
-            _playerStateMachine.ChangeState(_player.IdleState);
 
-        }
-        else
+        StateMachine.CurrentState.ChangeStateChecks();
+
+        
+        AnimatorStateInfo stateInfo = _player.PlayerAnimator.GetCurrentAnimatorStateInfo(0);
+
+        
+        if (stateInfo.IsTag("Skill") && stateInfo.normalizedTime >= 1f)
         {
-            _playerStateMachine.ChangeState(_player.MovingState);
+            if (_player.IsMoving() == false)
+            {
+                _playerStateMachine.ChangeState(_player.IdleState);
+
+            }
+            else
+            {
+                _playerStateMachine.ChangeState(_player.MovingState);
+            }
         }
+        
     }
 
    
