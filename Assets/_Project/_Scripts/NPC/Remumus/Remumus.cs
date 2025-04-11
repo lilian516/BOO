@@ -35,7 +35,8 @@ public class Remumus : MonoBehaviour, ISpeakable
     // Update is called once per frame
     void Update()
     {
-        
+        if (AngrySystem.Instance != null) 
+            _animator.SetBool("IsBooAngry", AngrySystem.Instance.IsAngry);
     }
 
     private void OnEventEndDialogue()
@@ -49,5 +50,10 @@ public class Remumus : MonoBehaviour, ISpeakable
     private void StopTalkAnimation()
     {
         _animator.SetBool("IsTalking", false);
+    }
+
+    public Animator GetAnimator()
+    {
+        return _animator;
     }
 }
