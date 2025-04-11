@@ -148,7 +148,6 @@ public class Player : MonoBehaviour, IChangeable
         if (_inventory.CurrentSkill != null)
         {
             _inventory.CurrentSkill.UseSkill();
-            _inventory.CurrentSkill = null;
             PlayerAnimator.SetTrigger("UseSkill");
         }
     }

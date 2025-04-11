@@ -10,17 +10,17 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour, IChangeable
 {
+    public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
+    public List<PlayerSkill> PlayerSkills = new List<PlayerSkill>();
+
     private List<GameObject> _skillImages = new List<GameObject>();
-
     private List<Skill> _skills = new List<Skill>();
-    private Skill _angrySkills;
+    private GameObject _skillButtonUI;
 
+    private Skill _angrySkills;
     private Skill _currentSkill;
 
     private CanvasGroup _skillCanvaGroup;
-
-    public List<PlayerSkill> PlayerSkills = new List<PlayerSkill>();
-    public Skill CurrentSkill { get => _currentSkill; set => _currentSkill = value; }
 
     private bool _achievementObtained;
 
@@ -28,11 +28,13 @@ public class Inventory : MonoBehaviour, IChangeable
     {
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
+
     }
 
     public void Init()
     {
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
+        _skillButtonUI = GameManager.Instance.SkillStickParent.transform.GetChild(0).GetChild(0).gameObject;
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
@@ -49,11 +51,11 @@ public class Inventory : MonoBehaviour, IChangeable
             }
 
             int index = i;
-            EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
-            pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
-            pointerEnterEntry.callback.AddListener((eventData) => SelectSkill(index));
+            EventTrigger.Entry pointerExitEntry = new EventTrigger.Entry();
+            pointerExitEntry.eventID = EventTriggerType.PointerExit;
+            pointerExitEntry.callback.AddListener((eventData) => SelectSkill(index));
 
-            eventTrigger.triggers.Add(pointerEnterEntry);
+            eventTrigger.triggers.Add(pointerExitEntry);
         }
         for (int i = 0; i < _skills.Count; i++)
         {
@@ -72,9 +74,10 @@ public class Inventory : MonoBehaviour, IChangeable
        if (AngrySystem.Instance.IsAngry)
        {
             ChangeCurrentSkill(_angrySkills);
+            _skillButtonUI.GetComponent<Image>().sprite = _skills[index].GetSprite();
             return;
        }
-
+        _skillButtonUI.GetComponent<Image>().sprite = _skills[index].GetSprite();
        ChangeCurrentSkill(_skills[index]);
     }
 
