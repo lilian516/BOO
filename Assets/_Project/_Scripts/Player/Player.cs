@@ -114,15 +114,15 @@ public class Player : MonoBehaviour, IChangeable
     // Update is called once per frame
     void Update()
     {
-        StateMachine.CurrentPlayerState.ChangeStateChecks();
-        StateMachine.CurrentPlayerState.FrameUpdate();
+        StateMachine.CurrentState.ChangeStateChecks();
+        StateMachine.CurrentState.FrameUpdate();
 
         RotateDirectionalIndicator();
     }
 
     private void FixedUpdate()
     {
-        StateMachine.CurrentPlayerState.PhysicsUpdate();
+        StateMachine.CurrentState.PhysicsUpdate();
     }
 
     public bool IsMoving()
