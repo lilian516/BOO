@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7593991298227278188}
   - component: {fileID: 3702675332465788176}
+  - component: {fileID: 3158835575369720204}
+  - component: {fileID: 5023087404599629075}
   m_Layer: 0
   m_Name: DirectionalIndicator
   m_TagString: Untagged
@@ -84,6 +86,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3158835575369720204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838529362063192363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e565021ce01c15a44ae951a1e36340d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 122024494719183058}
+--- !u!136 &5023087404599629075
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838529362063192363}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Height: 7.35
+  m_Direction: 2
+  m_Center: {x: 0, y: 7.8, z: 1.33}
 --- !u!1 &6211438822611414723
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +508,7 @@ MonoBehaviour:
   _boo: {fileID: 9100000, guid: 506c3e72a61c24e4a83e08952dae8d7d, type: 2}
   DetectorRadius: 5
   DirectionalIndicator: {fileID: 9213989879703775133}
+  CanWalkForward: 0
   _playerIdleStateDescriptor:
     SpeedCurve:
       serializedVersion: 2
