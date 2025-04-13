@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32018992}
   m_Layer: 0
-  m_Name: 'E_Flam_Spawnpoints '
+  m_Name: E_Flam_Spawnpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3391,7 +3391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2080687102}
   m_Layer: 0
-  m_Name: 'E_Flam_Spawnpoints '
+  m_Name: E_Flam_Spawnpoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
