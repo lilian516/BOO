@@ -23,4 +23,9 @@ public class AnimEventPlayer : MonoBehaviour
         Debug.Log("oui on sort");
         IsExitUseSkill = true;
     }
+
+    public void SoundWalkBoo()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Grass Step One", "Grass Step Two", "Grass Step Three", "Grass Step Four", "Grass Step Five" }, transform.position);
+    }
 }
