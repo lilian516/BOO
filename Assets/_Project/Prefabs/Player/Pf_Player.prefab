@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 9078259945155868295}
   - component: {fileID: 1740286793460431746}
   - component: {fileID: 6616850642561177915}
+  - component: {fileID: 764901106248841688}
   m_Layer: 0
   m_Name: T_Boo
   m_TagString: Untagged
@@ -334,6 +335,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &764901106248841688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219736572106204003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a57ace4491763245b16c95c52b530a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsExitUseSkill: 0
 --- !u!1 &8281203800571935103
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +520,7 @@ MonoBehaviour:
   PlayerFaceAnimator: {fileID: 3724807917296775379}
   _darkBoo: {fileID: 9100000, guid: 36e10ae8084acc44392f0a5e827ff3b0, type: 2}
   _boo: {fileID: 9100000, guid: 506c3e72a61c24e4a83e08952dae8d7d, type: 2}
+  _eventPlayer: {fileID: 764901106248841688}
   DetectorRadius: 5
   DirectionalIndicator: {fileID: 9213989879703775133}
   CanWalkForward: 0

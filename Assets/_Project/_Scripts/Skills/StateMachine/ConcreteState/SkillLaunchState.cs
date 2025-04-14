@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SkillLaunchState : SkillState
 {
@@ -11,11 +12,15 @@ public class SkillLaunchState : SkillState
     public override void ChangeStateChecks()
     {
         base.ChangeStateChecks();
+
+        if (_playerSkill.EventPlayer.IsExitUseSkill == true)
+        {
+            _skillStateMachine.ChangeState(_playerSkill.LaunchState);
+        }
     }
 
     public override void EnterState()
     {
-        Debug.Log("on entre");
         base.EnterState();
     }
 
@@ -26,7 +31,7 @@ public class SkillLaunchState : SkillState
 
     public override void FrameUpdate()
     {
-        Debug.Log("on update");
+        
         base.FrameUpdate();
     }
 
