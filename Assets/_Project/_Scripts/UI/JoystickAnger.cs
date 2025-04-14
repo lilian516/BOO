@@ -44,20 +44,27 @@ public class JoystickAnger : MonoBehaviour
         if (newIsAngry != _isBooAngry)
         {
             _isBooAngry = newIsAngry;
-            UpdateSprite();  
+            SaveSystem.Instance.ResetAllData();
+            UpdateSprite();
+            return;
         }
 
         if (_booAngerStatus != AngrySystem.Instance.AngryLimits || _booCalmStatus != AngrySystem.Instance.CalmLimits)
         {
             _booAngerStatus = AngrySystem.Instance.AngryLimits;
             _booCalmStatus = AngrySystem.Instance.CalmLimits;
+            if (!_isBooAngry)
+            { 
+                SaveSystem.Instance.SaveElement<bool>("isAngry", _isBooAngry);
+                SaveSystem.Instance.SaveElement<int>("AngerStatus", _booAngerStatus);
+                SaveSystem.Instance.SaveElement<int>("CalmStatus", _booCalmStatus);
+            }
             UpdateSprite();
         }
     }
 
     void UpdateSprite()
     {
-        // Si on est en col�re, utiliser AngryLimits
         if (!_isBooAngry)
         {
             int index = _spriteList.Count - AngrySystem.Instance.AngryLimits  - 1;
@@ -65,9 +72,6 @@ public class JoystickAnger : MonoBehaviour
             if (index >= 0 && index < _spriteList.Count)
             {
                 _joystickImage.sprite = _spriteList[index];
-            }
-            else
-            {
             }
         }
         else
@@ -78,11 +82,6 @@ public class JoystickAnger : MonoBehaviour
             {
                 _joystickImage.sprite = _spriteList[index];
             }
-            else
-            {
-            }
         }
-
-        
     }
 }
