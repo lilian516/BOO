@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IChangeable
 
     [SerializeField] RuntimeAnimatorController _darkBoo;
     [SerializeField] RuntimeAnimatorController _boo;
+    [SerializeField] AnimEventPlayer _eventPlayer;
 
     public float DetectorRadius;
     public GameObject DirectionalIndicator;
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour, IChangeable
     public Vector3 PositionToGo { get; set; }
 
     public IClickable CurrentClickable { get; set; }
+    public AnimEventPlayer EventPlayer { get => _eventPlayer; set => _eventPlayer = value; }
 
     #region Velocity
 
@@ -114,15 +116,15 @@ public class Player : MonoBehaviour, IChangeable
     // Update is called once per frame
     void Update()
     {
-        StateMachine.CurrentPlayerState.ChangeStateChecks();
-        StateMachine.CurrentPlayerState.FrameUpdate();
+        StateMachine.CurrentState.ChangeStateChecks();
+        StateMachine.CurrentState.FrameUpdate();
 
         RotateDirectionalIndicator();
     }
 
     private void FixedUpdate()
     {
-        StateMachine.CurrentPlayerState.PhysicsUpdate();
+        StateMachine.CurrentState.PhysicsUpdate();
     }
 
     public bool IsMoving()
@@ -145,14 +147,16 @@ public class Player : MonoBehaviour, IChangeable
     }
 
 
-    public void UseCurrentSkill()
+    public bool UseCurrentSkill()
     {
 
         if (_inventory.CurrentSkill != null)
         {
             _inventory.CurrentSkill.UseSkill();
             PlayerAnimator.SetTrigger("UseSkill");
+            return true;
         }
+        return false;
     }
 
     public void AddSkill(PlayerSkill playerSkill)
@@ -210,7 +214,7 @@ public class Player : MonoBehaviour, IChangeable
 
     IEnumerator WaitBeforeAngry()
     {
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(2.3f);
         PlayerAnimator.runtimeAnimatorController = _darkBoo;
         //StateMachine.ChangeState(IdleState);
     }
