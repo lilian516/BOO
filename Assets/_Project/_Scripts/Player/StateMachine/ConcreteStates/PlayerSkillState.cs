@@ -22,29 +22,45 @@ public class PlayerSkillState : PlayerState
     {
         base.EnterState();
 
-        StateMachine.Initialize(LaunchState);
+        //StateMachine.Initialize(LaunchState);
 
-        if (!_player.UseCurrentSkill()) {
+        if (!_player.StartUseCurrentSkill()) {
             _playerStateMachine.ChangeState(_player.IdleState);
         }
-            
+        _player.PlayerFaceAnimator.enabled = false;
+        _player.PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        _player.EventPlayer.IsExitUseSkill = false;
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            
+            _player.PlayerFaceAnimator.enabled = true;
+        }
+       
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        StateMachine.CurrentState.FrameUpdate();
+
+        if (_player.EventPlayer.IsUseSkill)
+        {
+            Debug.Log("on kill");
+            _player.UseCurrentSkill();
+            _player.EventPlayer.IsUseSkill = false;
+        }
+        //StateMachine.CurrentState.FrameUpdate();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        StateMachine.CurrentState.PhysicsUpdate();
+        //StateMachine.CurrentState.PhysicsUpdate();
 
     }
 
@@ -53,7 +69,7 @@ public class PlayerSkillState : PlayerState
     public override void ChangeStateChecks()
     {
         base.ChangeStateChecks();
-        StateMachine.CurrentState.ChangeStateChecks();
+        //StateMachine.CurrentState.ChangeStateChecks();
 
 
         if (_player.EventPlayer.IsExitUseSkill == true)
@@ -67,6 +83,7 @@ public class PlayerSkillState : PlayerState
             {
                 _playerStateMachine.ChangeState(_player.MovingState);
             }
+
         }
     }
 

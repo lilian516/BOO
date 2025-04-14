@@ -55,6 +55,8 @@ public class Player : MonoBehaviour, IChangeable
 
     private SmashSkill _smashSkill;
 
+    private AnimatorOverrideController _overrideController;
+
     public Vector3 LookDir;
 
     public Vector3 PositionToGo { get; set; }
@@ -152,6 +154,24 @@ public class Player : MonoBehaviour, IChangeable
         if (_inventory.CurrentSkill != null)
         {
             _inventory.CurrentSkill.UseSkill();
+
+           
+            return true;
+        }
+        return false;
+    }
+
+    public bool StartUseCurrentSkill()
+    {
+        if (_inventory.CurrentSkill != null)
+        {
+            //_inventory.CurrentSkill.UseSkill();
+
+            _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
+
+
+            _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
+            PlayerAnimator.runtimeAnimatorController = _overrideController;
             PlayerAnimator.SetTrigger("UseSkill");
             return true;
         }

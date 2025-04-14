@@ -13,6 +13,7 @@ public class BubbleSkill : Skill
         public GameObject BubblePrefab;
         public Sprite Sprite;
         public string Name;
+        public AnimationClip AnimationBubble;
     }
 
     Descriptor _desc;
@@ -20,6 +21,7 @@ public class BubbleSkill : Skill
     public BubbleSkill(Player player, Descriptor desc) : base(player)
     {
         _desc = desc;
+        AnimationSkill = _desc.AnimationBubble;
     }
 
     // Start is called before the first frame update

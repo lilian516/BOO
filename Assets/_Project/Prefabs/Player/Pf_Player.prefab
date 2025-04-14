@@ -282,7 +282,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d175838b72fda743a1000ab2b413623, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -566,6 +566,7 @@ MonoBehaviour:
       type: 3}
     Sprite: {fileID: 21300000, guid: ee73d6718988665459e3bdac4349588b, type: 3}
     Name: Bubble
+    AnimationBubble: {fileID: 7400000, guid: 58b73ac6805e5ae42bb5a522c6436fd2, type: 2}
   _stickSkillDescriptor:
     Radius: 2
     Mask:
@@ -578,6 +579,7 @@ MonoBehaviour:
       type: 3}
     Sprite: {fileID: 21300000, guid: 26e721666f5478049a1b13136d31b04b, type: 3}
     Name: Wind
+    AnimationWind: {fileID: 7400000, guid: 1e7ed769c9859144ead3e1f7ec09528c, type: 2}
   _pantsSkillDescriptor:
     Radius: 1
     Mask:

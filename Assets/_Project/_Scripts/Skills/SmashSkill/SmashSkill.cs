@@ -54,7 +54,7 @@ public class SmashSkill : Skill
             interactable.Interact(PlayerSkill.SmashSkill);
 
         }
-        //Debug.Log("Objet TAPER : " + hitColliders[0].gameObject.name);
+        Debug.Log("Objet TAPER : " + hitColliders[0].gameObject.name);
     }
 
     public override Sprite GetSprite()

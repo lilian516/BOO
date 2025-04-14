@@ -11,6 +11,7 @@ public class WindmillSkill : Skill
         public GameObject WindPrefab;
         public Sprite Sprite;
         public string Name;
+        public AnimationClip AnimationWind;
     }
 
     Descriptor _desc;
@@ -18,6 +19,7 @@ public class WindmillSkill : Skill
     public WindmillSkill(Player player, Descriptor desc) : base(player)
     {
         _desc = desc;
+        AnimationSkill = _desc.AnimationWind;
     }
 
     public override void UseSkill()

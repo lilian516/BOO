@@ -6,6 +6,7 @@ public class AnimEventPlayer : MonoBehaviour
 {
 
     public bool IsExitUseSkill;
+    public bool IsUseSkill;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,12 @@ public class AnimEventPlayer : MonoBehaviour
     {
         Debug.Log("oui on sort");
         IsExitUseSkill = true;
+    }
+
+    public void UseSkillState()
+    {
+        Debug.Log("oui utilise");
+        IsUseSkill = true;
     }
 
     public void SoundWalkBoo()

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Skill
 {
     protected Player _player;
+
+    public AnimationClip AnimationSkill;
     public Skill(Player player)
     {
         _player = player;
