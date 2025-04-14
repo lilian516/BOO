@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Button _pauseButton;
     [SerializeField] private Button _resumeButton;
+    [SerializeField] Animator _animatorTransition;
     void Start()
     {
         _pauseButton.onClick.AddListener(Pause);
@@ -15,8 +16,9 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause()
     {
-        Helpers.ShowCanva(GetComponent<CanvasGroup>());
-        Time.timeScale = 0;
+        //Helpers.ShowCanva(GetComponent<CanvasGroup>());
+        _animatorTransition.SetTrigger("Click");
+        //Time.timeScale = 0;
         InputManager.Instance.DisableSticksAndButtons();
     }
 

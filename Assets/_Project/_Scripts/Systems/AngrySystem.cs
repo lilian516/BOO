@@ -150,41 +150,41 @@ public class AngrySystem : Singleton<AngrySystem>
         EnvironmentCapsule = FindGameObjectInScene("CJOLI", "---------- ENVIRONMENT ----------");
         if (EnvironmentCapsule != null)
         {
-            Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
+            //Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
         }
         else
         {
-            Debug.LogWarning("Couldn't find '---------- ENVIRONMENT ----------' in scene CJOLI.");
+            //Debug.LogWarning("Couldn't find '---------- ENVIRONMENT ----------' in scene CJOLI.");
         }
 
         Islands[0] = FindGameObjectInScene("CJOLI", "SM_Isle1");
         if (EnvironmentCapsule != null)
         {
-            Debug.Log("Found Island object: " + Islands[0].name);
+            //Debug.Log("Found Island object: " + Islands[0].name);
         }
         else
         {
-            Debug.LogWarning("Couldn't find 'SM_Isle1' in scene CJOLI.");
+            //Debug.LogWarning("Couldn't find 'SM_Isle1' in scene CJOLI.");
         }
 
         Islands[1] = FindGameObjectInScene("CJOLI", "SM_Isle2");
         if (EnvironmentCapsule != null)
         {
-            Debug.Log("Found Island object: " + Islands[1].name);
+            //Debug.Log("Found Island object: " + Islands[1].name);
         }
         else
         {
-            Debug.LogWarning("Couldn't find 'SM_Isle2' in scene CJOLI.");
+            //Debug.LogWarning("Couldn't find 'SM_Isle2' in scene CJOLI.");
         }
 
         Islands[2] = FindGameObjectInScene("CJOLI", "SM_Isle3");
         if (EnvironmentCapsule != null)
         {
-            Debug.Log("Found Island object: " + Islands[2].name);
+            //Debug.Log("Found Island object: " + Islands[2].name);
         }
         else
         {
-            Debug.LogWarning("Couldn't find 'SM_Isle3' in scene CJOLI.");
+            //Debug.LogWarning("Couldn't find 'SM_Isle3' in scene CJOLI.");
         }
     }
 
