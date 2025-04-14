@@ -55,9 +55,9 @@ public class FlowerBee : MonoBehaviour
         {
 
             if (_pathReferences[(DestinationIndex + 1) % _pathReferences.Length].position.x < transform.position.x)
-                transform.eulerAngles = new Vector3(30, 0, 0);
+                GetComponent<SpriteRenderer>().flipX = false;
             else
-                transform.eulerAngles = new Vector3(-30, 180, 0);
+                GetComponent<SpriteRenderer>().flipX = true;
 
             _currentIndex++;
 

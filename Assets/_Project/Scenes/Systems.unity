@@ -702,7 +702,7 @@ MonoBehaviour:
   IsAngry: 0
   FlamePrefab: {fileID: 283284859716596907, guid: 31359d9f5d2d7bb44bed70727a1705bb,
     type: 3}
-  Island: {fileID: 0}
+  Islands: []
   EnvironmentCapsule: {fileID: 0}
 --- !u!1 &2115839500
 GameObject:

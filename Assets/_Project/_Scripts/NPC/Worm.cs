@@ -62,9 +62,9 @@ public class Worm : MonoBehaviour, IInteractable
         {
 
             if (_pathReferences[(DestinationIndex + 1) % _pathReferences.Length].position.x < transform.position.x)
-                transform.eulerAngles = new Vector3(30, 0, 0);
+                GetComponentInChildren<SpriteRenderer>().flipX = false;
             else
-                transform.eulerAngles = new Vector3(-30, 180, 0);
+                GetComponentInChildren<SpriteRenderer>().flipX = true;
 
             _currentIndex++;
 
