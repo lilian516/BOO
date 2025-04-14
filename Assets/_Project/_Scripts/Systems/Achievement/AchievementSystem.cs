@@ -11,6 +11,8 @@ public class AchievementSystem : Singleton<AchievementSystem>
     
     private List<AchievementCondition> _achievementConditionList;
 
+    public List<Sprite> UIAchievementToUpdate;
+
     private void Start()
     {
         _achievementConditionList = new List<AchievementCondition>(_achievementList.Count);
@@ -23,14 +25,9 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
     public void Init()
     {
-        GameManager.Instance.UIAchievementButton.GetComponent<Button>().onClick.AddListener(ShowMenu);
-        GameManager.Instance.UIAchievementMenu.GetComponentInChildren<Button>().onClick.AddListener(HideMenu);
-
         for (int i = 0; i < _achievementList.Count; i++)
         {
-            GameObject prefab = Instantiate(_achievementUIPrefab, GameManager.Instance.UIAchievementList.transform);
-            prefab.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "?????";
-            prefab.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _achievementList[i].Description;
+            Instantiate(_achievementUIPrefab, GameManager.Instance.UIAchievementList.transform);
         }
     }
 
@@ -46,9 +43,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
         GameObject _list = GameManager.Instance.UIAchievementList;
 
-        _list.transform.GetChild(index).transform.GetChild(0).GetComponent<Image>().sprite = _achievementList[index].Sprite;
-        _list.transform.GetChild(index).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _achievementList[index].Name;
-        _list.transform.GetChild(index).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _achievementList[index].Description;
+        UIAchievementToUpdate.Add(_achievementList[index].Sprite);
     }
     
     private IEnumerator ShowAchievement(int index, GameObject panel)
@@ -70,16 +65,6 @@ public class AchievementSystem : Singleton<AchievementSystem>
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-    }
-
-    private void ShowMenu()
-    {
-        Helpers.ShowCanva(GameManager.Instance.UIAchievementMenu.GetComponent<CanvasGroup>());
-    }
-
-    private void HideMenu()
-    {
-        Helpers.HideCanva(GameManager.Instance.UIAchievementMenu.GetComponent<CanvasGroup>());
     }
 
 }

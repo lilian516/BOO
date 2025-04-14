@@ -23,8 +23,6 @@ public class GameManager : Singleton<GameManager>
     private const string INVENTORY_FULL_TAG = "InventoryFull";
 
     private const string ACHIEVEMENT_UI_TAG = "AchievementUI";
-    private const string ACHIEVEMENT_BUTTON_TAG = "AchievementButton";
-    private const string ACHIEVEMENT_MENU_TAG = "AchievementMenu";
     private const string ACHIEVEMENT_LIST_TAG = "AchievementList";
 
 
@@ -67,6 +65,9 @@ public class GameManager : Singleton<GameManager>
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
         SoundSystem.ChangeMusicByKey("Main Music");
+
+        UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
+        AchievementSystem.Instance.Init();
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
 
         //InventorySkill.Init();
@@ -83,10 +84,6 @@ public class GameManager : Singleton<GameManager>
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
 
         UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);
-        UIAchievementButton = GameObject.FindGameObjectWithTag(ACHIEVEMENT_BUTTON_TAG);
-        UIAchievementMenu = GameObject.FindGameObjectWithTag(ACHIEVEMENT_MENU_TAG);
-        UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
-        AchievementSystem.Instance.Init();
 
         DialogueSystem.Instance.Init();
         InventorySkill.Init();

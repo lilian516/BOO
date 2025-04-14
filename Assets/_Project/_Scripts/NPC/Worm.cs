@@ -71,9 +71,6 @@ public class Worm : MonoBehaviour, IInteractable
             if (_currentIndex == _pathReferences.Length)
                 _currentIndex = 0;
 
-
-            Debug.Log(_pathReferences[(_currentIndex + 1) % _pathReferences.Length].position);
-            Debug.Log("Tposition: " + transform.position);
             _timeStep = 0.0f;
 
         }
