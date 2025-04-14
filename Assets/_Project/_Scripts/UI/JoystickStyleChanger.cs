@@ -102,15 +102,23 @@ public class JoystickStyleChanger : MonoBehaviour
             yield return null;
         }
         _imageObject.anchoredPosition = originalPos;
-        _magnitudeIndex++;
+        if (justGotCalmed)
+        {
+            _magnitudeIndex = 0;
+        }
+        else
+        {
+            _magnitudeIndex += 1;
+        }
         _isShaking = false;
         Debug.Log("Coroutine finie");
     }
 
     void UpdateCalmMode()
     {
+        StopAllCoroutines();
         _imageComponent.sprite = _sprites[0];
-        _magnitudeIndex = 0;
+        _magnitudeIndex = -1;
         _isShaking = false;
     }
 }
