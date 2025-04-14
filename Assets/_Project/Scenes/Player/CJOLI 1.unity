@@ -664,7 +664,7 @@ Transform:
   m_GameObject: {fileID: 740381556}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 419, y: 67, z: 215}
+  m_LocalPosition: {x: 273.9, y: 67, z: 215.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1097,7 +1097,7 @@ Transform:
   m_GameObject: {fileID: 916692477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 441, y: 67, z: 357}
+  m_LocalPosition: {x: 169, y: 67, z: 176.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1363,6 +1363,37 @@ Transform:
   - {fileID: 1727511153}
   - {fileID: 1839640719}
   m_Father: {fileID: 605468556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1027935853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027935854}
+  m_Layer: 0
+  m_Name: E_Flam_Spawnpoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1027935854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027935853}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -417.3, y: 75.2, z: -251.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1604696708}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060585287
 GameObject:
@@ -2568,7 +2599,7 @@ Transform:
   m_GameObject: {fileID: 1587719662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 313, y: 73, z: -1}
+  m_LocalPosition: {x: 225.7, y: 73, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3079,6 +3110,14 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6345735361257159637, guid: 25ab0b296484a5a48af2287ac11e846b,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1027935854}
+    - targetCorrespondingSourceObject: {fileID: 6345735361257159637, guid: 25ab0b296484a5a48af2287ac11e846b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2095660167}
+    - targetCorrespondingSourceObject: {fileID: 6345735361257159637, guid: 25ab0b296484a5a48af2287ac11e846b,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2080687102}
     - targetCorrespondingSourceObject: {fileID: 7867840232854129249, guid: 25ab0b296484a5a48af2287ac11e846b,
         type: 3}
@@ -3407,6 +3446,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 9.3132246e-10, z: -0, w: 1}
   m_LocalPosition: {x: -178.9, y: 75.2, z: -612.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1604696708}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2095660166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095660167}
+  m_Layer: 0
+  m_Name: E_Flam_Spawnpoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095660167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095660166}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -218, y: 75.2, z: 495}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

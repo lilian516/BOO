@@ -125,31 +125,37 @@ public class AngrySystem : Singleton<AngrySystem>
 
             GameObject flame = Instantiate(FlamePrefab, baseObj.transform.position, FlamePrefab.transform.rotation);
 
-            float newScale = Random.Range(2.5f, 10f);
+            float newScale = Random.Range(0.25f, 1.0f);
 
             flame.transform.SetParent(baseObj.transform);
 
-            // Appliquer d'abord le scale
             flame.transform.localScale *= newScale;
 
-            // Puis calculer la hauteur actuelle (après scale)
-            float height = flame.GetComponent<SpriteRenderer>().bounds.size.y;
+            // Déplacer la flamme vers le haut dans le monde
+            flame.transform.position += flame.transform.up * (4 * newScale);
 
-            // Et enfin déplacer 
-            float angleX = flame.transform.eulerAngles.x;
-            float angleRad = angleX * Mathf.Deg2Rad;
-
-            float verticalOffset = Mathf.Cos(angleRad) * height;
-
-            flame.transform.position += Vector3.up * verticalOffset * newScale;
-
-
-
-            /* A quoi ça sert ?
-                        SceneManager.MoveGameObjectToScene(flame, EnvironmentCapsule.scene);
-                        flame.transform.SetParent(EnvironmentCapsule.transform, true);
-            */
+            _flamsSpawnPoints.Remove(baseObj);
         }
+
+        /*for (int i = 0; i < _flamsSpawnPoints.Count; i++)
+        {
+            GameObject baseObj = _flamsSpawnPoints[i];
+
+            GameObject flame = Instantiate(FlamePrefab, baseObj.transform.position, FlamePrefab.transform.rotation);
+
+            float newScale = Random.Range(0.25f, 1.0f);
+
+            flame.transform.SetParent(baseObj.transform);
+
+            flame.transform.localScale *= newScale;
+
+            // Déplacer la flamme vers le haut dans le monde
+            flame.transform.position += flame.transform.up * (4 * newScale);
+        }
+*/
+        _flamsSpawnPoints.Clear();
+
+        _flamsSpawnPoints = FindAllObjectWithNameInScene("CJOLI 1", "E_Flam_Spawnpoints");
     }
     /* private void SpawnMultipleOnRandomBases()
      {
