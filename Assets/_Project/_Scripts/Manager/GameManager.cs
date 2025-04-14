@@ -67,7 +67,6 @@ public class GameManager : Singleton<GameManager>
         SoundSystem.ChangeMusicByKey("Main Music");
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
-        AchievementSystem.Instance.Init();
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
 
         //InventorySkill.Init();
@@ -102,5 +101,12 @@ public class GameManager : Singleton<GameManager>
     {
         GameObject objInstance = Instantiate(obj);
         return objInstance;
+    }
+
+    public IEnumerator BackToMainMenu()
+    {
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" });
+        UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
+        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "UIInGame" });
     }
 }

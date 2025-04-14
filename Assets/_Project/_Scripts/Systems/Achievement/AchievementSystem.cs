@@ -23,14 +23,6 @@ public class AchievementSystem : Singleton<AchievementSystem>
         }
     }
 
-    public void Init()
-    {
-        for (int i = 0; i < _achievementList.Count; i++)
-        {
-            Instantiate(_achievementUIPrefab, GameManager.Instance.UIAchievementList.transform);
-        }
-    }
-
     public void SucceedAchievement(AchievementCondition condition)
     {
         int index = _achievementConditionList.IndexOf(condition);
@@ -61,6 +53,9 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
         while (elapsedTime < 1)
         {
+            if (panel == null)
+                yield return null;
+
             panel.transform.Translate(dir * (100 / elapsedTime) * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
