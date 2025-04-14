@@ -149,7 +149,6 @@ public class Player : MonoBehaviour, IChangeable
 
     public bool UseCurrentSkill()
     {
-
         if (_inventory.CurrentSkill != null)
         {
             _inventory.CurrentSkill.UseSkill();

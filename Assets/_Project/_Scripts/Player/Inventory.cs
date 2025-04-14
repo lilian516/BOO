@@ -53,11 +53,14 @@ public class Inventory : MonoBehaviour, IChangeable
             }
 
             int index = i;
-            EventTrigger.Entry pointerExitEntry = new EventTrigger.Entry();
-            pointerExitEntry.eventID = EventTriggerType.PointerExit;
-            pointerExitEntry.callback.AddListener((eventData) => SelectSkill(index));
 
-            eventTrigger.triggers.Add(pointerExitEntry);
+            EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
+            pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
+            pointerEnterEntry.callback.AddListener((eventData) => SelectSkill(index));
+
+            InputManager.Instance.OnSkillMenu += ChangeSkillImage;
+
+            eventTrigger.triggers.Add(pointerEnterEntry);
         }
         for (int i = 0; i < _skills.Count; i++)
         {
@@ -76,11 +79,20 @@ public class Inventory : MonoBehaviour, IChangeable
        if (AngrySystem.Instance.IsAngry)
        {
             ChangeCurrentSkill(_angrySkills);
-            _skillButtonUI.GetComponent<Image>().sprite = _angrySkills.GetSprite();
             return;
        }
-        _skillButtonUI.GetComponent<Image>().sprite = _skills[index].GetSprite();
+        
        ChangeCurrentSkill(_skills[index]);
+    }
+
+    private void ChangeSkillImage()
+    {
+        if (AngrySystem.Instance.IsAngry)
+        {
+            _skillButtonUI.GetComponent<Image>().sprite = _angrySkills.GetSprite();
+            return;
+        }
+        _skillButtonUI.GetComponent<Image>().sprite = _currentSkill.GetSprite();
     }
 
     private void ChangeCurrentSkill(Skill skill)
