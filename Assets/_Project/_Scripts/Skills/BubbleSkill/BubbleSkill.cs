@@ -6,22 +6,10 @@ using UnityEngine.Events;
 
 public class BubbleSkill : Skill
 {
-
-    [System.Serializable]
-    public class Descriptor
-    {
-        public GameObject BubblePrefab;
-        public Sprite Sprite;
-        public string Name;
-        public AnimationClip AnimationBubble;
-    }
-
-    Descriptor _desc;
-
-    public BubbleSkill(Player player, Descriptor desc) : base(player)
+    public BubbleSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
-        AnimationSkill = _desc.AnimationBubble;
+        AnimationSkill = _desc.AnimationSkill;
     }
 
     // Start is called before the first frame update
@@ -43,7 +31,7 @@ public class BubbleSkill : Skill
 
         //Instantiate(BubblePrefab);
 
-        GameObject BubbleInstance = GameManager.Instance.SpawnObject(_desc.BubblePrefab);
+        GameObject BubbleInstance = GameManager.Instance.SpawnObject(_desc.Prefab);
 
         //GameObject BubblePlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
 

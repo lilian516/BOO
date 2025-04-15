@@ -16,8 +16,9 @@ MonoBehaviour:
   OpeningEventType: 0
   ClosureTriggerEvent: 0
   ClosureEventType: 0
-  RightCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
-  LeftCharacter: {fileID: 21300000, guid: f34cc76ae20e29f4485d7b5d482c7ee0, type: 3}
+  RightCharacter: {fileID: 21300000, guid: f34cc76ae20e29f4485d7b5d482c7ee0, type: 3}
+  LeftCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
+  DialogueBackground: {fileID: 21300000, guid: 4786c6d79fc15a7438e40907c0b91b2d, type: 3}
   Sections:
   - Sentences:
     - Pffff Pfffffff
@@ -25,6 +26,17 @@ MonoBehaviour:
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 1
-  SkillToGive: 2
   TakeEventType: 3
   NextDialogue: {fileID: 11400000, guid: 11a07f21e08aaca41851828b7700a4ab, type: 2}
+  SkillToGive: 2
+  SkillDescriptor:
+    Prefab: {fileID: 1035563824390858650, guid: 9a434ea5e92e86a49a78998eef610941,
+      type: 3}
+    Sprite: {fileID: 21300000, guid: 26e721666f5478049a1b13136d31b04b, type: 3}
+    Name: "Moulin \xE0 vent"
+    Desc: "Pour se rafraichir ou d\xE9placer des trucs"
+    AnimationSkill: {fileID: 7400000, guid: 1e7ed769c9859144ead3e1f7ec09528c, type: 2}
+    Radius: 0
+    Mask:
+      serializedVersion: 2
+      m_Bits: 0

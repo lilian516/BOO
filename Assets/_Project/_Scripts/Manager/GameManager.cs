@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
     private const string SOUND_MANAGER_TAG = "SoundManager";
     private const string MAIN_CAMERA_TAG = "MainCamera";
     private const string DIALOGUE_UI_TAG = "DialogueUI";
+    private const string DIALOGUE_SKILL_BTN_TAG = "DialogueSkillButton";
+    private const string DIALOGUE_QUIT_BTN_TAG = "DialogueQuitButton";
     private const string GAME_CONTROLLER_TAG = "UIController";
 
     private const string SKILL_STICK_PARENT_TAG = "SkillStick";
@@ -30,6 +32,8 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject Player;
     [HideInInspector] public SoundSystem SoundSystem;
     [HideInInspector] public GameObject DialogueUI;
+    [HideInInspector] public GameObject DialogueSkillBtn;
+    [HideInInspector] public GameObject DialogueQuitBtn;
     [HideInInspector] public GameObject InventoryUI;
     [HideInInspector] public GameObject SkillStickParent;
 
@@ -78,6 +82,8 @@ public class GameManager : Singleton<GameManager>
 
         SkillStickParent = GameObject.FindGameObjectWithTag(SKILL_STICK_PARENT_TAG);
         DialogueUI = GameObject.FindGameObjectWithTag(DIALOGUE_UI_TAG);
+        DialogueSkillBtn = GameObject.FindGameObjectWithTag(DIALOGUE_SKILL_BTN_TAG);
+        DialogueQuitBtn = GameObject.FindGameObjectWithTag(DIALOGUE_QUIT_BTN_TAG);
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         UIBackground = GameObject.FindGameObjectWithTag(BACKGROUND_UI_TAG);
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);

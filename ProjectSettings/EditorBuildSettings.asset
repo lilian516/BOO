@@ -26,9 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/SampleScene.unity
     guid: 332211e393b3d124e9e1cd432df6b974
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Project/Scenes/Player/MainScene.unity
-    guid: 492d0256b44c3934d90e343f7fbec20c
+    guid: 507995d19ef214c49a3e78b81af63a68
   - enabled: 1
     path: Assets/_Project/Scenes/MainMenu.unity
     guid: 2c166d488d028314c9884a02ac07e11e

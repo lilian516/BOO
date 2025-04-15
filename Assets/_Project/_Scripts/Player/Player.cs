@@ -47,11 +47,7 @@ public class Player : MonoBehaviour, IChangeable
     [Header("Skills Descriptors")]
     [Space(10f)]
 
-    [SerializeField] BubbleSkill.Descriptor _bubbleSkillDescriptor;
-    [SerializeField] StickSkill.Descriptor _stickSkillDescriptor;
-    [SerializeField] WindmillSkill.Descriptor _windSkillDescriptor;
-    [SerializeField] PantsSkill.Descriptor _pantsSkillDescriptor;
-    [SerializeField] SmashSkill.Descriptor _smashSkillDescriptor;
+    [SerializeField] SkillDescriptor _smashSkillDescriptor;
 
     private SmashSkill _smashSkill;
 
@@ -177,25 +173,25 @@ public class Player : MonoBehaviour, IChangeable
         return false;
     }
 
-    public void AddSkill(PlayerSkill playerSkill)
+    public void AddSkill(PlayerSkill playerSkill, SkillDescriptor descriptor)
     {
 
         switch(playerSkill)
         {
             case PlayerSkill.BubbleSkill:
-                BubbleSkill bubbleSkill = new BubbleSkill(this, _bubbleSkillDescriptor);
+                BubbleSkill bubbleSkill = new BubbleSkill(this, descriptor);
                 _inventory.AddSkill(bubbleSkill, playerSkill);
                 break;
             case PlayerSkill.PantsSkill:
-                PantsSkill pantsSkill = new PantsSkill(this, _pantsSkillDescriptor);
+                PantsSkill pantsSkill = new PantsSkill(this, descriptor);
                 _inventory.AddSkill(pantsSkill, playerSkill);
                 break;
             case PlayerSkill.StickSkill:
-                StickSkill stickSkill = new StickSkill(this, _stickSkillDescriptor);
+                StickSkill stickSkill = new StickSkill(this, descriptor);
                 _inventory.AddSkill(stickSkill, playerSkill);
                 break;
             case PlayerSkill.WindSkill:
-                WindmillSkill windSkill = new WindmillSkill(this, _windSkillDescriptor);
+                WindmillSkill windSkill = new WindmillSkill(this, descriptor);
                 _inventory.AddSkill(windSkill, playerSkill);
                 break;
         }
@@ -213,7 +209,7 @@ public class Player : MonoBehaviour, IChangeable
 
     public void Change()
     {
-        AddSkill(PlayerSkill.SmashSkill);
+        AddSkill(PlayerSkill.SmashSkill, _smashSkillDescriptor);
 
         
         //PlayerAnimator.runtimeAnimatorController = _darkBoo;

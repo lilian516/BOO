@@ -6,6 +6,8 @@ public class Skill
 {
     protected Player _player;
 
+    protected SkillDescriptor _desc;
+
     public AnimationClip AnimationSkill;
     public Skill(Player player)
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public enum PlayerSkill
@@ -10,6 +11,18 @@ public enum PlayerSkill
     StickSkill,
     PantsSkill,
     SmashSkill
+}
+
+[System.Serializable]
+public class SkillDescriptor
+{
+    public GameObject Prefab;
+    public Sprite Sprite;
+    public string Name;
+    public string Desc;
+    public AnimationClip AnimationSkill;
+    public float Radius;
+    public LayerMask Mask;
 }
 public static class Helpers
 {

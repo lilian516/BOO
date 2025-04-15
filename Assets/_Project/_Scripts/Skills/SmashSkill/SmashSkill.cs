@@ -6,17 +6,7 @@ using UnityEngine.Events;
 public class SmashSkill : Skill
 {
 
-    [System.Serializable]
-    public class Descriptor
-    {
-        public float Radius;
-        public Sprite Sprite;
-        public LayerMask Mask;
-    }
-
-    Descriptor _desc;
-
-    public SmashSkill(Player player, Descriptor desc) : base(player)
+    public SmashSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
     }
