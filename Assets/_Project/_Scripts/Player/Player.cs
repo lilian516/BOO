@@ -263,8 +263,11 @@ public class Player : MonoBehaviour, IChangeable
 
     private void RotateDirectionalIndicator()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(LookDir);
-
-        DirectionalIndicator.transform.rotation = targetRotation;
+        if(LookDir != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(LookDir);
+            DirectionalIndicator.transform.rotation = targetRotation;
+        }
+        
     }
 }

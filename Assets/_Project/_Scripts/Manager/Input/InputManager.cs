@@ -14,7 +14,7 @@ public class InputManager : Singleton<InputManager>
 
     public bool IsController;
 
-    private bool _characterEnabled;
+    //private bool _characterEnabled;
 
     public PlayerControls Controls { get => _controls; set => _controls = value; }
 
@@ -36,7 +36,7 @@ public class InputManager : Singleton<InputManager>
         _controls = new PlayerControls();
 
         
-        _characterEnabled = true;
+        //_characterEnabled = true;
         OnEnable();
 
     }

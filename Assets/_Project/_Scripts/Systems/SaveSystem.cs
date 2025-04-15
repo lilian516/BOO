@@ -25,8 +25,8 @@ public class SaveSystem : Singleton<SaveSystem>
 
     private void Update()
     {
-        SaveAllData();
-        LoadAllData();
+        //SaveAllData();
+        //LoadAllData();
     }
 
     public void SaveElement<T>(string key, T value)

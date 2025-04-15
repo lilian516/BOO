@@ -28,7 +28,7 @@ public class AchievementMenu : MonoBehaviour
         animator.SetTrigger("ClickTrophy");
 
         List<Sprite> achievementSprite = AchievementSystem.Instance.UIAchievementToUpdate;
-        Debug.Log(GameManager.Instance.UIAchievementList.transform.childCount);
+        //Debug.Log(GameManager.Instance.UIAchievementList.transform.childCount);
         for (int i = 0; i < achievementSprite.Count; i++)
         {
             GameManager.Instance.UIAchievementList.transform.GetChild(i).GetComponent<Image>().sprite = achievementSprite[i];

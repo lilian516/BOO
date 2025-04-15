@@ -8,9 +8,7 @@ public class MainMenu : MonoBehaviour
 {
 
     private CanvasGroup _canvasGroup;
-    [SerializeField] Sprite _buttonPlayClicked;
-    [SerializeField] Sprite _buttonSettingsClicked;
-    [SerializeField] Sprite _buttonCreditClicked;
+    
     [SerializeField] Animator _animatorTransition;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +29,7 @@ public class MainMenu : MonoBehaviour
         Helpers.HideCanva(_canvasGroup);
         StartCoroutine(WaitEndAnim());
         
-        Debug.Log("on start le jeu");
+        //Debug.Log("on start le jeu");
     }
 
     private IEnumerator WaitEndAnim()
