@@ -13,15 +13,18 @@ public class SkillLaunchState : SkillState
     {
         base.ChangeStateChecks();
 
-        if (_playerSkill.EventPlayer.IsExitUseSkill == true)
-        {
-            _skillStateMachine.ChangeState(_playerSkill.LaunchState);
-        }
+    }
+
+    private void EndSkillAnimation()
+    {
+        _skillStateMachine.ChangeState(_playerSkill.LaunchState);
     }
 
     public override void EnterState()
     {
         base.EnterState();
+
+        _playerSkill.EventPlayer.OnExitUseSkill += EndSkillAnimation;
     }
 
     public override void ExitState()

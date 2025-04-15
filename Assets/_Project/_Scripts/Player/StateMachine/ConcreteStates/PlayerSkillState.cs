@@ -30,12 +30,17 @@ public class PlayerSkillState : PlayerState
         _player.PlayerFaceAnimator.enabled = false;
         _player.PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
+        _player.EventPlayer.OnEnterUseSkill += UseSkill;
+        _player.EventPlayer.OnExitUseSkill += StopUseSkill;
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        _player.EventPlayer.IsExitUseSkill = false;
+
+        _player.EventPlayer.OnEnterUseSkill -= UseSkill;
+        _player.EventPlayer.OnExitUseSkill -= StopUseSkill;
+
         if (!AngrySystem.Instance.IsAngry)
         {
             
@@ -48,12 +53,6 @@ public class PlayerSkillState : PlayerState
     {
         base.FrameUpdate();
 
-        if (_player.EventPlayer.IsUseSkill)
-        {
-            Debug.Log("on kill");
-            _player.UseCurrentSkill();
-            _player.EventPlayer.IsUseSkill = false;
-        }
         //StateMachine.CurrentState.FrameUpdate();
     }
 
@@ -70,22 +69,24 @@ public class PlayerSkillState : PlayerState
     {
         base.ChangeStateChecks();
         //StateMachine.CurrentState.ChangeStateChecks();
-
-
-        if (_player.EventPlayer.IsExitUseSkill == true)
-        {
-            if (_player.IsMoving() == false)
-            {
-                _playerStateMachine.ChangeState(_player.IdleState);
-
-            }
-            else
-            {
-                _playerStateMachine.ChangeState(_player.MovingState);
-            }
-
-        }
     }
 
+    private void UseSkill()
+    {
+        _player.UseCurrentSkill();
+    }
+
+    private void StopUseSkill()
+    {
+        if (_player.IsMoving() == false)
+        {
+            _playerStateMachine.ChangeState(_player.IdleState);
+
+        }
+        else
+        {
+            _playerStateMachine.ChangeState(_player.MovingState);
+        }
+    }
    
 }

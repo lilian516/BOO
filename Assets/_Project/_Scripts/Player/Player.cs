@@ -169,7 +169,6 @@ public class Player : MonoBehaviour, IChangeable
 
             _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
 
-
             _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
             PlayerAnimator.runtimeAnimatorController = _overrideController;
             PlayerAnimator.SetTrigger("UseSkill");
@@ -239,12 +238,16 @@ public class Player : MonoBehaviour, IChangeable
     }
     public void ResetChange()
     {
+        EventPlayer.OnExitUseSkill += ChangeAnimatorToCalm;
+    }
+
+    private void ChangeAnimatorToCalm()
+    {
         RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
         PlayerFaceAnimator.enabled = true;
 
         CurrentSpeed = _minSpeed;
-
     }
 
     private void ChangeAnimatorToCurious()

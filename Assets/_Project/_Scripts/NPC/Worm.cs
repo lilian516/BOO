@@ -20,7 +20,9 @@ public class Worm : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.SmashSkill:
-                Debug.Log("je me fait d�truire");
+
+                AngrySystem.Instance.ChangeCalmLimits();
+
                 Destroy(gameObject);
                 break;
         }

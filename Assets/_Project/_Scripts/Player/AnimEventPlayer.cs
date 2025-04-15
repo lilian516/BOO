@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AnimEventPlayer : MonoBehaviour
 {
+    public delegate void ExitUseSkill();
+    public ExitUseSkill OnExitUseSkill;
+    public delegate void EnterUseSkill();
+    public EnterUseSkill OnEnterUseSkill;
 
-    public bool IsExitUseSkill;
-    public bool IsUseSkill;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +24,13 @@ public class AnimEventPlayer : MonoBehaviour
     public void ExitUseSkillState()
     {
         Debug.Log("oui on sort");
-        IsExitUseSkill = true;
+        OnExitUseSkill?.Invoke();
     }
 
     public void UseSkillState()
     {
         Debug.Log("oui utilise");
-        IsUseSkill = true;
+        OnEnterUseSkill?.Invoke();
     }
 
     public void SoundWalkBoo()
