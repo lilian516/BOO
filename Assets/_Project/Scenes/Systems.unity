@@ -612,6 +612,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 338b79a7741ee6744b114855b8486751, type: 2}
   _achievementUIPrefab: {fileID: 8784206139651683523, guid: 0681e5bb3b7a2684bbbbd4fd29d1780c,
     type: 3}
+  UIAchievementToUpdate: []
 --- !u!1 &1574867856
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,11 +755,12 @@ MonoBehaviour:
   Player: {fileID: 0}
   SoundSystem: {fileID: 0}
   DialogueUI: {fileID: 0}
+  DialogueSkillBtn: {fileID: 0}
+  DialogueQuitBtn: {fileID: 0}
   InventoryUI: {fileID: 0}
   SkillStickParent: {fileID: 0}
   InventorySkill: {fileID: 0}
   GameController: {fileID: 0}
-  UIBackground: {fileID: 0}
   InventoryFullMenu: {fileID: 0}
   UIAchievement: {fileID: 0}
   UIAchievementButton: {fileID: 0}
