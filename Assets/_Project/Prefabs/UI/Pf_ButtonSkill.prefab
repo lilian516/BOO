@@ -925,6 +925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 622191729440050436}
   - component: {fileID: 6687556459791958607}
+  - component: {fileID: 6373323176909578383}
   m_Layer: 0
   m_Name: Pf_ButtonSkill
   m_TagString: SkillStick
@@ -965,6 +966,28 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &6373323176909578383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979166108513990738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77086cd4aa9f5304a82e5b1c58a1fe91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: 21300000, guid: 9a20f3cc1f9727742a32c3c514126752, type: 3}
+  - {fileID: 21300000, guid: 0a0ab8b4779627b48a27cf49c3a5d5bd, type: 3}
+  _imageObject: {fileID: 3267731365703025032}
+  _magnitudes:
+  - 3
+  - 6
+  - 10
+  _joystickAnger: {fileID: 8485436934758746653, guid: f8c43123009ce6441a538b6b37154584,
+    type: 3}
 --- !u!1 &6273612570840923836
 GameObject:
   m_ObjectHideFlags: 0
