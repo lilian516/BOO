@@ -42,9 +42,11 @@ public class AngrySystem : Singleton<AngrySystem>
 
         // StartCoroutine(FindEnvironmentObject());
 
-        StartCoroutine(FindFlamSpawnpoints());
+        //StartCoroutine(FindFlamSpawnpoints());
 
     }
+
+
     [ContextMenu("Change Angry Limits")]
     public void ChangeAngryLimits()
     {
@@ -157,100 +159,14 @@ public class AngrySystem : Singleton<AngrySystem>
 */
         _flamsSpawnPoints.Clear();
 
-        _flamsSpawnPoints = FindAllObjectWithNameInScene("CJOLI 1", "E_Flam_Spawnpoints");
+        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", "E_Flam_Spawnpoints");
     }
-    /* private void SpawnMultipleOnRandomBases()
-     {
-         if (FlamePrefab == null || Islands.Length == 0)
-         {
-             Debug.LogWarning("Missing prefab or base objects.");
-             return;
-         }
-
-         for (int i = 0; i < _amountOfFlames; i++)
-         {
-             GameObject baseObj = Islands[Random.Range(0, Islands.Length)];
-             Renderer baseRenderer = baseObj.GetComponent<Renderer>();
-
-             if (baseRenderer == null)
-             {
-                 Debug.LogWarning("Base object missing Renderer.");
-                 continue;
-             }
-
-             Bounds baseBounds = baseRenderer.bounds;
-
-             float randomX = Random.Range(baseBounds.min.x, baseBounds.max.x);
-             float randomZ = Random.Range(baseBounds.min.z, baseBounds.max.z);
-
-             float spawnY = baseBounds.max.y + 0.4974165f;
-
-             Vector3 spawnPos = new Vector3(randomX, spawnY, randomZ);
-
-             GameObject flame = Instantiate(FlamePrefab, spawnPos, FlamePrefab.transform.rotation);
-
-             float newScale = Random.Range(0.25f, 1f);
-
-
-
-             SceneManager.MoveGameObjectToScene(flame, EnvironmentCapsule.scene);
-
-             flame.transform.SetParent(EnvironmentCapsule.transform, true);
-         }
-     }
-
-
-
-     IEnumerator FindEnvironmentObject()
-     {
-         yield return new WaitForSeconds(2.0f);
-
-         EnvironmentCapsule = FindGameObjectInScene("CJOLI", "---------- ENVIRONMENT ----------");
-         if (EnvironmentCapsule != null)
-         {
-             Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
-         }
-         else
-         {
-             Debug.LogWarning("Couldn't find '---------- ENVIRONMENT ----------' in scene CJOLI.");
-         }
-
-         Islands[0] = FindGameObjectInScene("CJOLI", "SM_Isle1");
-         if (EnvironmentCapsule != null)
-         {
-             Debug.Log("Found Island object: " + Islands[0].name);
-         }
-         else
-         {
-             Debug.LogWarning("Couldn't find 'SM_Isle1' in scene CJOLI.");
-         }
-
-         Islands[1] = FindGameObjectInScene("CJOLI", "SM_Isle2");
-         if (EnvironmentCapsule != null)
-         {
-             Debug.Log("Found Island object: " + Islands[1].name);
-         }
-         else
-         {
-             Debug.LogWarning("Couldn't find 'SM_Isle2' in scene CJOLI.");
-         }
-
-         Islands[2] = FindGameObjectInScene("CJOLI", "SM_Isle3");
-         if (EnvironmentCapsule != null)
-         {
-             Debug.Log("Found Island object: " + Islands[2].name);
-         }
-         else
-         {
-             Debug.LogWarning("Couldn't find 'SM_Isle3' in scene CJOLI.");
-         }
-     }
-    */
+ 
     IEnumerator FindFlamSpawnpoints()
     {
         yield return new WaitForSeconds(2);
 
-        _flamsSpawnPoints = FindAllObjectWithNameInScene("CJOLI 1", "E_Flam_Spawnpoints");
+        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", "E_Flam_Spawnpoints");
     }
 
     List<GameObject> FindAllObjectWithNameInScene(string sceneName, string objectName)
@@ -275,14 +191,9 @@ public class AngrySystem : Singleton<AngrySystem>
         {
 
             //Debug.Log("Found Island object: " + Islands[0].name);
-        }
-        else
-        {
-            //Debug.LogWarning("Couldn't find 'SM_Isle1' in scene CJOLI.");
-
             FindAllInChildrenRecursive(root.transform, objectName, list);
-
         }
+       
 
         Debug.Log(list.Count);
 
