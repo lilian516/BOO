@@ -1,1 +1,1 @@
-{"test":1,"AAAAAH":false,"MusicVolume":1.0}
+{"test":1,"AAAAAH":false,"MusicVolume":1}
