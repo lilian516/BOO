@@ -69,7 +69,7 @@ public class GameManager : Singleton<GameManager>
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
         SoundSystem.SetAudioListener(MainCamera.GetComponent<AudioListener>());
-        SoundSystem.ChangeMusicByKey("Main Music");
+        SoundSystem.ChangeMusicByKey("Chill Music");
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
