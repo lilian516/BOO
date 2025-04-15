@@ -16,14 +16,25 @@ MonoBehaviour:
   OpeningEventType: 0
   ClosureTriggerEvent: 0
   ClosureEventType: 0
-  RightCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
-  LeftCharacter: {fileID: 21300000, guid: c0e33b7dcbb23624ab19c97870f419ee, type: 3}
+  RightCharacter: {fileID: 21300000, guid: c0e33b7dcbb23624ab19c97870f419ee, type: 3}
+  LeftCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
+  DialogueBackground: {fileID: 21300000, guid: f0da0f19abb19af4ea770a50fa688aa2, type: 3}
   Sections:
   - Sentences:
     - A la revoyure mon petit !
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 0
-  SkillToGive: 0
   TakeEventType: 0
   NextDialogue: {fileID: 11400000}
+  SkillToGive: 0
+  SkillDescriptor:
+    Prefab: {fileID: 0}
+    Sprite: {fileID: 0}
+    Name: 
+    Desc: 
+    AnimationSkill: {fileID: 0}
+    Radius: 0
+    Mask:
+      serializedVersion: 2
+      m_Bits: 0

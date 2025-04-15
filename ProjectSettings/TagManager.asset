@@ -18,6 +18,8 @@ TagManager:
   - AchievementList
   - PauseMenu
   - PauseButton
+  - DialogueSkillButton
+  - DialogueQuitButton
   layers:
   - Default
   - TransparentFX

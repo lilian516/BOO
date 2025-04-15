@@ -4,18 +4,7 @@ using UnityEngine;
 
 public class StickSkill : Skill
 {
-
-    [System.Serializable]
-    public class Descriptor
-    {
-        public float Radius;
-        public LayerMask Mask;
-        public Sprite Sprite;
-        public string Name;
-    }
-
-    Descriptor _desc;
-    public StickSkill(Player player, Descriptor desc) : base(player)
+    public StickSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
     }

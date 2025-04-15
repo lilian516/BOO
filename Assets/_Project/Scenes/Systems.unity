@@ -787,11 +787,12 @@ MonoBehaviour:
   Player: {fileID: 0}
   SoundSystem: {fileID: 0}
   DialogueUI: {fileID: 0}
+  DialogueSkillBtn: {fileID: 0}
+  DialogueQuitBtn: {fileID: 0}
   InventoryUI: {fileID: 0}
   SkillStickParent: {fileID: 0}
   InventorySkill: {fileID: 0}
   GameController: {fileID: 0}
-  UIBackground: {fileID: 0}
   InventoryFullMenu: {fileID: 0}
   UIAchievement: {fileID: 0}
   UIAchievementButton: {fileID: 0}

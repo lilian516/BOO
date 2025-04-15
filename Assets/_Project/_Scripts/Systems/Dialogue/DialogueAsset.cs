@@ -11,13 +11,18 @@ public class DialogueAsset : ScriptableObject
     [Header("Sprites")]
     public Sprite RightCharacter;
     public Sprite LeftCharacter;
+    public Sprite DialogueBackground;
     [Space]
     public DialogueSection[] Sections;
     [Space]
     public bool ChoiceOnEnd;
-    public PlayerSkill SkillToGive;
     public DialogueEventType TakeEventType;
     public DialogueAsset NextDialogue;
+
+    [Space]
+    [Header("Skill Info")]
+    public PlayerSkill SkillToGive;
+    public SkillDescriptor SkillDescriptor;
 }
 
 [System.Serializable]

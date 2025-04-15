@@ -16,8 +16,9 @@ MonoBehaviour:
   OpeningEventType: 0
   ClosureTriggerEvent: 0
   ClosureEventType: 0
-  RightCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
-  LeftCharacter: {fileID: 21300000, guid: 53f971e1d0b83264ea95c7c0a43bca25, type: 3}
+  RightCharacter: {fileID: 21300000, guid: 53f971e1d0b83264ea95c7c0a43bca25, type: 3}
+  LeftCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
+  DialogueBackground: {fileID: 21300000, guid: 85c213532568aa44c9ae78fc6f43535a, type: 3}
   Sections:
   - Sentences:
     - Ah mes petits moutons !
@@ -26,6 +27,16 @@ MonoBehaviour:
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 1
-  SkillToGive: 3
   TakeEventType: 0
   NextDialogue: {fileID: 11400000}
+  SkillToGive: 3
+  SkillDescriptor:
+    Prefab: {fileID: 0}
+    Sprite: {fileID: 21300000, guid: 9a4ef5cf0cd516644980411a6ac30735, type: 3}
+    Name: Baton de berger
+    Desc: Pour danser et chercher des trucs
+    AnimationSkill: {fileID: 0}
+    Radius: 1.5
+    Mask:
+      serializedVersion: 2
+      m_Bits: 64

@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class PantsSkill : Skill
 {
-    [System.Serializable]
-    public class Descriptor
-    {
-        public float Radius;
-        public LayerMask Mask;
-        public Sprite Sprite;
-        public string Name;
-    }
-
-    Descriptor _desc;
-    public PantsSkill(Player player, Descriptor desc) : base(player)
+    public PantsSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
     }

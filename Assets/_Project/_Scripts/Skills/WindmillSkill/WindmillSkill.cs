@@ -4,29 +4,17 @@ using UnityEngine;
 
 public class WindmillSkill : Skill
 {
-
-    [System.Serializable]
-    public class Descriptor
-    {
-        public GameObject WindPrefab;
-        public Sprite Sprite;
-        public string Name;
-        public AnimationClip AnimationWind;
-    }
-
-    Descriptor _desc;
-
-    public WindmillSkill(Player player, Descriptor desc) : base(player)
+    public WindmillSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
-        AnimationSkill = _desc.AnimationWind;
+        AnimationSkill = _desc.AnimationSkill;
     }
 
     public override void UseSkill()
     {
         Vector3 spawnPos = _player.transform.position;
 
-        GameObject wind = GameManager.Instance.SpawnObject(_desc.WindPrefab);
+        GameObject wind = GameManager.Instance.SpawnObject(_desc.Prefab);
 
         wind.transform.position = spawnPos;
     }

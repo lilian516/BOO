@@ -68,27 +68,20 @@ public class InputManager : Singleton<InputManager>
     public void DisableSticksAndButtons()
     {
         GameObject controller = GameManager.Instance.GameController;
-        OnScreenStick controllerStick = controller.GetComponent<OnScreenStick>();
-        controllerStick.enabled = false;
+        Helpers.HideCanva(controller.GetComponent<CanvasGroup>());
 
         GameObject skill = GameManager.Instance.SkillStickParent;
-        OnScreenStick skillStick = skill.transform.GetComponentInChildren<OnScreenStick>();
-        OnScreenButton skillButton = skill.transform.GetComponentInChildren<OnScreenButton>();
-        skillStick.enabled = false;
-        skillButton.enabled = false;
+        Helpers.HideCanva(skill.GetComponent<CanvasGroup>()); 
     }
 
     public void EnableSticksAndButtons()
     {
         GameObject controller = GameManager.Instance.GameController;
-        OnScreenStick controllerStick = controller.GetComponent<OnScreenStick>();
-        controllerStick.enabled = true;
+        Helpers.ShowCanva(controller.GetComponent<CanvasGroup>());
 
         GameObject skill = GameManager.Instance.SkillStickParent;
-        OnScreenStick skillStick = skill.transform.GetComponentInChildren<OnScreenStick>();
-        OnScreenButton skillButton = skill.transform.GetComponentInChildren<OnScreenButton>();
-        skillStick.enabled = true;
-        skillButton.enabled = true;
+        Helpers.ShowCanva(skill.GetComponent<CanvasGroup>());
+        
     }
         
 

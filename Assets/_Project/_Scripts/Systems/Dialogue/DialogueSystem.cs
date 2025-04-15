@@ -12,9 +12,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
 {
     private const string DIALOGUE_TEXT_NAME = "SentenceText";
 
-    
-    
-    
     private CanvasGroup _fadeCanvasBox;
     private TextMeshProUGUI _dialogueTextBox;
     private Image _leftImage;
@@ -45,15 +42,16 @@ public class DialogueSystem : Singleton<DialogueSystem>
     public void Init()
     {
         ProcessingDialogue = null;
-        _fadeCanvasBox = GameManager.Instance.DialogueUI.GetComponent<CanvasGroup>();
-        _dialogueTextBox = _fadeCanvasBox.transform.Find("TextDialogue").GetComponent<TextMeshProUGUI>();
+        GameObject dialogue = GameManager.Instance.DialogueUI;
+        _fadeCanvasBox = dialogue.GetComponent<CanvasGroup>();
+        _dialogueTextBox = dialogue.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>();
         _isPlayingSentence = false;
         _skipSentence = false;
 
-        _leftImage = _fadeCanvasBox.transform.Find("LeftSprite").GetComponent<Image>();
-        _rightImage = _fadeCanvasBox.transform.Find("RightSprite").GetComponent<Image>();
-        _choiceButton = _fadeCanvasBox.transform.Find("SkillChoice").GetComponent<Button>();
-        _cancelButton = _fadeCanvasBox.transform.Find("QuitChoice").GetComponent<Button>();
+        _leftImage = dialogue.transform.GetChild(0).gameObject.GetComponent<Image>();
+        _rightImage = dialogue.transform.GetChild(1).gameObject.GetComponent<Image>();
+        _choiceButton = GameManager.Instance.DialogueSkillBtn.GetComponentInChildren<Button>();
+        _cancelButton = GameManager.Instance.DialogueQuitBtn.GetComponentInChildren<Button>();
 
         _choiceButton.onClick.AddListener(TakeChoice);
         _cancelButton.onClick.AddListener(EndDialogue);
@@ -75,6 +73,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
             Debug.LogWarning("Dialogue started with unspecified or invalid Dialogue Asset !");
             return;
         }
+        InputManager.Instance.DisableSticksAndButtons();
+
         ProcessingDialogue = asset;
         _sectionIndex = 0;
         _sentenceIndex = 0;
@@ -82,6 +82,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.alpha = 1;
         _fadeCanvasBox.interactable = true;
         _fadeCanvasBox.blocksRaycasts = true;
+
+        _fadeCanvasBox.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = ProcessingDialogue.DialogueBackground;
+        _choiceButton.gameObject.GetComponent<Image>().sprite = ProcessingDialogue.SkillDescriptor.Sprite;
+
 
         if (_leftImage != null)
             _leftImage.sprite = ProcessingDialogue.LeftCharacter;
@@ -103,8 +107,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
             OnDialogueEvent?.Invoke(ProcessingDialogue.ClosureEventType);
         }
 
-        _choiceButton.gameObject.SetActive(false);
-        _cancelButton.gameObject.SetActive(false);
+        InputManager.Instance.EnableSticksAndButtons();
+
+        Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(2).GetComponent<CanvasGroup>());
+        Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());
 
         _fadeCanvasBox.alpha = 0;
         _fadeCanvasBox.interactable = false;
@@ -158,17 +164,18 @@ public class DialogueSystem : Singleton<DialogueSystem>
     {
         OnChoice?.Invoke();
 
-        _dialogueTextBox.text = "Que faire ?";
+        Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(2).GetComponent<CanvasGroup>());
+        Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());
 
-        _choiceButton.gameObject.SetActive(true);
-        _cancelButton.gameObject.SetActive(true);
+        GameManager.Instance.DialogueSkillBtn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ProcessingDialogue.SkillDescriptor.Name;
+        GameManager.Instance.DialogueSkillBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ProcessingDialogue.SkillDescriptor.Desc;
     }
 
     private void TakeChoice()
     {
         OnTakeEvent?.Invoke(ProcessingDialogue.TakeEventType);
         EndDialogue();
-        GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive);
+        GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive, ProcessingDialogue.SkillDescriptor);
     }
     
     public void UpdateSentence()
