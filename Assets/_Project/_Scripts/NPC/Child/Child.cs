@@ -7,6 +7,9 @@ public class Child : MonoBehaviour, ISpeakable
 
     [SerializeField] DialogueAsset _dialogue;
     [SerializeField] Animator _animator;
+    [SerializeField] ChildEventPlayer _eventPlayer;
+    [SerializeField] GameObject _windPrefab;
+
 
     public void Speak()
     {
@@ -20,6 +23,7 @@ public class Child : MonoBehaviour, ISpeakable
     void Start()
     {
         DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
+        _eventPlayer.OnEndWindAnim += LaunchWind;
     }
 
     // Update is called once per frame
@@ -48,5 +52,10 @@ public class Child : MonoBehaviour, ISpeakable
     private void StopTalkAnimation()
     {
         _animator.SetBool("IsTalking", false);
+    }
+
+    private void LaunchWind()
+    {
+        Debug.Log("PFIIIOOOOOOOOOOOOOOOOOO");
     }
 }

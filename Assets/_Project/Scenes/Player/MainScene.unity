@@ -5034,7 +5034,7 @@ PrefabInstance:
     - target: {fileID: 3690849082295597283, guid: 01fe640605ea6964f83ccc68d424a7e4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.47
+      value: -22.151
       objectReference: {fileID: 0}
     - target: {fileID: 3690849082295597283, guid: 01fe640605ea6964f83ccc68d424a7e4,
         type: 3}
@@ -5090,6 +5090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pf_SheepBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432799492644558758, guid: 01fe640605ea6964f83ccc68d424a7e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5432799492644558758, guid: 01fe640605ea6964f83ccc68d424a7e4,
         type: 3}

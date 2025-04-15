@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sheep : MonoBehaviour, IInteractable
 {
-    private PlayerSkill _currentInteract;
+    [SerializeField] private PlayerSkill _currentInteract;
     public Vector3 PushedDirection;
 
     [SerializeField] float _speed;
@@ -13,7 +13,7 @@ public class Sheep : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        _currentInteract = PlayerSkill.None;
+        
     }
     
     // Update is called once per frame
