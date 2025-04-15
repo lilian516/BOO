@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ public class AngrySystem : Singleton<AngrySystem>
     public bool IsAngry;
     public GameObject FlamePrefab;
     public GameObject[] Islands;
+    List<GameObject> _flamsSpawnPoints;
     public GameObject EnvironmentCapsule;
     private int _amountOfFlames;
 
@@ -37,7 +39,11 @@ public class AngrySystem : Singleton<AngrySystem>
 
         Islands = new GameObject[3];
 
-        //StartCoroutine(FindEnvironmentObject());
+
+        // StartCoroutine(FindEnvironmentObject());
+
+        StartCoroutine(FindFlamSpawnpoints());
+
     }
     [ContextMenu("Change Angry Limits")]
     public void ChangeAngryLimits()
@@ -100,15 +106,16 @@ public class AngrySystem : Singleton<AngrySystem>
     {
         if (_remainingLives <= 0)
         {
-            // Faire charger l'écran de Lose ou reset la game directement mais on a pas encore ce qu'il faut donc petit debug log cadeau la famille
+            // Faire charger l'ï¿½cran de Lose ou reset la game directement mais on a pas encore ce qu'il faut donc petit debug log cadeau la famille
 
             Debug.Log("You got mad too many times... too bad");
         }
     }
 
+
     private void SpawnMultipleOnRandomBases()
     {
-        if (FlamePrefab == null || Islands.Length == 0)
+        if (FlamePrefab == null || _flamsSpawnPoints.Count == 0)
         {
             Debug.LogWarning("Missing prefab or base objects.");
             return;
@@ -116,76 +123,175 @@ public class AngrySystem : Singleton<AngrySystem>
 
         for (int i = 0; i < _amountOfFlames; i++)
         {
-            GameObject baseObj = Islands[Random.Range(0, Islands.Length)];
-            Renderer baseRenderer = baseObj.GetComponent<Renderer>();
+            GameObject baseObj = _flamsSpawnPoints[Random.Range(0, _flamsSpawnPoints.Count)];
 
-            if (baseRenderer == null)
-            {
-                Debug.LogWarning("Base object missing Renderer.");
-                continue;
-            }
+            GameObject flame = Instantiate(FlamePrefab, baseObj.transform.position, FlamePrefab.transform.rotation);
 
-            Bounds baseBounds = baseRenderer.bounds;
+            float newScale = Random.Range(0.25f, 1.0f);
 
-            float randomX = Random.Range(baseBounds.min.x, baseBounds.max.x);
-            float randomZ = Random.Range(baseBounds.min.z, baseBounds.max.z);
+            flame.transform.SetParent(baseObj.transform);
 
-            float spawnY = baseBounds.max.y + 0.4974165f;
+            flame.transform.localScale *= newScale;
 
-            Vector3 spawnPos = new Vector3(randomX, spawnY, randomZ);
+            // Dï¿½placer la flamme vers le haut dans le monde
+            flame.transform.position += flame.transform.up * (4 * newScale);
 
-            GameObject flame = Instantiate(FlamePrefab, spawnPos, FlamePrefab.transform.rotation);
-
-            SceneManager.MoveGameObjectToScene(flame, EnvironmentCapsule.scene);
-
-            flame.transform.SetParent(EnvironmentCapsule.transform, true);
+            _flamsSpawnPoints.Remove(baseObj);
         }
+
+        /*for (int i = 0; i < _flamsSpawnPoints.Count; i++)
+        {
+            GameObject baseObj = _flamsSpawnPoints[i];
+
+            GameObject flame = Instantiate(FlamePrefab, baseObj.transform.position, FlamePrefab.transform.rotation);
+
+            float newScale = Random.Range(0.25f, 1.0f);
+
+            flame.transform.SetParent(baseObj.transform);
+
+            flame.transform.localScale *= newScale;
+
+            // Dï¿½placer la flamme vers le haut dans le monde
+            flame.transform.position += flame.transform.up * (4 * newScale);
+        }
+*/
+        _flamsSpawnPoints.Clear();
+
+        _flamsSpawnPoints = FindAllObjectWithNameInScene("CJOLI 1", "E_Flam_Spawnpoints");
+    }
+    /* private void SpawnMultipleOnRandomBases()
+     {
+         if (FlamePrefab == null || Islands.Length == 0)
+         {
+             Debug.LogWarning("Missing prefab or base objects.");
+             return;
+         }
+
+         for (int i = 0; i < _amountOfFlames; i++)
+         {
+             GameObject baseObj = Islands[Random.Range(0, Islands.Length)];
+             Renderer baseRenderer = baseObj.GetComponent<Renderer>();
+
+             if (baseRenderer == null)
+             {
+                 Debug.LogWarning("Base object missing Renderer.");
+                 continue;
+             }
+
+             Bounds baseBounds = baseRenderer.bounds;
+
+             float randomX = Random.Range(baseBounds.min.x, baseBounds.max.x);
+             float randomZ = Random.Range(baseBounds.min.z, baseBounds.max.z);
+
+             float spawnY = baseBounds.max.y + 0.4974165f;
+
+             Vector3 spawnPos = new Vector3(randomX, spawnY, randomZ);
+
+             GameObject flame = Instantiate(FlamePrefab, spawnPos, FlamePrefab.transform.rotation);
+
+             float newScale = Random.Range(0.25f, 1f);
+
+
+
+             SceneManager.MoveGameObjectToScene(flame, EnvironmentCapsule.scene);
+
+             flame.transform.SetParent(EnvironmentCapsule.transform, true);
+         }
+     }
+
+
+
+     IEnumerator FindEnvironmentObject()
+     {
+         yield return new WaitForSeconds(2.0f);
+
+         EnvironmentCapsule = FindGameObjectInScene("CJOLI", "---------- ENVIRONMENT ----------");
+         if (EnvironmentCapsule != null)
+         {
+             Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
+         }
+         else
+         {
+             Debug.LogWarning("Couldn't find '---------- ENVIRONMENT ----------' in scene CJOLI.");
+         }
+
+         Islands[0] = FindGameObjectInScene("CJOLI", "SM_Isle1");
+         if (EnvironmentCapsule != null)
+         {
+             Debug.Log("Found Island object: " + Islands[0].name);
+         }
+         else
+         {
+             Debug.LogWarning("Couldn't find 'SM_Isle1' in scene CJOLI.");
+         }
+
+         Islands[1] = FindGameObjectInScene("CJOLI", "SM_Isle2");
+         if (EnvironmentCapsule != null)
+         {
+             Debug.Log("Found Island object: " + Islands[1].name);
+         }
+         else
+         {
+             Debug.LogWarning("Couldn't find 'SM_Isle2' in scene CJOLI.");
+         }
+
+         Islands[2] = FindGameObjectInScene("CJOLI", "SM_Isle3");
+         if (EnvironmentCapsule != null)
+         {
+             Debug.Log("Found Island object: " + Islands[2].name);
+         }
+         else
+         {
+             Debug.LogWarning("Couldn't find 'SM_Isle3' in scene CJOLI.");
+         }
+     }
+    */
+    IEnumerator FindFlamSpawnpoints()
+    {
+        yield return new WaitForSeconds(2);
+
+        _flamsSpawnPoints = FindAllObjectWithNameInScene("CJOLI 1", "E_Flam_Spawnpoints");
     }
 
-
-    IEnumerator FindEnvironmentObject()
+    List<GameObject> FindAllObjectWithNameInScene(string sceneName, string objectName)
     {
-        yield return new WaitForSeconds(2.0f);
-
-        EnvironmentCapsule = FindGameObjectInScene("CJOLI", "---------- ENVIRONMENT ----------");
-        if (EnvironmentCapsule != null)
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+        if (!scene.IsValid() || !scene.isLoaded)
         {
+
             //Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
         }
         else
         {
             //Debug.LogWarning("Couldn't find '---------- ENVIRONMENT ----------' in scene CJOLI.");
+
+            Debug.LogWarning($"Scene '{sceneName}' is not loaded or invalid.");
+
         }
 
-        Islands[0] = FindGameObjectInScene("CJOLI", "SM_Isle1");
-        if (EnvironmentCapsule != null)
+        List<GameObject> list = new List<GameObject>();
+
+        foreach (GameObject root in scene.GetRootGameObjects())
         {
+
             //Debug.Log("Found Island object: " + Islands[0].name);
         }
         else
         {
             //Debug.LogWarning("Couldn't find 'SM_Isle1' in scene CJOLI.");
+
+            FindAllInChildrenRecursive(root.transform, objectName, list);
+
         }
 
-        Islands[1] = FindGameObjectInScene("CJOLI", "SM_Isle2");
-        if (EnvironmentCapsule != null)
+        Debug.Log(list.Count);
+
+        foreach (GameObject listd in list)
         {
-            //Debug.Log("Found Island object: " + Islands[1].name);
-        }
-        else
-        {
-            //Debug.LogWarning("Couldn't find 'SM_Isle2' in scene CJOLI.");
+            listd.gameObject.name = "cet objet est dans la liste";
         }
 
-        Islands[2] = FindGameObjectInScene("CJOLI", "SM_Isle3");
-        if (EnvironmentCapsule != null)
-        {
-            //Debug.Log("Found Island object: " + Islands[2].name);
-        }
-        else
-        {
-            //Debug.LogWarning("Couldn't find 'SM_Isle3' in scene CJOLI.");
-        }
+        return list;
     }
 
     GameObject FindGameObjectInScene(string sceneName, string objectName)
@@ -220,5 +326,16 @@ public class AngrySystem : Singleton<AngrySystem>
         }
 
         return null;
+    }
+
+    void FindAllInChildrenRecursive(Transform parent, string name, List<GameObject> results)
+    {
+        if (parent.name == name)
+            results.Add(parent.gameObject);
+
+        foreach (Transform child in parent)
+        {
+            FindAllInChildrenRecursive(child, name, results);
+        }
     }
 }
