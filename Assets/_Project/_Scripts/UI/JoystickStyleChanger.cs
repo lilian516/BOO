@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoystickStyleChanger : MonoBehaviour
+public class JoystickStyleChanger : MonoBehaviour, IChangeable
 {
     [SerializeField] Sprite[] _sprites = new Sprite[2];
     [SerializeField] RectTransform _imageObject;
@@ -120,5 +120,15 @@ public class JoystickStyleChanger : MonoBehaviour
         _imageComponent.sprite = _sprites[0];
         _magnitudeIndex = -1;
         _isShaking = false;
+    }
+
+    public void Change()
+    {
+        
+    }
+
+    public void ResetChange()
+    {
+        
     }
 }
