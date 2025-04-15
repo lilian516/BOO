@@ -34,6 +34,8 @@ public class Inventory : MonoBehaviour, IChangeable
 
     public void Init()
     {
+        _skillImages.Clear();
+        _currentSkill = null;
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
         _skillButtonUI = GameManager.Instance.SkillStickParent.transform.GetChild(0).GetChild(0).gameObject;
         _baseButtonSprite = _skillButtonUI.GetComponent<Image>().sprite;
@@ -65,7 +67,15 @@ public class Inventory : MonoBehaviour, IChangeable
         for (int i = 0; i < _skills.Count; i++)
         {
             Helpers.ShowCanva(_skillImages[i].gameObject.GetComponent<CanvasGroup>());
+            _skillImages[i].GetComponent<Image>().sprite = _skills[i].GetSprite();
         }
+        if(_skills.Count > 0)
+        {
+            Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
+        }
+
+        if (AngrySystem.Instance.IsAngry)
+            Change();
     }
 
     void Update()
@@ -92,7 +102,9 @@ public class Inventory : MonoBehaviour, IChangeable
             _skillButtonUI.GetComponent<Image>().sprite = _angrySkills.GetSprite();
             return;
         }
-        _skillButtonUI.GetComponent<Image>().sprite = _currentSkill.GetSprite();
+
+        if (_currentSkill != null)
+            _skillButtonUI.GetComponent<Image>().sprite = _currentSkill.GetSprite();
     }
 
     private void ChangeCurrentSkill(Skill skill)

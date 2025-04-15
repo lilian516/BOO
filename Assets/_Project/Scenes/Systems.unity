@@ -610,7 +610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _achievementList:
   - {fileID: 11400000, guid: 338b79a7741ee6744b114855b8486751, type: 2}
-  _achievementUIPrefab: {fileID: 8493308933992633672, guid: 24162c6ffd608d14b83677b32b828b53,
+  _achievementUIPrefab: {fileID: 8784206139651683523, guid: 0681e5bb3b7a2684bbbbd4fd29d1780c,
     type: 3}
 --- !u!1 &1574867856
 GameObject:

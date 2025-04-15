@@ -20,7 +20,7 @@ public class Worm : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.SmashSkill:
-                Debug.Log("je me fait détruire");
+                Debug.Log("je me fait dï¿½truire");
                 Destroy(gameObject);
                 break;
         }
@@ -72,8 +72,6 @@ public class Worm : MonoBehaviour, IInteractable
                 _currentIndex = 0;
 
 
-            //Debug.Log(_pathReferences[(_currentIndex + 1) % _pathReferences.Length].position);
-            //Debug.Log("Tposition: " + transform.position);
             _timeStep = 0.0f;
 
         }
