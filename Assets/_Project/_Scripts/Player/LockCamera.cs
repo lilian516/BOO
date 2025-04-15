@@ -26,7 +26,7 @@ public class LockCamera : MonoBehaviour
     {
         if (GameManager.Instance.Player != null)
         {
-            _playerShadow.transform.position = new Vector3(transform.position.x, GameManager.Instance.Player.transform.position.y, GameManager.Instance.Player.transform.position.z);
+            _playerShadow.transform.localPosition = new Vector3(0.0f, GameManager.Instance.Player.transform.position.y, GameManager.Instance.Player.transform.position.z);
         }
     }
 
