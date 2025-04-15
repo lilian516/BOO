@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
 
     private CanvasGroup _canvasGroup;
     private CanvasGroup _canvasMainMenuGroup;
+
+    [SerializeField] private Toggle _french;
+    [SerializeField] private Toggle _english;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,5 +74,19 @@ public class Settings : MonoBehaviour
         animator.SetTrigger("Click");
 
         VibrationSystem.Instance.IsToggled = !VibrationSystem.Instance.IsToggled;
+    }
+
+    public void ChangeLanguage(string name)
+    {
+        if (name == "English")
+        {
+            _french.interactable = true;
+            _english.interactable = false;
+        }
+        else if (name == "French")
+        {
+            _english.interactable = true;
+            _french.interactable = false;
+        }
     }
 }
