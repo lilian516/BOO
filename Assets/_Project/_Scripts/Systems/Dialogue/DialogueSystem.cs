@@ -73,6 +73,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
             Debug.LogWarning("Dialogue started with unspecified or invalid Dialogue Asset !");
             return;
         }
+        InputManager.Instance.DisableSticksAndButtons();
+
         ProcessingDialogue = asset;
         _sectionIndex = 0;
         _sentenceIndex = 0;
@@ -83,6 +85,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
         _fadeCanvasBox.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = ProcessingDialogue.DialogueBackground;
         _choiceButton.gameObject.GetComponent<Image>().sprite = ProcessingDialogue.SkillDescriptor.Sprite;
+
 
         if (_leftImage != null)
             _leftImage.sprite = ProcessingDialogue.LeftCharacter;
@@ -103,6 +106,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
         {
             OnDialogueEvent?.Invoke(ProcessingDialogue.ClosureEventType);
         }
+
+        InputManager.Instance.EnableSticksAndButtons();
 
         Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(2).GetComponent<CanvasGroup>());
         Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());

@@ -21,7 +21,6 @@ public class GameManager : Singleton<GameManager>
     private const string SKILL_STICK_PARENT_TAG = "SkillStick";
 
     private const string INVENTORY_UI_TAG = "InventoryUI";
-    private const string BACKGROUND_UI_TAG = "BackgroundUI";
     private const string INVENTORY_FULL_TAG = "InventoryFull";
 
     private const string ACHIEVEMENT_UI_TAG = "AchievementUI";
@@ -40,7 +39,6 @@ public class GameManager : Singleton<GameManager>
     
     [HideInInspector] public Inventory InventorySkill;
     [HideInInspector] public GameObject GameController;
-    [HideInInspector] public GameObject UIBackground;
     [HideInInspector] public GameObject InventoryFullMenu;
     [HideInInspector] public GameObject UIAchievement;
     [HideInInspector] public GameObject UIAchievementButton;
@@ -85,7 +83,6 @@ public class GameManager : Singleton<GameManager>
         DialogueSkillBtn = GameObject.FindGameObjectWithTag(DIALOGUE_SKILL_BTN_TAG);
         DialogueQuitBtn = GameObject.FindGameObjectWithTag(DIALOGUE_QUIT_BTN_TAG);
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
-        UIBackground = GameObject.FindGameObjectWithTag(BACKGROUND_UI_TAG);
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
 
         UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);

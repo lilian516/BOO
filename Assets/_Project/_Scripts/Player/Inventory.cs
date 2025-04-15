@@ -164,11 +164,13 @@ public class Inventory : MonoBehaviour, IChangeable
     private void ManageInventory(Skill skill, PlayerSkill playerSkill)
     {
         InputManager.Instance.DisableSticksAndButtons();
-        Helpers.ShowCanva(GameManager.Instance.UIBackground.GetComponent<CanvasGroup>());
+        Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
         Helpers.ShowCanva(GameManager.Instance.InventoryFullMenu.GetComponent<CanvasGroup>());
 
-        GameManager.Instance.InventoryFullMenu.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = skill.GetSprite();
-        GameManager.Instance.InventoryFullMenu.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = skill.GetName();
+        GameObject inventoryMenu = GameManager.Instance.InventoryFullMenu.transform.GetChild(0).gameObject;
+
+        inventoryMenu.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = skill.GetSprite();
+        inventoryMenu.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = skill.GetName();
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
@@ -181,7 +183,6 @@ public class Inventory : MonoBehaviour, IChangeable
     {
         Time.timeScale = 1;
         InputManager.Instance.EnableSticksAndButtons();
-        Helpers.HideCanva(GameManager.Instance.UIBackground.GetComponent<CanvasGroup>());
         Helpers.HideCanva(GameManager.Instance.InventoryFullMenu.GetComponent<CanvasGroup>());
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
