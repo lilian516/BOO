@@ -37,7 +37,7 @@ public class AngrySystem : Singleton<AngrySystem>
 
         Islands = new GameObject[3];
 
-        StartCoroutine(FindEnvironmentObject());
+        //StartCoroutine(FindEnvironmentObject());
     }
     [ContextMenu("Change Angry Limits")]
     public void ChangeAngryLimits()
@@ -47,7 +47,7 @@ public class AngrySystem : Singleton<AngrySystem>
 
         if (_angryLimits == 0 && !IsAngry)
         {
-            SpawnMultipleOnRandomBases();
+            //SpawnMultipleOnRandomBases();
 
             _angryLimits = _baseAngryLimits;
 

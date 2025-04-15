@@ -3,7 +3,117 @@ guid: 8c789db42eb7cbb4bbc31d901d17908d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Boat
+    second: {fileID: 2100000, guid: 47e044730896a134fa6d55230245483c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gamin_House
+    second: {fileID: 2100000, guid: 884d3976c75a17c48b35234178fda34e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Helice_Little
+    second: {fileID: 2100000, guid: 6d7982687780e6644a2e6999590a76ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Isle
+    second: {fileID: 2100000, guid: c723685b9ec03fd44ab374d1304e5ba2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Mauvis_House
+    second: {fileID: 2100000, guid: d9af925620749154785c23461010c1c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Pont_Broken
+    second: {fileID: 2100000, guid: a88bcbe381899c549bac206d95cd50e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Pont_Gamin
+    second: {fileID: 2100000, guid: 34cf11059bfcf684cb052c486de5c581, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Pont_Sheep
+    second: {fileID: 2100000, guid: 6b565698d52e2d743a4029a1d577401c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Poteaux
+    second: {fileID: 2100000, guid: 0093293e7324b804a8f8a3ef75602dee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Props_Mauvis
+    second: {fileID: 2100000, guid: 394ef7634b3fe2c4ea23fd2c753f59ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Props_Seamone
+    second: {fileID: 2100000, guid: 0f76a394c453b5d41b1ba988ab386a55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Remumus_House
+    second: {fileID: 2100000, guid: 2e6384983df67e14ba52e27e41a3d835, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Rock
+    second: {fileID: 2100000, guid: 8a80766d8e0effb4e94b952e3225452e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Seamone_House
+    second: {fileID: 2100000, guid: a166bc26bc3812e4eafb5ebbdcd81a62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_BeeBite_Plane
+    second: {fileID: 2100000, guid: d15cd7cac152c8947b8b055fe6f49e5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Cube
+    second: {fileID: 2100000, guid: a7a0d346bcfb6a34aa9551558537c459, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Cylindre_Plane
+    second: {fileID: 2100000, guid: dc261142aada3ff43aa419ea12380004, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Orbe
+    second: {fileID: 2100000, guid: 1a8a543317343f74b95a6c93e3c4372f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Plane
+    second: {fileID: 2100000, guid: f437e78bcaf55ca4aaa968bb3f8e79cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Pont_Dead
+    second: {fileID: 2100000, guid: 13eb277f7b3441f4497796b7d3610a27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Simple
+    second: {fileID: 2100000, guid: c39c2746109548e4d8a99295c7c322cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Sphere_Plane
+    second: {fileID: 2100000, guid: 6988c5d6af5f65a4292124021f5c51be, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

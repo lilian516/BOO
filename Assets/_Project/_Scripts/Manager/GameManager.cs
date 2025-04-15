@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator WaitForScenesAndInitialize()
     {
-        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "CJOLI", "MainMenu" });
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene", "MainMenu" });
 
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
