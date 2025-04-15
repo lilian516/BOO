@@ -51,17 +51,17 @@ Material:
     - _darkRipplesDensity: 50
     - _darkRipplesSlimness: 3
     - _darkRipplesSpeed: 0.5
-    - _depth: 0
+    - _depth: 5
     - _displacement: 0
     - _foamAmount: 1.5
     - _foamCutoff: 3
     - _foamScale: 200
-    - _foamSpeed: 0.001
+    - _foamSpeed: 1
     - _rippleDensity: 30
     - _rippleSlimness: 5
     - _rippleSpeed: 1
-    - _smoothness: 0.35
-    - _strength: 0
+    - _smoothness: 0.318
+    - _strength: 1.25
     m_Colors:
     - _darkRipplesColor: {r: 0.091847636, g: 0.09547407, b: 0.4528302, a: 0.7960784}
     - _deepWaterColor: {r: 0.17380556, g: 0.79293096, b: 0.89433956, a: 0.8}
