@@ -35,7 +35,7 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: 9a4ef5cf0cd516644980411a6ac30735, type: 3}
     Name: Baton de berger
     Desc: Pour danser et chercher des trucs
-    AnimationSkill: {fileID: 0}
+    AnimationSkill: {fileID: 7400000, guid: 48a5c609bed69de4ebd6da1a02f9e249, type: 2}
     Radius: 1.5
     Mask:
       serializedVersion: 2

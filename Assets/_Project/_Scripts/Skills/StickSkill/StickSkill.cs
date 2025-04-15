@@ -7,6 +7,7 @@ public class StickSkill : Skill
     public StickSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
+        AnimationSkill = _desc.AnimationSkill;
     }
 
 

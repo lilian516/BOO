@@ -167,6 +167,7 @@ public class Player : MonoBehaviour, IChangeable
 
             _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
             PlayerAnimator.runtimeAnimatorController = _overrideController;
+            Debug.Log(_inventory.CurrentSkill);
             PlayerAnimator.SetTrigger("UseSkill");
             return true;
         }
