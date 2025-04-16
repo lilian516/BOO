@@ -73,7 +73,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
             Debug.LogWarning("Dialogue started with unspecified or invalid Dialogue Asset !");
             return;
         }
-        InputManager.Instance.DisableSticksAndButtons();
+        InputManager.Instance.DisableControllerStick();
+        InputManager.Instance.DisableSkillStick();
 
         ProcessingDialogue = asset;
         _sectionIndex = 0;
@@ -107,7 +108,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
             OnDialogueEvent?.Invoke(ProcessingDialogue.ClosureEventType);
         }
 
-        InputManager.Instance.EnableSticksAndButtons();
+        InputManager.Instance.EnableControllerSticks();
+        InputManager.Instance.EnableSkillStick();
 
         Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(2).GetComponent<CanvasGroup>());
         Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());

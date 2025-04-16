@@ -65,23 +65,28 @@ public class InputManager : Singleton<InputManager>
         _controls.Player.Speak.performed += ctx => { UpdateControlMethod(ctx.control);CheckSpeakingPerformed(); };
     }
 
-    public void DisableSticksAndButtons()
+    public void DisableControllerStick()
     {
         GameObject controller = GameManager.Instance.GameController;
         Helpers.HideCanva(controller.GetComponent<CanvasGroup>());
-
-        GameObject skill = GameManager.Instance.SkillStickParent;
-        Helpers.HideCanva(skill.GetComponent<CanvasGroup>()); 
     }
 
-    public void EnableSticksAndButtons()
+    public void DisableSkillStick()
+    {
+        GameObject skill = GameManager.Instance.SkillStickParent;
+        Helpers.HideCanva(skill.GetComponent<CanvasGroup>());
+    }
+
+    public void EnableControllerSticks()
     {
         GameObject controller = GameManager.Instance.GameController;
         Helpers.ShowCanva(controller.GetComponent<CanvasGroup>());
+    }
 
+    public void EnableSkillStick()
+    {
         GameObject skill = GameManager.Instance.SkillStickParent;
         Helpers.ShowCanva(skill.GetComponent<CanvasGroup>());
-        
     }
         
 
