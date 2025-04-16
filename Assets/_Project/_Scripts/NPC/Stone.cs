@@ -35,6 +35,8 @@ public class Stone : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_isStopped);
+
         if (_isStopped)
             return;
 
@@ -52,7 +54,6 @@ public class Stone : MonoBehaviour, IInteractable
                 _animator.SetTrigger("Return");
                 _pathPoints[0].PathReference.position += new Vector3(0, 0.3f, 0);
                 transform.position += new Vector3(0, 0.3f, 0);
-                Debug.Log("BOUGE TA MERE DE LA");
                 break;
         }
     }
@@ -69,9 +70,9 @@ public class Stone : MonoBehaviour, IInteractable
 
     private void GoToPathPoint()
     {
-        int DestinationIndex = _currentIndex == _pathPoints.Length - 1 ? 0 : _currentIndex + 1;
+        int DestinationIndex = (_currentIndex + 1)% _pathPoints.Length;
 
-        Vector3 StartPos = _pathPoints[_currentIndex].PathReference.position;
+        Vector3 StartPos = _pathPoints[_currentIndex % _pathPoints.Length].PathReference.position;
         Vector3 EndPos = _pathPoints[DestinationIndex].PathReference.position;
 
         transform.position = Vector3.Lerp(StartPos, EndPos, _timeStep);
@@ -81,7 +82,7 @@ public class Stone : MonoBehaviour, IInteractable
 
     private void CyclePathPoints()
     {
-        int DestinationIndex = _currentIndex == _pathPoints.Length - 1 ? 0 : _currentIndex + 1;
+        int DestinationIndex = (_currentIndex + 1) % _pathPoints.Length;
 
         if (transform.position == _pathPoints[DestinationIndex].PathReference.position)
         {
@@ -92,8 +93,9 @@ public class Stone : MonoBehaviour, IInteractable
             //    transform.eulerAngles = new Vector3(-30, 180, 0);
 
             _currentIndex++;
+            Debug.Log(_currentIndex + 1 >= _pathPoints.Length);
 
-            if (_pathPoints[_currentIndex].IsStop || _currentIndex + 1 == _pathPoints.Length)
+            if (_pathPoints[_currentIndex % _pathPoints.Length].IsStop || _currentIndex + 1 >= _pathPoints.Length )
             {
                 _isStopped = true;
                 transform.position += new Vector3(0, -0.3f, 0);
