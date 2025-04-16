@@ -13,7 +13,7 @@ public class AngerFlame : MonoBehaviour, IChangeable
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
 
-        _maxScale = 0.5f;
+        _maxScale = 0.2f;
         _minScale = 0.1f;
     }
 
@@ -25,7 +25,7 @@ public class AngerFlame : MonoBehaviour, IChangeable
             _maxScale
             );
 
-        transform.localPosition = new Vector3(0.0f, 1.6f, 0.0f);
+        transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     public void ResetChange()
@@ -35,7 +35,5 @@ public class AngerFlame : MonoBehaviour, IChangeable
             _minScale,
             _minScale
             );
-
-        transform.localPosition = new Vector3(0.0f, 0.16f, 0.0f);
     }
 }

@@ -111,6 +111,8 @@ public class AngrySystem : Singleton<AngrySystem>
 
     private void SpawnMultipleOnRandomBases()
     {
+        FindFlames();
+        
         if (FlamePrefab == null || _flamsSpawnPoints.Count == 0)
         {
             Debug.LogWarning("Missing prefab or base objects.");
@@ -136,12 +138,13 @@ public class AngrySystem : Singleton<AngrySystem>
 
         _flamsSpawnPoints.Clear();
 
-        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", "E_Flam_Spawnpoints");
     }
 
     public void FindFlames()
     {
-        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", "E_Flam_Spawnpoints");
+        string GameObjectName = "E_Flam_Spawnpoints_" + (3 - _remainingLives);
+        Debug.Log(GameObjectName);
+        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", GameObjectName);
     }
 
     public List<GameObject> FindAllObjectWithNameInScene(string sceneName, string objectName)

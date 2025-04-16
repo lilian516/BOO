@@ -70,7 +70,7 @@ public class GameManager : Singleton<GameManager>
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
-        AngrySystem.Instance.FindFlames();
+        //AngrySystem.Instance.FindFlames();
         //InventorySkill.Init();
     }
 
