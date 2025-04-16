@@ -40,6 +40,7 @@ public class Inventory : MonoBehaviour, IChangeable
         _skillButtonUI = GameManager.Instance.SkillStickParent.transform.GetChild(0).GetChild(0).gameObject;
         _baseButtonSprite = _skillButtonUI.GetComponent<Image>().sprite;
 
+
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
         {
             GameObject skillUI = _skillCanvaGroup.transform.GetChild(i).gameObject;
@@ -163,9 +164,7 @@ public class Inventory : MonoBehaviour, IChangeable
 
     private void ManageInventory(Skill skill, PlayerSkill playerSkill)
     {
-        InputManager.Instance.DisableSticksAndButtons();
-        Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
-        Helpers.ShowCanva(GameManager.Instance.InventoryFullMenu.GetComponent<CanvasGroup>());
+        InputManager.Instance.DisableControllerStick();
 
         GameObject inventoryMenu = GameManager.Instance.InventoryFullMenu.transform.GetChild(0).gameObject;
 
@@ -182,7 +181,8 @@ public class Inventory : MonoBehaviour, IChangeable
     private void StopManageInventory()
     {
         Time.timeScale = 1;
-        InputManager.Instance.EnableSticksAndButtons();
+        InputManager.Instance.EnableControllerSticks();
+        InputManager.Instance.EnableSkillStick();
         Helpers.HideCanva(GameManager.Instance.InventoryFullMenu.GetComponent<CanvasGroup>());
 
         for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)

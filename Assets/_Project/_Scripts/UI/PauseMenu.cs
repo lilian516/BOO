@@ -24,8 +24,8 @@ public class PauseMenu : MonoBehaviour
         _pauseButton.interactable = false;
         //Time.timeScale = 0;
         StartCoroutine(WaitOpenPause());
-        InputManager.Instance.DisableSticksAndButtons();
-        
+        InputManager.Instance.DisableControllerStick();
+        InputManager.Instance.DisableSkillStick();
     }
 
     private IEnumerator WaitOpenPause()
@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
     {
         Helpers.HideCanva(GetComponent<CanvasGroup>());
         Time.timeScale = 1;
-        InputManager.Instance.EnableSticksAndButtons();
+        InputManager.Instance.EnableControllerSticks();
     }
 
     private void Quit()
