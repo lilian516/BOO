@@ -98,9 +98,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bf758c6a-89d1-4801-a5c1-41ff6277e071"",
-                    ""path"": ""<Touchscreen>/Press"",
-                    ""interactions"": ""Press"",
+                    ""id"": ""c43d9daa-cda7-4439-b6ba-9cf70799b01a"",
+                    ""path"": ""<Touchscreen>/touch0/press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Speak"",
@@ -110,7 +110,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""50c2e555-3588-4957-a787-594c94f00e18"",
-                    ""path"": ""<Pointer>/position"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
