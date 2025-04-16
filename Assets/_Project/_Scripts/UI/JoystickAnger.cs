@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoystickAnger : MonoBehaviour, IChangeable
+public class JoystickAnger : MonoBehaviour
 {
     [SerializeField] List<Sprite> _spriteList;
     [SerializeField] Image _joystickImage;
@@ -16,8 +16,7 @@ public class JoystickAnger : MonoBehaviour, IChangeable
 
     void Start()
     {
-        AngrySystem.Instance.OnChangeElements += Change;
-        AngrySystem.Instance.OnChangeElements += ResetChange;
+        
         if (_spriteList.Count <= 0)
         {
             return;
@@ -25,7 +24,7 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         else if (_joystickImage == null)
         {
             return;
-        }   
+        }
 
         _booAngerStatus = AngrySystem.Instance.AngryLimits;
         _booCalmStatus = AngrySystem.Instance.CalmLimits;
@@ -40,7 +39,7 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         else
         {
         }
-        
+
     }
 
     void Update()
@@ -49,7 +48,7 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         if (newIsAngry != _isBooAngry)
         {
             _isBooAngry = newIsAngry;
-            UpdateSprite();  
+            UpdateSprite();
         }
 
         if (_booAngerStatus != AngrySystem.Instance.AngryLimits || _booCalmStatus != AngrySystem.Instance.CalmLimits)
@@ -65,10 +64,10 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         int index;
         if (!_isBooAngry)
         {
-            index = _spriteList.Count - AngrySystem.Instance.AngryLimits  - 1;
+            index = _spriteList.Count - AngrySystem.Instance.AngryLimits - 1;
             Debug.Log($"[JoystickAnger] IsAngry: {_isBooAngry}, Angry Sprite Index: {index}");
 
-            
+
         }
         else
         {
@@ -90,13 +89,4 @@ public class JoystickAnger : MonoBehaviour, IChangeable
 
     }
 
-    public void Change()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void ResetChange()
-    {
-        throw new System.NotImplementedException();
-    }
 }
