@@ -118,10 +118,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
-  m_Height: 7.35
+  m_Radius: 0.45
+  m_Height: 9.11
   m_Direction: 2
-  m_Center: {x: 0, y: 7.8, z: 1.33}
+  m_Center: {x: 0, y: 2.77, z: 1.33}
 --- !u!1 &6211438822611414723
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,8 +347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a57ace4491763245b16c95c52b530a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsExitUseSkill: 0
-  IsUseSkill: 0
 --- !u!1 &8281203800571935103
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,35 +560,13 @@ MonoBehaviour:
     DurationAcceleration: 0
   _playerAutoMovingStateDescriptor:
     NavMeshAgentPlayer: {fileID: 7979833001575883866}
-  _bubbleSkillDescriptor:
-    BubblePrefab: {fileID: 8021510982704328969, guid: 95fa5fe798e8e9643863396d32c98e4a,
-      type: 3}
-    Sprite: {fileID: 21300000, guid: ee73d6718988665459e3bdac4349588b, type: 3}
-    Name: Bubble
-    AnimationBubble: {fileID: 7400000, guid: 58b73ac6805e5ae42bb5a522c6436fd2, type: 2}
-  _stickSkillDescriptor:
-    Radius: 2
-    Mask:
-      serializedVersion: 2
-      m_Bits: 64
-    Sprite: {fileID: 21300000, guid: 9a4ef5cf0cd516644980411a6ac30735, type: 3}
-    Name: Stick
-  _windSkillDescriptor:
-    WindPrefab: {fileID: 1035563824390858650, guid: 9a434ea5e92e86a49a78998eef610941,
-      type: 3}
-    Sprite: {fileID: 21300000, guid: 26e721666f5478049a1b13136d31b04b, type: 3}
-    Name: Wind
-    AnimationWind: {fileID: 7400000, guid: 1e7ed769c9859144ead3e1f7ec09528c, type: 2}
-  _pantsSkillDescriptor:
-    Radius: 1
-    Mask:
-      serializedVersion: 2
-      m_Bits: 0
-    Sprite: {fileID: 21300000, guid: c0e33b7dcbb23624ab19c97870f419ee, type: 3}
-    Name: Pants
   _smashSkillDescriptor:
-    Radius: 2
+    Prefab: {fileID: 0}
     Sprite: {fileID: 21300000, guid: c9f96f74d894cab4c80f912bb53f039d, type: 3}
+    Name: 
+    Desc: 
+    AnimationSkill: {fileID: 0}
+    Radius: 2
     Mask:
       serializedVersion: 2
       m_Bits: 0
