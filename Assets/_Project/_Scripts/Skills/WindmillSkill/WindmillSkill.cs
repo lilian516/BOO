@@ -15,6 +15,7 @@ public class WindmillSkill : Skill
         Vector3 spawnPos = _player.transform.position;
 
         GameObject wind = GameManager.Instance.SpawnObject(_desc.Prefab);
+        wind.GetComponent<Wind>().Init(_player.LookDir, _player.transform.GetChild(3).rotation);
 
         wind.transform.position = spawnPos;
     }

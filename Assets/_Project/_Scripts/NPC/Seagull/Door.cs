@@ -9,6 +9,7 @@ public class Door : MonoBehaviour, IClickable
     
 
     public bool IsKnocked = false;
+    private bool _achivevementUnlock = false;
     public Vector3 PositionToGo { get; set; }
 
 
@@ -20,7 +21,15 @@ public class Door : MonoBehaviour, IClickable
     {
         _animator.SetTrigger("Vomit");
         IsKnocked = true;
+
+        StartCoroutine(WaitForAchievement());
     }
 
-    
+    private IEnumerator WaitForAchievement()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        AchievementSystem.Instance.SucceedAchievement(AchievementCondition.Knock_At_The_Door);
+        _achivevementUnlock = true;
+    }
 }

@@ -10,10 +10,14 @@ public class Wind : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _forward = GameManager.Instance.Player.GetComponent<Player>().LookDir.normalized;
+    }
+
+    public void Init(Vector3 dir, Quaternion rotation)
+    {
+        _forward = dir.normalized;
 
         Transform child = transform.GetChild(0);
-        child.rotation = GameManager.Instance.Player.transform.GetChild(3).rotation * Quaternion.Euler(0.0f, 90.0f, 0.0f);
+        child.rotation = rotation * Quaternion.Euler(0.0f, 90.0f, 0.0f);
 
         float threshold = 0.25f;
 

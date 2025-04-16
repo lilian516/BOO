@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class AchievementSystem : Singleton<AchievementSystem>
 {
     [SerializeField] private List<AchievementAsset> _achievementList;
-    [SerializeField] private GameObject _achievementUIPrefab;
     
     private List<AchievementCondition> _achievementConditionList;
 
-    public List<Sprite> UIAchievementToUpdate;
+    [HideInInspector] public List<Sprite> UIAchievementToUpdate;
 
     private void Start()
     {
@@ -68,4 +67,5 @@ public enum AchievementCondition
 {
     None,
     Two_Bubbles_In_Inventory,
+    Knock_At_The_Door,
 }

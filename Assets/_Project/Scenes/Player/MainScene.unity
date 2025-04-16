@@ -1589,6 +1589,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1369250451}
     m_Modifications:
+    - target: {fileID: 2545947709498387201, guid: c3576535f08d0e24f8e8749d9445e704,
+        type: 3}
+      propertyPath: _bubleSheepPos.x
+      value: -22.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545947709498387201, guid: c3576535f08d0e24f8e8749d9445e704,
+        type: 3}
+      propertyPath: _bubleSheepPos.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545947709498387201, guid: c3576535f08d0e24f8e8749d9445e704,
+        type: 3}
+      propertyPath: _bubleSheepPos.z
+      value: 1.49
+      objectReference: {fileID: 0}
     - target: {fileID: 3078679422635951954, guid: c3576535f08d0e24f8e8749d9445e704,
         type: 3}
       propertyPath: m_Name
@@ -5044,12 +5059,12 @@ PrefabInstance:
     - target: {fileID: 3690849082295597283, guid: 01fe640605ea6964f83ccc68d424a7e4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.47
+      value: -22.151
       objectReference: {fileID: 0}
     - target: {fileID: 3690849082295597283, guid: 01fe640605ea6964f83ccc68d424a7e4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3690849082295597283, guid: 01fe640605ea6964f83ccc68d424a7e4,
         type: 3}
@@ -5100,6 +5115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pf_SheepBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 5432799492644558758, guid: 01fe640605ea6964f83ccc68d424a7e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5432799492644558758, guid: 01fe640605ea6964f83ccc68d424a7e4,
         type: 3}
