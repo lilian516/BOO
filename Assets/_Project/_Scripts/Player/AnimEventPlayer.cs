@@ -23,13 +23,13 @@ public class AnimEventPlayer : MonoBehaviour
 
     public void ExitUseSkillState()
     {
-        Debug.Log("oui on sort");
+        //Debug.Log("oui on sort");
         OnExitUseSkill?.Invoke();
     }
 
     public void UseSkillState()
     {
-        Debug.Log("oui utilise");
+        //Debug.Log("oui utilise");
         OnEnterUseSkill?.Invoke();
     }
 

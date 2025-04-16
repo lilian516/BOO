@@ -27,8 +27,7 @@ public class PlayerSkillState : PlayerState
         if (!_player.StartUseCurrentSkill()) {
             _playerStateMachine.ChangeState(_player.IdleState);
         }
-        _player.PlayerFaceAnimator.enabled = false;
-        _player.PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        
 
         _player.EventPlayer.OnEnterUseSkill += UseSkill;
         _player.EventPlayer.OnExitUseSkill += StopUseSkill;

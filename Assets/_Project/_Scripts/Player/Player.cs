@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour, IChangeable
 {
@@ -162,6 +163,9 @@ public class Player : MonoBehaviour, IChangeable
         if (_inventory.CurrentSkill != null)
         {
             //_inventory.CurrentSkill.UseSkill();
+
+            PlayerFaceAnimator.enabled = false;
+            PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
             _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
 
