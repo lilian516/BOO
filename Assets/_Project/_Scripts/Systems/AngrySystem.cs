@@ -24,6 +24,8 @@ public class AngrySystem : Singleton<AngrySystem>
     public delegate void ChangeElements();
     public event ChangeElements OnChangeElements;
 
+    
+
     public delegate void ResetChangedElements();
     public event ResetChangedElements OnResetElements;
 

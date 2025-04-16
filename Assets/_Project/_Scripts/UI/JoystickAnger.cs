@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoystickAnger : MonoBehaviour
+public class JoystickAnger : MonoBehaviour, IChangeable
 {
     [SerializeField] List<Sprite> _spriteList;
     [SerializeField] Image _joystickImage;
@@ -16,6 +16,8 @@ public class JoystickAnger : MonoBehaviour
 
     void Start()
     {
+        AngrySystem.Instance.OnChangeElements += Change;
+        AngrySystem.Instance.OnChangeElements += ResetChange;
         if (_spriteList.Count <= 0)
         {
             return;
@@ -86,5 +88,15 @@ public class JoystickAnger : MonoBehaviour
         }
 
 
+    }
+
+    public void Change()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ResetChange()
+    {
+        throw new System.NotImplementedException();
     }
 }
