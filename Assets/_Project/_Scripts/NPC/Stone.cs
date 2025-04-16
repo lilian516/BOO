@@ -19,6 +19,8 @@ public class Stone : MonoBehaviour, IInteractable
     private int _currentIndex;
     private float _timeStep;
 
+    [SerializeField] Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,9 @@ public class Stone : MonoBehaviour, IInteractable
         {
             case PlayerSkill.StickSkill:
                 _isStopped = false;
+                _animator.SetTrigger("Return");
+                _pathPoints[0].PathReference.position += new Vector3(0, 0.3f, 0);
+                transform.position += new Vector3(0, 0.3f, 0);
                 Debug.Log("BOUGE TA MERE DE LA");
                 break;
         }
@@ -81,15 +86,20 @@ public class Stone : MonoBehaviour, IInteractable
         if (transform.position == _pathPoints[DestinationIndex].PathReference.position)
         {
 
-            if (_pathPoints[(DestinationIndex + 1) % _pathPoints.Length].PathReference.position.x < transform.position.x)
-                transform.eulerAngles = new Vector3(30, 0, 0);
-            else
-                transform.eulerAngles = new Vector3(-30, 180, 0);
+            //if (_pathPoints[(DestinationIndex + 1) % _pathPoints.Length].PathReference.position.x < transform.position.x)
+            //    transform.eulerAngles = new Vector3(30, 0, 0);
+            //else
+            //    transform.eulerAngles = new Vector3(-30, 180, 0);
 
             _currentIndex++;
 
             if (_pathPoints[_currentIndex].IsStop || _currentIndex + 1 == _pathPoints.Length)
+            {
                 _isStopped = true;
+                transform.position += new Vector3(0, -0.3f, 0);
+            }
+                
+
 
             _timeStep = 0.0f;
         }
