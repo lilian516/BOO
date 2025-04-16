@@ -30,6 +30,9 @@ public class InputManager : Singleton<InputManager>
 
     #endregion
 
+    bool _isBugged;
+    int _nbPerformedClickFrame;
+
     protected override void Awake()
     {
         base.Awake();
@@ -56,6 +59,28 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
+        if (_isBugged)
+        {
+            if(Touchscreen.current.touches[0].press.wasPressedThisFrame)
+            {
+                CheckSpeakingPerformed();
+            }
+        }
+
+        if (GetMoveDirection() == Vector2.zero && _controls.Player.Speak.phase == InputActionPhase.Performed)
+        {
+            _nbPerformedClickFrame++;
+        }
+        else if (_controls.Player.Speak.phase != InputActionPhase.Performed)
+        {
+            _nbPerformedClickFrame = 0;
+        }
+
+        if (_nbPerformedClickFrame >= 50 && _controls.Player.Speak.phase == InputActionPhase.Performed)
+        {
+            _isBugged = true;
+        }
+
     }
 
 
@@ -170,6 +195,10 @@ public class InputManager : Singleton<InputManager>
 
     public Vector2 GetTouchPosition()
     {
+        if (_isBugged)
+        {
+            return Touchscreen.current.touches[0].value.position;
+        }
         return _controls.Player.Touch.ReadValue<Vector2>();
     }
 
