@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46dc299d00a7b34b84d4a7046abdc06, type: 3}
   m_Name: Child
   m_EditorClassIdentifier: 
-  Name: Aie !
-  Description: Hit the child
-  Sprite: {fileID: 0}
+  Name: Encore plus de bulles !
+  Description: Plus de bulle pour plus de fun !
+  Sprite: {fileID: 21300000, guid: 88d3b8411972a784eb2e6a7e3a51e217, type: 3}
   IsUnlocked: 0
-  Condition: 0
+  Condition: 1
