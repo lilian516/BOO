@@ -19,6 +19,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause()
     {
+
+        _pauseButton.onClick.RemoveAllListeners();
         //Helpers.ShowCanva(GetComponent<CanvasGroup>());
         _animatorTransition.SetTrigger("Click");
         _pauseButton.interactable = false;
@@ -41,6 +43,7 @@ public class PauseMenu : MonoBehaviour
         Helpers.HideCanva(GetComponent<CanvasGroup>());
         Time.timeScale = 1;
         InputManager.Instance.EnableControllerSticks();
+        _pauseButton.onClick.AddListener(Pause);
     }
 
     private void Quit()
