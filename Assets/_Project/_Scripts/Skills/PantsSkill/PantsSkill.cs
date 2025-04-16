@@ -7,6 +7,7 @@ public class PantsSkill : Skill
     public PantsSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
+        AnimationSkill = _desc.AnimationSkill;
     }
 
     public override void UseSkill()
