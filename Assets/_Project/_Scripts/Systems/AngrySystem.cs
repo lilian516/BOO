@@ -24,8 +24,22 @@ public class AngrySystem : Singleton<AngrySystem>
     public delegate void ChangeElements();
     public event ChangeElements OnChangeElements;
 
+    public delegate void FirstAngerOccurence();
+    public event FirstAngerOccurence OnFirstAngerOccurence;
+
+    public delegate void SecondAngerOccurence();
+    public event SecondAngerOccurence OnSecondAngerOccurence;
+
+    public delegate void FirstCalmOccurence();
+    public event FirstCalmOccurence OnFirstCalmOccurence;
+
+    public delegate void SecondCalmOccurence();
+    public event SecondCalmOccurence OnSecondCalmOccurence;
+
     public delegate void ResetChangedElements();
     public event ResetChangedElements OnResetElements;
+
+
 
     void Start()
     {
@@ -52,6 +66,17 @@ public class AngrySystem : Singleton<AngrySystem>
     {
         if (_angryLimits > 0)
             _angryLimits--;
+
+        if (_angryLimits == 2)
+        {
+            OnFirstAngerOccurence?.Invoke();
+            return;
+        }
+        else if (_angryLimits == 1)
+        {
+            OnSecondAngerOccurence?.Invoke();
+            return;
+        }
 
         if (_angryLimits == 0 && !IsAngry)
         {
@@ -83,6 +108,17 @@ public class AngrySystem : Singleton<AngrySystem>
     {
         if (_calmLimits > 0)
             _calmLimits--;
+
+        if (_calmLimits == 2)
+        {
+            OnFirstCalmOccurence?.Invoke();
+            return;
+        }
+        else if (_calmLimits == 1)
+        {
+            OnSecondCalmOccurence?.Invoke();
+            return;
+        }
 
         if (_calmLimits == 0 && IsAngry)
         {
@@ -199,7 +235,7 @@ public class AngrySystem : Singleton<AngrySystem>
 
         foreach (GameObject listd in list)
         {
-            listd.gameObject.name = "cet objet est dans la liste";
+            listd.name = "cet objet est dans la liste";
         }
 
         return list;

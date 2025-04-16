@@ -11,12 +11,10 @@ public class JoystickStyleChanger : MonoBehaviour, IChangeable
     [SerializeField] RectTransform _imageObject;
     private Image _imageComponent;
 
-    private float _duration = 0.8f;
+    private readonly float _duration = 0.8f;
 
     [SerializeField] float[] _magnitudes = new float[3];
     private int _magnitudeIndex;
-
-    [SerializeField] JoystickAnger _joystickAnger;
 
     private bool _isShaking = false;
 
@@ -40,18 +38,11 @@ public class JoystickStyleChanger : MonoBehaviour, IChangeable
             _imageComponent = _imageObject.GetComponent<Image>();
         }
         _imageComponent.sprite = _sprites[0];
+        AngrySystem.Instance.OnFirstAngerOccurence += UpdateAngryMode;
+        AngrySystem.Instance.OnSecondAngerOccurence += UpdateAngryMode;
+        AngrySystem.Instance.OnChangeElements += Change;
 
-        if (_joystickAnger != null)
-        {
-            _joystickAnger.OnChangeAngerLevel += UpdateAngryMode;
-            
-        }
-        else
-        {
-            Debug.LogError("JoystickAnger non assigné dans JoystickStyleChanger.");
-        }
-        //AngrySystem.Instance.OnChangeElements += UpdateAngryMode;
-        AngrySystem.Instance.OnResetElements += UpdateCalmMode;
+        AngrySystem.Instance.OnResetElements += ResetChange;
 
         _magnitudeIndex = 0;
 
@@ -77,7 +68,6 @@ public class JoystickStyleChanger : MonoBehaviour, IChangeable
     private IEnumerator Shake()
     {
         _isShaking = true;
-        bool justGotCalmed = false;
 
         if (_magnitudeIndex >= _magnitudes.Length)
         {
@@ -85,31 +75,22 @@ public class JoystickStyleChanger : MonoBehaviour, IChangeable
             _isShaking = false;
             yield break;
         }
-        else if (_magnitudeIndex < 0)
-        {
-            justGotCalmed = true;
-        }
+
         Vector2 originalPos = _imageObject.anchoredPosition;
         float elapsed = 0f;
 
         while (elapsed < _duration) 
         {
-            float offsetX = Random.Range(-1f, 1f) * _magnitudes[justGotCalmed ? _magnitudeIndex + 1 : _magnitudeIndex];
-            float offsetY = Random.Range(-1f, 1f) * _magnitudes[justGotCalmed ? _magnitudeIndex + 1 : _magnitudeIndex];
+            float offsetX = Random.Range(-1f, 1f) * _magnitudes[_magnitudeIndex];
+            float offsetY = Random.Range(-1f, 1f) * _magnitudes[_magnitudeIndex];
 
             _imageObject.anchoredPosition = originalPos + new Vector2(offsetX, offsetY);
             elapsed += Time.deltaTime;
             yield return null;
         }
         _imageObject.anchoredPosition = originalPos;
-        if (justGotCalmed)
-        {
-            _magnitudeIndex = 0;
-        }
-        else
-        {
-            _magnitudeIndex += 1;
-        }
+        _magnitudeIndex += 1;
+
         _isShaking = false;
         Debug.Log("Coroutine finie");
     }
@@ -118,17 +99,17 @@ public class JoystickStyleChanger : MonoBehaviour, IChangeable
     {
         StopAllCoroutines();
         _imageComponent.sprite = _sprites[0];
-        _magnitudeIndex = -1;
+        _magnitudeIndex = 0;
         _isShaking = false;
     }
 
     public void Change()
     {
-        
+        UpdateAngryMode();
     }
 
     public void ResetChange()
     {
-        
+        UpdateCalmMode();
     }
 }

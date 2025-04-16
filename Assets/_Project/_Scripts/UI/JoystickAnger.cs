@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoystickAnger : MonoBehaviour
+public class JoystickAnger : MonoBehaviour, IChangeable
 {
     [SerializeField] List<Sprite> _spriteList;
     [SerializeField] Image _joystickImage;
     private bool _isBooAngry;
     private int _booAngerStatus;
     private int _booCalmStatus;
-
-    public delegate void ChangeAngerLevel();
-    public event ChangeAngerLevel OnChangeAngerLevel;
 
     void Start()
     {
@@ -35,56 +32,46 @@ public class JoystickAnger : MonoBehaviour
         {
             _joystickImage.sprite = _spriteList[index];
         }
-        else
-        {
-        }
-        
+        AngrySystem.Instance.OnFirstAngerOccurence += UpdateFirstAngerLevel;
+        AngrySystem.Instance.OnSecondAngerOccurence += UpdateSecondAngerLevel;
+        AngrySystem.Instance.OnChangeElements += Change;
+
+        AngrySystem.Instance.OnFirstCalmOccurence += UpdateSecondAngerLevel;
+        AngrySystem.Instance.OnSecondCalmOccurence += UpdateFirstAngerLevel;
+        AngrySystem.Instance.OnResetElements += ResetChange;
+
+    }
+    
+    private void UpdateFirstAngerLevel()
+    {
+        UpdateSprite(1);
     }
 
-    void Update()
+    private void UpdateSecondAngerLevel()
     {
-        bool newIsAngry = AngrySystem.Instance.IsAngry;
-        if (newIsAngry != _isBooAngry)
-        {
-            _isBooAngry = newIsAngry;
-            UpdateSprite();  
-        }
-
-        if (_booAngerStatus != AngrySystem.Instance.AngryLimits || _booCalmStatus != AngrySystem.Instance.CalmLimits)
-        {
-            _booAngerStatus = AngrySystem.Instance.AngryLimits;
-            _booCalmStatus = AngrySystem.Instance.CalmLimits;
-            UpdateSprite();
-        }
+        UpdateSprite(2);
     }
 
-    void UpdateSprite()
+    void UpdateSprite(int index)
     {
-        int index;
-        if (!_isBooAngry)
+        if (index < 0 ||index >= _spriteList.Count)
         {
-            index = _spriteList.Count - AngrySystem.Instance.AngryLimits  - 1;
-            Debug.Log($"[JoystickAnger] IsAngry: {_isBooAngry}, Angry Sprite Index: {index}");
-
-            
+            Debug.LogError("Souci d'index, la fonction ne peut fonctionner.");
+            return;
         }
         else
         {
-            index = AngrySystem.Instance.CalmLimits;
-            Debug.Log($"[JoystickAnger] IsAngry: {_isBooAngry}, Calm Sprite Index: {index}");
-        }
-
-        if (index >= 0 && index < _spriteList.Count)
-        {
-            Debug.Log($"[JoystickAnger] Sprite applied: {_spriteList[index].name}");
             _joystickImage.sprite = _spriteList[index];
-            OnChangeAngerLevel?.Invoke();
         }
-        else
-        {
-            Debug.LogError($"[JoystickAnger] Index {index} invalide ou sprite manquant.");
-        }
+    }
 
+    public void Change()
+    {
+        UpdateSprite(3);
+    }
 
+    public void ResetChange()
+    {
+        UpdateSprite(0);
     }
 }
