@@ -32,24 +32,36 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         {
             _joystickImage.sprite = _spriteList[index];
         }
-        AngrySystem.Instance.OnFirstAngerOccurence += UpdateFirstAngerLevel;
-        AngrySystem.Instance.OnSecondAngerOccurence += UpdateSecondAngerLevel;
+        AngrySystem.Instance.OnFirstAngerOccurence += RefreshAngerUI;
+        AngrySystem.Instance.OnSecondAngerOccurence += RefreshAngerUI;
         AngrySystem.Instance.OnChangeElements += Change;
 
-        AngrySystem.Instance.OnFirstCalmOccurence += UpdateSecondAngerLevel;
-        AngrySystem.Instance.OnSecondCalmOccurence += UpdateFirstAngerLevel;
+        AngrySystem.Instance.OnFirstCalmOccurence += RefreshAngerUI;
+        AngrySystem.Instance.OnSecondCalmOccurence += RefreshAngerUI;
         AngrySystem.Instance.OnResetElements += ResetChange;
 
     }
-    
-    private void UpdateFirstAngerLevel()
+    public void RefreshAngerUI()
     {
-        UpdateSprite(1);
-    }
-
-    private void UpdateSecondAngerLevel()
-    {
-        UpdateSprite(2);
+        int index = 0;
+        _isBooAngry = AngrySystem.Instance.IsAngry;
+        if (_isBooAngry)
+        {
+            index = AngrySystem.Instance.CalmLimits;
+        }
+        else
+        {
+            int angerLevel = AngrySystem.Instance.AngryLimits;
+            switch(angerLevel)
+            {
+                case 3: index = 0;break;
+                case 2: index = 1;  break;
+                case 1: index = 2; break;
+                case 0: index = 3;break;
+            }
+        }
+        
+        UpdateSprite(index);
     }
 
     void UpdateSprite(int index)

@@ -106,23 +106,28 @@ public class AngrySystem : Singleton<AngrySystem>
     [ContextMenu("Reset Calm Limits")]
     public void ChangeCalmLimits()
     {
-        if (_calmLimits > 0)
-            _calmLimits--;
-
+        Debug.Log($"[Calm] Calm limit before: {_calmLimits}");
+        if (_calmLimits <= 0)
+        {
+            Debug.Log($"[ChangeCalm] Changement ignoré car limite = {_calmLimits}");
+            return;
+        }
+        _calmLimits--;
+        Debug.Log($"[Calm] Calm limit is now: {_calmLimits}");
         if (_calmLimits == 2)
         {
+            Debug.Log("[Calm] First calm event");
             OnFirstCalmOccurence?.Invoke();
-            return;
         }
         else if (_calmLimits == 1)
         {
+            Debug.Log("[Calm] Second calm event");
             OnSecondCalmOccurence?.Invoke();
-            return;
         }
 
         if (_calmLimits == 0 && IsAngry)
         {
-            _calmLimits = _baseCalmLimits;
+            Debug.Log("[Calm] Reset elements!");
 
             IsAngry = false;
 

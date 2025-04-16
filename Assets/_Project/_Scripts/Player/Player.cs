@@ -224,7 +224,6 @@ public class Player : MonoBehaviour, IChangeable
         PlayerFaceAnimator.enabled = false;
         PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
         StartCoroutine(WaitBeforeAngry());
-
     }
 
     IEnumerator WaitBeforeAngry()
@@ -240,6 +239,8 @@ public class Player : MonoBehaviour, IChangeable
 
     private void ChangeAnimatorToCalm()
     {
+  
+        EventPlayer.OnExitUseSkill -= ChangeAnimatorToCalm;
         RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
         PlayerFaceAnimator.enabled = true;
