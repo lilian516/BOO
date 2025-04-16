@@ -29,6 +29,8 @@ public class PlayerIdleState : PlayerState
 
         _player.Input.OnSkillMenu += OnSkill;
         _player.Input.OnSpeak += OnCheckSpeak;
+
+        _player.RB.velocity *= 0.6f;
     }
 
     public override void ExitState()
