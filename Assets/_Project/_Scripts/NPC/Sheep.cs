@@ -9,17 +9,12 @@ public class Sheep : MonoBehaviour, IInteractable
 
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
-    
-    // Start is called before the first frame update
+
+    private Vector3 _initialPosition;
+
     void Start()
     {
         _currentInteract = PlayerSkill.None;
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Interact(PlayerSkill playerSkill)
@@ -37,7 +32,6 @@ public class Sheep : MonoBehaviour, IInteractable
 
             case PlayerSkill.SmashSkill:
                 AngrySystem.Instance.ChangeCalmLimits();
-
                 GameManager.Instance.KilledSheep++;
                 Destroy(this.gameObject);
                 break;
@@ -59,10 +53,7 @@ public class Sheep : MonoBehaviour, IInteractable
             _animator.SetTrigger("Packed");
             StartCoroutine(GoUp());
             _currentInteract = PlayerSkill.BubbleSkill;
-            
-            Debug.Log("je suis embull� !!");
         }
-        
     }
 
     private IEnumerator GoUp()
@@ -71,12 +62,12 @@ public class Sheep : MonoBehaviour, IInteractable
 
         while (elapsedTime < 0.5f)
         {
-            
             transform.Translate(transform.up * _speed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
+
+        _initialPosition = transform.position;
     }
 
 
@@ -91,5 +82,28 @@ public class Sheep : MonoBehaviour, IInteractable
             yield return null;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            StartCoroutine(LetSheepFloat());
+        }
+    }
+
+    private IEnumerator LetSheepFloat()
+    {
+        yield return new WaitForSeconds(3.0f);
+
+        float ElapsedTime = 0.0f;
+
+        while (ElapsedTime < 3.0f)
+        {
+            Vector3 MoveDirection = _initialPosition - transform.position;
+            transform.Translate(MoveDirection * _speed * Time.deltaTime);
+            ElapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }
