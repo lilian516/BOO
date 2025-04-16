@@ -40,12 +40,6 @@ public class AngrySystem : Singleton<AngrySystem>
         _amountOfFlames = 5;
 
         Islands = new GameObject[3];
-
-
-        // StartCoroutine(FindEnvironmentObject());
-
-        //StartCoroutine(FindFlamSpawnpoints());
-
     }
 
 
@@ -57,7 +51,7 @@ public class AngrySystem : Singleton<AngrySystem>
 
         if (_angryLimits == 0 && !IsAngry)
         {
-            //SpawnMultipleOnRandomBases();
+            SpawnMultipleOnRandomBases();
 
             _angryLimits = _baseAngryLimits;
 
@@ -119,6 +113,8 @@ public class AngrySystem : Singleton<AngrySystem>
 
     private void SpawnMultipleOnRandomBases()
     {
+        FindFlames();
+        
         if (FlamePrefab == null || _flamsSpawnPoints.Count == 0)
         {
             Debug.LogWarning("Missing prefab or base objects.");
@@ -137,52 +133,31 @@ public class AngrySystem : Singleton<AngrySystem>
 
             flame.transform.localScale *= newScale;
 
-            // D�placer la flamme vers le haut dans le monde
             flame.transform.position += flame.transform.up * (4 * newScale);
 
             _flamsSpawnPoints.Remove(baseObj);
         }
 
-        /*for (int i = 0; i < _flamsSpawnPoints.Count; i++)
-        {
-            GameObject baseObj = _flamsSpawnPoints[i];
-
-            GameObject flame = Instantiate(FlamePrefab, baseObj.transform.position, FlamePrefab.transform.rotation);
-
-            float newScale = Random.Range(0.25f, 1.0f);
-
-            flame.transform.SetParent(baseObj.transform);
-
-            flame.transform.localScale *= newScale;
-
-            // D�placer la flamme vers le haut dans le monde
-            flame.transform.position += flame.transform.up * (4 * newScale);
-        }
-*/
         _flamsSpawnPoints.Clear();
 
-        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", "E_Flam_Spawnpoints");
     }
- 
-    IEnumerator FindFlamSpawnpoints()
+
+    public void FindFlames()
     {
-        yield return new WaitForSeconds(2);
-
-        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", "E_Flam_Spawnpoints");
+        string GameObjectName = "E_Flam_Spawnpoints_" + (3 - _remainingLives);
+        Debug.Log(GameObjectName);
+        _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", GameObjectName);
     }
 
-    List<GameObject> FindAllObjectWithNameInScene(string sceneName, string objectName)
+    public List<GameObject> FindAllObjectWithNameInScene(string sceneName, string objectName)
     {
         Scene scene = SceneManager.GetSceneByName(sceneName);
         if (!scene.IsValid() || !scene.isLoaded)
         {
-
-            //Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
+            Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
         }
         else
         {
-            //Debug.LogWarning("Couldn't find '---------- ENVIRONMENT ----------' in scene CJOLI.");
-
             Debug.LogWarning($"Scene '{sceneName}' is not loaded or invalid.");
 
         }
@@ -191,18 +166,10 @@ public class AngrySystem : Singleton<AngrySystem>
 
         foreach (GameObject root in scene.GetRootGameObjects())
         {
-
-            //Debug.Log("Found Island object: " + Islands[0].name);
             FindAllInChildrenRecursive(root.transform, objectName, list);
         }
        
-
         Debug.Log(list.Count);
-
-        foreach (GameObject listd in list)
-        {
-            listd.gameObject.name = "cet objet est dans la liste";
-        }
 
         return list;
     }

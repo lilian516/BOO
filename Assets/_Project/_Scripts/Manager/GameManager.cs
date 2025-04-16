@@ -62,9 +62,6 @@ public class GameManager : Singleton<GameManager>
     {
 
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene", "MainMenu" });
- // yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "CJOLI", "MainMenu" });
-
-
 
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
@@ -75,7 +72,7 @@ public class GameManager : Singleton<GameManager>
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         //InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
-
+        //AngrySystem.Instance.FindFlames();
         //InventorySkill.Init();
     }
 
