@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
 
         KilledSheep = 0;
 
-        Application.targetFrameRate = 45;
+        Application.targetFrameRate = 300;
     }
 
     
