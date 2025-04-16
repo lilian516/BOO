@@ -56,6 +56,7 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
+        
     }
 
 
