@@ -124,8 +124,6 @@ public class Player : MonoBehaviour, IChangeable
         StateMachine.CurrentState.FrameUpdate();
 
         RotateDirectionalIndicator();
-
-        Debug.Log(StateMachine.CurrentState);
     }
 
     private void FixedUpdate()
