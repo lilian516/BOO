@@ -57,6 +57,7 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("on va trigger");
         if (other.GetComponent<Player>())
         {
             AngrySystem.Instance.ChangeAngryLimits();
