@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
-
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.TextCore.Text;
 
 
@@ -28,6 +30,8 @@ public class PlayerMovingState : PlayerState
     private float _time;
     private bool _facingRight = true;
 
+    private OnScreenStick _joystick;
+
     public override void EnterState()
     {
         base.EnterState();
@@ -41,6 +45,7 @@ public class PlayerMovingState : PlayerState
         if (_player.transform.localScale.x == -1)
             _facingRight = false;
 
+        _joystick = GameManager.Instance.GameController.GetComponentInChildren<OnScreenStick>();
     }
 
     public override void ExitState()
@@ -95,7 +100,9 @@ public class PlayerMovingState : PlayerState
 
         if (_player.CanWalkForward)
         {
-            Vector3 newVelocity = new Vector3(_moveDirection.x * _desc.Speed, _player.RB.velocity.y, _moveDirection.z * _desc.Speed);
+            float Speed = _desc.Speed * _joystick.control.magnitude;
+            Speed = Mathf.Clamp(Speed, _desc.Speed / 3, _desc.Speed);
+            Vector3 newVelocity = new Vector3(_moveDirection.x * Speed, _player.RB.velocity.y, _moveDirection.z * Speed);
             _player.RB.velocity = newVelocity;
         }
         else
@@ -105,7 +112,9 @@ public class PlayerMovingState : PlayerState
 
         float animSpeed = Mathf.Abs(_player.RB.velocity.x) / 3 + Mathf.Abs(_player.RB.velocity.z) / 3;
         animSpeed *= _desc.Speed / 2;
+        animSpeed = Mathf.Clamp(animSpeed, 0.5f, 1);
         _player.PlayerAnimator.SetFloat("Speed", animSpeed);
+        _player.PlayerFaceAnimator.SetFloat("Speed",animSpeed);
 
         if (_player.RB.velocity.x < 0)
             Flip();
