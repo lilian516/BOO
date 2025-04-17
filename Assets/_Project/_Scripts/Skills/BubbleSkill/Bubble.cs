@@ -57,17 +57,27 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+
+        if(other.gameObject.layer == LayerMask.NameToLayer("Ignore Raycast"))
+        {
+            return;
+        }
         Debug.Log("on va trigger");
         if (other.GetComponent<Player>())
         {
             AngrySystem.Instance.ChangeAngryLimits();
+            Debug.Log("c'est le player");
         }
+
+        Debug.Log(other.gameObject.name);
 
         IInteractable interactable = other.GetComponent<IInteractable>();
 
         if (interactable != null)
         {
             interactable.Interact(PlayerSkill.BubbleSkill);
+            Debug.Log("un interact");
             Destroy(gameObject);
             return;
         }

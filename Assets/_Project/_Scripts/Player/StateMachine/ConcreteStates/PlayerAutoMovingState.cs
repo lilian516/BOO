@@ -20,7 +20,7 @@ public class PlayerAutoMovingState : PlayerState
     public PlayerAutoMovingState(Player player, PlayerStateMachine playerStateMachine, Descriptor desc) : base(player, playerStateMachine)
     {
         _desc = desc;
-        _stoppingDistance = 0.25f;
+        _stoppingDistance = 0.5f;
     }
 
     public override void ChangeStateChecks()

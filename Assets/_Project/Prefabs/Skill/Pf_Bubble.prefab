@@ -176,5 +176,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 1.8
-  _timeMovement: 5
+  _timeMovement: 0.8
   _animator: {fileID: 1692026429759791842}

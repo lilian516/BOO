@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sheep : MonoBehaviour, IInteractable
+public class Sheep : MonoBehaviour, IInteractable,IClickable
 {
     [SerializeField] private PlayerSkill _currentInteract;
     public Vector3 PushedDirection;
@@ -12,9 +12,23 @@ public class Sheep : MonoBehaviour, IInteractable
 
     private Vector3 _initialPosition;
 
+    public Vector3 PositionToGo { get; set; }
+
+    private Player _player;
+
     void Start()
     {
+        PositionToGo = transform.GetChild(0).position;
+        Debug.Log(PositionToGo);
         
+    }
+
+    private void SetPlayer()
+    {
+        if(_player == null)
+        {
+            _player = GameManager.Instance.Player.GetComponent<Player>();
+        }
     }
 
     public void Interact(PlayerSkill playerSkill)
@@ -106,5 +120,19 @@ public class Sheep : MonoBehaviour, IInteractable
             ElapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    public void OnClick()
+    {
+        //Debug.Log("on caresse");
+        _animator.SetTrigger("Pett");
+        SetPlayer();
+        StartCoroutine(WaitOneSecond());
+    }
+
+    IEnumerator WaitOneSecond()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _player.StateMachine.ChangeState(_player.IdleState);
     }
 }
