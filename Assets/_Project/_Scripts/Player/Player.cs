@@ -124,6 +124,8 @@ public class Player : MonoBehaviour, IChangeable
         StateMachine.CurrentState.FrameUpdate();
 
         RotateDirectionalIndicator();
+
+        Debug.Log(StateMachine.CurrentState);
     }
 
     private void FixedUpdate()
@@ -199,15 +201,12 @@ public class Player : MonoBehaviour, IChangeable
             case PlayerSkill.StickSkill:
                 StickSkill stickSkill = new StickSkill(this, descriptor);
                 _inventory.AddSkill(stickSkill, playerSkill);
-                return;
                 break;
             case PlayerSkill.WindSkill:
                 WindmillSkill windSkill = new WindmillSkill(this, descriptor);
                 _inventory.AddSkill(windSkill, playerSkill);
                 break;
         }
-
-        AddSkill(PlayerSkill.StickSkill, _smashSkillDescriptor);
 
     }
     public void RemoveSkill(PlayerSkill playerSkill)

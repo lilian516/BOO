@@ -40,7 +40,9 @@ public class PlayerAngryState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
-        _player.PlayerFaceAnimator.enabled = true;
+        if (!AngrySystem.Instance.IsAngry)
+            _player.PlayerFaceAnimator.enabled = true;
+
         _player.EventPlayer.OnExitAngryState -= OnIdle;
     }
 
