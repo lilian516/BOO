@@ -17,6 +17,7 @@ public class Player : MonoBehaviour, IChangeable
     public PlayerSpeakingState SpeakingState { get; set; }
     public PlayerWaitingState WaitingState { get; set; }
     public PlayerAutoMovingState AutoMovingState { get; set; }
+    public PlayerAngryState AngryState { get; set; }
 
 
     #endregion
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour, IChangeable
     [SerializeField] PlayerIdleState.Descriptor _playerIdleStateDescriptor;
     [SerializeField] PlayerMovingState.Descriptor _playerMovingStateDescriptor;
     [SerializeField] PlayerAutoMovingState.Descriptor _playerAutoMovingStateDescriptor;
+    [SerializeField] PlayerAngryState.Descriptor _playerAngryDescriptor;
 
 
     [Header("Skills Descriptors")]
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour, IChangeable
         SpeakingState = new PlayerSpeakingState(this, StateMachine);
         WaitingState = new PlayerWaitingState(this, StateMachine);
         AutoMovingState = new PlayerAutoMovingState(this, StateMachine, _playerAutoMovingStateDescriptor);
+        AngryState = new PlayerAngryState(this, StateMachine, _playerAngryDescriptor);
 
         _inventory = GetComponent<Inventory>();    
 
@@ -171,7 +174,7 @@ public class Player : MonoBehaviour, IChangeable
 
             _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
             PlayerAnimator.runtimeAnimatorController = _overrideController;
-            Debug.Log(_inventory.CurrentSkill);
+            //Debug.Log(_inventory.CurrentSkill);
             PlayerAnimator.SetTrigger("UseSkill");
             return true;
         }
