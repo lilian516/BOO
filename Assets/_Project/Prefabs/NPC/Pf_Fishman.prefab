@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _basicDialogue: {fileID: 11400000, guid: bb0b6a7dbae12464dae0e2abc8f1f4bd, type: 2}
+  _animator: {fileID: 2031088443762612544}
 --- !u!1 &6915366277449757133
 GameObject:
   m_ObjectHideFlags: 0
