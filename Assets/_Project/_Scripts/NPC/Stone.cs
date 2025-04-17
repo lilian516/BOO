@@ -29,13 +29,13 @@ public class Stone : MonoBehaviour, IInteractable
 
         _isStopped = true;
 
-        transform.position = _pathPoints[0].PathReference.position;
+        transform.position = _pathPoints[0].PathReference.position - new Vector3(0, 0.3f, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isStopped)
+        if (_isStopped || _currentIndex >= _pathPoints.Length)
             return;
 
         GoToPathPoint();
@@ -45,16 +45,24 @@ public class Stone : MonoBehaviour, IInteractable
 
     public void Interact(PlayerSkill playerSkill)
     {
+        if (_currentIndex + 1 >= _pathPoints.Length)
+            _currentIndex = 0;
+
         switch (playerSkill)
         {
             case PlayerSkill.StickSkill:
                 _isStopped = false;
                 _animator.SetTrigger("Return");
-                _pathPoints[0].PathReference.position += new Vector3(0, 0.3f, 0);
                 transform.position += new Vector3(0, 0.3f, 0);
-                Debug.Log("BOUGE TA MERE DE LA");
                 break;
         }
+
+        if (_pathPoints[_currentIndex + 1].PathReference.position.x > _pathPoints[_currentIndex].PathReference.position.x && transform.localScale.z > 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
+        }
+        else if (transform.localScale.z < 0)
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,39 +77,39 @@ public class Stone : MonoBehaviour, IInteractable
 
     private void GoToPathPoint()
     {
-        int DestinationIndex = _currentIndex == _pathPoints.Length - 1 ? 0 : _currentIndex + 1;
+        int DestinationIndex = (_currentIndex + 1)% _pathPoints.Length;
 
-        Vector3 StartPos = _pathPoints[_currentIndex].PathReference.position;
+        Vector3 StartPos = _pathPoints[_currentIndex % _pathPoints.Length].PathReference.position;
         Vector3 EndPos = _pathPoints[DestinationIndex].PathReference.position;
 
         transform.position = Vector3.Lerp(StartPos, EndPos, _timeStep);
 
-        _timeStep += Time.deltaTime * Speed;
+        _timeStep += Time.deltaTime * (Speed * Vector3.Distance(StartPos,EndPos)) / 3;
     }
 
     private void CyclePathPoints()
     {
-        int DestinationIndex = _currentIndex == _pathPoints.Length - 1 ? 0 : _currentIndex + 1;
+        int DestinationIndex = (_currentIndex + 1) % _pathPoints.Length;
 
         if (transform.position == _pathPoints[DestinationIndex].PathReference.position)
         {
 
-            //if (_pathPoints[(DestinationIndex + 1) % _pathPoints.Length].PathReference.position.x < transform.position.x)
-            //    transform.eulerAngles = new Vector3(30, 0, 0);
-            //else
-            //    transform.eulerAngles = new Vector3(-30, 180, 0);
-
             _currentIndex++;
 
-            if (_pathPoints[_currentIndex].IsStop || _currentIndex + 1 == _pathPoints.Length)
+            if (_pathPoints[_currentIndex % _pathPoints.Length].IsStop || _currentIndex + 1 >= _pathPoints.Length)
             {
                 _isStopped = true;
                 transform.position += new Vector3(0, -0.3f, 0);
+                if (transform.localScale.z < 0)
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
             }
                 
-
-
             _timeStep = 0.0f;
+
+            if (_pathPoints[DestinationIndex].PathReference.position.x > _pathPoints[DestinationIndex - 1].PathReference.position.x && transform.localScale.z > 0)
+                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * - 1);
+            else if (transform.localScale.z < 0)
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
         }
     }
 }
