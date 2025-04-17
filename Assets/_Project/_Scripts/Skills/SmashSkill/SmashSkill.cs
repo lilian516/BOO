@@ -16,7 +16,7 @@ public class SmashSkill : Skill
     {
         //Debug.Log("TAPER");
         Collider[] hitColliders = Physics.OverlapSphere(_player.transform.position, _desc.Radius, _desc.Mask);
-
+        Debug.Log(hitColliders.Length);
         if (hitColliders.Length == 0)
             return;
 
@@ -38,7 +38,7 @@ public class SmashSkill : Skill
         }
 
         IInteractable interactable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<IInteractable>();
-
+        
         if (interactable != null)
         {
             interactable.Interact(PlayerSkill.SmashSkill);

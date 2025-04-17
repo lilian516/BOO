@@ -560,6 +560,9 @@ MonoBehaviour:
     DurationAcceleration: 0
   _playerAutoMovingStateDescriptor:
     NavMeshAgentPlayer: {fileID: 7979833001575883866}
+  _playerAngryDescriptor:
+    AnimationAngry: {fileID: 0}
+    DurationStop: 0
   _smashSkillDescriptor:
     Prefab: {fileID: 0}
     Sprite: {fileID: 21300000, guid: c9f96f74d894cab4c80f912bb53f039d, type: 3}
@@ -569,7 +572,7 @@ MonoBehaviour:
     Radius: 2
     Mask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
   LookDir: {x: 0, y: 0, z: 0}
   _maxSpeed: 4
   CurrentSpeed: 0
