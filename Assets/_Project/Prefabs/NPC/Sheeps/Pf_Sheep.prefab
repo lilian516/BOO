@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3622168873541727239}
   - component: {fileID: 1830400600800574193}
   - component: {fileID: 1227497858006708902}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pf_Sheep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a12f4064db2a24a839fc866228c5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentInteract: 0
   PushedDirection: {x: 0, y: 0, z: 0}
   _speed: 1
   _animator: {fileID: 8529802135168233646}

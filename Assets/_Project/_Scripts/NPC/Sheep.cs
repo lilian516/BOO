@@ -50,6 +50,7 @@ public class Sheep : MonoBehaviour, IInteractable
     {
         if(_currentInteract != PlayerSkill.BubbleSkill)
         {
+            Debug.Log("je pack");
             _animator.SetTrigger("Packed");
             StartCoroutine(GoUp());
             _currentInteract = PlayerSkill.BubbleSkill;
