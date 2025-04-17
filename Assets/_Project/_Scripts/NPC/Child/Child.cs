@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Child : MonoBehaviour, ISpeakable
+public class Child : MonoBehaviour, ISpeakable, IChangeable
 {
 
     [SerializeField] DialogueAsset _dialogue;
@@ -28,12 +28,14 @@ public class Child : MonoBehaviour, ISpeakable
         _eventPlayer.OnEndWindAnim += LaunchWind;
 
         _launchDir = new Vector3(1,0,-1);
+
+        AngrySystem.Instance.OnChangeElements += Change;
+        AngrySystem.Instance.OnResetElements += ResetChange;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _animator.SetBool("IsBooMad", AngrySystem.Instance.IsAngry);
     }
 
     private void OnEventTakeSkill(DialogueEventType type)
@@ -64,5 +66,15 @@ public class Child : MonoBehaviour, ISpeakable
         wind.GetComponent<Wind>().Init(_launchDir, Quaternion.LookRotation(_launchDir,Vector3.up));
 
         wind.transform.position = transform.position;
+    }
+
+    public void Change()
+    {
+        _animator.SetBool("IsBooMad", true);
+    }
+
+    public void ResetChange()
+    {
+        _animator.SetBool("IsBooMad", false);
     }
 }

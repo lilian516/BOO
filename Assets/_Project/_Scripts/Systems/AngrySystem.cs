@@ -42,8 +42,6 @@ public class AngrySystem : Singleton<AngrySystem>
         Islands = new GameObject[3];
     }
 
-
-    [ContextMenu("Change Angry Limits")]
     public void ChangeAngryLimits()
     {
         if (_angryLimits > 0)
@@ -74,7 +72,6 @@ public class AngrySystem : Singleton<AngrySystem>
         InputManager.Instance.Controls.Enable();
     }
 
-    [ContextMenu("Reset Calm Limits")]
     public void ChangeCalmLimits()
     {
         if (_calmLimits > 0)

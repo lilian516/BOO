@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,9 @@ public class Door : MonoBehaviour, IClickable
     {
         _animator.SetTrigger("Vomit");
         IsKnocked = true;
+
+        if (_achivevementUnlock)
+            return;
 
         StartCoroutine(WaitForAchievement());
     }
