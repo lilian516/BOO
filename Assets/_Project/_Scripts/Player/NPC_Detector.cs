@@ -17,6 +17,8 @@ public class NPC_Detector : MonoBehaviour
         {
             OnDetectNPC?.Invoke();
             _npcInRange++;
+
+            other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineSize", 3.0f);
         }
     }
 
@@ -25,6 +27,8 @@ public class NPC_Detector : MonoBehaviour
         if (other.gameObject.GetComponent<ISpeakable>() != null)
         {
             _npcInRange--;
+
+            other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineSize", 0.0f);
 
             if (_npcInRange == 0)
                 OnStopDetectNPC?.Invoke();

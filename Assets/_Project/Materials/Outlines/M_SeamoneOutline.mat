@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_SpriteOutline
+  m_Name: M_SeamoneOutline
   m_Shader: {fileID: 4800000, guid: e2c7419bbbfb4854186e0df98a1a9703, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,7 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutlineThickness: 7.69
+    - _OutlineSize: 0
+    - _OutlineThickness: 0
     m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 1, g: 0.85882354, b: 0, a: 1}
   m_BuildTextureStacks: []

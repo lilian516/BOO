@@ -1,22 +1,25 @@
-Shader "CustomRenderTexture/SH_SpriteOutline"
+Shader "Custom/SH_OutlineShadow"
 {
     Properties
     {
-        _MainTex("Texture", 2D) = "white" {}
-        _OutlineColor("Outline Color", Color) = (1, 1, 1, 1)
-        _OutlineThickness("Outline Thickness", Float) = 1
+        [PerRendererData]_MainTex ("Sprite Texture", 2D) = "white" {}
+        _MainTex_TexelSize("MainTex Texel Size", Vector) = (1,1,1,1)
+        _Color ("Tint", Color) = (1,1,1,1)
+        _OutlineColor ("Outline Color", Color) = (0,0,0,1)
+        _OutlineSize ("Outline Size", Float) = 1.0
     }
 
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" "CanUseSpriteAtlas"="True" }
+        LOD 100
         Cull Off
+        Lighting Off
+        ZWrite Off
         Blend One OneMinusSrcAlpha
 
         Pass
         {
-            Name "SH_SpriteOutline"
-
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -24,57 +27,61 @@ Shader "CustomRenderTexture/SH_SpriteOutline"
 
             sampler2D _MainTex;
             float4 _MainTex_TexelSize;
-            fixed4 _OutlineColor;
-            float _OutlineThickness;
+            float4 _Color;
+            float4 _OutlineColor;
+            float _OutlineSize;
 
-            struct appdata
+            struct appdata_t
             {
                 float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
+                float2 texcoord : TEXCOORD0;
             };
 
             struct v2f
             {
-                float4 pos : SV_POSITION;
+                float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            v2f vert(appdata v)
+            v2f vert(appdata_t v)
             {
                 v2f o;
-                o.pos = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.texcoord;
                 return o;
             }
 
-            fixed4 frag(v2f input) : SV_Target
+            fixed4 frag(v2f i) : SV_Target
             {
-                float alpha = tex2D(_MainTex, input.uv).a;
+                float2 uv = i.uv;
+                float alpha = tex2D(_MainTex, uv).a;
 
-                float outline = 0.0;
-                float2 offsets[8] = {
-                    float2(-1, 0), float2(1, 0),
-                    float2(0, -1), float2(0, 1),
-                    float2(-1, -1), float2(-1, 1),
-                    float2(1, -1), float2(1, 1)
-                };
-
-                for (int k = 0; k < 8; k++)
+                // Outline detection (around alpha edges)
+                if (_OutlineSize > 0.0 && alpha < 0.1)
                 {
-                    float2 offsetUV = input.uv + offsets[k] * _MainTex_TexelSize.xy * _OutlineThickness;
-                    outline += tex2D(_MainTex, offsetUV).a;
+                    float outline = 0.0;
+                    float2 offset = _MainTex_TexelSize.xy * _OutlineSize;
+
+                    // Check 8 surrounding pixels
+                    outline += tex2D(_MainTex, uv + float2(-offset.x, 0)).a;
+                    outline += tex2D(_MainTex, uv + float2(offset.x, 0)).a;
+                    outline += tex2D(_MainTex, uv + float2(0, -offset.y)).a;
+                    outline += tex2D(_MainTex, uv + float2(0, offset.y)).a;
+                    outline += tex2D(_MainTex, uv + float2(-offset.x, -offset.y)).a;
+                    outline += tex2D(_MainTex, uv + float2(-offset.x, offset.y)).a;
+                    outline += tex2D(_MainTex, uv + float2(offset.x, -offset.y)).a;
+                    outline += tex2D(_MainTex, uv + float2(offset.x, offset.y)).a;
+
+                    if (outline > 0.0)
+                        return _OutlineColor;
                 }
 
-                if (alpha < 0.01 && outline > 0.01)
-                {
-                    return _OutlineColor;
-                }
-
-                fixed4 col = tex2D(_MainTex, input.uv);
-                col.rgb *= col.a;
+                fixed4 col = tex2D(_MainTex, uv) * _Color;
+                if (col.a < 0.1) discard;
                 return col;
             }
             ENDCG
         }
+        UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
     }
 }
