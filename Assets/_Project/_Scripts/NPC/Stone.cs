@@ -45,7 +45,7 @@ public class Stone : MonoBehaviour, IInteractable
 
     public void Interact(PlayerSkill playerSkill)
     {
-        if (_currentIndex >= _pathPoints.Length)
+        if (_currentIndex + 1 >= _pathPoints.Length)
             _currentIndex = 0;
 
         switch (playerSkill)
@@ -57,11 +57,11 @@ public class Stone : MonoBehaviour, IInteractable
                 break;
         }
 
-        if (_pathPoints[_currentIndex + 1].PathReference.position.x > _pathPoints[_currentIndex].PathReference.position.x && transform.localScale.x > 0)
+        if (_pathPoints[_currentIndex + 1].PathReference.position.x > _pathPoints[_currentIndex].PathReference.position.x && transform.localScale.z > 0)
         {
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
         }
-        else if (transform.localScale.x < 0)
+        else if (transform.localScale.z < 0)
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
     }
 
@@ -84,7 +84,7 @@ public class Stone : MonoBehaviour, IInteractable
 
         transform.position = Vector3.Lerp(StartPos, EndPos, _timeStep);
 
-        _timeStep += Time.deltaTime * Speed;
+        _timeStep += Time.deltaTime * (Speed * Vector3.Distance(StartPos,EndPos)) / 3;
     }
 
     private void CyclePathPoints()
@@ -94,28 +94,22 @@ public class Stone : MonoBehaviour, IInteractable
         if (transform.position == _pathPoints[DestinationIndex].PathReference.position)
         {
 
-            //if (_pathPoints[(DestinationIndex + 1) % _pathPoints.Length].PathReference.position.x < transform.position.x)
-            //    transform.eulerAngles = new Vector3(30, 0, 0);
-            //else
-            //    transform.eulerAngles = new Vector3(-30, 180, 0);
-
             _currentIndex++;
-            if (_pathPoints[DestinationIndex].PathReference.position.x > _pathPoints[DestinationIndex - 1].PathReference.position.x && transform.localScale.x > 0)
-            {
-                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * - 1);
-            }
-            else if (transform.localScale.x < 0)
-                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
 
             if (_pathPoints[_currentIndex % _pathPoints.Length].IsStop || _currentIndex + 1 >= _pathPoints.Length)
             {
                 _isStopped = true;
                 transform.position += new Vector3(0, -0.3f, 0);
+                if (transform.localScale.z < 0)
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
             }
                 
-
-
             _timeStep = 0.0f;
+
+            if (_pathPoints[DestinationIndex].PathReference.position.x > _pathPoints[DestinationIndex - 1].PathReference.position.x && transform.localScale.z > 0)
+                 transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * - 1);
+            else if (transform.localScale.z < 0)
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z * -1);
         }
     }
 }
