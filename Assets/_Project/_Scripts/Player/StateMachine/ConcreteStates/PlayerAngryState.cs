@@ -29,12 +29,14 @@ public class PlayerAngryState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        AngrySystem.Instance.OnChangeElements += OnIdle;
         AngrySystem.Instance.ChangeAngryLimits();
         _player.PlayerAnimator.SetTrigger("Angry");
         _player.PlayerFaceAnimator.enabled = false;
         _player.PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
         _player.EventPlayer.OnExitAngryState += OnIdle;
+        
     }
 
     public override void ExitState()
@@ -44,11 +46,13 @@ public class PlayerAngryState : PlayerState
             _player.PlayerFaceAnimator.enabled = true;
 
         _player.EventPlayer.OnExitAngryState -= OnIdle;
+        AngrySystem.Instance.OnChangeElements -= OnIdle;
     }
 
     public override void FrameUpdate()
     {
         base.FrameUpdate();
+        Debug.Log("en angry");
     }
 
     public override void PhysicsUpdate()

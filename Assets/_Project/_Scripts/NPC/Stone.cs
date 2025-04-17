@@ -67,11 +67,17 @@ public class Stone : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Player>() != null && _isStopped)
+        Player player = other.GetComponent<Player>();
+        if (player != null && _isStopped)
         {
-            // Ajouter l'animation de Boo qui trébuche
 
-            AngrySystem.Instance.ChangeAngryLimits();
+            // Ajouter l'animation de Boo qui trébuche
+            if (!AngrySystem.Instance.IsAngry)
+            {
+                player.StateMachine.ChangeState(player.AngryState);
+            }
+            
+            
         }
     }
 

@@ -7,6 +7,7 @@ public class Door : MonoBehaviour, IClickable
 {
 
     [SerializeField] Animator _animator;
+    [SerializeField] Animator _animatorDoor;
     
 
     public bool IsKnocked = false;
@@ -21,6 +22,7 @@ public class Door : MonoBehaviour, IClickable
     public void OnClick()
     {
         _animator.SetTrigger("Vomit");
+        _animatorDoor.SetTrigger("Knock");
         IsKnocked = true;
 
         if (_achivevementUnlock)
