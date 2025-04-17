@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_SpriteOutline
-  m_Shader: {fileID: 4800000, guid: e2c7419bbbfb4854186e0df98a1a9703, type: 3}
+  m_Name: M_ShadowOnly
+  m_Shader: {fileID: 4800000, guid: 6fb36d0ef1652724aaad5ba72fd1b682, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,14 +22,8 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 76f896a69216c314bb3e003246a0439b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _OutlineThickness: 10.56
-    m_Colors:
-    - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
