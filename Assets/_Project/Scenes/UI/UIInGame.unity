@@ -2345,6 +2345,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 336622005799654941, guid: 05be6567d1432604aa5879351af0b3d6,
+        type: 3}
+      propertyPath: m_MovementRange
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 622191729440050436, guid: 05be6567d1432604aa5879351af0b3d6,
         type: 3}
       propertyPath: m_Pivot.x

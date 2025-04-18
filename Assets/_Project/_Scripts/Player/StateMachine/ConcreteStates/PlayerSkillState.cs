@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,6 +12,7 @@ public class PlayerSkillState : PlayerState
 
     public AnimEventPlayer EventPlayer { get; set; }
 
+    private SpriteRenderer[] _sprites;
 
     public PlayerSkillState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
     {
@@ -23,11 +26,19 @@ public class PlayerSkillState : PlayerState
         base.EnterState();
 
         //StateMachine.Initialize(LaunchState);
+        _sprites = _player.transform.GetComponentsInChildren<SpriteRenderer>();
 
         if (!_player.StartUseCurrentSkill()) {
             _playerStateMachine.ChangeState(_player.IdleState);
         }
-        
+
+        if (_player.HasSkillSelected())
+        {
+            if (Mathf.Sign(_player.LookDir.x) != Mathf.Sign(_player.SkillDir.x))
+            {
+                Flip(true);
+            }
+        }
 
         _player.EventPlayer.OnEnterUseSkill += UseSkill;
         _player.EventPlayer.OnExitUseSkill += StopUseSkill;
@@ -45,7 +56,8 @@ public class PlayerSkillState : PlayerState
             
             _player.PlayerFaceAnimator.enabled = true;
         }
-       
+        Flip(false);
+
     }
 
     public override void FrameUpdate()
@@ -87,5 +99,10 @@ public class PlayerSkillState : PlayerState
             _playerStateMachine.ChangeState(_player.MovingState);
         }
     }
-   
+
+    private void Flip(bool flipped)
+    {
+        _sprites[0].flipX = flipped;
+        _sprites[1].flipX = flipped;
+    }
 }

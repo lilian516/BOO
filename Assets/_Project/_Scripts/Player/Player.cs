@@ -58,6 +58,7 @@ public class Player : MonoBehaviour, IChangeable
     private AnimatorOverrideController _overrideController;
 
     public Vector3 LookDir;
+    public Vector3 SkillDir;
 
     public Vector3 PositionToGo { get; set; }
 
@@ -116,6 +117,9 @@ public class Player : MonoBehaviour, IChangeable
         detector.OnDetectNPC += ChangeAnimatorToCurious;
         detector.OnStopDetectNPC += ChangeAnimatorToNormal;
 
+        if (!HasSkillSelected())
+            DirectionalIndicator.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -151,6 +155,10 @@ public class Player : MonoBehaviour, IChangeable
         return movedir;
     }
 
+    public bool HasSkillSelected()
+    {
+        return !(_inventory.CurrentSkill == null);
+    }
 
     public bool UseCurrentSkill()
     {
@@ -186,8 +194,10 @@ public class Player : MonoBehaviour, IChangeable
 
     public void AddSkill(PlayerSkill playerSkill, SkillDescriptor descriptor)
     {
+        if (!HasSkillSelected())
+            DirectionalIndicator.SetActive(true);
 
-        switch(playerSkill)
+        switch (playerSkill)
         {
             case PlayerSkill.BubbleSkill:
                 BubbleSkill bubbleSkill = new BubbleSkill(this, descriptor);
@@ -208,6 +218,8 @@ public class Player : MonoBehaviour, IChangeable
         }
         StateMachine.ChangeState(TakeSkillState);
 
+        
+
     }
     public void RemoveSkill(PlayerSkill playerSkill)
     {
@@ -217,8 +229,6 @@ public class Player : MonoBehaviour, IChangeable
         _inventory.RemoveSkill(playerSkill);
 
     }
-
-
     public void Change()
     {
         AddSkill(PlayerSkill.SmashSkill, _smashSkillDescriptor);
@@ -236,7 +246,6 @@ public class Player : MonoBehaviour, IChangeable
         PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
         StartCoroutine(WaitBeforeAngry());
     }
-
     IEnumerator WaitBeforeAngry()
     {
         yield return new WaitForSeconds(2.3f);
@@ -247,7 +256,6 @@ public class Player : MonoBehaviour, IChangeable
     {
         EventPlayer.OnExitUseSkill += ChangeAnimatorToCalm;
     }
-
     private void ChangeAnimatorToCalm()
     {
   
@@ -258,7 +266,6 @@ public class Player : MonoBehaviour, IChangeable
 
         CurrentSpeed = _minSpeed;
     }
-
     private void ChangeAnimatorToCurious()
     {
         PlayerFaceAnimator.SetLayerWeight(0,0);
@@ -272,9 +279,10 @@ public class Player : MonoBehaviour, IChangeable
 
     private void RotateDirectionalIndicator()
     {
-        if(LookDir != Vector3.zero)
+        if (InputManager.Instance.GetSelectDirection() != Vector2.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(LookDir);
+            SkillDir = new Vector3(InputManager.Instance.GetSelectDirection().x, 0, InputManager.Instance.GetSelectDirection().y);
+            Quaternion targetRotation = Quaternion.LookRotation(SkillDir);
             DirectionalIndicator.transform.rotation = targetRotation;
         }
         

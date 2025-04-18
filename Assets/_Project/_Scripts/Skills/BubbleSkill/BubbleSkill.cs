@@ -27,7 +27,7 @@ public class BubbleSkill : Skill
         */
 
         Debug.Log("j'utilise mon skill bubble");
-        Vector3 BubbleSpawnPos = _player.transform.position + _player.LookDir.normalized;
+        Vector3 BubbleSpawnPos = _player.transform.position + _player.SkillDir.normalized;
 
         //Instantiate(BubblePrefab);
 

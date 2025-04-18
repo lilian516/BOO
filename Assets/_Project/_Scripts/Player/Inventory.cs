@@ -47,23 +47,10 @@ public class Inventory : MonoBehaviour, IChangeable
             _skillImages.Add(skillUI);
             Helpers.HideCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
 
-            EventTrigger eventTrigger;
-            eventTrigger = skillUI.GetComponent<EventTrigger>();
-
-            if (eventTrigger == null)
-            {
-                eventTrigger = skillUI.gameObject.AddComponent<EventTrigger>();
-            }
-
             int index = i;
-
-            EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
-            pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
-            pointerEnterEntry.callback.AddListener((eventData) => SelectSkill(index));
+            skillUI.GetComponent<Button>().onClick.AddListener(delegate { SelectSkill(index); ChangeSkillImage(); });
 
             InputManager.Instance.OnSkillMenu += ChangeSkillImage;
-
-            eventTrigger.triggers.Add(pointerEnterEntry);
         }
         for (int i = 0; i < _skills.Count; i++)
         {

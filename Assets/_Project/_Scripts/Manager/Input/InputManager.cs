@@ -137,6 +137,17 @@ public class InputManager : Singleton<InputManager>
         return moveDirection;
     }
 
+    public Vector2 GetSelectSkillDirection()
+    {
+        Vector2 skillDirection = _controls.Player.SelectSkill.ReadValue<Vector2>();
+        if (skillDirection != Vector2.zero)
+        {
+            var activeControl = GetActiveControl(_controls.Player.SelectSkill);
+            UpdateControlMethod(activeControl);
+        }
+        return skillDirection;
+    }
+
     public Vector2 GetSelectDirection()
     {
         Vector2 selectDirection = _controls.Player.SelectSkill.ReadValue<Vector2>();
