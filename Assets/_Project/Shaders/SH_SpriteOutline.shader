@@ -56,11 +56,13 @@ Shader "Custom/SH_OutlineShadow"
                 float2 uv = i.uv;
                 float alpha = tex2D(_MainTex, uv).a;
 
+                // Outline detection (around alpha edges)
                 if (_OutlineSize > 0.0 && alpha < 0.1)
                 {
                     float outline = 0.0;
                     float2 offset = _MainTex_TexelSize.xy * _OutlineSize;
 
+                    // Check 8 surrounding pixels
                     outline += tex2D(_MainTex, uv + float2(-offset.x, 0)).a;
                     outline += tex2D(_MainTex, uv + float2(offset.x, 0)).a;
                     outline += tex2D(_MainTex, uv + float2(0, -offset.y)).a;
