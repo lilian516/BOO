@@ -116,6 +116,9 @@ public class Player : MonoBehaviour, IChangeable
         detector.OnDetectNPC += ChangeAnimatorToCurious;
         detector.OnStopDetectNPC += ChangeAnimatorToNormal;
 
+        if (!HasSkillSelected())
+            DirectionalIndicator.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -190,8 +193,10 @@ public class Player : MonoBehaviour, IChangeable
 
     public void AddSkill(PlayerSkill playerSkill, SkillDescriptor descriptor)
     {
+        if (!HasSkillSelected())
+            DirectionalIndicator.SetActive(true);
 
-        switch(playerSkill)
+        switch (playerSkill)
         {
             case PlayerSkill.BubbleSkill:
                 BubbleSkill bubbleSkill = new BubbleSkill(this, descriptor);
@@ -210,6 +215,8 @@ public class Player : MonoBehaviour, IChangeable
                 _inventory.AddSkill(windSkill, playerSkill);
                 break;
         }
+
+        
 
     }
     public void RemoveSkill(PlayerSkill playerSkill)
