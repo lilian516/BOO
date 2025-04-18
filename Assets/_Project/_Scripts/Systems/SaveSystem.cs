@@ -11,27 +11,48 @@ public class SaveSystem : Singleton<SaveSystem>
 
     private string _filePath;
 
+    private bool _isAllowedToSave;
+    public bool IsAllowedToSave { get => _isAllowedToSave; set => _isAllowedToSave = value; }
+
     private void Start()
     {
+
         _filePath = Application.dataPath + "/_Project/Resources/Saves/" + "save.txt";
 
-        // Put default keys and values in the declaration below
-        Data = new Dictionary<string, object>{
+        if (File.Exists(_filePath))
+        {
+            LoadAllData();
+        }
+        else
+        {
+            Data = GetDefaultData();
+            _isAllowedToSave = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (_isAllowedToSave) 
+        { 
+            SaveAllData();
+            _isAllowedToSave = false;
+        }
+    }
+
+    private Dictionary<string, object> GetDefaultData()
+    {
+        return new Dictionary<string, object>
+        {
             {"test", 1},
             {"AAAAAH", false},
             {"MusicVolume", 1}
         };
     }
 
-    private void Update()
-    {
-        //SaveAllData();
-        //LoadAllData();
-    }
-
     public void SaveElement<T>(string key, T value)
     {
         Data[key] = value;
+        _isAllowedToSave = true;
     }
 
     public T LoadElement<T>(string key)
@@ -51,24 +72,45 @@ public class SaveSystem : Singleton<SaveSystem>
 
     public void SaveAllData()
     {
+        if (!_isAllowedToSave)
+        {
+            _isAllowedToSave = true;
+        }
+
         string JSON = JsonConvert.SerializeObject(Data);
 
         if (!File.Exists(_filePath))
         {
-            File.CreateText(_filePath);
+            using (File.CreateText(_filePath)) { }
         }
 
         File.WriteAllText(_filePath, JSON);
+        Debug.Log("Sauvegarde effectu�e.");
     }
 
     public void LoadAllData()
     {
-        string JSONString = File.ReadAllText(_filePath);
-
         if (!File.Exists(_filePath))
         {
+            Debug.LogWarning("Fichier de sauvegarde introuvable.");
             return;
         }
+
+        string JSONString = File.ReadAllText(_filePath);
+
+        if(string.IsNullOrEmpty(JSONString))
+        {
+            Debug.LogWarning("Le fichier de sauvegarde est vide.");
+            Data = GetDefaultData();
+        }
+
         Data = JsonConvert.DeserializeObject<Dictionary<string, object>>(JSONString);
+    }
+
+   public void ResetAllData()
+    {
+        Data = GetDefaultData();
+        _isAllowedToSave = true;
+        Debug.Log("Remise � z�ro effectu�e");
     }
 }
