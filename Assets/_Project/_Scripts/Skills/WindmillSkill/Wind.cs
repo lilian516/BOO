@@ -15,8 +15,6 @@ public class Wind : MonoBehaviour
     public void Init(Vector3 dir, Quaternion rotation)
     {
         _forward = dir.normalized;
-        Debug.Log(_forward);
-        Debug.Log(_speed);
 
         Transform child = transform.GetChild(0);
         child.rotation = rotation * Quaternion.Euler(0.0f, 90.0f, 0.0f);
