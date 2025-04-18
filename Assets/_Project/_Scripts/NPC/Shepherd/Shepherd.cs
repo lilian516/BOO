@@ -10,10 +10,29 @@ public class Shepherd : MonoBehaviour, ISpeakable
     [SerializeField] private DialogueAsset _dialogue;
     [SerializeField] private DialogueAsset _happyDialogue;
     [SerializeField] private DialogueAsset _sadDialogue;
+    [SerializeField] private Animator _animator;
 
+    private void Start()
+    {
+        DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
+        DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
+    }
+
+    void Update()
+    {
+        if (AngrySystem.Instance != null)
+            _animator.SetBool("IsAfraid", AngrySystem.Instance.IsAngry);
+
+        if (GameManager.Instance.KilledSheep >= 3)
+            _animator.SetBool("IsSad", true);
+    }
 
     public void Speak()
     {
+        if (AngrySystem.Instance.IsAngry)
+            return;
+
+        _animator.SetBool("IsSpeaking", true);
         if (GameManager.Instance.KilledSheep >= 3)
         {
             DialogueSystem.Instance.BeginDialogue(_sadDialogue);
@@ -26,6 +45,27 @@ public class Shepherd : MonoBehaviour, ISpeakable
         {
             DialogueSystem.Instance.BeginDialogue(_dialogue);
         }
+    }
+
+    private void OnEventTakeSkill(DialogueEventType type)
+    {
+        Debug.Log("zerjkgneroinreoiretoinrtpinhtrpoinh");
+        switch (type)
+        {
+            case DialogueEventType.GetStick:
+                Debug.Log("raaaaah");
+                _animator.SetTrigger("GiveStick");
+                break;
+            default:
+                break;
+        }
+        _dialogue = _dialogue.NextDialogue;
+        DialogueSystem.Instance.OnTakeEvent -= OnEventTakeSkill;
+    }
+
+    private void StopTalkAnimation()
+    {
+        _animator.SetBool("IsSpeaking", false);
     }
 
     #endregion

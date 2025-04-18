@@ -27,7 +27,7 @@ MonoBehaviour:
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 1
-  TakeEventType: 0
+  TakeEventType: 4
   NextDialogue: {fileID: 11400000}
   SkillToGive: 3
   SkillDescriptor:
