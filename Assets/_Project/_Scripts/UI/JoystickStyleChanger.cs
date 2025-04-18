@@ -112,4 +112,16 @@ public class JoystickStyleChanger : MonoBehaviour
     {
         UpdateCalmMode();
     }
+
+    private void OnDestroy()
+    {
+        if (AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnFirstAngerOccurence -= UpdateAngryMode;
+            AngrySystem.Instance.OnSecondAngerOccurence -= UpdateAngryMode;
+            AngrySystem.Instance.OnChangeElements -= Change;
+
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+    }
 }

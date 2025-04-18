@@ -44,6 +44,9 @@ public class JoystickAnger : MonoBehaviour, IChangeable
     }
     public void RefreshAngerUI()
     {
+        if (_joystickImage == null)
+            return;
+
         int index = 0;
         _isBooAngry = AngrySystem.Instance.IsAngry;
         if (_isBooAngry)
@@ -67,6 +70,12 @@ public class JoystickAnger : MonoBehaviour, IChangeable
 
     void UpdateSprite(int index)
     {
+        if (_joystickImage == null)
+        {
+            Debug.LogWarning("JoystickAnger: Image component manquant ou détruit.");
+            return;
+        }
+
         if (index < 0 ||index >= _spriteList.Count)
         {
             Debug.LogError("Souci d'index, la fonction ne peut fonctionner.");
@@ -88,4 +97,17 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         UpdateSprite(0);
     }
 
+    private void OnDestroy()
+    {
+        if (AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnFirstAngerOccurence -= RefreshAngerUI;
+            AngrySystem.Instance.OnSecondAngerOccurence -= RefreshAngerUI;
+            AngrySystem.Instance.OnChangeElements -= Change;
+
+            AngrySystem.Instance.OnFirstCalmOccurence -= RefreshAngerUI;
+            AngrySystem.Instance.OnSecondCalmOccurence -= RefreshAngerUI;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+    }
 }
