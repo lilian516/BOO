@@ -48,7 +48,7 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         _isBooAngry = AngrySystem.Instance.IsAngry;
         if (_isBooAngry)
         {
-            _isBooAngry = newIsAngry;
+            //_isBooAngry = newIsAngry;
             SaveSystem.Instance.ResetAllData();
             UpdateSprite();
             return;
