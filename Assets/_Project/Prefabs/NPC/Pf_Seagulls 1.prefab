@@ -318,7 +318,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1516834378155773240}
-  - component: {fileID: 5964129491607430593}
   m_Layer: 0
   m_Name: Pf_Seagulls 1
   m_TagString: Untagged
@@ -344,24 +343,3 @@ Transform:
   - {fileID: 4296807374570576753}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!65 &5964129491607430593
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4079464447186079779}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 75.5817, y: 3.079998, z: 25.848179}
-  m_Center: {x: -30.429146, y: -93.79978, z: 13.425951}
