@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, IChangeable
     public PlayerWaitingState WaitingState { get; set; }
     public PlayerAutoMovingState AutoMovingState { get; set; }
     public PlayerAngryState AngryState { get; set; }
+    public PlayerTakeSkillState TakeSkillState { get; set; }
 
 
     #endregion
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour, IChangeable
         WaitingState = new PlayerWaitingState(this, StateMachine);
         AutoMovingState = new PlayerAutoMovingState(this, StateMachine, _playerAutoMovingStateDescriptor);
         AngryState = new PlayerAngryState(this, StateMachine, _playerAngryDescriptor);
-
+        TakeSkillState = new PlayerTakeSkillState(this, StateMachine);
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
@@ -205,6 +206,7 @@ public class Player : MonoBehaviour, IChangeable
                 _inventory.AddSkill(windSkill, playerSkill);
                 break;
         }
+        StateMachine.ChangeState(TakeSkillState);
 
     }
     public void RemoveSkill(PlayerSkill playerSkill)

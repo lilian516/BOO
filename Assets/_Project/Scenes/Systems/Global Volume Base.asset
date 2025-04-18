@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Volume2 Profile
+  m_Name: Global Volume Base
   m_EditorClassIdentifier: 
   components:
   - {fileID: -6411305942002558563}
@@ -140,6 +140,7 @@ MonoBehaviour:
   - {fileID: 7558073970010751404}
   - {fileID: 8140005594535146957}
   - {fileID: -4726915744755284715}
+  - {fileID: 8604712136335186036}
 --- !u!114 &210856987925944266
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -226,4 +227,23 @@ MonoBehaviour:
     m_Value: 0.55
   highlightsEnd:
     m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &8604712136335186036
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
+  m_Name: PaniniProjection
+  m_EditorClassIdentifier: 
+  active: 1
+  distance:
+    m_OverrideState: 1
+    m_Value: 0.151
+  cropToFit:
+    m_OverrideState: 1
     m_Value: 1
