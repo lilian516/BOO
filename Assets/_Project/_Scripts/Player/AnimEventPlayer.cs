@@ -42,6 +42,12 @@ public class AnimEventPlayer : MonoBehaviour
         OnExitAngryState?.Invoke();
     }
 
+    public void ExitTakeState()
+    {
+        Debug.Log("oui fin");
+        OnExitUseSkill?.Invoke();
+    }
+
     public void SoundWalkBoo()
     {
         SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Grass Step One", "Grass Step Two", "Grass Step Three", "Grass Step Four", "Grass Step Five" }, transform.position);
