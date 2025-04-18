@@ -144,7 +144,9 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
 
     public void OnClick()
     {
-        if (_currentInteract == PlayerSkill.None)
+        Debug.Log("on clique");
+        Debug.Log("IsGoodPosition");
+        if (_currentInteract == PlayerSkill.None && IsGoodPosition == true)
             return;
 
         if (IsGoodPosition)
