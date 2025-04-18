@@ -24,10 +24,22 @@ public class AngrySystem : Singleton<AngrySystem>
     public delegate void ChangeElements();
     public event ChangeElements OnChangeElements;
 
-    
+    public delegate void FirstAngerOccurence();
+    public event FirstAngerOccurence OnFirstAngerOccurence;
+
+    public delegate void SecondAngerOccurence();
+    public event SecondAngerOccurence OnSecondAngerOccurence;
+
+    public delegate void FirstCalmOccurence();
+    public event FirstCalmOccurence OnFirstCalmOccurence;
+
+    public delegate void SecondCalmOccurence();
+    public event SecondCalmOccurence OnSecondCalmOccurence;
 
     public delegate void ResetChangedElements();
     public event ResetChangedElements OnResetElements;
+
+
 
     void Start()
     {
@@ -46,6 +58,17 @@ public class AngrySystem : Singleton<AngrySystem>
     {
         if (_angryLimits > 0)
             _angryLimits--;
+
+        if (_angryLimits == 2)
+        {
+            OnFirstAngerOccurence?.Invoke();
+            return;
+        }
+        else if (_angryLimits == 1)
+        {
+            OnSecondAngerOccurence?.Invoke();
+            return;
+        }
 
         if (_angryLimits == 0 && !IsAngry)
         {
@@ -74,12 +97,28 @@ public class AngrySystem : Singleton<AngrySystem>
 
     public void ChangeCalmLimits()
     {
-        if (_calmLimits > 0)
-            _calmLimits--;
+        Debug.Log($"[Calm] Calm limit before: {_calmLimits}");
+        if (_calmLimits <= 0)
+        {
+            Debug.Log($"[ChangeCalm] Changement ignoré car limite = {_calmLimits}");
+            return;
+        }
+        _calmLimits--;
+        Debug.Log($"[Calm] Calm limit is now: {_calmLimits}");
+        if (_calmLimits == 2)
+        {
+            Debug.Log("[Calm] First calm event");
+            OnFirstCalmOccurence?.Invoke();
+        }
+        else if (_calmLimits == 1)
+        {
+            Debug.Log("[Calm] Second calm event");
+            OnSecondCalmOccurence?.Invoke();
+        }
 
         if (_calmLimits == 0 && IsAngry)
         {
-            _calmLimits = _baseCalmLimits;
+            Debug.Log("[Calm] Reset elements!");
 
             IsAngry = false;
 
@@ -167,6 +206,11 @@ public class AngrySystem : Singleton<AngrySystem>
         }
        
         Debug.Log(list.Count);
+
+        foreach (GameObject listd in list)
+        {
+            listd.name = "cet objet est dans la liste";
+        }
 
         return list;
     }
