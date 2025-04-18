@@ -144,11 +144,11 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
 
     public void OnClick()
     {
-        Debug.Log("on clique");
-        Debug.Log("IsGoodPosition");
+        
         if (_currentInteract == PlayerSkill.None && IsGoodPosition == true)
             return;
-
+        if (_currentInteract == PlayerSkill.BubbleSkill && IsGoodPosition == false)
+            return;
         if (IsGoodPosition)
         {
             _animator.SetTrigger("Fall");
