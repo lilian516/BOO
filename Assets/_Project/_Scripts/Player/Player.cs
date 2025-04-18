@@ -63,6 +63,8 @@ public class Player : MonoBehaviour, IChangeable
     public IClickable CurrentClickable { get; set; }
     public AnimEventPlayer EventPlayer { get => _eventPlayer; set => _eventPlayer = value; }
 
+    public bool FacingRight = true;
+
     #region Velocity
 
     [SerializeField] float _maxSpeed;

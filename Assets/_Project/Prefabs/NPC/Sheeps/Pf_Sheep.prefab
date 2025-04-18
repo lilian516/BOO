@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5754806898331485112}
-  - component: {fileID: 3622168873541727239}
   - component: {fileID: 1830400600800574193}
   - component: {fileID: 1227497858006708902}
+  - component: {fileID: 8085805275453360672}
+  - component: {fileID: 3572516781346760357}
   m_Layer: 6
   m_Name: Pf_Sheep
   m_TagString: Untagged
@@ -36,29 +37,6 @@ Transform:
   - {fileID: 3111803415399366841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!136 &3622168873541727239
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2193894934307965563}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.259638
-  m_Height: 0.85299325
-  m_Direction: 1
-  m_Center: {x: -0.050680637, y: -0.073503375, z: -0.005625546}
 --- !u!114 &1830400600800574193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +80,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8085805275453360672
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2193894934307965563}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6, y: 0.5, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3572516781346760357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2193894934307965563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.7, y: 0.5, z: 0.4}
+  m_Center: {x: 0, y: -0.2, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2591016745356561202
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 2591016745356561202}
   serializedVersion: 2
   m_LocalRotation: {x: 0.30070576, y: -0, z: -0, w: 0.953717}
-  m_LocalPosition: {x: -0.383, y: -0.203, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.203, z: 0}
   m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

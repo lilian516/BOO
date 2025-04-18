@@ -159,7 +159,12 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
             return;
         }
 
-        
+        if (AchievementSystem.Instance.PetCount < 10)
+        {
+            AchievementSystem.Instance.PetCount++;
+            AchievementSystem.Instance.PetAchievement();
+        }
+
         _animator.SetTrigger("Pett");
         SetPlayer();
         StartCoroutine(WaitOneSecond());

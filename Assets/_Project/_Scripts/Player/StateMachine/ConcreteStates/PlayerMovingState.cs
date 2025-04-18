@@ -28,22 +28,20 @@ public class PlayerMovingState : PlayerState
     }
     private Vector3 _moveDirection;
     private float _time;
-    private bool _facingRight = true;
 
     private OnScreenStick _joystick;
+
+    private SpriteRenderer[] _sprites;
 
     public override void EnterState()
     {
         base.EnterState();
-        //_player.PlayerAnimator.SetFloat("Speed", 1);
+        _sprites = _player.GetComponentsInChildren<SpriteRenderer>();
         _player.PlayerAnimator.SetBool("IsMoving",true);
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);
         _player.Input.OnSkillMenu += OnSkill;
         _time = 0;
         _desc.Speed = _player.CurrentSpeed;
-
-        if (_player.transform.localScale.x == -1)
-            _facingRight = false;
 
         _joystick = GameManager.Instance.GameController.GetComponentInChildren<OnScreenStick>();
     }
@@ -68,10 +66,10 @@ public class PlayerMovingState : PlayerState
         WalkingMove();
 
         float h = _player.RB.velocity.x;
-        if (h > 0 && !_facingRight)
-            Flip();
-        else if (h < 0 && _facingRight)
-            Flip();
+        if (h > 0 && !_player.FacingRight)
+            Flip(false);
+        else if (h < 0 && _player.FacingRight)
+            Flip(true);
     }
 
 
@@ -117,7 +115,7 @@ public class PlayerMovingState : PlayerState
         _player.PlayerFaceAnimator.SetFloat("Speed",animSpeed);
 
         if (_player.RB.velocity.x < 0)
-            Flip();
+            Flip(true);
     }
 
     private void OnSkill()
@@ -125,12 +123,11 @@ public class PlayerMovingState : PlayerState
         _playerStateMachine.ChangeState(_player.SkillState);
     }
 
-    private void Flip()
+    private void Flip(bool flipped)
     {
-        _facingRight = !_facingRight;
-        
-        Vector3 theScale = _player.transform.localScale;
-        theScale.x *= -1;
-        _player.transform.localScale = theScale;
+        _player.FacingRight = !_player.FacingRight;
+
+        _sprites[0].flipX = flipped;
+        _sprites[1].flipX = flipped;
     }
 }

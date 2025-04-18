@@ -7,7 +7,11 @@ using UnityEngine.UI;
 public class AchievementSystem : Singleton<AchievementSystem>
 {
     [SerializeField] private List<AchievementAsset> _achievementList;
-    
+
+    #region Achievement Variable
+    public int PetCount = 0;
+    #endregion
+
     private List<AchievementCondition> _achievementConditionList;
 
     [HideInInspector] public List<Sprite> UIAchievementToUpdate;
@@ -25,6 +29,9 @@ public class AchievementSystem : Singleton<AchievementSystem>
     public void SucceedAchievement(AchievementCondition condition)
     {
         int index = _achievementConditionList.IndexOf(condition);
+
+        if (_achievementList[index].IsUnlocked)
+            return;
 
         _achievementList[index].IsUnlocked = true;
 
@@ -61,6 +68,14 @@ public class AchievementSystem : Singleton<AchievementSystem>
         }
     }
 
+    public void PetAchievement()
+    {
+        if(PetCount == 10)
+        {
+            SucceedAchievement(AchievementCondition.Sheep_Lover);
+        }
+    }
+
 }
 
 public enum AchievementCondition
@@ -68,4 +83,5 @@ public enum AchievementCondition
     None,
     Two_Bubbles_In_Inventory,
     Knock_At_The_Door,
+    Sheep_Lover,
 }
