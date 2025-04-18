@@ -65,8 +65,8 @@ Material:
     - _distortScale: 0.02
     - _distortionStrength: 0.08
     - _foamAmount: 1.5
-    - _foamCutoff: 4
-    - _foamScale: 1500
+    - _foamCutoff: 5
+    - _foamScale: 3500
     - _foamSpeed: 0.0005
     - _mainTextureScale: 0.05
     - _movementSpeed: 0.05
