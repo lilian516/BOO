@@ -19,7 +19,6 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
     void Start()
     {
         PositionToGo = transform.GetChild(0).position;
-        Debug.Log(PositionToGo);
         
     }
 

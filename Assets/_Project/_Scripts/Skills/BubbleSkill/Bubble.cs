@@ -1,5 +1,5 @@
 using System.Collections;
-
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
@@ -12,7 +12,7 @@ public class Bubble : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _forward = GameManager.Instance.Player.GetComponent<Player>().LookDir.normalized;
+        _forward =  GameManager.Instance.Player.GetComponent<Player>().SkillDir.normalized;
         StartCoroutine(BubbleMovement());
     }
 

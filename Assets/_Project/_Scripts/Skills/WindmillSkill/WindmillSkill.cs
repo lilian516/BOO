@@ -12,10 +12,11 @@ public class WindmillSkill : Skill
 
     public override void UseSkill()
     {
-        Vector3 spawnPos = _player.transform.position;
+        Vector3 spawnPos = _player.transform.position + _player.SkillDir.normalized;
 
         GameObject wind = GameManager.Instance.SpawnObject(_desc.Prefab);
-        wind.GetComponent<Wind>().Init(_player.LookDir, _player.transform.GetChild(3).rotation);
+
+        wind.GetComponent<Wind>().Init(_player.SkillDir, _player.transform.GetChild(3).rotation);
 
         wind.transform.position = spawnPos;
     }
