@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Animations;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerAutoMovingState : PlayerState
 {
@@ -40,6 +41,14 @@ public class PlayerAutoMovingState : PlayerState
     {
         base.EnterState();
 
+        _player.CurrentClickable.OnClick();
+
+        if (!_player.CurrentClickable.CanGoTo)
+        {
+            _playerStateMachine.ChangeState(_player.IdleState);
+            return;
+        }
+
         _player.PlayerAnimator.SetBool("IsMoving", true);
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);
 
@@ -61,8 +70,10 @@ public class PlayerAutoMovingState : PlayerState
     {
         base.ExitState();
 
+        if (_player.CurrentClickable.CanGoTo)
+            _player.CurrentClickable.OnDestinationReached();
+
         _desc.NavMeshAgentPlayer.enabled = false;
-        _player.CurrentClickable.OnClick();
         _player.PlayerAnimator.SetBool("IsMoving", false);
         _player.PlayerFaceAnimator.SetBool("IsMoving", false);
     }
