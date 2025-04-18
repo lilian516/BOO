@@ -51,46 +51,21 @@ public class JoystickAnger : MonoBehaviour, IChangeable
         _isBooAngry = AngrySystem.Instance.IsAngry;
         if (_isBooAngry)
         {
-            //_isBooAngry = newIsAngry;
-            SaveSystem.Instance.ResetAllData();
-            UpdateSprite();
-            return;
-        }
-
-        if (_booAngerStatus != AngrySystem.Instance.AngryLimits || _booCalmStatus != AngrySystem.Instance.CalmLimits)
-        {
-            _booAngerStatus = AngrySystem.Instance.AngryLimits;
-            _booCalmStatus = AngrySystem.Instance.CalmLimits;
-            if (!_isBooAngry)
-            { 
-                SaveSystem.Instance.SaveElement<bool>("isAngry", _isBooAngry);
-                SaveSystem.Instance.SaveElement<int>("AngerStatus", _booAngerStatus);
-                SaveSystem.Instance.SaveElement<int>("CalmStatus", _booCalmStatus);
-            }
-            UpdateSprite();
-        }
-    }
-
-    void UpdateSprite()
-    {
-        if (!_isBooAngry)
-        {
-            int index = _spriteList.Count - AngrySystem.Instance.AngryLimits  - 1;
-
-            if (index >= 0 && index < _spriteList.Count)
-            {
-                _joystickImage.sprite = _spriteList[index];
-            }
+            index = AngrySystem.Instance.CalmLimits;
         }
         else
         {
-            int index = AngrySystem.Instance.CalmLimits;
-
-            if (index >= 0 && index < _spriteList.Count)
+            int angerLevel = AngrySystem.Instance.AngryLimits;
+            switch (angerLevel)
             {
-                _joystickImage.sprite = _spriteList[index];
+                case 3: index = 0; break;
+                case 2: index = 1; break;
+                case 1: index = 2; break;
+                case 0: index = 3; break;
             }
         }
+
+       UpdateSprite(index);
     }
 
     void UpdateSprite(int index)
