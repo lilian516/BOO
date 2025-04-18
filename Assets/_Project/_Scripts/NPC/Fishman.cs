@@ -12,17 +12,19 @@ public class Fishman : MonoBehaviour, ISpeakable, IChangeable
     {
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
     }
 
     public void Speak()
     {
+        _animator.SetBool("IsSpeaking", true);
         DialogueSystem.Instance.BeginDialogue(_basicDialogue);
+    }
+
+    private void StopTalkAnimation()
+    {
+        _animator.SetBool("IsSpeaking", false);
     }
 
     public void Change()
