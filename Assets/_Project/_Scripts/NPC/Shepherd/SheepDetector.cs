@@ -8,16 +8,24 @@ public class SheepDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Sheep>())
+
+        Sheep sheep = other.GetComponent<Sheep>();
+        if (sheep != null)
         {
+            sheep.IsGoodPosition = true;
             SheepCount++;
         }
+        
+            
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Sheep>())
+        Sheep sheep = other.GetComponent<Sheep>();
+        if (sheep != null)
         {
+            sheep.IsGoodPosition = false;
             SheepCount--;
         }
     }

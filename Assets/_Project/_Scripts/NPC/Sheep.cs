@@ -12,15 +12,17 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
 
     private Vector3 _initialPosition;
 
+    private bool _isGoodPosition = false;
+
     public Vector3 PositionToGo { get; set; }
+    public bool IsGoodPosition { get => _isGoodPosition; set => _isGoodPosition = value; }
 
     private Player _player;
 
     void Start()
     {
         PositionToGo = transform.GetChild(0).position;
-        Debug.Log(PositionToGo);
-        
+        //Debug.Log(PositionToGo);
     }
 
     private void SetPlayer()
@@ -68,6 +70,8 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
             _animator.SetTrigger("Packed");
             StartCoroutine(GoUp());
             _currentInteract = PlayerSkill.BubbleSkill;
+            SetPlayer();
+            //PositionToGo = _player.transform.position;
         }
     }
 
@@ -85,6 +89,21 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
         _initialPosition = transform.position;
     }
 
+    private IEnumerator GoDown()
+    {
+        float speedDown = _speed * 1.5625f; 
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 0.32f)
+        {
+            transform.Translate(-transform.up * speedDown * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _initialPosition = transform.position;
+    }
+
 
     private IEnumerator Pushed()
     {
@@ -94,6 +113,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
         {
             transform.Translate(PushedDirection * _speed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
+            PositionToGo = transform.GetChild(0).position;
             yield return null;
         }
 
@@ -124,15 +144,30 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
 
     public void OnClick()
     {
-        //Debug.Log("on caresse");
+        if (_currentInteract == PlayerSkill.None)
+            return;
+
+        if (IsGoodPosition)
+        {
+            _animator.SetTrigger("Fall");
+            StartCoroutine(GoDown());
+            StartCoroutine(WaitOneSecond());
+            
+            _currentInteract = PlayerSkill.None;
+            return;
+        }
+
+        
         _animator.SetTrigger("Pett");
         SetPlayer();
         StartCoroutine(WaitOneSecond());
+        
     }
 
     IEnumerator WaitOneSecond()
     {
         yield return new WaitForSeconds(0.5f);
         _player.StateMachine.ChangeState(_player.IdleState);
+        
     }
 }
