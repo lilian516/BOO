@@ -399,7 +399,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4640755743272402849
 MonoBehaviour:
@@ -569,11 +569,13 @@ MonoBehaviour:
     Name: 
     Desc: 
     AnimationSkill: {fileID: 0}
+    TakeAnimation: {fileID: 0}
     Radius: 2
     Mask:
       serializedVersion: 2
       m_Bits: 64
   LookDir: {x: 0, y: 0, z: 0}
+  SkillDir: {x: 0, y: 0, z: 0}
   _maxSpeed: 4
   CurrentSpeed: 0
 --- !u!114 &6841042318687812491

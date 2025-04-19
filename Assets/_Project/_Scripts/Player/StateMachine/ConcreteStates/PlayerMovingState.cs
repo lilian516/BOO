@@ -133,7 +133,12 @@ public class PlayerMovingState : PlayerState
         theScale.x *= -1;
         _player.transform.localScale = theScale;
 
-        Quaternion targetRotation = Quaternion.LookRotation(_player.SkillDir);
-        _player.DirectionalIndicator.transform.rotation = targetRotation;
+        if(_player.SkillDir != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(_player.SkillDir);
+            _player.DirectionalIndicator.transform.rotation = targetRotation;
+        }
+
+       
     }
 }

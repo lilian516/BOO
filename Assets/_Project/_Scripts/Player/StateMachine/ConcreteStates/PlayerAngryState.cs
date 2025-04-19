@@ -52,7 +52,7 @@ public class PlayerAngryState : PlayerState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        Debug.Log("en angry");
+        //Debug.Log("en angry");
     }
 
     public override void PhysicsUpdate()

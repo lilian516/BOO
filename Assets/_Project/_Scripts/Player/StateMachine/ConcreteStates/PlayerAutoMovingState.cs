@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -49,10 +50,14 @@ public class PlayerAutoMovingState : PlayerState
 
         _desc.NavMeshAgentPlayer.updateRotation = false;
         _desc.NavMeshAgentPlayer.enabled = true;
-        _desc.NavMeshAgentPlayer.SetDestination(_newPosition);
+
+        CheckCanGoToPosition();
+
+
+
+
 
     }
-
     public override void ExitState()
     {
         base.ExitState();
@@ -80,5 +85,37 @@ public class PlayerAutoMovingState : PlayerState
         _player.transform.localScale = theScale;
 
         _player.LookDir = _newPosition.normalized;
+    }
+
+    private void CheckCanGoToPosition()
+    {
+        NavMeshHit hit;
+
+
+        if (NavMesh.SamplePosition(_newPosition, out hit, _stoppingDistance, NavMesh.AllAreas))
+        {
+            NavMeshPath path = new NavMeshPath();
+            if (_desc.NavMeshAgentPlayer.CalculatePath(hit.position, path))
+            {
+                // Vérifie si le chemin est complet
+                if (path.status == NavMeshPathStatus.PathComplete)
+                {
+                    _desc.NavMeshAgentPlayer.SetDestination(_newPosition);
+                    Debug.Log("c'est good proche");
+                }
+                else
+                {
+                    Debug.Log("on va en idle");
+                    _stateMachine.ChangeState(_player.IdleState);
+                }
+
+            }
+
+        }
+        else
+        {
+            _stateMachine.ChangeState(_player.IdleState);
+        }
+        
     }
 }
