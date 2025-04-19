@@ -199,6 +199,9 @@ public class Player : MonoBehaviour, IChangeable
 
         switch (playerSkill)
         {
+
+            case PlayerSkill.Orb:
+                break;
             case PlayerSkill.BubbleSkill:
                 BubbleSkill bubbleSkill = new BubbleSkill(this, descriptor);
                 _inventory.AddSkill(bubbleSkill, playerSkill);

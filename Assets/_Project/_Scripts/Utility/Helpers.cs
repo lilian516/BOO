@@ -10,7 +10,8 @@ public enum PlayerSkill
     WindSkill,
     StickSkill,
     PantsSkill,
-    SmashSkill
+    SmashSkill,
+    Orb
 }
 
 [System.Serializable]

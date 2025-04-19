@@ -124,13 +124,13 @@ public class PlayerIdleState : PlayerState
             }
 
 
-            Orbe orbe = hit.collider.gameObject.GetComponent<Orbe>();
-            if (orbe != null)
-            {
-                orbe.UseOrbe();
-                _playerStateMachine.ChangeState(_player.WaitingState);
+            //Orbe orbe = hit.collider.gameObject.GetComponent<Orbe>();
+            //if (orbe != null)
+            //{
+            //    orbe.UseOrbe();
+            //    _playerStateMachine.ChangeState(_player.WaitingState);
 
-            }
+            //}
         }
     }
 
