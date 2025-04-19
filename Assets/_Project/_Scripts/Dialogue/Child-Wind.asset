@@ -36,6 +36,7 @@ MonoBehaviour:
     Name: "Moulin \xE0 vent"
     Desc: "Pour se rafraichir ou d\xE9placer des trucs"
     AnimationSkill: {fileID: 7400000, guid: 1e7ed769c9859144ead3e1f7ec09528c, type: 2}
+    TakeAnimation: {fileID: 7400000, guid: 9dd41d10f21b34a42b924af13d2c2236, type: 2}
     Radius: 0
     Mask:
       serializedVersion: 2

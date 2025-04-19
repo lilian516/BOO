@@ -40,6 +40,7 @@ MonoBehaviour:
     Name: "Tube \xE0 Bulle"
     Desc: "Pour s'amuser \xE0 faire des bulles"
     AnimationSkill: {fileID: 7400000, guid: 58b73ac6805e5ae42bb5a522c6436fd2, type: 2}
+    TakeAnimation: {fileID: 7400000, guid: 6dc0d668938cfcf468098c87446e1877, type: 2}
     Radius: 0
     Mask:
       serializedVersion: 2

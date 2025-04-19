@@ -14,8 +14,7 @@ public class Shepherd : MonoBehaviour, ISpeakable
 
     private void Start()
     {
-        DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
-        DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
+        
     }
 
     void Update()
@@ -29,8 +28,14 @@ public class Shepherd : MonoBehaviour, ISpeakable
 
     public void Speak()
     {
+
+
         if (AngrySystem.Instance.IsAngry)
             return;
+
+
+        DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
+        DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
 
         _animator.SetBool("IsSpeaking", true);
         if (GameManager.Instance.KilledSheep >= 3)
@@ -49,11 +54,11 @@ public class Shepherd : MonoBehaviour, ISpeakable
 
     private void OnEventTakeSkill(DialogueEventType type)
     {
-        Debug.Log("zerjkgneroinreoiretoinrtpinhtrpoinh");
+        //Debug.Log("zerjkgneroinreoiretoinrtpinhtrpoinh");
         switch (type)
         {
             case DialogueEventType.GetStick:
-                Debug.Log("raaaaah");
+                //Debug.Log("raaaaah");
                 _animator.SetTrigger("GiveStick");
                 break;
             default:
@@ -66,43 +71,44 @@ public class Shepherd : MonoBehaviour, ISpeakable
     private void StopTalkAnimation()
     {
         _animator.SetBool("IsSpeaking", false);
+        DialogueSystem.Instance.OnEndDialogue -= StopTalkAnimation;
     }
 
     #endregion
 
     #region States
 
-    public enum EShepherdStates
-    {
-        Idle,
-        Happy,
-        Sad
-    }
+    //public enum EShepherdStates
+    //{
+    //    Idle,
+    //    Happy,
+    //    Sad
+    //}
 
-    private EShepherdStates _state;
+    //private EShepherdStates _state;
 
 
-    private int _sheepCount;
-    public int _SheepCount { 
-        get
-        {
-            return _sheepCount;
-        }
-        set
-        {
-            _sheepCount = value;
+    //private int _sheepCount;
+    //public int _SheepCount { 
+    //    get
+    //    {
+    //        return _sheepCount;
+    //    }
+    //    set
+    //    {
+    //        _sheepCount = value;
 
-            if (_sheepCount == 0)
-                ChangeState(EShepherdStates.Sad);
-            else if (_sheepCount != 0)
-                ChangeState(EShepherdStates.Happy);
-        }
-    }
+    //        if (_sheepCount == 0)
+    //            ChangeState(EShepherdStates.Sad);
+    //        else if (_sheepCount != 0)
+    //            ChangeState(EShepherdStates.Happy);
+    //    }
+    //}
 
-    private void ChangeState(EShepherdStates state)
-    {
-        // switch case 
-        _state = state;
-    }
+    //private void ChangeState(EShepherdStates state)
+    //{
+    //    // switch case 
+    //    _state = state;
+    //}
     #endregion
 }

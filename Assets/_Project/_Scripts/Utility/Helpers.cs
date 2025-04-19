@@ -21,6 +21,7 @@ public class SkillDescriptor
     public string Name;
     public string Desc;
     public AnimationClip AnimationSkill;
+    public AnimationClip TakeAnimation;
     public float Radius;
     public LayerMask Mask;
 }

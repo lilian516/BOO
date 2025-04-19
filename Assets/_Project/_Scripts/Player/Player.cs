@@ -202,6 +202,7 @@ public class Player : MonoBehaviour, IChangeable
             case PlayerSkill.BubbleSkill:
                 BubbleSkill bubbleSkill = new BubbleSkill(this, descriptor);
                 _inventory.AddSkill(bubbleSkill, playerSkill);
+                
                 break;
             case PlayerSkill.PantsSkill:
                 PantsSkill pantsSkill = new PantsSkill(this, descriptor);
@@ -216,10 +217,19 @@ public class Player : MonoBehaviour, IChangeable
                 _inventory.AddSkill(windSkill, playerSkill);
                 break;
         }
+        ChangeAnimTakeSkill(descriptor.TakeAnimation);
         StateMachine.ChangeState(TakeSkillState);
 
         
 
+    }
+
+    private void ChangeAnimTakeSkill(AnimationClip animationClipTake)
+    {
+        _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
+
+        _overrideController["A_Boo_TakeStick"] = animationClipTake;
+        PlayerAnimator.runtimeAnimatorController = _overrideController;
     }
     public void RemoveSkill(PlayerSkill playerSkill)
     {

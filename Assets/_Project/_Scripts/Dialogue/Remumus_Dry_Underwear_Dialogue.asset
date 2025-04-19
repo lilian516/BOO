@@ -35,6 +35,7 @@ MonoBehaviour:
     Name: Un vieux slip
     Desc: Pour fouetter des trucs ou s'habiller
     AnimationSkill: {fileID: 7400000, guid: 4b0e9409e5059ca4a86b39156804d74f, type: 2}
+    TakeAnimation: {fileID: 7400000, guid: ee15f2ffbf178b741a397612aaa1e288, type: 2}
     Radius: 1.5
     Mask:
       serializedVersion: 2
