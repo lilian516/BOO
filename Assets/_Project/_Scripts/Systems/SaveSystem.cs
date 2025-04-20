@@ -85,14 +85,12 @@ public class SaveSystem : Singleton<SaveSystem>
         }
 
         File.WriteAllText(_filePath, JSON);
-        Debug.Log("Sauvegarde effectu�e.");
     }
 
     public void LoadAllData()
     {
         if (!File.Exists(_filePath))
         {
-            Debug.LogWarning("Fichier de sauvegarde introuvable.");
             return;
         }
 
@@ -100,7 +98,6 @@ public class SaveSystem : Singleton<SaveSystem>
 
         if(string.IsNullOrEmpty(JSONString))
         {
-            Debug.LogWarning("Le fichier de sauvegarde est vide.");
             Data = GetDefaultData();
         }
 
@@ -111,6 +108,5 @@ public class SaveSystem : Singleton<SaveSystem>
     {
         Data = GetDefaultData();
         _isAllowedToSave = true;
-        Debug.Log("Remise � z�ro effectu�e");
     }
 }

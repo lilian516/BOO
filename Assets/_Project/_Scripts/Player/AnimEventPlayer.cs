@@ -44,7 +44,6 @@ public class AnimEventPlayer : MonoBehaviour
 
     public void ExitTakeState()
     {
-        Debug.Log("oui fin");
         OnExitUseSkill?.Invoke();
     }
 

@@ -181,7 +181,6 @@ public class AngrySystem : Singleton<AngrySystem>
     public void FindFlames()
     {
         string GameObjectName = "E_Flam_Spawnpoints_" + (3 - _remainingLives);
-        Debug.Log(GameObjectName);
         _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", GameObjectName);
     }
 
@@ -190,11 +189,9 @@ public class AngrySystem : Singleton<AngrySystem>
         Scene scene = SceneManager.GetSceneByName(sceneName);
         if (!scene.IsValid() || !scene.isLoaded)
         {
-            Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
         }
         else
         {
-            Debug.LogWarning($"Scene '{sceneName}' is not loaded or invalid.");
 
         }
 
@@ -220,7 +217,6 @@ public class AngrySystem : Singleton<AngrySystem>
         Scene scene = SceneManager.GetSceneByName(sceneName);
         if (!scene.IsValid() || !scene.isLoaded)
         {
-            Debug.LogWarning($"Scene '{sceneName}' is not loaded or invalid.");
             return null;
         }
 

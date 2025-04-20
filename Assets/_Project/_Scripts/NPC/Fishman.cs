@@ -29,7 +29,6 @@ public class Fishman : MonoBehaviour, ISpeakable, IChangeable
 
     public void Change()
     {
-        Debug.Log("CHANGE WESH");
         _animator.SetBool("IsBooMad",true);
     }
 

@@ -12,7 +12,6 @@ public class PantsSkill : Skill
 
     public override void UseSkill()
     {
-        Debug.Log("Slip");
         Collider[] hitColliders = Physics.OverlapSphere(_player.transform.position, _desc.Radius, _desc.Mask);
 
         foreach (var hitCollider in hitColliders)
@@ -24,7 +23,6 @@ public class PantsSkill : Skill
                 interactable.Interact(PlayerSkill.PantsSkill);
 
             }
-            Debug.Log("Objet détecté slip : " + hitCollider.gameObject.name);
         }
     }
 

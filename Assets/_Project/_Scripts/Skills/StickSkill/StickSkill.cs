@@ -24,7 +24,6 @@ public class StickSkill : Skill
                 interactable.Interact(PlayerSkill.StickSkill);
                 
             }
-            Debug.Log("Objet détecté : " + hitCollider.gameObject.name);
         }
     }
 

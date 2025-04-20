@@ -63,11 +63,9 @@ public class Bubble : MonoBehaviour
         {
             return;
         }
-        Debug.Log("on va trigger");
         if (other.GetComponent<Player>())
         {
             AngrySystem.Instance.ChangeAngryLimits();
-            Debug.Log("c'est le player");
         }
 
         Debug.Log(other.gameObject.name);
@@ -77,7 +75,6 @@ public class Bubble : MonoBehaviour
         if (interactable != null)
         {
             interactable.Interact(PlayerSkill.BubbleSkill);
-            Debug.Log("un interact");
             Destroy(gameObject);
             return;
         }

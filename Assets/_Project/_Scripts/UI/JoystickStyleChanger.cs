@@ -60,9 +60,7 @@ public class JoystickStyleChanger : MonoBehaviour
         if (_magnitudeIndex >= _magnitudes.Length - 1)
         {
             _imageComponent.sprite = _sprites[1];
-            Debug.Log($"Sprite applied : {_sprites[1]}");
         }
-        Debug.Log($"Magnitude Index en sortie : {_magnitudeIndex}");
     }
 
     private IEnumerator Shake()
@@ -71,7 +69,6 @@ public class JoystickStyleChanger : MonoBehaviour
 
         if (_magnitudeIndex >= _magnitudes.Length)
         {
-            Debug.LogWarning("Shake ignor� : index de magnitude hors limites.");
             _isShaking = false;
             yield break;
         }
@@ -92,7 +89,6 @@ public class JoystickStyleChanger : MonoBehaviour
         _magnitudeIndex += 1;
 
         _isShaking = false;
-        Debug.Log("Coroutine finie");
     }
 
     void UpdateCalmMode()

@@ -176,8 +176,6 @@ public class Player : MonoBehaviour, IChangeable
     {
         if (_inventory.CurrentSkill != null)
         {
-            //_inventory.CurrentSkill.UseSkill();
-
             PlayerFaceAnimator.enabled = false;
             PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
@@ -185,7 +183,6 @@ public class Player : MonoBehaviour, IChangeable
 
             _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
             PlayerAnimator.runtimeAnimatorController = _overrideController;
-            //Debug.Log(_inventory.CurrentSkill);
             PlayerAnimator.SetTrigger("UseSkill");
             return true;
         }
@@ -250,7 +247,6 @@ public class Player : MonoBehaviour, IChangeable
     {
         yield return new WaitForSeconds(2.3f);
         PlayerAnimator.runtimeAnimatorController = _darkBoo;
-        //StateMachine.ChangeState(IdleState);
     }
     public void ResetChange()
     {
