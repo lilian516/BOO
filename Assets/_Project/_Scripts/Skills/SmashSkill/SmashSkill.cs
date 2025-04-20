@@ -15,7 +15,7 @@ public class SmashSkill : Skill
     public override void UseSkill()
     {
         Collider[] hitColliders = Physics.OverlapSphere(_player.transform.position, _desc.Radius, _desc.Mask);
-        Debug.Log(hitColliders.Length);
+
         if (hitColliders.Length == 0)
             return;
 

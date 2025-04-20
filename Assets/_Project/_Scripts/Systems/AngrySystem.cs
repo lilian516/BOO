@@ -97,28 +97,22 @@ public class AngrySystem : Singleton<AngrySystem>
 
     public void ChangeCalmLimits()
     {
-        Debug.Log($"[Calm] Calm limit before: {_calmLimits}");
         if (_calmLimits <= 0)
         {
-            Debug.Log($"[ChangeCalm] Changement ignoré car limite = {_calmLimits}");
             return;
         }
         _calmLimits--;
-        Debug.Log($"[Calm] Calm limit is now: {_calmLimits}");
         if (_calmLimits == 2)
         {
-            Debug.Log("[Calm] First calm event");
             OnFirstCalmOccurence?.Invoke();
         }
         else if (_calmLimits == 1)
         {
-            Debug.Log("[Calm] Second calm event");
             OnSecondCalmOccurence?.Invoke();
         }
 
         if (_calmLimits == 0 && IsAngry)
         {
-            Debug.Log("[Calm] Reset elements!");
 
             IsAngry = false;
 
@@ -197,8 +191,6 @@ public class AngrySystem : Singleton<AngrySystem>
         {
             FindAllInChildrenRecursive(root.transform, objectName, list);
         }
-       
-        Debug.Log(list.Count);
 
         foreach (GameObject listd in list)
         {

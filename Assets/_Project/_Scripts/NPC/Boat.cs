@@ -10,7 +10,6 @@ public class Boat : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.StickSkill:
-                Debug.Log("A interagi avec le bâton");
                 _hasInteractedWithStick = true;
                 break;
             case PlayerSkill.PantsSkill:

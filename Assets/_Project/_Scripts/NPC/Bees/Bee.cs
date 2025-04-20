@@ -32,7 +32,6 @@ public class Bee : MonoBehaviour, IInteractable
         _animator.SetTrigger("Packed");
         StartCoroutine(GoUp());
 
-        Debug.Log("je suis embullé !!");
     }
 
     private IEnumerator GoUp()
