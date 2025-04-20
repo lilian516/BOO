@@ -13,9 +13,6 @@ public class InputManager : Singleton<InputManager>
     
 
     public bool IsController;
-
-    //private bool _characterEnabled;
-
     public PlayerControls Controls { get => _controls; set => _controls = value; }
 
     #region Events
@@ -34,9 +31,6 @@ public class InputManager : Singleton<InputManager>
     {
         base.Awake();
         _controls = new PlayerControls();
-
-        
-        //_characterEnabled = true;
         OnEnable();
 
     }

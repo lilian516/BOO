@@ -140,9 +140,6 @@ public class AngrySystem : Singleton<AngrySystem>
     {
         if (_remainingLives <= 0)
         {
-            // Faire charger l'�cran de Lose ou reset la game directement mais on a pas encore ce qu'il faut donc petit debug log cadeau la famille
-
-            Debug.Log("You got mad too many times... too bad");
         }
     }
 
@@ -153,7 +150,6 @@ public class AngrySystem : Singleton<AngrySystem>
         
         if (FlamePrefab == null || _flamsSpawnPoints.Count == 0)
         {
-            Debug.LogWarning("Missing prefab or base objects.");
             return;
         }
 

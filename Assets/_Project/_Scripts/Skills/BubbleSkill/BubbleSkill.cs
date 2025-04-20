@@ -12,12 +12,6 @@ public class BubbleSkill : Skill
         AnimationSkill = _desc.AnimationSkill;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public override void UseSkill()
     {
         Vector3 BubbleSpawnPos = _player.transform.position + _player.SkillDir.normalized;

@@ -48,10 +48,8 @@ public class JoystickStyleChanger : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void UpdateAngryMode()
     {
-        //Debug.Log($"Magnitude Index en entr�e : {_magnitudeIndex}");
         if (!_isShaking)
         {
             StartCoroutine(Shake());

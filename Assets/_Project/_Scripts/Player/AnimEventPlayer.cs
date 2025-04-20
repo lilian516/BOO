@@ -12,13 +12,11 @@ public class AnimEventPlayer : MonoBehaviour
     public ExitAngryState OnExitAngryState;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -26,19 +24,16 @@ public class AnimEventPlayer : MonoBehaviour
 
     public void ExitUseSkillState()
     {
-        //Debug.Log("oui on sort");
         OnExitUseSkill?.Invoke();
     }
 
     public void UseSkillState()
     {
-        //Debug.Log("oui utilise");
         OnEnterUseSkill?.Invoke();
     }
 
     public void ExitAngryStateAnim()
     {
-        //Debug.Log("oui fin");
         OnExitAngryState?.Invoke();
     }
 

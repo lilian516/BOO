@@ -99,16 +99,13 @@ public class Player : MonoBehaviour, IChangeable
         CanWalkForward = true;
 
     }
-    // Start is called before the first frame update
     void Start()
     {
 
         Input = InputManager.Instance;
-        // 9 minutes 37 video tuto
 
         StateMachine.Initialize(IdleState);
 
-        //Input.OnSkillMenu += SelectSkill;
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
 
@@ -122,7 +119,6 @@ public class Player : MonoBehaviour, IChangeable
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         StateMachine.CurrentState.ChangeStateChecks();
@@ -230,13 +226,7 @@ public class Player : MonoBehaviour, IChangeable
     {
         AddSkill(PlayerSkill.SmashSkill, _smashSkillDescriptor);
 
-        
-        //PlayerAnimator.runtimeAnimatorController = _darkBoo;
-       
-        
-
         CurrentSpeed = _maxSpeed;
-        //StateMachine.ChangeState(WaitingState);
         
         PlayerAnimator.SetTrigger("IsAngry");
         PlayerFaceAnimator.enabled = false;
