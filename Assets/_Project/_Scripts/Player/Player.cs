@@ -35,6 +35,8 @@ public class Player : MonoBehaviour, IChangeable
 
     public float DetectorRadius;
     public GameObject DirectionalIndicator;
+    public GameObject DirectionalCapsule;
+    [SerializeField] public Vector3 DirectionalCapsuleOffset;
 
     private Inventory _inventory;
     [HideInInspector] public bool CanWalkForward;
@@ -98,17 +100,17 @@ public class Player : MonoBehaviour, IChangeable
 
         CanWalkForward = true;
 
+        DirectionalCapsuleOffset = DirectionalCapsule.transform.localPosition;
+
     }
-    // Start is called before the first frame update
+
     void Start()
     {
 
         Input = InputManager.Instance;
-        // 9 minutes 37 video tuto
 
         StateMachine.Initialize(IdleState);
 
-        //Input.OnSkillMenu += SelectSkill;
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
 
@@ -122,7 +124,6 @@ public class Player : MonoBehaviour, IChangeable
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         StateMachine.CurrentState.ChangeStateChecks();
