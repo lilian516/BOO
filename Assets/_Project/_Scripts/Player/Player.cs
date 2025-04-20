@@ -102,6 +102,8 @@ public class Player : MonoBehaviour, IChangeable
 
         DirectionalCapsuleOffset = DirectionalCapsule.transform.localPosition;
 
+        SkillDir = new Vector3(1,0,0);
+
     }
 
     void Start()
@@ -163,11 +165,9 @@ public class Player : MonoBehaviour, IChangeable
 
     public bool UseCurrentSkill()
     {
-        if (_inventory.CurrentSkill != null)
+        if (_inventory.CurrentSkill != null && SkillDir != Vector3.zero)
         {
             _inventory.CurrentSkill.UseSkill();
-
-           
             return true;
         }
         return false;
