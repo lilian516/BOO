@@ -102,11 +102,6 @@ public class Inventory : MonoBehaviour, IChangeable
 
     public void AddSkill(Skill skill, PlayerSkill playerSkill, bool isAngry = false)
     {
-        if (isAngry)
-        {
-            _angrySkills = skill;
-            return;
-        }
         if (_skills.Count == 7)
         {
             Time.timeScale = 0;
@@ -241,5 +236,10 @@ public class Inventory : MonoBehaviour, IChangeable
 
         _currentSkill = null;
         _skillButtonUI.GetComponent<Image>().sprite = _baseButtonSprite;
+    }
+
+    public void SetAngrySkill(Skill skill)
+    {
+        _angrySkills = skill;
     }
 }

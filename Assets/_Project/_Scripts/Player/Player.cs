@@ -90,7 +90,7 @@ public class Player : MonoBehaviour, IChangeable
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
-        _inventory.AddSkill(_smashSkill, PlayerSkill.SmashSkill, true);
+        _inventory.SetAngrySkill(_smashSkill);
         RB = GetComponent<Rigidbody>();
 
         _minSpeed = _playerMovingStateDescriptor.Speed;
@@ -231,15 +231,7 @@ public class Player : MonoBehaviour, IChangeable
     }
     public void Change()
     {
-        AddSkill(PlayerSkill.SmashSkill, _smashSkillDescriptor);
-
-        
-        //PlayerAnimator.runtimeAnimatorController = _darkBoo;
-       
-        
-
         CurrentSpeed = _maxSpeed;
-        //StateMachine.ChangeState(WaitingState);
         
         PlayerAnimator.SetTrigger("IsAngry");
         PlayerFaceAnimator.enabled = false;
@@ -250,7 +242,6 @@ public class Player : MonoBehaviour, IChangeable
     {
         yield return new WaitForSeconds(2.3f);
         PlayerAnimator.runtimeAnimatorController = _darkBoo;
-        //StateMachine.ChangeState(IdleState);
     }
     public void ResetChange()
     {
