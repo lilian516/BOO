@@ -72,11 +72,18 @@ public class FlowerBee : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Player>() != null)
+        Player player = other.GetComponent<Player>();
+        if (player != null)
         {
-            // Ajouter l'animation de Boo qui se fait piquer
 
-            AngrySystem.Instance.ChangeAngryLimits();
+
+            if (!AngrySystem.Instance.IsAngry)
+            {
+                //player.ChangeAnimAngry(_animationClipWater);
+                player.StateMachine.ChangeState(player.AngryState);
+            }
+
+
         }
     }
 
