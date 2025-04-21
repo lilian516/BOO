@@ -20,6 +20,7 @@ public class Stone : MonoBehaviour, IInteractable
     private float _timeStep;
 
     [SerializeField] Animator _animator;
+    [SerializeField] AnimationClip animationClipFall;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +75,7 @@ public class Stone : MonoBehaviour, IInteractable
             // Ajouter l'animation de Boo qui trébuche
             if (!AngrySystem.Instance.IsAngry)
             {
+                player.ChangeAnimAngry(animationClipFall);
                 player.StateMachine.ChangeState(player.AngryState);
             }
             
