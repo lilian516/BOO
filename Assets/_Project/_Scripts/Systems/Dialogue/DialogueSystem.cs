@@ -185,6 +185,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
         OnTakeEvent?.Invoke(ProcessingDialogue.TakeEventType);
         EndDialogue();
         GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive, ProcessingDialogue.SkillDescriptor);
+
+        _choiceButton.onClick.RemoveAllListeners();
+        _cancelButton.onClick.RemoveAllListeners();
     }
     
     public void UpdateSentence()
