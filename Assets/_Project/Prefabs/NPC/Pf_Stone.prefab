@@ -58,7 +58,7 @@ MonoBehaviour:
     IsStop: 0
   - PathReference: {fileID: 0}
     IsStop: 1
-  Speed: 0.5
+  Speed: 0.3
   _animator: {fileID: 3455536886385315917}
   animationClipFall: {fileID: 7400000, guid: b4f8474085b505942898e6bd25a98d7d, type: 2}
 --- !u!65 &6825806414782279157
