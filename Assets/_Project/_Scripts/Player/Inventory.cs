@@ -37,7 +37,7 @@ public class Inventory : MonoBehaviour, IChangeable
         _skillImages.Clear();
         _currentSkill = null;
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
-        _skillButtonUI = GameManager.Instance.SkillStickParent.transform.GetChild(0).GetChild(0).gameObject;
+        _skillButtonUI = GameManager.Instance.SkillStickParent.transform.GetChild(0).GetChild(1).gameObject;
         _baseButtonSprite = _skillButtonUI.GetComponent<Image>().sprite;
 
 
