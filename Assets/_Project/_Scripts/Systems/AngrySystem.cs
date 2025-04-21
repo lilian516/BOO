@@ -156,7 +156,7 @@ public class AngrySystem : Singleton<AngrySystem>
             Debug.LogWarning("Missing prefab or base objects.");
             return;
         }
-
+        bool randomAnimation = true;
         for (int i = 0; i < _amountOfFlames; i++)
         {
             GameObject baseObj = _flamsSpawnPoints[Random.Range(0, _flamsSpawnPoints.Count)];
@@ -170,6 +170,10 @@ public class AngrySystem : Singleton<AngrySystem>
             flame.transform.localScale *= newScale;
 
             flame.transform.position += flame.transform.up * (4 * newScale);
+
+            flame.transform.GetChild(0).GetComponent<Animator>().SetBool("Value", randomAnimation);
+
+            randomAnimation = !randomAnimation;
 
             _flamsSpawnPoints.Remove(baseObj);
         }
