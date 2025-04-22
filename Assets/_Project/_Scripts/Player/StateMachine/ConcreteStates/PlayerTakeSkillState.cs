@@ -16,6 +16,12 @@ public class PlayerTakeSkillState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+
+        if(AngrySystem.Instance.IsAngry)
+        {
+            _playerStateMachine.ChangeState(_player.IdleState);
+        }
+
         _player.EventPlayer.OnExitUseSkill += ExitTakeSkill;
         _player.PlayerAnimator.SetTrigger("TakeSkill");
         _player.PlayerFaceAnimator.enabled = false;
@@ -25,6 +31,7 @@ public class PlayerTakeSkillState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
+
         _player.PlayerAnimator.SetTrigger("Idle");
         _player.EventPlayer.OnExitUseSkill -= ExitTakeSkill;
         if (!AngrySystem.Instance.IsAngry)

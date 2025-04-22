@@ -94,7 +94,7 @@ public class Player : MonoBehaviour, IChangeable
         _inventory = GetComponent<Inventory>();    
 
         _smashSkill = new SmashSkill(this, _smashSkillDescriptor);
-        _inventory.AddSkill(_smashSkill, PlayerSkill.SmashSkill, true);
+        _inventory.SetAngrySkill(_smashSkill);
         RB = GetComponent<Rigidbody>();
 
         _minSpeed = _playerMovingStateDescriptor.Speed;
