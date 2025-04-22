@@ -28,7 +28,7 @@ MonoBehaviour:
     EventType: 0
   ChoiceOnEnd: 0
   TakeEventType: 0
-  NextDialogue: {fileID: 0}
+  NextDialogue: {fileID: 11400000}
   SkillToGive: 0
   SkillDescriptor:
     Prefab: {fileID: 0}
@@ -36,6 +36,7 @@ MonoBehaviour:
     Name: 
     Desc: 
     AnimationSkill: {fileID: 0}
+    TakeAnimation: {fileID: 0}
     Radius: 0
     Mask:
       serializedVersion: 2

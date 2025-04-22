@@ -44,12 +44,12 @@ public class DialogueSystem : Singleton<DialogueSystem>
         ProcessingDialogue = null;
         GameObject dialogue = GameManager.Instance.DialogueUI;
         _fadeCanvasBox = dialogue.GetComponent<CanvasGroup>();
-        _dialogueTextBox = dialogue.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>();
+        _dialogueTextBox = dialogue.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>();
         _isPlayingSentence = false;
         _skipSentence = false;
 
-        _leftImage = dialogue.transform.GetChild(0).gameObject.GetComponent<Image>();
-        _rightImage = dialogue.transform.GetChild(1).gameObject.GetComponent<Image>();
+        _leftImage = dialogue.transform.GetChild(1).gameObject.GetComponent<Image>();
+        _rightImage = dialogue.transform.GetChild(2).gameObject.GetComponent<Image>();
         _choiceButton = GameManager.Instance.DialogueSkillBtn.GetComponentInChildren<Button>();
         _cancelButton = GameManager.Instance.DialogueQuitBtn.GetComponentInChildren<Button>();
 
@@ -82,7 +82,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.interactable = true;
         _fadeCanvasBox.blocksRaycasts = true;
 
-        _fadeCanvasBox.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = ProcessingDialogue.DialogueBackground;
+        _fadeCanvasBox.transform.GetChild(4).GetChild(0).GetComponent<Image>().sprite = ProcessingDialogue.DialogueBackground;
         _choiceButton.gameObject.GetComponent<Image>().sprite = ProcessingDialogue.SkillDescriptor.Sprite;
 
 
@@ -109,8 +109,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
         InputManager.Instance.EnableControllerSticks();
         InputManager.Instance.EnableSkillStick();
 
-        Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(2).GetComponent<CanvasGroup>());
-        Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());
+        Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());
+        Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(4).GetComponent<CanvasGroup>());
 
         _fadeCanvasBox.alpha = 0;
         _fadeCanvasBox.interactable = false;
@@ -164,8 +164,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
     {
         OnChoice?.Invoke();
 
-        Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(2).GetComponent<CanvasGroup>());
-        Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());
+        Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());
+        Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(4).GetComponent<CanvasGroup>());
 
         GameManager.Instance.DialogueSkillBtn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ProcessingDialogue.SkillDescriptor.Name;
         GameManager.Instance.DialogueSkillBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ProcessingDialogue.SkillDescriptor.Desc;

@@ -184,17 +184,25 @@ public class Player : MonoBehaviour, IChangeable
     {
         if (_inventory.CurrentSkill != null)
         {
-            PlayerFaceAnimator.enabled = false;
-            PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+            
 
             _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
 
             _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
             PlayerAnimator.runtimeAnimatorController = _overrideController;
             PlayerAnimator.SetTrigger("UseSkill");
+
+            StartCoroutine(WaitDisableFaceAnimator());
             return true;
         }
         return false;
+    }
+
+    IEnumerator WaitDisableFaceAnimator()
+    {
+        yield return new WaitForSeconds(0.1f);
+        PlayerFaceAnimator.enabled = false;
+        PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
     }
 
     public void AddSkill(PlayerSkill playerSkill, SkillDescriptor descriptor)
