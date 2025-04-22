@@ -275,12 +275,23 @@ public class Player : MonoBehaviour, IChangeable
     public void ResetChange()
     {
         EventPlayer.OnExitUseSkill += ChangeAnimatorToCalm;
+        
+
         ChangeAnimatorToNormal();
     }
     private void ChangeAnimatorToCalm()
     {
   
         EventPlayer.OnExitUseSkill -= ChangeAnimatorToCalm;
+        PlayerAnimator.SetTrigger("Transform");
+        PlayerFaceAnimator.enabled = false;
+        StartCoroutine(WaitBeforeHappy());
+        
+    }
+
+    IEnumerator WaitBeforeHappy()
+    {
+        yield return new WaitForSeconds(1.23f);
         RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
         PlayerFaceAnimator.enabled = true;
