@@ -15,13 +15,11 @@ public class Child : MonoBehaviour, ISpeakable, IChangeable
 
     public void Speak()
     {
-        //CinematicSystem.Instance.PlayCinematic("Min");
         _animator.SetBool("IsTalking", true);
         DialogueSystem.Instance.BeginDialogue(_dialogue);
         DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         DialogueSystem.Instance.OnEndDialogue += StopTalkAnimation;
@@ -33,7 +31,6 @@ public class Child : MonoBehaviour, ISpeakable, IChangeable
         AngrySystem.Instance.OnResetElements += ResetChange;
     }
 
-    // Update is called once per frame
     void Update()
     {
     }

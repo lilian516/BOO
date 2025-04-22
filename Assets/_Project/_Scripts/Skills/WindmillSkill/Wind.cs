@@ -61,8 +61,6 @@ public class Wind : MonoBehaviour
             {
                 other.GetComponent<Sheep>().PushedDirection = _forward;
             }
-
-            //Destroy(gameObject);
         }
     }
 }

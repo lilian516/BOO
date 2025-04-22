@@ -35,7 +35,6 @@ public class PlayerMovingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        //_player.PlayerAnimator.SetFloat("Speed", 1);
         _player.PlayerAnimator.SetBool("IsMoving",true);
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);
         _player.Input.OnSkillMenu += OnSkill;

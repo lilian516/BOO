@@ -16,7 +16,6 @@ public class Worm : MonoBehaviour, IInteractable
 
     public void Interact(PlayerSkill playerSkill)
     {
-        Debug.Log("on interact");
         switch (playerSkill)
         {
             case PlayerSkill.SmashSkill:
@@ -28,8 +27,6 @@ public class Worm : MonoBehaviour, IInteractable
         }
 
     }
-
-    // Start is called before the first frame update
     void Start()
     {
         _currentIndex = 0;
@@ -37,7 +34,6 @@ public class Worm : MonoBehaviour, IInteractable
         transform.position = _pathReferences[0].position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         WanderBetweenPositions();

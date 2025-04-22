@@ -21,7 +21,6 @@ public class SmashableTree : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.SmashSkill:
-                Debug.Log(_animator);
                 _animator.SetTrigger("Fall");
                 break;
         }

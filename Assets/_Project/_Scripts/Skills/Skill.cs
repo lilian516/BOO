@@ -17,7 +17,6 @@ public class Skill
 
     public virtual void UseSkill()
     {
-        //Debug.Log("j'utilise mon skill");
     }
 
     public virtual Sprite GetSprite()

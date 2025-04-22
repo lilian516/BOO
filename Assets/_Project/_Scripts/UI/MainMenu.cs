@@ -29,7 +29,6 @@ public class MainMenu : MonoBehaviour
         Helpers.HideCanva(_canvasGroup);
         StartCoroutine(WaitEndAnim());
         
-        //Debug.Log("on start le jeu");
     }
 
     private IEnumerator WaitEndAnim()
@@ -48,8 +47,6 @@ public class MainMenu : MonoBehaviour
     {
         _animatorTransition.SetTrigger("ClickCredit");
         Helpers.HideCanva(_canvasGroup);
-        //image.gameObject.GetComponent<Animator>().SetTrigger("Click");
-        Debug.Log("on va dans les credit");
         
     }
 

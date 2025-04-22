@@ -97,28 +97,22 @@ public class AngrySystem : Singleton<AngrySystem>
 
     public void ChangeCalmLimits()
     {
-        Debug.Log($"[Calm] Calm limit before: {_calmLimits}");
         if (_calmLimits <= 0)
         {
-            Debug.Log($"[ChangeCalm] Changement ignoré car limite = {_calmLimits}");
             return;
         }
         _calmLimits--;
-        Debug.Log($"[Calm] Calm limit is now: {_calmLimits}");
         if (_calmLimits == 2)
         {
-            Debug.Log("[Calm] First calm event");
             OnFirstCalmOccurence?.Invoke();
         }
         else if (_calmLimits == 1)
         {
-            Debug.Log("[Calm] Second calm event");
             OnSecondCalmOccurence?.Invoke();
         }
 
         if (_calmLimits == 0 && IsAngry)
         {
-            Debug.Log("[Calm] Reset elements!");
 
             IsAngry = false;
 
@@ -140,9 +134,6 @@ public class AngrySystem : Singleton<AngrySystem>
     {
         if (_remainingLives <= 0)
         {
-            // Faire charger l'�cran de Lose ou reset la game directement mais on a pas encore ce qu'il faut donc petit debug log cadeau la famille
-
-            Debug.Log("You got mad too many times... too bad");
         }
     }
 
@@ -153,7 +144,6 @@ public class AngrySystem : Singleton<AngrySystem>
         
         if (FlamePrefab == null || _flamsSpawnPoints.Count == 0)
         {
-            Debug.LogWarning("Missing prefab or base objects.");
             return;
         }
         bool randomAnimation = true;
@@ -185,7 +175,6 @@ public class AngrySystem : Singleton<AngrySystem>
     public void FindFlames()
     {
         string GameObjectName = "E_Flam_Spawnpoints_" + (3 - _remainingLives);
-        Debug.Log(GameObjectName);
         _flamsSpawnPoints = FindAllObjectWithNameInScene("MainScene", GameObjectName);
     }
 
@@ -194,11 +183,9 @@ public class AngrySystem : Singleton<AngrySystem>
         Scene scene = SceneManager.GetSceneByName(sceneName);
         if (!scene.IsValid() || !scene.isLoaded)
         {
-            Debug.Log("Found ENVIRONMENT object: " + EnvironmentCapsule.name);
         }
         else
         {
-            Debug.LogWarning($"Scene '{sceneName}' is not loaded or invalid.");
 
         }
 
@@ -208,8 +195,6 @@ public class AngrySystem : Singleton<AngrySystem>
         {
             FindAllInChildrenRecursive(root.transform, objectName, list);
         }
-       
-        Debug.Log(list.Count);
 
         foreach (GameObject listd in list)
         {
@@ -224,7 +209,6 @@ public class AngrySystem : Singleton<AngrySystem>
         Scene scene = SceneManager.GetSceneByName(sceneName);
         if (!scene.IsValid() || !scene.isLoaded)
         {
-            Debug.LogWarning($"Scene '{sceneName}' is not loaded or invalid.");
             return null;
         }
 

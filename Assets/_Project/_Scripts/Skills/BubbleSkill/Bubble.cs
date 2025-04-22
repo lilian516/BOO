@@ -9,14 +9,12 @@ public class Bubble : MonoBehaviour
     [SerializeField] float _maxSpeed;
     [SerializeField] float _timeMovement;
     [SerializeField] Animator _animator;
-    // Start is called before the first frame update
     void Start()
     {
         _forward =  GameManager.Instance.Player.GetComponent<Player>().SkillDir.normalized;
         StartCoroutine(BubbleMovement());
     }
 
-    // Update is called once per frame
     void Update()
     {
         DestroyBubble();
@@ -63,21 +61,16 @@ public class Bubble : MonoBehaviour
         {
             return;
         }
-        Debug.Log("on va trigger");
         if (other.GetComponent<Player>())
         {
             AngrySystem.Instance.ChangeAngryLimits();
-            Debug.Log("c'est le player");
         }
-
-        Debug.Log(other.gameObject.name);
 
         IInteractable interactable = other.GetComponent<IInteractable>();
 
         if (interactable != null)
         {
             interactable.Interact(PlayerSkill.BubbleSkill);
-            Debug.Log("un interact");
             Destroy(gameObject);
             return;
         }

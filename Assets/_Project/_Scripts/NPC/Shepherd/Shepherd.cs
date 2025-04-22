@@ -54,11 +54,9 @@ public class Shepherd : MonoBehaviour, ISpeakable
 
     private void OnEventTakeSkill(DialogueEventType type)
     {
-        //Debug.Log("zerjkgneroinreoiretoinrtpinhtrpoinh");
         switch (type)
         {
             case DialogueEventType.GetStick:
-                //Debug.Log("raaaaah");
                 _animator.SetTrigger("GiveStick");
                 break;
             default:

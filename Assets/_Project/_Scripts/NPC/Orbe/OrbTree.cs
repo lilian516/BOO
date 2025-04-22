@@ -19,11 +19,9 @@ public class OrbTree : MonoBehaviour, IInteractable
 
     public void Interact(PlayerSkill playerSkill)
     {
-        Debug.Log("On m'a fouetté");
         switch (playerSkill)
         {
             case PlayerSkill.PantsSkill:
-                Debug.Log("On m'a fouetté avec un slip");
                 rb.isKinematic = false;
                 break;
         }

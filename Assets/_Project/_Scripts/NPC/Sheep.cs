@@ -66,12 +66,10 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
     {
         if(_currentInteract != PlayerSkill.BubbleSkill)
         {
-            Debug.Log("je pack");
             _animator.SetTrigger("Packed");
             StartCoroutine(GoUp());
             _currentInteract = PlayerSkill.BubbleSkill;
             SetPlayer();
-            //PositionToGo = _player.transform.position;
         }
     }
 

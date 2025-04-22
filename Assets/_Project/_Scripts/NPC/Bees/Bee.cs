@@ -7,13 +7,10 @@ public class Bee : MonoBehaviour, IInteractable
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -35,7 +32,6 @@ public class Bee : MonoBehaviour, IInteractable
         _animator.SetTrigger("Packed");
         StartCoroutine(GoUp());
 
-        Debug.Log("je suis embullé !!");
     }
 
     private IEnumerator GoUp()

@@ -101,16 +101,13 @@ public class Player : MonoBehaviour, IChangeable
         CanWalkForward = true;
         CurrentTriggerLevel = 0;
     }
-    // Start is called before the first frame update
     void Start()
     {
 
         Input = InputManager.Instance;
-        // 9 minutes 37 video tuto
 
         StateMachine.Initialize(IdleState);
 
-        //Input.OnSkillMenu += SelectSkill;
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
 
@@ -126,7 +123,6 @@ public class Player : MonoBehaviour, IChangeable
         AngrySystem.Instance.OnSecondAngerOccurence += ChangeAnimatorToTriggerTwo;
     }
 
-    // Update is called once per frame
     void Update()
     {
         StateMachine.CurrentState.ChangeStateChecks();
@@ -180,8 +176,6 @@ public class Player : MonoBehaviour, IChangeable
     {
         if (_inventory.CurrentSkill != null)
         {
-            //_inventory.CurrentSkill.UseSkill();
-
             PlayerFaceAnimator.enabled = false;
             PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
@@ -189,7 +183,6 @@ public class Player : MonoBehaviour, IChangeable
 
             _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
             PlayerAnimator.runtimeAnimatorController = _overrideController;
-            //Debug.Log(_inventory.CurrentSkill);
             PlayerAnimator.SetTrigger("UseSkill");
             return true;
         }
@@ -259,13 +252,7 @@ public class Player : MonoBehaviour, IChangeable
     {
         AddSkill(PlayerSkill.SmashSkill, _smashSkillDescriptor);
 
-        
-        //PlayerAnimator.runtimeAnimatorController = _darkBoo;
-       
-        
-
         CurrentSpeed = _maxSpeed;
-        //StateMachine.ChangeState(WaitingState);
         
         PlayerAnimator.SetTrigger("IsAngry");
         PlayerFaceAnimator.enabled = false;
@@ -276,7 +263,6 @@ public class Player : MonoBehaviour, IChangeable
     {
         yield return new WaitForSeconds(2.3f);
         PlayerAnimator.runtimeAnimatorController = _darkBoo;
-        //StateMachine.ChangeState(IdleState);
     }
     public void ResetChange()
     {

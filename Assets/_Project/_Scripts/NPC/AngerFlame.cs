@@ -7,7 +7,6 @@ public class AngerFlame : MonoBehaviour, IChangeable
 {
     private float _maxScale;
     private float _minScale;
-    // Start is called before the first frame update
     void Awake()
     {
         AngrySystem.Instance.OnChangeElements += Change;

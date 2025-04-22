@@ -14,9 +14,8 @@ public class SmashSkill : Skill
 
     public override void UseSkill()
     {
-        //Debug.Log("TAPER");
         Collider[] hitColliders = Physics.OverlapSphere(_player.transform.position, _desc.Radius, _desc.Mask);
-        Debug.Log(hitColliders.Length);
+
         if (hitColliders.Length == 0)
             return;
 
@@ -44,7 +43,6 @@ public class SmashSkill : Skill
             interactable.Interact(PlayerSkill.SmashSkill);
 
         }
-        //Debug.Log("Objet TAPER : " + hitColliders[0].gameObject.name);
     }
 
     public override Sprite GetSprite()
