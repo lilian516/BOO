@@ -23,8 +23,15 @@ public class OrbTree : MonoBehaviour, IInteractable
         {
             case PlayerSkill.PantsSkill:
                 rb.isKinematic = false;
+                StartCoroutine(ReactivateOrb());
                 break;
         }
     }
 
+    private IEnumerator ReactivateOrb()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        rb.isKinematic = true;
+    }
 }
