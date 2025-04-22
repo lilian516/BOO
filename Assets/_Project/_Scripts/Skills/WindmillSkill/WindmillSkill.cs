@@ -16,7 +16,7 @@ public class WindmillSkill : Skill
 
         GameObject wind = GameManager.Instance.SpawnObject(_desc.Prefab);
 
-        wind.GetComponent<Wind>().Init(_player.SkillDir, _player.transform.GetChild(3).rotation);
+        wind.GetComponent<Wind>().Init(_player.SkillDir, Quaternion.LookRotation(_player.SkillDir));
 
         wind.transform.position = spawnPos;
     }
@@ -31,3 +31,4 @@ public class WindmillSkill : Skill
         return _desc.Name;
     }
 }
+
