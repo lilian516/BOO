@@ -37,7 +37,6 @@ public class SmashSkill : Skill
         }
 
         IInteractable interactable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<IInteractable>();
-        
         if (interactable != null)
         {
             interactable.Interact(PlayerSkill.SmashSkill);

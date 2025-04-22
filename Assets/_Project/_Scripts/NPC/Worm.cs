@@ -19,7 +19,6 @@ public class Worm : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.SmashSkill:
-
                 AngrySystem.Instance.ChangeCalmLimits();
 
                 Destroy(gameObject);

@@ -174,6 +174,7 @@ public class Player : MonoBehaviour, IChangeable
     {
         if (_inventory.CurrentSkill != null && SkillDir != Vector3.zero)
         {
+            Debug.Log("Fruli Frula");
             _inventory.CurrentSkill.UseSkill();
             return true;
         }
