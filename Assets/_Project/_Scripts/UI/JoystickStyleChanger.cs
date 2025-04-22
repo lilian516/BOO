@@ -21,23 +21,9 @@ public class JoystickStyleChanger : MonoBehaviour
 
     void Start()
     {
-        foreach (Sprite sprite in _sprites)
-        {
-            if (sprite == null)
-            {
-                Debug.LogError("L'un des deux sprites n'est pas impl�ment�, le code ne peut pas continuer.");
-                return;
-            }
-        }
-        if (_imageObject.GetComponent<Image>() == null)
-        {
-            Debug.LogError("Le composant sur lequel est accroch� ce code n'a pas de component Image. Veuillez rev�rifier le code, ce dernier ne peut pas continuer.");
-            return;
-        }
-        else
-        {
-            _imageComponent = _imageObject.GetComponent<Image>();
-        }
+        
+        _imageComponent = _imageObject.GetComponent<Image>();
+        
         _imageComponent.sprite = _sprites[0];
         AngrySystem.Instance.OnFirstAngerOccurence += UpdateAngryMode;
         AngrySystem.Instance.OnSecondAngerOccurence += UpdateAngryMode;

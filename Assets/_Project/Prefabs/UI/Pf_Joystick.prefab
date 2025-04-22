@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 4543795176123358639}
   - component: {fileID: 2404503302693788654}
   - component: {fileID: 5014857261027900762}
-  - component: {fileID: 8485436934758746653}
-  - component: {fileID: 6587460494968277837}
   m_Layer: 0
   m_Name: Pf_Joystick
   m_TagString: Untagged
@@ -106,45 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0682f10f90d214d8b155970cf871b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8485436934758746653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032017272627813053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c548606302401a4f8e292f3b83d258d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteList:
-  - {fileID: 21300000, guid: ea03c4eb07399fe43a71dcf3d2262bf1, type: 3}
-  - {fileID: 21300000, guid: 2001f7d725660b84880ec616ab2d1b4c, type: 3}
-  - {fileID: 21300000, guid: 0d07790805598ef48bab3289d0f8bd16, type: 3}
-  - {fileID: 21300000, guid: 0a0ab8b4779627b48a27cf49c3a5d5bd, type: 3}
-  _joystickImage: {fileID: 2205052786796876173}
---- !u!114 &6587460494968277837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032017272627813053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77086cd4aa9f5304a82e5b1c58a1fe91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sprites:
-  - {fileID: 21300000, guid: 8e4f6b46dc2f27d499073da67133b639, type: 3}
-  - {fileID: 21300000, guid: f354563c6b9d46a43bb5fbb465b5cb5b, type: 3}
-  _imageObject: {fileID: 1980466980847889856}
-  _magnitudes:
-  - 3
-  - 6
-  - 10
-  _joystickAnger: {fileID: 8485436934758746653}
 --- !u!1 &1522276091131915100
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +115,6 @@ GameObject:
   - component: {fileID: 3697464913698224378}
   - component: {fileID: 3095971135941747025}
   - component: {fileID: 7137446796868505272}
-  - component: {fileID: 1844005498045175809}
   m_Layer: 0
   m_Name: Middle
   m_TagString: Untagged
@@ -221,27 +179,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1844005498045175809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522276091131915100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77086cd4aa9f5304a82e5b1c58a1fe91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sprites:
-  - {fileID: 21300000, guid: cc5b26437395e3e45a9d440f71b48d41, type: 3}
-  - {fileID: 21300000, guid: 51b50eec06c4d78408111eae57499650, type: 3}
-  _imageObject: {fileID: 3697464913698224378}
-  _magnitudes:
-  - 0
-  - 0
-  - 0
-  _joystickAnger: {fileID: 8485436934758746653}
 --- !u!1 &3848619595702078801
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +190,6 @@ GameObject:
   - component: {fileID: 7444222809281815734}
   - component: {fileID: 7993998610288369642}
   - component: {fileID: 4311549710231164913}
-  - component: {fileID: 2862843599406500605}
   m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
@@ -318,27 +254,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2862843599406500605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3848619595702078801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77086cd4aa9f5304a82e5b1c58a1fe91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sprites:
-  - {fileID: 21300000, guid: 81a2ac6c5ec90e443aee4bfe68d52e42, type: 3}
-  - {fileID: 21300000, guid: 368464c3fd25e8f4db886380a654cd55, type: 3}
-  _imageObject: {fileID: 7444222809281815734}
-  _magnitudes:
-  - 0
-  - 0
-  - 0
-  _joystickAnger: {fileID: 8485436934758746653}
 --- !u!1 &5841482682367387997
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e4f6b46dc2f27d499073da67133b639, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea03c4eb07399fe43a71dcf3d2262bf1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
