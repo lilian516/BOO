@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7135772892034990464}
   - component: {fileID: 4039978063434828192}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Pf_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,4 +207,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
   _animatorDoor: {fileID: 2580043313354193969}
+  DoorOutlineMaterial: {fileID: 2100000, guid: bf30d6b741d6b3c48bdce1cb9f1d5544, type: 2}
   IsKnocked: 0
