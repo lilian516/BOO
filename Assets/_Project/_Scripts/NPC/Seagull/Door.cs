@@ -21,6 +21,7 @@ public class Door : MonoBehaviour, IClickable
         PositionToGo = transform.GetChild(0).position;
         CanGoTo = true;
     }
+
     public void OnClick()
     {
        

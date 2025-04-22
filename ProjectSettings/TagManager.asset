@@ -33,6 +33,7 @@ TagManager:
   - TrailOnly
   - Camera
   - Outline
+  - NavMeshIgnore
   - 
   - 
   - 
