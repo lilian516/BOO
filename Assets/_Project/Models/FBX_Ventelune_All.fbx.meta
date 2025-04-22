@@ -3,7 +3,107 @@ guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Boat
+    second: {fileID: 2100000, guid: b52f9e566a6aa4648a16f4b0400e049f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gamin_House
+    second: {fileID: 2100000, guid: 32347eb832e7ba745a303d2f95a05678, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Helice_Little
+    second: {fileID: 2100000, guid: 4d8c5aa0e821c7843881041b1e851323, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Isle
+    second: {fileID: 2100000, guid: 3feb944c18c247b47b26a21baa094cbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Mauvis_House
+    second: {fileID: 2100000, guid: c6cfaa83a90c8e04c9ccd6fba5746731, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Pont_Broken
+    second: {fileID: 2100000, guid: 0c37cbdedcbd302419b46422175d883e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Poteaux
+    second: {fileID: 2100000, guid: 1829415efad9a6b41b6260efc7918cb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Props_Mauvis
+    second: {fileID: 2100000, guid: 61816dab9bf55d648ae1d254c91b0786, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Props_Seamone
+    second: {fileID: 2100000, guid: 48989822e183dfb4185cac8de0098757, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Remumus_House
+    second: {fileID: 2100000, guid: 7e5f3659c45c3c146993fbab3554af65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Rock
+    second: {fileID: 2100000, guid: d9817977324119645a79dc207b2f8145, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Seamone_House
+    second: {fileID: 2100000, guid: a1fbef49d9b2c9047b9399e0da65a7c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_BeeBite_Plane
+    second: {fileID: 2100000, guid: 2045f9b7b26c04a4ea56f56a96e470d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Cube
+    second: {fileID: 2100000, guid: ebb26cf0bb71d7646840d66fb47e16e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Cylindre_Plane
+    second: {fileID: 2100000, guid: 5f0d53f43edab8646a08f5ac88957b4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Orbe
+    second: {fileID: 2100000, guid: 2a620b29395f63f44abf9e9d507394ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Plane
+    second: {fileID: 2100000, guid: d990924aef7036247a9b1d392128b206, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Pont_Dead
+    second: {fileID: 2100000, guid: ddb631ef94a7aa24385f290fe2a42976, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Simple
+    second: {fileID: 2100000, guid: d8c3d384ecb1f7242a9dde211373b17f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Tree_Sphere_Plane
+    second: {fileID: 2100000, guid: da2c1813e3359e742a2ae78fcc10f0cd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
