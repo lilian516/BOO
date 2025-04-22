@@ -142,6 +142,7 @@ public class Bee : MonoBehaviour, IInteractable
     {
         Player player = GameManager.Instance.Player.GetComponent<Player>();
         player.RB.AddForce(-transform.forward * 200);
+        AngrySystem.Instance.ChangeAngryLimits();
         StartCoroutine(PlayerStun());
         
     }
