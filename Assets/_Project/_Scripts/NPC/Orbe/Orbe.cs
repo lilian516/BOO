@@ -11,10 +11,14 @@ public class Orbe : MonoBehaviour, IClickable
     private Player _player;
     public Vector3 PositionToGo { get => _position.position; set => _position.position = value; }
 
+    
+    public bool CanGoTo { get ; set ; }
+
     // Start is called before the first frame update
     void Start()
     {
         //PositionToGo = _position;
+        CanGoTo = true;
     }
 
     // Update is called once per frame
@@ -39,8 +43,7 @@ public class Orbe : MonoBehaviour, IClickable
 
     public void OnClick()
     {
-        _player = GameManager.Instance.Player.GetComponent<Player>();
-        StartCoroutine(WaitToAddSkill());
+        
     }
 
     IEnumerator WaitToAddSkill()
@@ -56,5 +59,11 @@ public class Orbe : MonoBehaviour, IClickable
         yield return new WaitForSeconds(1f);
         CinematicSystem.Instance.PlayCinematic("Test");
         CinematicSystem.Instance.OnEndCinematic += CheckEndCinematic;
+    }
+
+    public void OnDestinationReached()
+    {
+        _player = GameManager.Instance.Player.GetComponent<Player>();
+        StartCoroutine(WaitToAddSkill());
     }
 }
