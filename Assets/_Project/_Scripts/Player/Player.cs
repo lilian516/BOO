@@ -65,6 +65,8 @@ public class Player : MonoBehaviour, IChangeable
     public IClickable CurrentClickable { get; set; }
     public AnimEventPlayer EventPlayer { get => _eventPlayer; set => _eventPlayer = value; }
 
+    [HideInInspector] public int CurrentTriggerLevel;
+
     #region Velocity
 
     [SerializeField] float _maxSpeed;
@@ -97,7 +99,7 @@ public class Player : MonoBehaviour, IChangeable
         CurrentSpeed = _minSpeed;
 
         CanWalkForward = true;
-
+        CurrentTriggerLevel = 0;
     }
     // Start is called before the first frame update
     void Start()
@@ -115,11 +117,13 @@ public class Player : MonoBehaviour, IChangeable
         NPC_Detector detector = transform.GetComponentInChildren<NPC_Detector>();
         detector.SetDetectorRadius(DetectorRadius);
         detector.OnDetectNPC += ChangeAnimatorToCurious;
-        detector.OnStopDetectNPC += ChangeAnimatorToNormal;
+        detector.OnStopDetectNPC += ResetAnimatorLayer;
 
         if (!HasSkillSelected())
             DirectionalIndicator.SetActive(false);
 
+        AngrySystem.Instance.OnFirstAngerOccurence += ChangeAnimatorToTriggerOne;
+        AngrySystem.Instance.OnSecondAngerOccurence += ChangeAnimatorToTriggerTwo;
     }
 
     // Update is called once per frame
@@ -277,6 +281,7 @@ public class Player : MonoBehaviour, IChangeable
     public void ResetChange()
     {
         EventPlayer.OnExitUseSkill += ChangeAnimatorToCalm;
+        ChangeAnimatorToNormal();
     }
     private void ChangeAnimatorToCalm()
     {
@@ -292,11 +297,55 @@ public class Player : MonoBehaviour, IChangeable
     {
         PlayerFaceAnimator.SetLayerWeight(0,0);
         PlayerFaceAnimator.SetLayerWeight(1,1);
+        PlayerFaceAnimator.SetLayerWeight(2, 0);
+        PlayerFaceAnimator.SetLayerWeight(3, 0);
     }
     private void ChangeAnimatorToNormal()
     {
         PlayerFaceAnimator.SetLayerWeight(0, 1);
         PlayerFaceAnimator.SetLayerWeight(1, 0);
+        PlayerFaceAnimator.SetLayerWeight(2, 0);
+        PlayerFaceAnimator.SetLayerWeight(3, 0);
+
+        CurrentTriggerLevel = 0;
+    }
+
+    public void ChangeAnimatorToTriggerOne()
+    {
+        PlayerFaceAnimator.SetLayerWeight(0, 0);
+        PlayerFaceAnimator.SetLayerWeight(1, 0);
+        PlayerFaceAnimator.SetLayerWeight(2, 1);
+        PlayerFaceAnimator.SetLayerWeight(3, 0);
+
+        CurrentTriggerLevel = 1;
+    }
+
+    public void ChangeAnimatorToTriggerTwo()
+    {
+        PlayerFaceAnimator.SetLayerWeight(0, 0);
+        PlayerFaceAnimator.SetLayerWeight(1, 0);
+        PlayerFaceAnimator.SetLayerWeight(2, 0);
+        PlayerFaceAnimator.SetLayerWeight(3, 1);
+
+        CurrentTriggerLevel = 2;
+    }
+
+    private void ResetAnimatorLayer()
+    {
+        switch (CurrentTriggerLevel)
+        {
+            case 0:
+                ChangeAnimatorToNormal();
+                break;
+            case 1: 
+                ChangeAnimatorToTriggerOne();
+                break;
+            case 2:
+                ChangeAnimatorToTriggerTwo();
+                break;
+            default:
+                break;
+        }
     }
 
     private void RotateDirectionalIndicator()
