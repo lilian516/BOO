@@ -64,11 +64,13 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
     private void UpdateAngryModeFirst()
     {
         _joystickCenter.GetComponent<Image>().sprite = _listJoystickSpriteCenter[1];
+        StartCoroutine(Shake());
     }
 
     private void UpdateAngryModeSecond()
     {
         _joystickCenter.GetComponent<Image>().sprite = _listJoystickSpriteCenter[2];
+        StartCoroutine(Shake());
     }
 
 
@@ -80,6 +82,7 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         _joystickDirectionSmall.GetComponent<Image>().sprite = _listJoystickDirectionSmall[1];
     
         _joystickDirectionBig.GetComponent<Image>().sprite = _listJoystickDirectionBig[1];
+        StartCoroutine(Shake());
     }
 
     // Start is called before the first frame update
@@ -91,6 +94,30 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         
     }
 
+
+    private IEnumerator Shake()
+    {
+        
+
+        
+
+        Vector2 originalPos = _joystickExterior.GetComponent<RectTransform>().anchoredPosition;
+        float elapsed = 0f;
+
+        while (elapsed < 1f)
+        {
+            float offsetX = Random.Range(-1f, 1f) * 10;
+            float offsetY = Random.Range(-1f, 1f) * 10;
+
+            _joystickExterior.GetComponent<RectTransform>().anchoredPosition = originalPos + new Vector2(offsetX, offsetY);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        _joystickExterior.GetComponent<RectTransform>().anchoredPosition = originalPos;
+       
+
+        
+    }
 
     private void OnDestroy()
     {
