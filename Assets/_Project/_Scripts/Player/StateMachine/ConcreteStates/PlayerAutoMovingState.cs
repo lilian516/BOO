@@ -25,7 +25,7 @@ public class PlayerAutoMovingState : PlayerState
     public PlayerAutoMovingState(Player player, PlayerStateMachine playerStateMachine, Descriptor desc) : base(player, playerStateMachine)
     {
         _desc = desc;
-        _stoppingDistance = 0.3f;
+        _stoppingDistance = 0.05f;
     }
 
     public override void ChangeStateChecks()
@@ -105,7 +105,6 @@ public class PlayerAutoMovingState : PlayerState
     {
         NavMeshHit hit;
 
-
         if (NavMesh.SamplePosition(_newPosition, out hit, _stoppingDistance, NavMesh.AllAreas))
         {
             NavMeshPath path = new NavMeshPath();
@@ -115,11 +114,9 @@ public class PlayerAutoMovingState : PlayerState
                 if (path.status == NavMeshPathStatus.PathComplete)
                 {
                     _desc.NavMeshAgentPlayer.SetDestination(_newPosition);
-                    Debug.Log("c'est good proche");
                 }
                 else
                 {
-                    Debug.Log("on va en idle");
                     _stateMachine.ChangeState(_player.IdleState);
                 }
 

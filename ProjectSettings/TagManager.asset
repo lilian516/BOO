@@ -32,10 +32,7 @@ TagManager:
   - SheepLimiter
   - TrailOnly
   - Camera
-  - 
-  - 
-  - 
-  - 
+  - NavMeshIgnore
   - 
   - 
   - 
