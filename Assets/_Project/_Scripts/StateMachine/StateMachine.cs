@@ -14,7 +14,7 @@ public class StateMachine
 
     public void ChangeState(State newState)
     {
-        Debug.Log("VVDSQCD?KLQMLIZEJF?V?NDQMLEIKFJN VKMKS<IEJNC KQMMSLKENFMLKDXNVEESZp"+newState);
+        
         CurrentState.ExitState();
         CurrentState = newState;
         CurrentState.EnterState();
