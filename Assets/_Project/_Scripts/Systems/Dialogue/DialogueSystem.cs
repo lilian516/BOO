@@ -53,8 +53,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _choiceButton = GameManager.Instance.DialogueSkillBtn.GetComponentInChildren<Button>();
         _cancelButton = GameManager.Instance.DialogueQuitBtn.GetComponentInChildren<Button>();
 
-        _choiceButton.onClick.AddListener(TakeChoice);
-        _cancelButton.onClick.AddListener(EndDialogue);
     }
 
     private void OnEnable()
@@ -171,6 +169,15 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
         GameManager.Instance.DialogueSkillBtn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ProcessingDialogue.SkillDescriptor.Name;
         GameManager.Instance.DialogueSkillBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ProcessingDialogue.SkillDescriptor.Desc;
+
+        StartCoroutine(WaitToActivateChoice());
+    }
+
+    private IEnumerator WaitToActivateChoice()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _choiceButton.onClick.AddListener(TakeChoice);
+        _cancelButton.onClick.AddListener(EndDialogue);
     }
 
     private void TakeChoice()
@@ -178,6 +185,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
         OnTakeEvent?.Invoke(ProcessingDialogue.TakeEventType);
         EndDialogue();
         GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive, ProcessingDialogue.SkillDescriptor);
+
+        _choiceButton.onClick.RemoveAllListeners();
+        _cancelButton.onClick.RemoveAllListeners();
     }
     
     public void UpdateSentence()
