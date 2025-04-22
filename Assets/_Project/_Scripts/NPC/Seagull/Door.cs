@@ -8,7 +8,7 @@ public class Door : MonoBehaviour, IClickable
 
     [SerializeField] Animator _animator;
     [SerializeField] Animator _animatorDoor;
-    
+    public Material DoorOutlineMaterial;
 
     public bool IsKnocked = false;
     private bool _achivevementUnlock = false;

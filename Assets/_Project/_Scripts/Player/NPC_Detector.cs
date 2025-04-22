@@ -20,6 +20,9 @@ public class NPC_Detector : MonoBehaviour
 
             if (other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null)
                 other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineSize", 3.0f);
+
+            if (other.GetComponent<Door>() != null)
+                other.GetComponent<Door>().DoorOutlineMaterial.SetFloat("_Outline_Thickness", 0.01f);
         }
     }
 
@@ -31,6 +34,9 @@ public class NPC_Detector : MonoBehaviour
 
             if (other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null)
                 other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineSize", 0.0f);
+
+            if (other.GetComponent<Door>() != null)
+                other.GetComponent<Door>().DoorOutlineMaterial.SetFloat("_Outline_Thickness", 0.0f);
 
             if (_npcInRange == 0)
                 OnStopDetectNPC?.Invoke();
