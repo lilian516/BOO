@@ -51,6 +51,7 @@ public class GameManager : Singleton<GameManager>
     {
         StartCoroutine(WaitForScenesAndInitialize());
 
+        Application.targetFrameRate = 45;
         KilledSheep = 0;
     }
 
