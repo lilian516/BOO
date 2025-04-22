@@ -39,6 +39,8 @@ public class Orbe : MonoBehaviour, IClickable
         _player.StateMachine.ChangeState(_player.IdleState);
 
         CinematicSystem.Instance.OnEndCinematic -= CheckEndCinematic;
+
+        Destroy(gameObject);
     }
 
     public void OnClick()
