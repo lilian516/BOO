@@ -19,23 +19,18 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause()
     {
-
-        _pauseButton.onClick.RemoveAllListeners();
-        //Helpers.ShowCanva(GetComponent<CanvasGroup>());
         _animatorTransition.SetTrigger("Click");
-        _pauseButton.interactable = false;
-        //Time.timeScale = 0;
         StartCoroutine(WaitOpenPause());
-        InputManager.Instance.DisableControllerStick();
-        InputManager.Instance.DisableSkillStick();
     }
 
     private IEnumerator WaitOpenPause()
     {
         yield return new WaitForSeconds(1.2f);
 
-        Helpers.ShowCanva(GetComponent<CanvasGroup>());
-        _pauseButton.interactable = true;
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" });
+
+        SaveSystem.Instance.SaveAllData();
+        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "UIInGame" });
     }
 
     private void Resume()
