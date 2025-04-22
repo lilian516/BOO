@@ -45,7 +45,8 @@ public class SaveSystem : Singleton<SaveSystem>
         {
             {"test", 1},
             {"AAAAAH", false},
-            {"MusicVolume", 1}
+            {"MusicVolume", 1},
+            {"MagnitudeIndex", 0}
         };
     }
 
@@ -104,6 +105,14 @@ public class SaveSystem : Singleton<SaveSystem>
         Data = JsonConvert.DeserializeObject<Dictionary<string, object>>(JSONString);
     }
 
+    public void ResetElement<T>(string key)
+    {
+        if (Data.ContainsKey(key) && GetDefaultData().ContainsKey(key))
+        {
+            Data[key] = GetDefaultData()[key];
+            _isAllowedToSave = true;
+        }
+    }
    public void ResetAllData()
     {
         Data = GetDefaultData();
