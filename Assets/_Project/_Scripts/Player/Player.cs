@@ -68,6 +68,7 @@ public class Player : MonoBehaviour, IChangeable
     public AnimEventPlayer EventPlayer { get => _eventPlayer; set => _eventPlayer = value; }
 
     [HideInInspector] public int CurrentTriggerLevel;
+    public bool FacingRight = true;
 
     #region Velocity
 

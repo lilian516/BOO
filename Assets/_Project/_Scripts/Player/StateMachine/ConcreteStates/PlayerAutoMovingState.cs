@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerAutoMovingState : PlayerState
 {
@@ -18,10 +21,11 @@ public class PlayerAutoMovingState : PlayerState
 
     private Vector3 _newPosition;
     private float _stoppingDistance;
+    private SpriteRenderer[] _sprites;
     public PlayerAutoMovingState(Player player, PlayerStateMachine playerStateMachine, Descriptor desc) : base(player, playerStateMachine)
     {
         _desc = desc;
-        _stoppingDistance = 0.5f;
+        _stoppingDistance = 0.3f;
     }
 
     public override void ChangeStateChecks()
@@ -38,15 +42,24 @@ public class PlayerAutoMovingState : PlayerState
     {
         base.EnterState();
 
+        _player.CurrentClickable.OnClick();
+
+        if (!_player.CurrentClickable.CanGoTo)
+        {
+            _playerStateMachine.ChangeState(_player.IdleState);
+            return;
+        }
+
         _player.PlayerAnimator.SetBool("IsMoving", true);
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);
 
         _newPosition = _player.PositionToGo;
-
-        if (_newPosition.x < 0 && _player.LookDir.x > 0)
-            Flip();
-        else if (_newPosition.x > 0 && _player.LookDir.x < 0)
-            Flip();
+        _sprites = _player.GetComponentsInChildren<SpriteRenderer>();
+        Vector3 dir = _newPosition - _player.transform.position;
+        if (dir.x > 0 && !_player.FacingRight)
+            Flip(false);
+        else if (dir.x < 0 && _player.FacingRight)
+            Flip(true);
 
         _desc.NavMeshAgentPlayer.updateRotation = false;
         _desc.NavMeshAgentPlayer.enabled = true;
@@ -62,8 +75,10 @@ public class PlayerAutoMovingState : PlayerState
     {
         base.ExitState();
 
+        if (_player.CurrentClickable.CanGoTo)
+            _player.CurrentClickable.OnDestinationReached();
+
         _desc.NavMeshAgentPlayer.enabled = false;
-        _player.CurrentClickable.OnClick();
         _player.PlayerAnimator.SetBool("IsMoving", false);
         _player.PlayerFaceAnimator.SetBool("IsMoving", false);
     }
@@ -78,13 +93,12 @@ public class PlayerAutoMovingState : PlayerState
         base.PhysicsUpdate();
     }
 
-    private void Flip()
+    private void Flip(bool flipped)
     {
-        Vector3 theScale = _player.transform.localScale;
-        theScale.x *= -1;
-        _player.transform.localScale = theScale;
+        _player.FacingRight = !flipped;
 
-        _player.LookDir = _newPosition.normalized;
+        _sprites[0].flipX = flipped;
+        _sprites[1].flipX = flipped;
     }
 
     private void CheckCanGoToPosition()
