@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.Animations;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class PlayerAutoMovingState : PlayerState
 {
