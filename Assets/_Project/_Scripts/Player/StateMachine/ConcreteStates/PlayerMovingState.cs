@@ -116,9 +116,6 @@ public class PlayerMovingState : PlayerState
 
         Vector3 CapsulePos = _player.transform.position + _player.DirectionalCapsuleOffset;
         _player.DirectionalCapsule.transform.position = new Vector3(InputManager.Instance.GetMoveDirection().x + CapsulePos.x, CapsulePos.y, CapsulePos.z + InputManager.Instance.GetMoveDirection().y);
-
-        if (_player.RB.velocity.x < 0)
-            Flip(true);
     }
 
     private void OnSkill()
