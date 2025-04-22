@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2739001155528974255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4194752223657511956}
+  - component: {fileID: 200801409875314944}
+  m_Layer: 0
+  m_Name: UI Manager In Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4194752223657511956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739001155528974255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200801409875314944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739001155528974255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c895efb54d6ed204db4b7d3695c59202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _joystickCenter: {fileID: 0}
+  _joystickExterior: {fileID: 0}
+  _joystickSkill: {fileID: 0}
+  _joystickDirectionSmall: {fileID: 0}
+  _joystickDirectionBig: {fileID: 0}
+  _listJoystickSpriteCenter:
+  - {fileID: 21300000, guid: ea03c4eb07399fe43a71dcf3d2262bf1, type: 3}
+  - {fileID: 21300000, guid: 2001f7d725660b84880ec616ab2d1b4c, type: 3}
+  - {fileID: 21300000, guid: 0d07790805598ef48bab3289d0f8bd16, type: 3}
+  - {fileID: 21300000, guid: 0a0ab8b4779627b48a27cf49c3a5d5bd, type: 3}
+  _listJoystickSpriteExterior:
+  - {fileID: 21300000, guid: 8e4f6b46dc2f27d499073da67133b639, type: 3}
+  - {fileID: 21300000, guid: f354563c6b9d46a43bb5fbb465b5cb5b, type: 3}
+  _listJoystickSkill:
+  - {fileID: 21300000, guid: 9a20f3cc1f9727742a32c3c514126752, type: 3}
+  - {fileID: 21300000, guid: 0a0ab8b4779627b48a27cf49c3a5d5bd, type: 3}
+  _listJoystickDirectionSmall:
+  - {fileID: 21300000, guid: 81a2ac6c5ec90e443aee4bfe68d52e42, type: 3}
+  - {fileID: 21300000, guid: 51b50eec06c4d78408111eae57499650, type: 3}
+  _listJoystickDirectionBig:
+  - {fileID: 21300000, guid: 81a2ac6c5ec90e443aee4bfe68d52e42, type: 3}
+  - {fileID: 21300000, guid: 51b50eec06c4d78408111eae57499650, type: 3}

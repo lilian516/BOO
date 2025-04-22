@@ -9,10 +9,14 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
     [SerializeField] GameObject _joystickCenter;
     [SerializeField] GameObject _joystickExterior;
     [SerializeField] GameObject _joystickSkill;
+    [SerializeField] GameObject _joystickDirectionSmall;
+    [SerializeField] GameObject _joystickDirectionBig;
 
     [SerializeField] List<Sprite> _listJoystickSpriteCenter;
     [SerializeField] List<Sprite> _listJoystickSpriteExterior;
     [SerializeField] List<Sprite> _listJoystickSkill;
+    [SerializeField] List<Sprite> _listJoystickDirectionSmall;
+    [SerializeField] List<Sprite> _listJoystickDirectionBig;
 
 
 
@@ -23,6 +27,29 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         AngrySystem.Instance.OnChangeElements += Change;
 
         AngrySystem.Instance.OnResetElements += ResetChange;
+
+        if (AngrySystem.Instance.IsAngry)
+        {
+            Change();
+        }
+        else
+        {
+            switch (AngrySystem.Instance.AngryLimits)
+            {
+                case 3:
+                    ResetChange();
+                    break;
+
+                case 2:
+                    UpdateAngryModeFirst();
+                    break;
+                case 1:
+                    UpdateAngryModeSecond();
+                    break;
+
+
+            }
+        }
     }
 
     public void ResetChange()
@@ -30,6 +57,8 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         _joystickCenter.GetComponent<Image>().sprite = _listJoystickSpriteCenter[0];
         _joystickExterior.GetComponent<Image>().sprite = _listJoystickSpriteExterior[0];
         _joystickSkill.GetComponent<Image>().sprite = _listJoystickSkill[0];
+        _joystickDirectionSmall.GetComponent<Image>().sprite = _listJoystickDirectionSmall[0];
+        _joystickDirectionBig.GetComponent<Image>().sprite = _listJoystickDirectionBig[0];
     }
 
     private void UpdateAngryModeFirst()
@@ -48,6 +77,9 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         _joystickCenter.GetComponent<Image>().sprite = _listJoystickSpriteCenter[3];
         _joystickExterior.GetComponent<Image>().sprite = _listJoystickSpriteExterior[1];
         _joystickSkill.GetComponent<Image>().sprite = _listJoystickSkill[1];
+        _joystickDirectionSmall.GetComponent<Image>().sprite = _listJoystickDirectionSmall[1];
+    
+        _joystickDirectionBig.GetComponent<Image>().sprite = _listJoystickDirectionBig[1];
     }
 
     // Start is called before the first frame update
