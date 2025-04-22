@@ -17,21 +17,20 @@ public class Wind : MonoBehaviour
         _forward = dir.normalized;
 
         Transform child = transform.GetChild(0);
-        child.rotation = rotation * Quaternion.Euler(0.0f, 90.0f, 0.0f);
 
         float threshold = 0.25f;
 
         if (_forward.x < -1f + threshold && Mathf.Abs(_forward.z) < threshold)
         {
-            child.rotation *= Quaternion.Euler(35.0f, 0.0f, 0.0f);
+            child.rotation = Quaternion.Euler(35.0f, 0.0f, 0.0f);
         }
         else if (_forward.x > 1f - threshold && Mathf.Abs(_forward.z) < threshold)
         {
-            child.rotation *= Quaternion.Euler(-35.0f, 0.0f, 0.0f);
+            child.rotation = Quaternion.Euler(-35.0f, 180.0f, 0.0f);
         }
         else
         {
-            child.rotation *= Quaternion.Euler(90.0f, 0.0f, 0.0f);
+            child.rotation = Quaternion.Euler(90.0f, 90.0f + rotation.eulerAngles.y, 0.0f);
         }
 
         StartCoroutine(WindMovement());
@@ -64,3 +63,4 @@ public class Wind : MonoBehaviour
         }
     }
 }
+
