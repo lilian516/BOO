@@ -275,8 +275,6 @@ public class Player : MonoBehaviour, IChangeable
     public void ResetChange()
     {
         EventPlayer.OnExitUseSkill += ChangeAnimatorToCalm;
-        
-
         ChangeAnimatorToNormal();
     }
     private void ChangeAnimatorToCalm()
