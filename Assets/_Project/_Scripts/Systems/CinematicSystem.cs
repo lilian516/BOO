@@ -67,7 +67,7 @@ public class CinematicSystem : Singleton<CinematicSystem>
         OnEndCinematic?.Invoke();
     }
 
-    private void OnApplicationQuit()
+    protected override void OnApplicationQuit ()
     {
         _videoPlayer.targetTexture.Release();
     }

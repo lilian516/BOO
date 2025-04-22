@@ -261,7 +261,9 @@ public class Player : MonoBehaviour, IChangeable
         AddSkill(PlayerSkill.SmashSkill, _smashSkillDescriptor);
 
         CurrentSpeed = _maxSpeed;
-        
+
+        SoundSystem.Instance.ChangeMusicByKey("Dark Music");
+
         PlayerAnimator.SetTrigger("IsAngry");
         PlayerFaceAnimator.enabled = false;
         PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
@@ -276,6 +278,7 @@ public class Player : MonoBehaviour, IChangeable
     {
         EventPlayer.OnExitUseSkill += ChangeAnimatorToCalm;
         ChangeAnimatorToNormal();
+        SoundSystem.Instance.ChangeMusicByKey("Chill Music");
     }
     private void ChangeAnimatorToCalm()
     {
