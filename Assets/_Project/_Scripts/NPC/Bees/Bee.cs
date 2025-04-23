@@ -9,6 +9,8 @@ public class Bee : MonoBehaviour, IInteractable
 
     private BeeState _currentState;
 
+    private bool _isBubbled;
+
     [Header("Patrol State")]
     [SerializeField] private Transform[] _pathReferences;
     [SerializeField] float _patrolDistance;
@@ -24,7 +26,6 @@ public class Bee : MonoBehaviour, IInteractable
 
 
 
-
     void Start()
     {
         _isResting = false;
@@ -36,6 +37,9 @@ public class Bee : MonoBehaviour, IInteractable
     }
     void Update()
     {
+        if (_isBubbled)
+            return;
+
         GameObject player;
         if (!(player = GameManager.Instance.Player))
             return;
@@ -165,25 +169,23 @@ public class Bee : MonoBehaviour, IInteractable
 
         _isResting = false;
     }
-
     public void Interact(PlayerSkill playerSkill)
     {
         switch (playerSkill)
         {
             case PlayerSkill.BubbleSkill:
-
+                _triggerZone.gameObject.SetActive(false);
+                _isBubbled = true;
                 PackedBee();
                 break;
         }
     }
-
     private void PackedBee()
     {
         _animator.SetTrigger("Packed");
         StartCoroutine(GoUp());
 
     }
-
     private IEnumerator GoUp()
     {
         float elapsedTime = 0f;
