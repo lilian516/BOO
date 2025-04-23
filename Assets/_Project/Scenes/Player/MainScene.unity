@@ -7128,6 +7128,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1724986212}
     m_Modifications:
+    - target: {fileID: 4421940941003535854, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421940941003535854, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226832563015930663, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5226832563015930663, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844370795251516750, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844370795251516750, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.23
+      objectReference: {fileID: 0}
     - target: {fileID: 7688200969678326449, guid: 6a39fe9966b793047b84ce6910fdcb4f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7182,6 +7212,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pf_BeeFonction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789454674112873273, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789454674112873273, guid: 6a39fe9966b793047b84ce6910fdcb4f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.76
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

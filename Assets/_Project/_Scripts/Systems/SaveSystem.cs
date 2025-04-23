@@ -18,7 +18,6 @@ public class SaveSystem : Singleton<SaveSystem>
     {
 
         _filePath = Application.persistentDataPath + "save.txt";
-        Debug.Log(Application.persistentDataPath);
         if (File.Exists(_filePath))
         {
             LoadAllData();
