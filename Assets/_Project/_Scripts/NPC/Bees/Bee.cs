@@ -178,6 +178,11 @@ public class Bee : MonoBehaviour, IInteractable
                 _isBubbled = true;
                 PackedBee();
                 break;
+            case PlayerSkill.SmashSkill:
+                AngrySystem.Instance.ChangeCalmLimits();
+                Destroy(gameObject);
+                break;
+
         }
     }
     private void PackedBee()
