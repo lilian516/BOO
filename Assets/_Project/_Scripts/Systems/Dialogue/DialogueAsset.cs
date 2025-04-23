@@ -11,6 +11,7 @@ public class DialogueAsset : ScriptableObject
     [Header("Sprites")]
     public Sprite RightCharacter;
     public Sprite LeftCharacter;
+    public string Name;
     public Sprite DialogueBackground;
     [Space]
     public DialogueSection[] Sections;

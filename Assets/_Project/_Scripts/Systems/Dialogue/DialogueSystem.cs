@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -87,9 +88,18 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
 
         if (_leftImage != null)
+        {
             _leftImage.sprite = ProcessingDialogue.LeftCharacter;
+            
+        }
+            
+
         if (_rightImage != null)
-            _rightImage.sprite = ProcessingDialogue.RightCharacter;
+        {
+            //_rightImage.sprite = ProcessingDialogue.RightCharacter;
+            _rightImage.gameObject.GetComponent<Animator>().SetTrigger(asset.Name);
+        }
+            
 
         if (ProcessingDialogue.OpeningTriggerEvent)
         {
@@ -115,6 +125,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.alpha = 0;
         _fadeCanvasBox.interactable = false;
         _fadeCanvasBox.blocksRaycasts = false;
+
+        _rightImage.gameObject.GetComponent<Animator>().SetTrigger("EndDialogue");
 
         OnEndDialogue?.Invoke();
     }
