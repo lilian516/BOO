@@ -195,7 +195,11 @@ public class Player : MonoBehaviour, IChangeable
             PlayerAnimator.SetTrigger("UseSkill");
 
             StartCoroutine(WaitDisableFaceAnimator());
-            _animTime = (_overrideController["A_Boo_BubbleSkill"].length - 0.01f) * 2;
+            if (!AngrySystem.Instance.IsAngry)
+                _animTime = (_overrideController["A_Boo_BubbleSkill"].length - 0.01f) * 2;
+            else 
+                _animTime = (_overrideController["A_Boo_KillSheep"].length - 0.01f) * 2;
+
             return true;
         }
         return false;
@@ -284,14 +288,13 @@ public class Player : MonoBehaviour, IChangeable
     }
     public void ResetChange()
     {
-        EventPlayer.OnExitUseSkill += ChangeAnimatorToCalm;
+        OnEndAnimation += ChangeAnimatorToCalm;
         ChangeAnimatorToNormal();
         SoundSystem.Instance.ChangeMusicByKey("Chill Music");
     }
     private void ChangeAnimatorToCalm()
     {
-  
-        EventPlayer.OnExitUseSkill -= ChangeAnimatorToCalm;
+        OnEndAnimation -= ChangeAnimatorToCalm;
         PlayerAnimator.SetTrigger("Transform");
         PlayerFaceAnimator.enabled = false;
         StartCoroutine(WaitBeforeHappy());

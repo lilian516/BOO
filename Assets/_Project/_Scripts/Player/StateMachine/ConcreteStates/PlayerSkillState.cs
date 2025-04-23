@@ -27,12 +27,8 @@ public class PlayerSkillState : PlayerState
     {
         base.EnterState();
 
-        _player.EventPlayer.OnEnterUseSkill += UseSkill;
-
-
         _sprites = _player.transform.GetComponentsInChildren<SpriteRenderer>();
         _player.EventPlayer.OnEnterUseSkill += UseSkill;
-        _player.EventPlayer.OnExitUseSkill += StopUseSkill;
 
         if (!_player.StartUseCurrentSkill()) {
             _playerStateMachine.ChangeState(_player.IdleState);
@@ -60,9 +56,6 @@ public class PlayerSkillState : PlayerState
             
             _player.PlayerFaceAnimator.enabled = true;
         }
-
-
-
     }
 
     public override void FrameUpdate()
