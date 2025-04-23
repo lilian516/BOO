@@ -25,11 +25,13 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator WaitOpenPause()
     {
+        
         yield return new WaitForSeconds(1.2f);
 
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" });
 
         SaveSystem.Instance.SaveAllData();
+
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "UIInGame" });
     }
 

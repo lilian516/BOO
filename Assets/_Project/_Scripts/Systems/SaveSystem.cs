@@ -17,8 +17,8 @@ public class SaveSystem : Singleton<SaveSystem>
     private void Start()
     {
 
-        _filePath = Application.dataPath + "/_Project/Resources/Saves/" + "save.txt";
-
+        _filePath = Application.persistentDataPath + "save.txt";
+        Debug.Log(Application.persistentDataPath);
         if (File.Exists(_filePath))
         {
             LoadAllData();
@@ -82,10 +82,11 @@ public class SaveSystem : Singleton<SaveSystem>
 
         if (!File.Exists(_filePath))
         {
-            using (File.CreateText(_filePath)) { }
+            using (File.CreateText(_filePath)) {  }
         }
 
         File.WriteAllText(_filePath, JSON);
+
     }
 
     public void LoadAllData()
