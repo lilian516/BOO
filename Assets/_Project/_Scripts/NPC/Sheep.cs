@@ -109,7 +109,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
 
         while (elapsedTime < 2f)
         {
-            transform.Translate(PushedDirection * _speed * Time.deltaTime);
+            transform.Translate(PushedDirection.normalized * _speed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             PositionToGo = transform.GetChild(0).position;
             yield return null;
