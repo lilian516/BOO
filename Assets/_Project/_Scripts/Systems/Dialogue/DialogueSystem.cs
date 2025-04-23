@@ -127,6 +127,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.blocksRaycasts = false;
 
         _rightImage.gameObject.GetComponent<Animator>().SetTrigger("EndDialogue");
+        _choiceButton.onClick.RemoveAllListeners();
+        _cancelButton.onClick.RemoveAllListeners();
 
         OnEndDialogue?.Invoke();
     }
