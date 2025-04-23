@@ -205,7 +205,6 @@ public class Player : MonoBehaviour, IChangeable
 
     public void AddSkill(PlayerSkill playerSkill, SkillDescriptor descriptor)
     {
-
         switch (playerSkill)
         {
 

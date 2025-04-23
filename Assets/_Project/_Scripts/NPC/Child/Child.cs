@@ -18,6 +18,7 @@ public class Child : MonoBehaviour, ISpeakable, IChangeable
         _animator.SetBool("IsTalking", true);
         DialogueSystem.Instance.BeginDialogue(_dialogue);
         DialogueSystem.Instance.OnTakeEvent += OnEventTakeSkill;
+        DialogueSystem.Instance.OnEndDialogue += delegate { DialogueSystem.Instance.OnTakeEvent -= OnEventTakeSkill; };
     }
 
     void Start()

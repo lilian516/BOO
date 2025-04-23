@@ -116,6 +116,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.interactable = false;
         _fadeCanvasBox.blocksRaycasts = false;
 
+        _choiceButton.onClick.RemoveAllListeners();
+        _cancelButton.onClick.RemoveAllListeners();
+
         OnEndDialogue?.Invoke();
     }
 
