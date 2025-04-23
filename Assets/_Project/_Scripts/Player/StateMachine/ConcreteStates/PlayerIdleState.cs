@@ -27,6 +27,11 @@ public class PlayerIdleState : PlayerState
         _isSpeakingToSomeone = false;
         base.EnterState();
 
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _player.PlayerFaceAnimator.enabled = true;
+        }
+
         _player.Input.OnSkillMenu += OnSkill;
         _player.Input.OnSpeak += OnCheckSpeak;
 
@@ -122,15 +127,6 @@ public class PlayerIdleState : PlayerState
                    
                 }
             }
-
-
-            //Orbe orbe = hit.collider.gameObject.GetComponent<Orbe>();
-            //if (orbe != null)
-            //{
-            //    orbe.UseOrbe();
-            //    _playerStateMachine.ChangeState(_player.WaitingState);
-
-            //}
         }
     }
 

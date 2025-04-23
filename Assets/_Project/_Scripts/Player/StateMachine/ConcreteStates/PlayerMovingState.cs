@@ -36,6 +36,12 @@ public class PlayerMovingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _player.PlayerFaceAnimator.enabled = true;
+        }
+
         _sprites = _player.GetComponentsInChildren<SpriteRenderer>();
         _player.PlayerAnimator.SetBool("IsMoving",true);
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);

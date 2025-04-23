@@ -14,6 +14,8 @@ public class PlayerSkillState : PlayerState
 
     private SpriteRenderer[] _sprites;
 
+    private bool _isFlipped;
+
     public PlayerSkillState(Player player, PlayerStateMachine playerStateMachine) : base(player, playerStateMachine)
     {
         StateMachine = new SkillStateMachine();
@@ -34,10 +36,10 @@ public class PlayerSkillState : PlayerState
 
         if (_player.HasSkillSelected())
         {
-            if (Mathf.Sign(_player.LookDir.x) != Mathf.Sign(_player.SkillDir.x))
-            {
+            if (_player.SkillDir.x > 0 && !_player.FacingRight)
+                Flip(false);
+            else if (_player.SkillDir.x < 0 && _player.FacingRight)
                 Flip(true);
-            }
         }
 
         _player.EventPlayer.OnEnterUseSkill += UseSkill;
@@ -56,7 +58,8 @@ public class PlayerSkillState : PlayerState
             
             _player.PlayerFaceAnimator.enabled = true;
         }
-        Flip(false);
+
+
 
     }
 
@@ -102,6 +105,8 @@ public class PlayerSkillState : PlayerState
 
     private void Flip(bool flipped)
     {
+        _player.FacingRight = !flipped;
+
         _sprites[0].flipX = flipped;
         _sprites[1].flipX = flipped;
     }

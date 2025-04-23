@@ -126,9 +126,6 @@ public class Player : MonoBehaviour, IChangeable
         detector.OnDetectNPC += ChangeAnimatorToCurious;
         detector.OnStopDetectNPC += ResetAnimatorLayer;
 
-        if (!HasSkillSelected())
-            DirectionalIndicator.SetActive(false);
-
         AngrySystem.Instance.OnFirstAngerOccurence += ChangeAnimatorToTriggerOne;
         AngrySystem.Instance.OnSecondAngerOccurence += ChangeAnimatorToTriggerTwo;
     }
@@ -207,8 +204,6 @@ public class Player : MonoBehaviour, IChangeable
 
     public void AddSkill(PlayerSkill playerSkill, SkillDescriptor descriptor)
     {
-        if (!HasSkillSelected())
-            DirectionalIndicator.SetActive(true);
 
         switch (playerSkill)
         {
@@ -371,5 +366,11 @@ public class Player : MonoBehaviour, IChangeable
             DirectionalIndicator.transform.rotation = targetRotation;
         }
         
+        else if (InputManager.Instance.GetMoveDirection() != Vector2.zero)
+        {
+            SkillDir = LookDir;
+            Quaternion targetRotation = Quaternion.LookRotation(LookDir);
+            DirectionalIndicator.transform.rotation = targetRotation;
+        }
     }
 }
