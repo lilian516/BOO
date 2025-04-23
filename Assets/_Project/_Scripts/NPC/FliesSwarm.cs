@@ -1,16 +1,55 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FliesSwarm : MonoBehaviour, IInteractable
 {
+    [SerializeField] private ParticleSystem _flies;
+    private ParticleSystem.Particle[] _particles;
+
+    private void Start()
+    {
+        _particles = new ParticleSystem.Particle[_flies.main.maxParticles];
+    }
+
     public void Interact(PlayerSkill playerSkill)
     {
-        switch (playerSkill)
+        if (playerSkill == PlayerSkill.PantsSkill)
+            StartCoroutine(SlapFlies());
+    }
+
+    private IEnumerator SlapFlies()
+    {
+        _flies.GetParticles(_particles);
+
+        for (int i = 0; i < _particles.Length; i++)
         {
-            case PlayerSkill.PantsSkill:
-                Destroy(gameObject);
-                break;
+            _particles[i].velocity = Random.onUnitSphere * 15.0f;
         }
+
+        _flies.SetParticles(_particles);
+        _flies.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+        float duration = 3f;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            int numAlive = _flies.GetParticles(_particles);
+            float fadePercent = timer / duration;
+
+            for (int i = 0; i < numAlive; i++)
+            {
+                Color32 color = _particles[i].startColor;
+                color.a = (byte)(255 * (1f - fadePercent));
+                _particles[i].startColor = color;
+            }
+
+            _flies.SetParticles(_particles, numAlive);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }
