@@ -85,7 +85,7 @@ public class Inventory : MonoBehaviour, IChangeable
 
     private void ChangeSkillImage()
     {
-        if (AngrySystem.Instance.IsAngry)
+        if (AngrySystem.Instance.IsAngry && _currentSkill != null)
         {
             _skillButtonUI.GetComponent<Image>().sprite = _angrySkills.GetSprite();
             return;

@@ -101,19 +101,22 @@ public class AngrySystem : Singleton<AngrySystem>
         {
             return;
         }
+        Debug.Log("Tralalero Tralala");
         _calmLimits--;
         if (_calmLimits == 2)
         {
+            Debug.Log("Lirili Larila");
             OnFirstCalmOccurence?.Invoke();
         }
         else if (_calmLimits == 1)
         {
+            Debug.Log("Bombardiro crocodilo");
             OnSecondCalmOccurence?.Invoke();
         }
 
         if (_calmLimits == 0 && IsAngry)
         {
-
+            Debug.Log("Tung Tung Tung Sahur");
             IsAngry = false;
 
             StartCoroutine(WaitForChange());

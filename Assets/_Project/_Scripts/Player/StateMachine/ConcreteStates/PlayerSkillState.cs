@@ -29,6 +29,8 @@ public class PlayerSkillState : PlayerState
 
         //StateMachine.Initialize(LaunchState);
         _sprites = _player.transform.GetComponentsInChildren<SpriteRenderer>();
+        _player.EventPlayer.OnEnterUseSkill += UseSkill;
+        _player.EventPlayer.OnExitUseSkill += StopUseSkill;
 
         if (!_player.StartUseCurrentSkill()) {
             _playerStateMachine.ChangeState(_player.IdleState);
@@ -41,15 +43,11 @@ public class PlayerSkillState : PlayerState
             else if (_player.SkillDir.x < 0 && _player.FacingRight)
                 Flip(true);
         }
-
-        _player.EventPlayer.OnEnterUseSkill += UseSkill;
-        _player.EventPlayer.OnExitUseSkill += StopUseSkill;
     }
 
     public override void ExitState()
     {
         base.ExitState();
-
         _player.EventPlayer.OnEnterUseSkill -= UseSkill;
         _player.EventPlayer.OnExitUseSkill -= StopUseSkill;
 
@@ -67,13 +65,11 @@ public class PlayerSkillState : PlayerState
     {
         base.FrameUpdate();
 
-        //StateMachine.CurrentState.FrameUpdate();
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        //StateMachine.CurrentState.PhysicsUpdate();
 
     }
 
@@ -82,7 +78,6 @@ public class PlayerSkillState : PlayerState
     public override void ChangeStateChecks()
     {
         base.ChangeStateChecks();
-        //StateMachine.CurrentState.ChangeStateChecks();
     }
 
     private void UseSkill()
