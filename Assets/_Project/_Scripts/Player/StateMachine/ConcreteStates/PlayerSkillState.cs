@@ -27,7 +27,9 @@ public class PlayerSkillState : PlayerState
     {
         base.EnterState();
 
-        //StateMachine.Initialize(LaunchState);
+        _player.EventPlayer.OnEnterUseSkill += UseSkill;
+
+
         _sprites = _player.transform.GetComponentsInChildren<SpriteRenderer>();
         _player.EventPlayer.OnEnterUseSkill += UseSkill;
         _player.EventPlayer.OnExitUseSkill += StopUseSkill;
@@ -35,7 +37,7 @@ public class PlayerSkillState : PlayerState
         if (!_player.StartUseCurrentSkill()) {
             _playerStateMachine.ChangeState(_player.IdleState);
         }
-
+        
         if (_player.HasSkillSelected())
         {
             if (_player.SkillDir.x > 0 && !_player.FacingRight)
@@ -43,13 +45,15 @@ public class PlayerSkillState : PlayerState
             else if (_player.SkillDir.x < 0 && _player.FacingRight)
                 Flip(true);
         }
+        _player.OnEndAnimation += StopUseSkill;
+        _player.WaitForSkillAnimation();
     }
 
     public override void ExitState()
     {
         base.ExitState();
         _player.EventPlayer.OnEnterUseSkill -= UseSkill;
-        _player.EventPlayer.OnExitUseSkill -= StopUseSkill;
+        _player.OnEndAnimation -= StopUseSkill;
 
         if (!AngrySystem.Instance.IsAngry)
         {

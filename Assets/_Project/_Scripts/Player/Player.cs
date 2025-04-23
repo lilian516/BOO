@@ -23,6 +23,11 @@ public class Player : MonoBehaviour, IChangeable
 
     #endregion
 
+    public delegate void EndAnimation();
+    public event EndAnimation OnEndAnimation;
+
+    private float _animTime;
+
     public InputManager Input {  get; set; }
     public Rigidbody RB { get; private set; }
 
@@ -190,6 +195,7 @@ public class Player : MonoBehaviour, IChangeable
             PlayerAnimator.SetTrigger("UseSkill");
 
             StartCoroutine(WaitDisableFaceAnimator());
+            _animTime = (_overrideController["A_Boo_BubbleSkill"].length - 0.01f) * 2;
             return true;
         }
         return false;
@@ -371,5 +377,17 @@ public class Player : MonoBehaviour, IChangeable
             Quaternion targetRotation = Quaternion.LookRotation(LookDir);
             DirectionalIndicator.transform.rotation = targetRotation;
         }
+    }
+
+    public void WaitForSkillAnimation()
+    {
+        StartCoroutine(WaitEndAnim());
+    }
+
+    private IEnumerator WaitEndAnim()
+    {
+        yield return new WaitForSeconds(_animTime);
+
+        OnEndAnimation?.Invoke();
     }
 }
