@@ -49,6 +49,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
             case PlayerSkill.SmashSkill:
                 AngrySystem.Instance.ChangeCalmLimits();
                 GameManager.Instance.KilledSheep++;
+                
                 Destroy(gameObject);
                 break;
         }
