@@ -78,8 +78,8 @@ public class AngrySystem : Singleton<AngrySystem>
 
             StartCoroutine(WaitForChange());
 
-            OnChangeElements?.Invoke();
             IsAngry = true;
+            OnChangeElements?.Invoke();
             _angryLimits = _baseAngryLimits;
 
             VibrationSystem.Instance.VibratePhone(50.0f, 3.0f);
