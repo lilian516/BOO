@@ -5,6 +5,7 @@ public class FliesSwarm : MonoBehaviour, IInteractable
 {
     [SerializeField] private ParticleSystem _flies;
     private ParticleSystem.Particle[] _particles;
+    [SerializeField] AnimationClip _animationPlayerAngry;
 
     private void Start()
     {
@@ -51,5 +52,15 @@ public class FliesSwarm : MonoBehaviour, IInteractable
         }
 
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Player player = other.gameObject.GetComponent<Player>();
+        if (player != null) {
+
+            player.ChangeAnimAngry(_animationPlayerAngry);
+            player.StateMachine.ChangeState(player.AngryState);
+        }
     }
 }

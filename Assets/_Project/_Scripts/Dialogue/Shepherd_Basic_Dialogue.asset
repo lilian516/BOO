@@ -22,9 +22,8 @@ MonoBehaviour:
   DialogueBackground: {fileID: 21300000, guid: 85c213532568aa44c9ae78fc6f43535a, type: 3}
   Sections:
   - Sentences:
-    - "O\xF9 sont mes moutons"
-    - C'est la prunelle de mes yeux..
-    - Ils se sont encore perdu, comment vais je faire !
+    - "Ces p\u2019tits moutons qui veulent pas bouger leur fesses\u2026"
+    - "\u2026Si seulement ils pouvaient VOLER jusqu\u2019ici\u2026"
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 0

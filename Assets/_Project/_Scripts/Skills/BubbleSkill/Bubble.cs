@@ -9,6 +9,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] float _maxSpeed;
     [SerializeField] float _timeMovement;
     [SerializeField] Animator _animator;
+    [SerializeField] AnimationClip animationPlayerAngry;
     void Start()
     {
         _forward =  GameManager.Instance.Player.GetComponent<Player>().SkillDir.normalized;
@@ -61,9 +62,11 @@ public class Bubble : MonoBehaviour
         {
             return;
         }
-        if (other.GetComponent<Player>())
+        Player player = other.gameObject.GetComponent<Player>();
+        if (player)
         {
-            AngrySystem.Instance.ChangeAngryLimits();
+            player.ChangeAnimAngry(animationPlayerAngry);
+            player.StateMachine.ChangeState(player.AngryState);
         }
 
         IInteractable interactable = other.GetComponent<IInteractable>();
