@@ -23,6 +23,8 @@ public class PauseMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
+        InputManager.Instance.DisableControllerStick();
+        InputManager.Instance.DisableSkillStick();
         StartCoroutine(GameManager.Instance.BackToMainMenu());
     }
 }

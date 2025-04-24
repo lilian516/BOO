@@ -32,7 +32,6 @@ public class AchievementMenu : MonoBehaviour
         {
             GameManager.Instance.UIAchievementList.transform.GetChild(i).GetComponent<Image>().sprite = achievementSprite[i];
         }
-        achievementSprite.Clear();
 
         StartCoroutine(WaitOpenAchievement());
     }
