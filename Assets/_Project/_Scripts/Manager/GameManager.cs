@@ -102,10 +102,8 @@ public class GameManager : Singleton<GameManager>
         return objInstance;
     }
 
-    public IEnumerator BackToMainMenu()
+    public void BackToMainMenu()
     {
-        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" });
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
-        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "UIInGame" });
     }
 }

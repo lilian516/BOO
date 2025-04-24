@@ -6,6 +6,5 @@ public class AchievementAsset : ScriptableObject
     public string Name;
     public string Description;
     public Sprite Sprite;
-    public bool IsUnlocked;
     public AchievementCondition Condition;
 }
