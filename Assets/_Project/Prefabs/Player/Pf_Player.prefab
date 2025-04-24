@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 5663943835130743470}
   - component: {fileID: 1494146341223841007}
   - component: {fileID: 8737656760930983425}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DirectionalCapsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

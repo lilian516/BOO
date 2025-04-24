@@ -55,8 +55,6 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-
         if(other.gameObject.layer == LayerMask.NameToLayer("Ignore Raycast"))
         {
             return;
@@ -80,6 +78,6 @@ public class Bubble : MonoBehaviour
             _animator.SetTrigger("Explosion");
         }
 
-            WaitBeforeDead();
+        WaitBeforeDead();
     }
 }
