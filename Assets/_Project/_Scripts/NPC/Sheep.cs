@@ -13,6 +13,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
     private Vector3 _initialPosition;
 
     private bool _isGoodPosition = false;
+    private bool _petCd = false;
 
     public Vector3 PositionToGo { get; set; }
     public bool CanGoTo { get; set; }
@@ -175,14 +176,25 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
             return;
         }
 
-        if (AchievementSystem.Instance.PetCount < 10)
+        if (AchievementSystem.Instance.PetCount < 10 && !_petCd)
         {
-            AchievementSystem.Instance.PetCount++;
-            AchievementSystem.Instance.PetAchievement();
+            AnimatorOverrideController overrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
+            float animTime = (overrideController["A_Sheep01_Petting"].length - 0.01f) * 2;
+            StartCoroutine(WaitForEndPetAnim(animTime));
         }
 
         _animator.SetTrigger("Pett");
         SetPlayer();
         StartCoroutine(WaitOneSecond());
+    }
+
+    private IEnumerator WaitForEndPetAnim(float animTime)
+    {
+        _petCd = true;
+
+        yield return new WaitForSeconds(animTime);
+        _petCd = false;
+        AchievementSystem.Instance.PetCount++;
+        AchievementSystem.Instance.PetAchievement();
     }
 }

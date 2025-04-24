@@ -141,6 +141,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3572516781346760357, guid: 2ea9fde9128d2d24faca3b1fc86c2a0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5754806898331485112, guid: 2ea9fde9128d2d24faca3b1fc86c2a0d,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1308,6 +1313,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1759616838178513158, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00,
         type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759616838178513158, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1520,6 +1530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403291757722597215, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4403291757722597215, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00,
         type: 3}
@@ -3713,6 +3728,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3572516781346760357, guid: 2ea9fde9128d2d24faca3b1fc86c2a0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5754806898331485112, guid: 2ea9fde9128d2d24faca3b1fc86c2a0d,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3833,6 +3853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572516781346760357, guid: 2ea9fde9128d2d24faca3b1fc86c2a0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5754806898331485112, guid: 2ea9fde9128d2d24faca3b1fc86c2a0d,
         type: 3}
