@@ -565,7 +565,7 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: c9f96f74d894cab4c80f912bb53f039d, type: 3}
     Name: 
     Desc: 
-    AnimationSkill: {fileID: 0}
+    AnimationSkill: {fileID: 7400000, guid: 809a2591cef52f4458cab2bde4c6a5ca, type: 2}
     TakeAnimation: {fileID: 0}
     Radius: 2
     Mask:
@@ -573,6 +573,8 @@ MonoBehaviour:
       m_Bits: 64
   LookDir: {x: 0, y: 0, z: 0}
   SkillDir: {x: 0, y: 0, z: 0}
+  CurrentTriggerLevel: 0
+  FacingRight: 1
   _maxSpeed: 4
   CurrentSpeed: 0
 --- !u!114 &6841042318687812491

@@ -6,6 +6,7 @@ public class Bee : MonoBehaviour, IInteractable
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
     [SerializeField] BeeAnimEventPlayer _eventPlayer;
+    [SerializeField] AnimationClip _animationPiqure;
 
     private BeeState _currentState;
 
@@ -146,8 +147,11 @@ public class Bee : MonoBehaviour, IInteractable
     {
         Player player = GameManager.Instance.Player.GetComponent<Player>();
         player.RB.AddForce(-transform.forward * 200);
-        AngrySystem.Instance.ChangeAngryLimits();
-        StartCoroutine(PlayerStun());
+
+        player.ChangeAnimAngry(_animationPiqure);
+        player.StateMachine.ChangeState(player.AngryState);
+        
+        //StartCoroutine(PlayerStun());
         
     }
     private IEnumerator PlayerStun()

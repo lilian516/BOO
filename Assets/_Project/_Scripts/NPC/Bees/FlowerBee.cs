@@ -6,6 +6,7 @@ using UnityEngine;
 public class FlowerBee : MonoBehaviour
 {
     [SerializeField] private Transform[] _pathReferences;
+    [SerializeField] AnimationClip _animationPiqure;
     private int _currentIndex;
 
     public float Speed;
@@ -79,7 +80,7 @@ public class FlowerBee : MonoBehaviour
 
             if (!AngrySystem.Instance.IsAngry)
             {
-                //player.ChangeAnimAngry(_animationClipWater);
+                player.ChangeAnimAngry(_animationPiqure);
                 player.StateMachine.ChangeState(player.AngryState);
             }
 

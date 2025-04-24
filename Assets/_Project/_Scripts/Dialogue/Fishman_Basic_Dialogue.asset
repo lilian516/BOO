@@ -18,6 +18,7 @@ MonoBehaviour:
   ClosureEventType: 0
   RightCharacter: {fileID: 21300000, guid: 4f64722fecec8434795f092c5e5c78bf, type: 3}
   LeftCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
+  Name: Seamone
   DialogueBackground: {fileID: 21300000, guid: aeac2f04819fc084a90ebe26ed0cb7e4, type: 3}
   Sections:
   - Sentences:
@@ -35,6 +36,7 @@ MonoBehaviour:
     Name: 
     Desc: 
     AnimationSkill: {fileID: 0}
+    TakeAnimation: {fileID: 0}
     Radius: 0
     Mask:
       serializedVersion: 2

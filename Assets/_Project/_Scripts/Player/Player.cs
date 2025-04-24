@@ -186,19 +186,35 @@ public class Player : MonoBehaviour, IChangeable
     {
         if (_inventory.CurrentSkill != null)
         {
-            
+            _inventory.CurrentSkill.StartUseSkill();
 
             _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
 
-            _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
-            PlayerAnimator.runtimeAnimatorController = _overrideController;
-            PlayerAnimator.SetTrigger("UseSkill");
-
-            StartCoroutine(WaitDisableFaceAnimator());
+            
+            
             if (!AngrySystem.Instance.IsAngry)
+            {
+                _overrideController["A_Boo_BubbleSkill"] = _inventory.CurrentSkill.AnimationSkill;
+                PlayerAnimator.runtimeAnimatorController = _overrideController;
+
+                PlayerAnimator.SetTrigger("UseSkill");
+
+                StartCoroutine(WaitDisableFaceAnimator());
                 _animTime = (_overrideController["A_Boo_BubbleSkill"].length - 0.01f) * 2;
-            else 
+            }
+
+
+            else
+            {
+                _overrideController["A_Boo_KillSheep"] = _inventory.CurrentSkill.AnimationSkill;
+                PlayerAnimator.runtimeAnimatorController = _overrideController;
+
+                PlayerAnimator.SetTrigger("UseSkill");
+
+                StartCoroutine(WaitDisableFaceAnimator());
                 _animTime = (_overrideController["A_Boo_KillSheep"].length - 0.01f) * 2;
+            }
+                
 
             return true;
         }

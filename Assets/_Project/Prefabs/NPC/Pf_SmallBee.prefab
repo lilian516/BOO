@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _animationPiqure: {fileID: 7400000, guid: 82744c6b3d1af844180dbe8e1dfae486, type: 2}
   Speed: 1
 --- !u!65 &1421151783460952588
 BoxCollider:

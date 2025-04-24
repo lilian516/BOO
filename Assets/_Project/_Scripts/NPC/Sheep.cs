@@ -20,6 +20,8 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
 
     private Player _player;
 
+    public AnimationClip AnimationSmash;
+
     void Start()
     {
         PositionToGo = transform.GetChild(0).position;

@@ -14,7 +14,10 @@ public class Skill
         _player = player;
     }
     
+    public virtual void StartUseSkill()
+    {
 
+    }
     public virtual void UseSkill()
     {
     }
