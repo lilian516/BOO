@@ -14,7 +14,7 @@ public class BubbleSkill : Skill
 
     public override void UseSkill()
     {
-        Vector3 BubbleSpawnPos = _player.transform.position + _player.SkillDir.normalized;
+        Vector3 BubbleSpawnPos = _player.transform.position + _player.SkillDir.normalized * 0.25f - new Vector3(0.0f, 0.4f, 0.0f);
 
         GameObject BubbleInstance = GameManager.Instance.SpawnObject(_desc.Prefab);
 
