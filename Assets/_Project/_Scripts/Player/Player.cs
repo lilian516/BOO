@@ -415,4 +415,9 @@ public class Player : MonoBehaviour, IChangeable
 
         OnEndAnimation?.Invoke();
     }
+
+    public bool HasSkill()
+    {
+        return _inventory.PlayerSkills.Count > 0;
+    }
 }

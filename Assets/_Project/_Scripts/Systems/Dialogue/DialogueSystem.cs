@@ -129,6 +129,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _cancelButton.onClick.RemoveAllListeners();
 
         OnEndDialogue?.Invoke();
+
+        if (GameManager.Instance.Player.GetComponent<Player>().HasSkill())
+            InputManager.Instance.EnableSkillStick();
     }
 
     public void AdvanceDialogue()
