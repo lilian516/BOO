@@ -54,7 +54,7 @@ public class Bee : MonoBehaviour, IInteractable
             case BeeState.Patrol:
                 if (!_isResting)
                 {
-                    GoToPoint(_pathReferences[_currentIndex].position,_speed / 7);
+                    GoToPoint(_pathReferences[_currentIndex].position,_speed / 5);
 
                     CyclePoints();
                 }
@@ -91,7 +91,7 @@ public class Bee : MonoBehaviour, IInteractable
                         StartCoroutine(AttackCD());
                     }
                     else
-                        GoToPoint(player.transform.position, _speed / 2);
+                        GoToPoint(player.transform.position, _speed);
                 }
                 if (Vector3.Distance(player.transform.position, transform.position) <= _patrolDistance && !_triggerZone.IsTrigger)
                 {
@@ -145,17 +145,24 @@ public class Bee : MonoBehaviour, IInteractable
         Player player = GameManager.Instance.Player.GetComponent<Player>();
         player.RB.AddForce(-transform.forward * 200);
 
-        player.ChangeAnimAngry(_animationPiqure);
+        if (!AngrySystem.Instance.IsAngry)
+            player.ChangeAnimAngry(_animationPiqure);
+        else
+        {
+            player.StateMachine.ChangeState(player.WaitingState);
+            StartCoroutine(PlayerStun());
+            return;
+        }
+
         player.StateMachine.ChangeState(player.AngryState);
-        
-        //StartCoroutine(PlayerStun());
-        
     }
+
     private IEnumerator PlayerStun()
     {
         yield return new WaitForSeconds(0.8f);
         GameManager.Instance.Player.GetComponent<Player>().StateMachine.ChangeState(GameManager.Instance.Player.GetComponent<Player>().IdleState);
     }
+
     private IEnumerator AttackCD()
     {
         _onCd = true;
@@ -196,7 +203,7 @@ public class Bee : MonoBehaviour, IInteractable
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < 0.5f)
+        while (elapsedTime < 0.25f)
         {
             transform.Translate(transform.up * _speed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
