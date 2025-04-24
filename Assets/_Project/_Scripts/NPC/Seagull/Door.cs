@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Door : MonoBehaviour, IClickable
 {
@@ -37,6 +39,14 @@ public class Door : MonoBehaviour, IClickable
 
     public void OnDestinationReached()
     {
+        Player player = GameManager.Instance.Player.GetComponent<Player>();
+        if (player.FacingRight)
+        {
+            SpriteRenderer[] sprites = player.GetComponentsInChildren<SpriteRenderer>();
+            sprites[0].flipX = true;
+            sprites[1].flipX = true;
+        }
+
         _animator.SetTrigger("Vomit");
         _animatorDoor.SetTrigger("Knock");
         IsKnocked = true;
