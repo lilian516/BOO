@@ -25,8 +25,6 @@ public class Bee : MonoBehaviour, IInteractable
     [SerializeField] BeeTriggerZone _triggerZone;
     private bool _onCd;
 
-
-
     void Start()
     {
         _isResting = false;
@@ -73,18 +71,19 @@ public class Bee : MonoBehaviour, IInteractable
                     _timeStep = 0.0f;
                     _currentState = BeeState.Attack;
                     player.GetComponent<Player>().StateMachine.ChangeState(player.GetComponent<Player>().WaitingState);
+
+                    if (transform.position.x > player.transform.position.x)
+                        GetComponentInChildren<SpriteRenderer>().flipX = false;
+                    else
+                        GetComponentInChildren<SpriteRenderer>().flipX = true;
                 }
                 break;
             case BeeState.Attack:
                 if (!_onCd)
                 {
 
-                    if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= 0.8f)
+                    if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= 1f)
                     {
-                        if (transform.position.x > player.transform.position.x)
-                            GetComponentInChildren<SpriteRenderer>().flipX = false;
-                        else
-                            GetComponentInChildren<SpriteRenderer>().flipX = true;
 
                         _currentPosition = transform.position;
                         _timeStep = 0.0f;
@@ -115,7 +114,6 @@ public class Bee : MonoBehaviour, IInteractable
                 break;
         }
     }
-
     private void GoToPoint(Vector3 Dest, float speed)
     {
         transform.position = Vector3.Lerp(_currentPosition, Dest, _timeStep);
@@ -142,7 +140,6 @@ public class Bee : MonoBehaviour, IInteractable
             StartCoroutine(Rest());
         }
     }
-
     private void Attack()
     {
         Player player = GameManager.Instance.Player.GetComponent<Player>();
@@ -182,6 +179,11 @@ public class Bee : MonoBehaviour, IInteractable
                 _isBubbled = true;
                 PackedBee();
                 break;
+            case PlayerSkill.SmashSkill:
+                AngrySystem.Instance.ChangeCalmLimits();
+                Destroy(gameObject);
+                break;
+
         }
     }
     private void PackedBee()
@@ -202,7 +204,6 @@ public class Bee : MonoBehaviour, IInteractable
         }
 
     }
-
     private enum BeeState
     {
         Idle,
