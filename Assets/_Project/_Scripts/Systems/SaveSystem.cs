@@ -43,8 +43,6 @@ public class SaveSystem : Singleton<SaveSystem>
     {
         return new Dictionary<string, object>
         {
-            {"test", 1},
-            {"AAAAAH", false},
             {"MusicVolume", 1},
             {"MagnitudeIndex", 0}
         };
