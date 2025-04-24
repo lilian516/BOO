@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1a2eaa57dcb92a45b9dfc54dad22e44, type: 3}
-  m_Name: Test
+  m_Name: Child-Bubble
   m_EditorClassIdentifier: 
   OpeningTriggerEvent: 0
   OpeningEventType: 0
@@ -22,12 +22,14 @@ MonoBehaviour:
   DialogueBackground: {fileID: 21300000, guid: 4786c6d79fc15a7438e40907c0b91b2d, type: 3}
   Sections:
   - Sentences:
-    - Bonjour
-    - Test de dialogue
+    - "C\u2019est trop bien, j\u2019ai PLEINS de jouets dans ma couche.\r\n"
+    - "Dis t\u2019sais\u2026"
     TriggerEvent: 0
     EventType: 0
   - Sentences:
-    - Je suis un enfant
+    - "MOI ! J\u2019ai d\xE9j\xE0 fait une MEGAAA BULLE et\u2026 heu\u2026"
+    - "M\xEAme que les vaches \xE0 gros poils, elles sont trop dr\xF4les DANS les
+      bulles"
     TriggerEvent: 1
     EventType: 2
   ChoiceOnEnd: 1

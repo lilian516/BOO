@@ -22,8 +22,10 @@ MonoBehaviour:
   DialogueBackground: {fileID: 21300000, guid: 4786c6d79fc15a7438e40907c0b91b2d, type: 3}
   Sections:
   - Sentences:
-    - Pffff Pfffffff
-    - Je fais du vent
+    - "C\u2019pas grave, j\u2019en ai pleins d\u2019autres"
+    - "M\xEAme que les grosses bulles elles font FIOUUUUU maintenant\r\n"
+    - "\u2026\r\n"
+    - "C\u2019est pas moi qui ai fait caca"
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 1

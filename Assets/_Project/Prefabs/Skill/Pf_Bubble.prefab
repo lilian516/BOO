@@ -178,3 +178,5 @@ MonoBehaviour:
   _maxSpeed: 1.8
   _timeMovement: 0.8
   _animator: {fileID: 1692026429759791842}
+  animationPlayerAngry: {fileID: 7400000, guid: d6b27088a5b8a7c46bd73ffe853b57b9,
+    type: 2}

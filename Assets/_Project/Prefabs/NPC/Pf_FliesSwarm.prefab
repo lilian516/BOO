@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flies: {fileID: 214064316122105361}
+  _animationPlayerAngry: {fileID: 7400000, guid: 6801a806ec953eb4b87355eaeb1fe643,
+    type: 2}
 --- !u!65 &3236430642139661635
 BoxCollider:
   m_ObjectHideFlags: 0

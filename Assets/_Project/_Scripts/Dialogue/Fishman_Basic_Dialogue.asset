@@ -22,8 +22,10 @@ MonoBehaviour:
   DialogueBackground: {fileID: 21300000, guid: aeac2f04819fc084a90ebe26ed0cb7e4, type: 3}
   Sections:
   - Sentences:
-    - "C'est fatiguant de r\xE9parer ce bateau..."
-    - "Fut un temps, il \xE9tait possible de le traverser."
+    - "Alors, euh\u2026 une planche\u2026 des clous\u2026 suffit de COMBINER des
+      trucs."
+    - "Dommage que le bateau n\u2019ait plus de VOILE\r\n"
+    - "Suffirait d\u2019avoir un B\xC2TON et un bout de TISSU\u2026\r\n"
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 0
