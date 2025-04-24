@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1830400600800574193}
   - component: {fileID: 1227497858006708902}
   - component: {fileID: 8085805275453360672}
-  - component: {fileID: 3572516781346760357}
   m_Layer: 6
   m_Name: Pf_Sheep
   m_TagString: Untagged
@@ -53,8 +52,7 @@ MonoBehaviour:
   PushedDirection: {x: 0, y: 0, z: 0}
   _speed: 1
   _animator: {fileID: 8529802135168233646}
-  KillSheepVFX: {fileID: 7770741796968845848, guid: 6680d0239e1dfbd4c840bf8703abd423,
-    type: 3}
+  AnimationSmash: {fileID: 0}
 --- !u!54 &1227497858006708902
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103,22 +101,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 0.5, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3572516781346760357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2193894934307965563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Size: {x: 0.7, y: 0.5, z: 0.4}
-  m_Center: {x: 0, y: -0.2, z: 0}
-  m_Area: 1
-  m_AffectedAgents: ffffffff
 --- !u!1 &2591016745356561202
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +126,7 @@ Transform:
   m_GameObject: {fileID: 2591016745356561202}
   serializedVersion: 2
   m_LocalRotation: {x: 0.30070576, y: -0, z: -0, w: 0.953717}
-  m_LocalPosition: {x: -0.5, y: -0.203, z: 0}
+  m_LocalPosition: {x: -0.7, y: -0.203, z: 0}
   m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
