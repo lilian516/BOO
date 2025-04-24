@@ -575,6 +575,8 @@ MonoBehaviour:
   SkillDir: {x: 0, y: 0, z: 0}
   CurrentTriggerLevel: 0
   FacingRight: 1
+  KillSheepVFX: {fileID: 7770741796968845848, guid: 6680d0239e1dfbd4c840bf8703abd423,
+    type: 3}
   _maxSpeed: 4
   CurrentSpeed: 0
 --- !u!114 &6841042318687812491
