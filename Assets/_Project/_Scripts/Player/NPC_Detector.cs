@@ -86,8 +86,8 @@ public class NPC_Detector : MonoBehaviour, IChangeable
 
         foreach (Collider other in _encounteredColliders)
         {
-            Debug.Log("boobooboo");
-            ToggleOutlineWithAnger(other);
+            if (other != null)
+                ToggleOutlineWithAnger(other);
         }
     }
 
