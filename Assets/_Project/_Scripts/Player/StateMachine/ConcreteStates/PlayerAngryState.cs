@@ -29,6 +29,12 @@ public class PlayerAngryState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
+        if(AngrySystem.Instance.IsAngry)
+        {
+            _player.StateMachine.ChangeState(_player.IdleState);
+            return;
+        }
+
         AngrySystem.Instance.OnChangeElements += OnIdle;
         AngrySystem.Instance.ChangeAngryLimits();
         _player.PlayerAnimator.SetTrigger("Angry");

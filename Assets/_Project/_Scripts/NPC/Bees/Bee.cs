@@ -145,17 +145,24 @@ public class Bee : MonoBehaviour, IInteractable
         Player player = GameManager.Instance.Player.GetComponent<Player>();
         player.RB.AddForce(-transform.forward * 200);
 
-        player.ChangeAnimAngry(_animationPiqure);
+        if (!AngrySystem.Instance.IsAngry)
+            player.ChangeAnimAngry(_animationPiqure);
+        else
+        {
+            player.StateMachine.ChangeState(player.WaitingState);
+            StartCoroutine(PlayerStun());
+            return;
+        }
+
         player.StateMachine.ChangeState(player.AngryState);
-        
-        //StartCoroutine(PlayerStun());
-        
     }
+
     private IEnumerator PlayerStun()
     {
         yield return new WaitForSeconds(0.8f);
         GameManager.Instance.Player.GetComponent<Player>().StateMachine.ChangeState(GameManager.Instance.Player.GetComponent<Player>().IdleState);
     }
+
     private IEnumerator AttackCD()
     {
         _onCd = true;

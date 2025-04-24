@@ -49,6 +49,9 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
                 break;
 
             case PlayerSkill.SmashSkill:
+                if (_currentInteract == PlayerSkill.BubbleSkill)
+                    break;
+
                 AngrySystem.Instance.ChangeCalmLimits();
                 GameManager.Instance.KilledSheep++;
                 
