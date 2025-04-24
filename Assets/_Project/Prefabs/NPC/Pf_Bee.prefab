@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd5ef97ced1c5f43a55068350980b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 1
   _animator: {fileID: 1922610363836313217}
   _eventPlayer: {fileID: 6932282215456427892}
   _pathReferences: []

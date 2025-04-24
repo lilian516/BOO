@@ -250,6 +250,7 @@ public class Player : MonoBehaviour, IChangeable
 
         _overrideController["A_Boo_TakeStick"] = animationClipTake;
         PlayerAnimator.runtimeAnimatorController = _overrideController;
+
     }
 
     public void ChangeAnimAngry(AnimationClip animationClipAngry)
@@ -259,6 +260,8 @@ public class Player : MonoBehaviour, IChangeable
 
         _overrideController["A_Boo_Angry"] = animationClipAngry;
         PlayerAnimator.runtimeAnimatorController = _overrideController;
+
+        _animTime = (_overrideController["A_Boo_Angry"].length - 0.01f) * 2;
     }
     public void RemoveSkill(PlayerSkill playerSkill)
     {

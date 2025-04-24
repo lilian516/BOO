@@ -8,6 +8,7 @@ public class Seagull : MonoBehaviour, IChangeable
 
     
     [SerializeField] Animator _animatorBigSeagull;
+    [SerializeField] AnimationClip _animationVomit;
     public void Change()
     {
         _animatorBigSeagull.SetBool("IsFear", true);
@@ -23,6 +24,7 @@ public class Seagull : MonoBehaviour, IChangeable
     {
         
         Player player = GameManager.Instance.Player.GetComponent<Player>();
+        player.ChangeAnimAngry(_animationVomit);
         player.StateMachine.ChangeState(player.AngryState);
     }
 

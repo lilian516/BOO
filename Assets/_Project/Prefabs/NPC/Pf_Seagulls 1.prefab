@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animatorBigSeagull: {fileID: 7043917723381914716}
+  _animationVomit: {fileID: 7400000, guid: b4cf9e68fd29b5f4fba18e4b7ad47468, type: 2}
 --- !u!1 &557970079836667087
 GameObject:
   m_ObjectHideFlags: 0

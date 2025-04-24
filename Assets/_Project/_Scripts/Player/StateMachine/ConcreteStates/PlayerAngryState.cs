@@ -35,8 +35,11 @@ public class PlayerAngryState : PlayerState
         _player.PlayerFaceAnimator.enabled = false;
         _player.PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
-        _player.EventPlayer.OnExitAngryState += OnIdle;
-        
+       
+
+        _player.OnEndAnimation += OnIdle;
+        _player.WaitForSkillAnimation();
+
     }
 
     public override void ExitState()
@@ -45,8 +48,8 @@ public class PlayerAngryState : PlayerState
         if (!AngrySystem.Instance.IsAngry)
             _player.PlayerFaceAnimator.enabled = true;
 
-        _player.EventPlayer.OnExitAngryState -= OnIdle;
         AngrySystem.Instance.OnChangeElements -= OnIdle;
+        _player.OnEndAnimation -= OnIdle;
     }
 
     public override void FrameUpdate()
