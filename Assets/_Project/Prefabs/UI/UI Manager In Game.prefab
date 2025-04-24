@@ -47,6 +47,7 @@ MonoBehaviour:
   _joystickCenter: {fileID: 0}
   _joystickExterior: {fileID: 0}
   _joystickSkill: {fileID: 0}
+  _joystickSkillExterior: {fileID: 0}
   _joystickDirectionSmall: {fileID: 0}
   _joystickDirectionBig: {fileID: 0}
   _listJoystickSpriteCenter:
@@ -60,6 +61,9 @@ MonoBehaviour:
   _listJoystickSkill:
   - {fileID: 21300000, guid: 9a20f3cc1f9727742a32c3c514126752, type: 3}
   - {fileID: 21300000, guid: 0a0ab8b4779627b48a27cf49c3a5d5bd, type: 3}
+  _listJoystickSkillExterior:
+  - {fileID: 21300000, guid: 8e4f6b46dc2f27d499073da67133b639, type: 3}
+  - {fileID: 21300000, guid: f354563c6b9d46a43bb5fbb465b5cb5b, type: 3}
   _listJoystickDirectionSmall:
   - {fileID: 21300000, guid: 81a2ac6c5ec90e443aee4bfe68d52e42, type: 3}
   - {fileID: 21300000, guid: 51b50eec06c4d78408111eae57499650, type: 3}

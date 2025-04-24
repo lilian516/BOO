@@ -10,7 +10,9 @@ public class JoystickStyleChanger : MonoBehaviour
 {
     [SerializeField] Sprite[] _sprites = new Sprite[2];
     [SerializeField] RectTransform _imageObject;
+    [SerializeField] RectTransform _backgroundObject;
     private Image _imageComponent;
+    private Image _imageBackgroundComponent;
 
     private readonly float _duration = 0.8f;
 
@@ -23,8 +25,10 @@ public class JoystickStyleChanger : MonoBehaviour
     {
         
         _imageComponent = _imageObject.GetComponent<Image>();
+        _imageBackgroundComponent = _backgroundObject.GetComponent<Image>();
         
         _imageComponent.sprite = _sprites[0];
+        _imageBackgroundComponent.sprite = _sprites[2];
         AngrySystem.Instance.OnFirstAngerOccurence += UpdateAngryMode;
         AngrySystem.Instance.OnSecondAngerOccurence += UpdateAngryMode;
         AngrySystem.Instance.OnChangeElements += Change;
@@ -52,6 +56,7 @@ public class JoystickStyleChanger : MonoBehaviour
         if (_magnitudeIndex >= _magnitudes.Length - 1)
         {
             _imageComponent.sprite = _sprites[1];
+            _imageBackgroundComponent.sprite = _sprites[3];
         }
     }
 
@@ -88,6 +93,7 @@ public class JoystickStyleChanger : MonoBehaviour
     {
         StopAllCoroutines();
         _imageComponent.sprite = _sprites[0];
+        _imageBackgroundComponent.sprite = _sprites[2];
         _magnitudeIndex = 0;
         SaveSystem.Instance.ResetElement<int>("MagnitudeIndex");
         _isShaking = false;
@@ -96,11 +102,15 @@ public class JoystickStyleChanger : MonoBehaviour
     public void Change()
     {
         UpdateAngryMode();
+        _imageComponent.sprite = _sprites[1];
+        _imageBackgroundComponent.sprite = _sprites[3];
     }
 
     public void ResetChange()
     {
         UpdateCalmMode();
+        _imageComponent.sprite = _sprites[0];
+        _imageBackgroundComponent.sprite = _sprites[2];
     }
 
     private void OnDestroy()

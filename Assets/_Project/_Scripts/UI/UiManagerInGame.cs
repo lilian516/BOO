@@ -9,12 +9,14 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
     [SerializeField] GameObject _joystickCenter;
     [SerializeField] GameObject _joystickExterior;
     [SerializeField] GameObject _joystickSkill;
+    [SerializeField] GameObject _joystickSkillExterior;
     [SerializeField] GameObject _joystickDirectionSmall;
     [SerializeField] GameObject _joystickDirectionBig;
 
     [SerializeField] List<Sprite> _listJoystickSpriteCenter;
     [SerializeField] List<Sprite> _listJoystickSpriteExterior;
     [SerializeField] List<Sprite> _listJoystickSkill;
+    [SerializeField] List<Sprite> _listJoystickSkillExterior;
     [SerializeField] List<Sprite> _listJoystickDirectionSmall;
     [SerializeField] List<Sprite> _listJoystickDirectionBig;
 
@@ -57,6 +59,7 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         _joystickCenter.GetComponent<Image>().sprite = _listJoystickSpriteCenter[0];
         _joystickExterior.GetComponent<Image>().sprite = _listJoystickSpriteExterior[0];
         _joystickSkill.GetComponent<Image>().sprite = _listJoystickSkill[0];
+        _joystickSkillExterior.GetComponent<Image>().sprite = _listJoystickSkillExterior[0];
         _joystickDirectionSmall.GetComponent<Image>().sprite = _listJoystickDirectionSmall[0];
         _joystickDirectionBig.GetComponent<Image>().sprite = _listJoystickDirectionBig[0];
     }
@@ -79,16 +82,13 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         _joystickCenter.GetComponent<Image>().sprite = _listJoystickSpriteCenter[3];
         _joystickExterior.GetComponent<Image>().sprite = _listJoystickSpriteExterior[1];
         _joystickSkill.GetComponent<Image>().sprite = _listJoystickSkill[1];
+        _joystickSkillExterior.GetComponent<Image>().sprite = _listJoystickSkillExterior[1];
         _joystickDirectionSmall.GetComponent<Image>().sprite = _listJoystickDirectionSmall[1];
     
         _joystickDirectionBig.GetComponent<Image>().sprite = _listJoystickDirectionBig[1];
         StartCoroutine(Shake());
     }
 
-    // Start is called before the first frame update
-   
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -97,9 +97,6 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
 
     private IEnumerator Shake()
     {
-        
-
-        
 
         Vector2 originalPos = _joystickExterior.GetComponent<RectTransform>().anchoredPosition;
         float elapsed = 0f;

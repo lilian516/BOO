@@ -116,7 +116,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
         }
 
         InputManager.Instance.EnableControllerSticks();
-        InputManager.Instance.EnableSkillStick();
 
         Helpers.HideCanva(_fadeCanvasBox.transform.GetChild(3).GetComponent<CanvasGroup>());
         Helpers.ShowCanva(_fadeCanvasBox.transform.GetChild(4).GetComponent<CanvasGroup>());
@@ -198,6 +197,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
         OnTakeEvent?.Invoke(ProcessingDialogue.TakeEventType);
         EndDialogue();
         GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive, ProcessingDialogue.SkillDescriptor);
+        InputManager.Instance.EnableSkillStick();
 
         _choiceButton.onClick.RemoveAllListeners();
         _cancelButton.onClick.RemoveAllListeners();
