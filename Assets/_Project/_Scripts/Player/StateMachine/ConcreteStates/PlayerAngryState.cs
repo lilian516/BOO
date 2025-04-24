@@ -36,14 +36,13 @@ public class PlayerAngryState : PlayerState
         }
 
         AngrySystem.Instance.OnChangeElements += OnIdle;
-        AngrySystem.Instance.ChangeAngryLimits();
         _player.PlayerAnimator.SetTrigger("Angry");
         _player.PlayerFaceAnimator.enabled = false;
         _player.PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
        
 
-        _player.OnEndAnimation += OnIdle;
+        _player.OnEndAnimation += GetAngry;
         _player.WaitForSkillAnimation();
 
     }
@@ -55,7 +54,7 @@ public class PlayerAngryState : PlayerState
             _player.PlayerFaceAnimator.enabled = true;
 
         AngrySystem.Instance.OnChangeElements -= OnIdle;
-        _player.OnEndAnimation -= OnIdle;
+        _player.OnEndAnimation -= GetAngry;
     }
 
     public override void FrameUpdate()
@@ -70,6 +69,13 @@ public class PlayerAngryState : PlayerState
 
     private void OnIdle() {
         _stateMachine.ChangeState(_player.IdleState);
+    }
+
+    private void GetAngry()
+    {
+        _player.PlayerFaceAnimator.enabled = true;
+        AngrySystem.Instance.ChangeAngryLimits();
+        OnIdle();
     }
 
    
