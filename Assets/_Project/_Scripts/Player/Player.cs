@@ -75,6 +75,9 @@ public class Player : MonoBehaviour, IChangeable
     [HideInInspector] public int CurrentTriggerLevel;
     public bool FacingRight = true;
 
+
+    public GameObject KillSheepVFX;
+
     #region Velocity
 
     [SerializeField] float _maxSpeed;

@@ -53,7 +53,8 @@ MonoBehaviour:
   PushedDirection: {x: 0, y: 0, z: 0}
   _speed: 1
   _animator: {fileID: 8529802135168233646}
-  AnimationSmash: {fileID: 7400000, guid: 709777ab55473a04e913de846240dbfd, type: 2}
+  KillSheepVFX: {fileID: 7770741796968845848, guid: 6680d0239e1dfbd4c840bf8703abd423,
+    type: 3}
 --- !u!54 &1227497858006708902
 Rigidbody:
   m_ObjectHideFlags: 0
