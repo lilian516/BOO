@@ -785,6 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 0}
+  MainVirtualCamera: {fileID: 0}
   Player: {fileID: 0}
   SoundSystem: {fileID: 0}
   DialogueUI: {fileID: 0}

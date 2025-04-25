@@ -46,7 +46,8 @@ public class AnimEventPlayer : MonoBehaviour
 
     public void SoundWalkBoo()
     {
-        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Grass One", "Grass Two", "Grass Three", "Grass Four", "Grass Five" }, transform.position);
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Grass One", "Grass Two", "Grass Three", "Grass Four", "Grass Five" }, 
+            transform.position, 0.3f);
     }
     public void SheepVFX()
     {

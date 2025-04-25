@@ -14,8 +14,17 @@ public class FliesSwarm : MonoBehaviour, IInteractable
 
     public void Interact(PlayerSkill playerSkill)
     {
-        if (playerSkill == PlayerSkill.PantsSkill)
-            StartCoroutine(SlapFlies());
+        switch (playerSkill)
+        {
+            case PlayerSkill.PantsSkill:
+                StartCoroutine(SlapFlies());
+                break;
+
+            case PlayerSkill.SmashSkill:
+                StartCoroutine(SlapFlies());
+                break;
+        }
+            
     }
 
     private IEnumerator SlapFlies()
@@ -58,9 +67,13 @@ public class FliesSwarm : MonoBehaviour, IInteractable
     {
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null) {
+            if (!AngrySystem.Instance.IsAngry)
+            {
+                player.ChangeAnimAngry(_animationPlayerAngry);
+                player.StateMachine.ChangeState(player.AngryState);
+            }
 
-            player.ChangeAnimAngry(_animationPlayerAngry);
-            player.StateMachine.ChangeState(player.AngryState);
+            
         }
     }
 }

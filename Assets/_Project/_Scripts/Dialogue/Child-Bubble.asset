@@ -39,7 +39,7 @@ MonoBehaviour:
   SkillDescriptor:
     Prefab: {fileID: 8021510982704328969, guid: 95fa5fe798e8e9643863396d32c98e4a,
       type: 3}
-    Sprite: {fileID: 21300000, guid: ee73d6718988665459e3bdac4349588b, type: 3}
+    Sprite: {fileID: 21300000, guid: 3c2ffbe2e71fefa48adc6616c5486f31, type: 3}
     Name: "Tube \xE0 Bulle"
     Desc: "Pour s'amuser \xE0 faire des bulles"
     AnimationSkill: {fileID: 7400000, guid: 58b73ac6805e5ae42bb5a522c6436fd2, type: 2}

@@ -35,7 +35,7 @@ MonoBehaviour:
   SkillDescriptor:
     Prefab: {fileID: 1035563824390858650, guid: 9a434ea5e92e86a49a78998eef610941,
       type: 3}
-    Sprite: {fileID: 21300000, guid: 26e721666f5478049a1b13136d31b04b, type: 3}
+    Sprite: {fileID: 21300000, guid: a462aa357e5f0c044bee76497293d21a, type: 3}
     Name: "Moulin \xE0 vent"
     Desc: "Pour se rafraichir ou d\xE9placer des trucs"
     AnimationSkill: {fileID: 7400000, guid: 1e7ed769c9859144ead3e1f7ec09528c, type: 2}

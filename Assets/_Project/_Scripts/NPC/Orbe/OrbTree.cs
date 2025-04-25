@@ -23,6 +23,7 @@ public class OrbTree : MonoBehaviour, IInteractable
         {
             case PlayerSkill.PantsSkill:
                 rb.isKinematic = false;
+                GetComponent<Animator>().SetTrigger("Touched");
                 StartCoroutine(ReactivateOrb());
                 break;
         }

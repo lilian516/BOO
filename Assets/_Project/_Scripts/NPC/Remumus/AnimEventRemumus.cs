@@ -19,22 +19,22 @@ public class AnimEventRemumus : MonoBehaviour
     public void SoundRemumusBlow()
     {
         SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Remumus Soufle One", "Remumus Soufle Two", "Remumus Soufle Three" }, 
-            transform.position);
+            transform.position,0.7f);
     }
     public void SoundRemumusFlies()
     {
         SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Remumus Mouche One", "Remumus Mouche Two", "Remumus Mouche Three", "Remumus Mouche Four", "Remumus Mouche Five" }, 
-            transform.position);
+            transform.position, 0.7f);
     }
     public void SoundRemumusDent()
     {
-        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Remumus Dent One"}, transform.position);
-        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Remumus Fear One", "Remumus Fear Two" }, transform.position);
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Remumus Dent One"}, transform.position,0.7f);
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Remumus Fear One", "Remumus Fear Two" }, transform.position, 0.7f);
     }
 
     public void SoundRemumusTakeSlip()
     {
         SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Remumus Takeslip One", "Remumus Takeslip Two", "Remumus Takeslip Three" }, 
-            transform.position);
+            transform.position, 0.7f);
     }
 }
