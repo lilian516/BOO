@@ -2698,7 +2698,7 @@ MonoBehaviour:
     brushes:
     - name: Grass01
       settings:
-        brushRadius: 0.15
+        brushRadius: 0.21
         brushSpacing: 0.5
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
@@ -5226,7 +5226,7 @@ MonoBehaviour:
       customPreviewImage: {fileID: 0}
     - name: Grass05
       settings:
-        brushRadius: 1
+        brushRadius: 0.55
         brushSpacing: 0.5
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
@@ -5244,7 +5244,7 @@ MonoBehaviour:
         randomizeOrientationZ: 0
         scaleTransformMode: 0
         scaleMode: 0
-        scaleUniformMin: 0.3
+        scaleUniformMin: 0.4
         scaleUniformMax: 0.5
         scalePerAxisMin: {x: 1, y: 1, z: 1}
         scalePerAxisMax: {x: 1, y: 1, z: 1}
@@ -6169,7 +6169,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 0
+      selected: 1
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: Grass06 copy
@@ -7438,7 +7438,7 @@ MonoBehaviour:
       customPreviewImage: {fileID: 0}
     - name: Grass08 copy
       settings:
-        brushRadius: 1
+        brushRadius: 0.44
         brushSpacing: 0.5
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
@@ -7749,7 +7749,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 1
+      selected: 0
       colorTag: 0
       customPreviewImage: {fileID: 0}
     levelsGamma: 1
