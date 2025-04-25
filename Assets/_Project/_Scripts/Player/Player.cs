@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Data.Common;
 using UnityEngine;
 
 
@@ -264,6 +264,7 @@ public class Player : MonoBehaviour, IChangeable
                 break;
         }
         ChangeAnimTakeSkill(descriptor.TakeAnimation);
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         StateMachine.ChangeState(TakeSkillState);
 
         
@@ -317,6 +318,7 @@ public class Player : MonoBehaviour, IChangeable
     }
     public void ResetChange()
     {
+        StateMachine.ChangeState(WaitingState);
         OnEndAnimation += ChangeAnimatorToCalm;
         ChangeAnimatorToNormal();
         SoundSystem.Instance.ChangeMusicByKey("Chill Music");
@@ -326,6 +328,7 @@ public class Player : MonoBehaviour, IChangeable
         OnEndAnimation -= ChangeAnimatorToCalm;
         PlayerAnimator.SetTrigger("Transform");
         PlayerFaceAnimator.enabled = false;
+        PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
         StartCoroutine(WaitBeforeHappy());
         
     }
@@ -335,9 +338,14 @@ public class Player : MonoBehaviour, IChangeable
         yield return new WaitForSeconds(1.23f);
         RemoveSkill(PlayerSkill.SmashSkill);
         PlayerAnimator.runtimeAnimatorController = _boo;
+        PlayerAnimator.SetLayerWeight(0, 0);
+        PlayerAnimator.SetLayerWeight(1, 1);
+
         PlayerFaceAnimator.enabled = true;
 
         CurrentSpeed = _minSpeed;
+        Debug.Log(StateMachine.CurrentState);
+        StateMachine.ChangeState(IdleState);
     }
     private void ChangeAnimatorToCurious()
     {
