@@ -26,6 +26,7 @@ public class NPC_Detector : MonoBehaviour, IChangeable
         if (ToggleOutlineWithAnger(other))
         {
             _encounteredColliders.Add(other);
+            SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Boo Curious One", "Boo Curious Two",}, transform.position);
             OnDetectNPC?.Invoke();
             _npcInRange++;
         }

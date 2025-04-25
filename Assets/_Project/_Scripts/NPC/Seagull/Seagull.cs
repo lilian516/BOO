@@ -28,6 +28,12 @@ public class Seagull : MonoBehaviour, IChangeable
         player.StateMachine.ChangeState(player.AngryState);
     }
 
+    public void SoundVomit()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Vomit One", "Vomit Two", "Vomit Three" },
+            transform.position);
+    }
+
     public void ResetChange()
     {
         _animatorBigSeagull.SetBool("IsFear", false);

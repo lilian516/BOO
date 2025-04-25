@@ -46,7 +46,7 @@ public class AnimEventPlayer : MonoBehaviour
 
     public void SoundWalkBoo()
     {
-        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Grass Step One", "Grass Step Two", "Grass Step Three", "Grass Step Four", "Grass Step Five" }, transform.position);
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Grass One", "Grass Two", "Grass Three", "Grass Four", "Grass Five" }, transform.position);
     }
     public void SheepVFX()
     {
@@ -55,5 +55,47 @@ public class AnimEventPlayer : MonoBehaviour
         ParticleSystem parts = VFX.GetComponent<ParticleSystem>();
         float totalDuration = parts.main.duration;
         Destroy(VFX, totalDuration);
+    }
+
+    public void SoundBooBlow()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Boo Blow One", "Boo Blow Two", "Boo Blow Three", "Boo Blow Four",
+            "Boo Blow Five","Boo Blow Six","Boo Blow Seven" }, 
+            transform.position);
+    }
+
+    public void SoundBooDamage()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Boo Damage One", "Boo Damage Two", "Boo Damage Three", "Boo Damage Four",
+            },
+            transform.position);
+    }
+
+    public void SoundBooFall()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Boo Fall One", "Boo Fall Two",
+            },
+            transform.position);
+    }
+
+    public void SoundBooSlip()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Boo Slip One", "Boo Slip Two","Boo Slip Three","Boo Slip Four"
+            },
+            transform.position);
+    }
+
+    public void SoundBooSlipVoice()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Boo Fall One", "Boo Fall Two",
+            },
+            transform.position);
+    }
+
+    public void SoundBooStick()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Boo Stick One", "Boo Stick Two",
+            },
+            transform.position);
     }
 }

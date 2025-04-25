@@ -11,4 +11,10 @@ public class BeeAnimEventPlayer : MonoBehaviour
     {
         OnEndAttackAnim?.Invoke();
     }
+
+    public void SoundBeeBite()
+    {
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Bee Bite One", "Bee Bite Two", "Bee Bite Three"},
+            transform.position);
+    }
 }

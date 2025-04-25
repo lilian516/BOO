@@ -13,6 +13,10 @@ public class Bubble : MonoBehaviour
     void Start()
     {
         _forward =  GameManager.Instance.Player.GetComponent<Player>().SkillDir.normalized;
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Bubble One", "Bubble Two", "Bubble Three", "Bubble Four", "Bubble Five", "Bubble Six" },
+            transform.position);
+
+
         StartCoroutine(BubbleMovement());
     }
 

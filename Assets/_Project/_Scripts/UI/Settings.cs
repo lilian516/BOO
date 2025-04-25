@@ -35,7 +35,7 @@ public class Settings : MonoBehaviour
 
     private IEnumerator WaitOpenSettings()
     {
-        SoundSystem.Instance.PlaySoundFXClipByKey("Global Book", 1f);
+        //SoundSystem.Instance.PlaySoundFXClipByKey("Global Book", 1f);
         yield return new WaitForSeconds(0.55f);
 
         Helpers.ShowCanva(_canvasGroup);
