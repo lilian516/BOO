@@ -16,11 +16,6 @@ public class PlayerWaitingState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-
-        if (!AngrySystem.Instance.IsAngry)
-        {
-            _player.PlayerFaceAnimator.enabled = true;
-        }
     }
 
     public override void ExitState()

@@ -5,6 +5,7 @@ using UnityEngine.TextCore.Text;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.InputSystem.OnScreen;
+using Cinemachine;
 
 
 [DefaultExecutionOrder(-10)]
@@ -13,6 +14,7 @@ public class GameManager : Singleton<GameManager>
     private const string PLAYER_TAG = "Player";
     private const string SOUND_MANAGER_TAG = "SoundManager";
     private const string MAIN_CAMERA_TAG = "MainCamera";
+    private const string MAIN_VIRTUAL_CAMERA_TAG = "MainVirtualCamera";
     private const string DIALOGUE_UI_TAG = "DialogueUI";
     private const string DIALOGUE_SKILL_BTN_TAG = "DialogueSkillButton";
     private const string DIALOGUE_QUIT_BTN_TAG = "DialogueQuitButton";
@@ -28,6 +30,7 @@ public class GameManager : Singleton<GameManager>
 
 
     [HideInInspector] public GameObject MainCamera;
+    [HideInInspector] public GameObject MainVirtualCamera;
     [HideInInspector] public GameObject Player;
     [HideInInspector] public SoundSystem SoundSystem;
     [HideInInspector] public GameObject DialogueUI;
@@ -47,12 +50,15 @@ public class GameManager : Singleton<GameManager>
 
     [HideInInspector] public int KilledSheep;
 
+    private bool _doIntro;
+
     private void Start()
     {
         StartCoroutine(WaitForScenesAndInitialize());
 
         Application.targetFrameRate = 45;
         KilledSheep = 0;
+        _doIntro = true;
     }
 
     private IEnumerator WaitForScenesAndInitialize()
@@ -61,6 +67,7 @@ public class GameManager : Singleton<GameManager>
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene", "MainMenu" });
 
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
+        MainVirtualCamera = GameObject.FindGameObjectWithTag(MAIN_VIRTUAL_CAMERA_TAG);
         SoundSystem = GameObject.FindGameObjectWithTag(SOUND_MANAGER_TAG).GetComponent<SoundSystem>();
         Player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
         InventorySkill = Player.GetComponent<Inventory>();
@@ -68,10 +75,19 @@ public class GameManager : Singleton<GameManager>
         SoundSystem.ChangeMusicByKey("Chill Music");
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
+
+        StartCoroutine(test());
+    }
+
+    private IEnumerator test()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Player.GetComponent<Player>().PlayerAnimator.enabled = true;
     }
 
     public IEnumerator LaunchGame()
     {
+
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "UIInGame"});
 
         SkillStickParent = GameObject.FindGameObjectWithTag(SKILL_STICK_PARENT_TAG);
@@ -88,9 +104,15 @@ public class GameManager : Singleton<GameManager>
 
         GameController = GameObject.FindGameObjectWithTag(GAME_CONTROLLER_TAG);
 
+        if(!_doIntro)
+            InputManager.Instance.EnableControllerSticks();
+
+        if (_doIntro)
+            StartCoroutine(WaitForIntro());
+
+        MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 2;
+
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" });
-
-
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -108,7 +130,20 @@ public class GameManager : Singleton<GameManager>
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" });
         
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
+        MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
 
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "UIInGame" });
+    }
+
+    public IEnumerator WaitForIntro()
+    {
+        _doIntro = false;
+        Player.GetComponent<Player>().StartAnim();
+        InputManager.Instance.DisableControllerStick();
+
+        yield return new WaitForSeconds(1);
+
+        InputManager.Instance.EnableControllerSticks();
+
     }
 }

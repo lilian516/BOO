@@ -20,6 +20,7 @@ TagManager:
   - PauseButton
   - DialogueSkillButton
   - DialogueQuitButton
+  - MainVirtualCamera
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,6 @@ TagManager:
   - Camera
   - Outline
   - NavMeshIgnore
-  - 
   - 
   - 
   - 
