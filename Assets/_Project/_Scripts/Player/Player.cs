@@ -114,6 +114,7 @@ public class Player : MonoBehaviour, IChangeable
     
 
         DirectionalCapsuleOffset = DirectionalCapsule.transform.localPosition;
+        DirectionalIndicator.SetActive(false);
 
         SkillDir = new Vector3(1,0,0);
 
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour, IChangeable
 
         Input = InputManager.Instance;
 
-        StateMachine.Initialize(IdleState);
+        StateMachine.Initialize(WaitingState);
 
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
@@ -136,6 +137,12 @@ public class Player : MonoBehaviour, IChangeable
 
         AngrySystem.Instance.OnFirstAngerOccurence += ChangeAnimatorToTriggerOne;
         AngrySystem.Instance.OnSecondAngerOccurence += ChangeAnimatorToTriggerTwo;
+
+        PlayerAnimator.enabled = false;
+        PlayerAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+
+        PlayerFaceAnimator.enabled = false;
+        PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
     }
 
     void Update()
@@ -144,7 +151,6 @@ public class Player : MonoBehaviour, IChangeable
         StateMachine.CurrentState.FrameUpdate();
 
         RotateDirectionalIndicator();
-        
     }
 
     private void FixedUpdate()
@@ -415,5 +421,29 @@ public class Player : MonoBehaviour, IChangeable
         yield return new WaitForSeconds(_animTime);
 
         OnEndAnimation?.Invoke();
+    }
+
+    private IEnumerator ChangeToBaseLayer()
+    {
+        yield return new WaitForSeconds(_animTime);
+
+        PlayerAnimator.SetLayerWeight(0, 0);
+        PlayerAnimator.SetLayerWeight(1, 1);
+        PlayerFaceAnimator.enabled = true;
+
+        StateMachine.ChangeState(IdleState);
+
+        DirectionalIndicator.SetActive(true);
+    }
+
+    public void StartAnim()
+    {
+        PlayerAnimator.SetTrigger("Start");
+        _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
+
+        _animTime = _overrideController["A_Boo_GetUp"].length * 2;
+
+        StartCoroutine(ChangeToBaseLayer());
+
     }
 }

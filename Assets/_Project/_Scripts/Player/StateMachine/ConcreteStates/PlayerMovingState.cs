@@ -121,7 +121,8 @@ public class PlayerMovingState : PlayerState
         _player.PlayerFaceAnimator.SetFloat("Speed",animSpeed);
 
         Vector3 CapsulePos = _player.transform.position + _player.DirectionalCapsuleOffset;
-        _player.DirectionalCapsule.transform.position = new Vector3(InputManager.Instance.GetMoveDirection().x + CapsulePos.x, CapsulePos.y, CapsulePos.z + InputManager.Instance.GetMoveDirection().y);
+        Vector3 Dir = InputManager.Instance.GetMoveDirection().normalized * 0.3f;
+        _player.DirectionalCapsule.transform.position = new Vector3(Dir.x + CapsulePos.x, CapsulePos.y, CapsulePos.z + Dir.y);
     }
 
     private void OnSkill()
