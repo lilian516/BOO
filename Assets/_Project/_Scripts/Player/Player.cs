@@ -445,5 +445,8 @@ public class Player : MonoBehaviour, IChangeable
 
         StartCoroutine(ChangeToBaseLayer());
 
+    public bool HasSkill()
+    {
+        return _inventory.PlayerSkills.Count > 0;
     }
 }
