@@ -10,6 +10,7 @@ public class Child : MonoBehaviour, ISpeakable, IChangeable
     [SerializeField] Animator _animator;
     [SerializeField] ChildEventPlayer _eventPlayer;
     [SerializeField] GameObject _windPrefab;
+    [SerializeField] Animator _animatorFeedback;
     Vector3 _launchDir;
 
 
@@ -74,5 +75,15 @@ public class Child : MonoBehaviour, ISpeakable, IChangeable
     public void ResetChange()
     {
         _animator.SetBool("IsBooMad", false);
+    }
+
+    public void Detected()
+    {
+        _animatorFeedback.SetBool("IsDetected", true);
+    }
+
+    public void NoDetected()
+    {
+        _animatorFeedback.SetBool("IsDetected", false);
     }
 }

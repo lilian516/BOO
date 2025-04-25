@@ -6,6 +6,7 @@ public class Fishman : MonoBehaviour, ISpeakable, IChangeable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] Animator _animator;
+    [SerializeField] Animator _animatorFeedback;
 
     // Start is called before the first frame update
     void Start()
@@ -35,5 +36,15 @@ public class Fishman : MonoBehaviour, ISpeakable, IChangeable
     public void ResetChange()
     {
         _animator.SetBool("IsBooMad", false);
+    }
+
+    public void Detected()
+    {
+        _animatorFeedback.SetBool("IsDetected", true);
+    }
+
+    public void NoDetected()
+    {
+        _animatorFeedback.SetBool("IsDetected", false);
     }
 }

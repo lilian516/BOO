@@ -5,4 +5,8 @@ using UnityEngine;
 public interface ISpeakable
 {
     void Speak();
+
+    void Detected();
+
+    void NoDetected();
 }

@@ -8,6 +8,10 @@ public class Remumus : MonoBehaviour, ISpeakable
     [SerializeField] DialogueAsset _dryUnderwearDialogue;
     [SerializeField] bool _dryUnderwear = false;
     [SerializeField] Animator _animator;
+    [SerializeField] Animator _animatorFeedback;
+
+
+
 
     public bool DryUnderwear { get => _dryUnderwear; set => _dryUnderwear = value; }
 
@@ -55,5 +59,15 @@ public class Remumus : MonoBehaviour, ISpeakable
     public Animator GetAnimator()
     {
         return _animator;
+    }
+
+    public void Detected()
+    {
+        _animatorFeedback.SetBool("IsDetected", true);
+    }
+
+    public void NoDetected()
+    {
+        _animatorFeedback.SetBool("IsDetected", false);
     }
 }

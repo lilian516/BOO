@@ -30,6 +30,7 @@ public class SmashSkill : Skill
     public override void StartUseSkill()
     {
         base.StartUseSkill();
+        _interactable = null;
 
         Collider[] hitColliders = Physics.OverlapSphere(_player.transform.position, _desc.Radius, _desc.Mask);
 

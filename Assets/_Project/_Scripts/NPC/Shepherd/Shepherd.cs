@@ -11,6 +11,7 @@ public class Shepherd : MonoBehaviour, ISpeakable
     [SerializeField] private DialogueAsset _happyDialogue;
     [SerializeField] private DialogueAsset _sadDialogue;
     [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _animatorFeedback;
 
     private void Start()
     {
@@ -70,6 +71,16 @@ public class Shepherd : MonoBehaviour, ISpeakable
     {
         _animator.SetBool("IsSpeaking", false);
         DialogueSystem.Instance.OnEndDialogue -= StopTalkAnimation;
+    }
+
+    public void Detected()
+    {
+        _animatorFeedback.SetBool("IsDetected", true);
+    }
+
+    public void NoDetected()
+    {
+        _animatorFeedback.SetBool("IsDetected", false);
     }
 
     #endregion

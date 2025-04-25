@@ -18,13 +18,12 @@ public class AnimEventMauvis : MonoBehaviour
 
     public void SoundMauvisSad()
     {
-        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Mauvis Sad One", "Mauvis Sad Two", "Mauvis Sad Three" },
+        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Mauvis Sad One", "Mauvis Sad Two", "Mauvis Sad Three", "Mauvis Fear One", "Mauvis Fear Two" },
             transform.position);
     }
 
     public void SoundMauvisFear()
     {
-        SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Mauvis Fear One", "Mauvis Fear Two"},
-            transform.position);
+        
     }
 }
