@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Petite Douche
   Description: On dirait qu'il pleut, ah non... C'est juste Bernard
-  Sprite: {fileID: 21300000, guid: 3e3a1010c4fb1734fa5e7bf1768129f7, type: 3}
-  IsUnlocked: 0
+  Sprite: {fileID: 21300000, guid: e18e4cc158bde874ca73e3e9288a735c, type: 3}
   Condition: 2

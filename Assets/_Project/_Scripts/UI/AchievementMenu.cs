@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AchievementMenu : MonoBehaviour
 {
-
+    [SerializeField] private GameObject _achievementPrefab;
     [SerializeField] private Slider _scrollBar;
     private ScrollRect _scrollRect;
 
@@ -27,10 +28,14 @@ public class AchievementMenu : MonoBehaviour
     {
         animator.SetTrigger("ClickTrophy");
 
-        List<Sprite> achievementSprite = AchievementSystem.Instance.UIAchievementToUpdate;
-        for (int i = 0; i < achievementSprite.Count; i++)
+        List<AchievementAsset> achievements = AchievementSystem.Instance.UIAchievementToUpdate;
+        for (int i = 0; i < achievements.Count; i++)
         {
-            GameManager.Instance.UIAchievementList.transform.GetChild(i).GetComponent<Image>().sprite = achievementSprite[i];
+            Destroy(GameManager.Instance.UIAchievementList.transform.GetChild(i).gameObject);
+            GameObject achievement = Instantiate(_achievementPrefab, GameManager.Instance.UIAchievementList.transform);
+            achievement.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = achievements[i].Name;
+            achievement.transform.Find("Desc").GetComponent<TextMeshProUGUI>().text = achievements[i].Description;
+            achievement.transform.Find("Logo").GetComponent<Image>().sprite = achievements[i].Sprite;
         }
 
         StartCoroutine(WaitOpenAchievement());

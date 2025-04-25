@@ -15,7 +15,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
     private List<AchievementCondition> _achievementConditionList;
 
-    [HideInInspector] public List<Sprite> UIAchievementToUpdate;
+    [HideInInspector] public List<AchievementAsset> UIAchievementToUpdate;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
             _achievementUnlocked.Add(SaveSystem.Instance.LoadElement<bool>(_achievementList[i].name));
 
             if (_achievementUnlocked[i])
-                UIAchievementToUpdate.Add(_achievementList[i].Sprite);
+                UIAchievementToUpdate.Add(_achievementList[i]);
         }
     }
 
@@ -48,7 +48,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
         GameObject _list = GameManager.Instance.UIAchievementList;
 
-        UIAchievementToUpdate.Add(_achievementList[index].Sprite);
+        UIAchievementToUpdate.Add(_achievementList[index]);
     }
     
     private IEnumerator ShowAchievement(int index, GameObject panel)
