@@ -264,7 +264,6 @@ public class Player : MonoBehaviour, IChangeable
                 break;
         }
         ChangeAnimTakeSkill(descriptor.TakeAnimation);
-        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         StateMachine.ChangeState(TakeSkillState);
 
         
