@@ -64,7 +64,7 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator WaitForScenesAndInitialize()
     {
 
-        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene", "MainMenu" });
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene 1", "MainMenu" });
 
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         MainVirtualCamera = GameObject.FindGameObjectWithTag(MAIN_VIRTUAL_CAMERA_TAG);
