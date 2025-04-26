@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bee : MonoBehaviour, IInteractable
+public class Bee : MonoBehaviour, IInteractable, IChangeable
 {
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
@@ -34,6 +34,9 @@ public class Bee : MonoBehaviour, IInteractable
         _timeStep = 0.0f;
         _currentState = BeeState.Idle;
         _eventPlayer.OnEndAttackAnim += Attack;
+
+        AngrySystem.Instance.OnChangeElements += Change;
+        AngrySystem.Instance.OnResetElements += ResetChange;
     }
     void Update()
     {
@@ -51,7 +54,7 @@ public class Bee : MonoBehaviour, IInteractable
                 {
                     _currentState = BeeState.Patrol;
                 }
-                CheckPlayerIsAngry();
+                
                 break;
             case BeeState.Patrol:
                 if (!_isResting)
@@ -79,7 +82,7 @@ public class Bee : MonoBehaviour, IInteractable
                     else
                         GetComponentInChildren<SpriteRenderer>().flipX = true;
                 }
-                CheckPlayerIsAngry();
+                
                 break;
             case BeeState.Attack:
                 if (!_onCd)
@@ -112,18 +115,16 @@ public class Bee : MonoBehaviour, IInteractable
                     _currentState = BeeState.Idle;
                     _timeStep = 0.0f;
                 }
-                CheckPlayerIsAngry();
+                
 
 
                     break;
 
             case BeeState.Fear:
-                _animator.SetTrigger("Fear");
-                if (!AngrySystem.Instance.IsAngry)
-                {
-                    _currentState = BeeState.Idle;
-                    _animator.SetTrigger("Idle");
-                }
+                
+                
+                    
+                
                 break;
             default:
                 break;
@@ -227,13 +228,20 @@ public class Bee : MonoBehaviour, IInteractable
 
     }
 
-    private void CheckPlayerIsAngry()
+    
+
+    public void Change()
     {
-        if (AngrySystem.Instance.IsAngry)
-        {
-            _currentState = BeeState.Fear;
-        }
+        _animator.SetTrigger("Fear");
+        _currentState = BeeState.Fear;
     }
+
+    public void ResetChange()
+    {
+        _currentState = BeeState.Idle;
+        _animator.SetTrigger("Idle");
+    }
+
     private enum BeeState
     {
         Idle,

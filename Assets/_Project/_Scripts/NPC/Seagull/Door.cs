@@ -61,7 +61,12 @@ public class Door : MonoBehaviour, IClickable, IDetectable
 
     public void Detected()
     {
-        _doorOutlineMaterial.SetFloat("_Outline_Thickness", 0.01f);
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _doorOutlineMaterial.SetFloat("_Outline_Thickness", 0.01f);
+            return;
+        }
+        NoDetected();
     }
 
     public void NoDetected()

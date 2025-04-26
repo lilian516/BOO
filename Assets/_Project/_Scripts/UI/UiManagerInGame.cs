@@ -26,6 +26,8 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
     {
         AngrySystem.Instance.OnFirstAngerOccurence += UpdateAngryModeFirst;
         AngrySystem.Instance.OnSecondAngerOccurence += UpdateAngryModeSecond;
+        AngrySystem.Instance.OnFirstCalmOccurence += UpdateAngryModeSecond;
+        AngrySystem.Instance.OnSecondCalmOccurence += UpdateAngryModeFirst;
         AngrySystem.Instance.OnChangeElements += Change;
 
         AngrySystem.Instance.OnResetElements += ResetChange;
@@ -122,6 +124,8 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         {
             AngrySystem.Instance.OnFirstAngerOccurence -= UpdateAngryModeFirst;
             AngrySystem.Instance.OnSecondAngerOccurence -= UpdateAngryModeSecond;
+            AngrySystem.Instance.OnFirstCalmOccurence -= UpdateAngryModeSecond;
+            AngrySystem.Instance.OnSecondCalmOccurence -= UpdateAngryModeFirst;
             AngrySystem.Instance.OnChangeElements -= Change;
 
             

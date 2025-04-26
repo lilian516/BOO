@@ -55,16 +55,8 @@ public class NPC_Detector : MonoBehaviour, IChangeable
         {
             if (AngrySystem.Instance != null)
             {
-                if (AngrySystem.Instance.IsAngry)
-                {
-
-                    detectable.NoDetected();
-                   
-                }
-                else
-                {
-                    detectable.Detected();
-                }
+                detectable.Detected();
+                
             }
             return true;
         }

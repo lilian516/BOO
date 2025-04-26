@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
-public class Sheep : MonoBehaviour, IInteractable,IClickable
+public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable
 {
     [SerializeField] private PlayerSkill _currentInteract;
     public Vector3 PushedDirection;
 
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
+    [SerializeField] Animator _animatorFeedback;
 
     private Vector3 _initialPosition;
 
@@ -50,14 +52,13 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
                 break;
 
             case PlayerSkill.SmashSkill:
-                if (_currentInteract == PlayerSkill.BubbleSkill)
-                    break;
+                
 
                 AngrySystem.Instance.ChangeCalmLimits();
                 GameManager.Instance.KilledSheep++;
 
                 SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Mouton Fear One", "Mouton Fear Two", "Mouton Fear Three" },
-                transform.position);
+                transform.position,0.8f);
 
                 Destroy(gameObject);
                 break;
@@ -202,5 +203,29 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable
         _petCd = false;
         AchievementSystem.Instance.PetCount++;
         AchievementSystem.Instance.PetAchievement();
+    }
+
+    public void Detected()
+    {
+        if (AngrySystem.Instance.IsAngry)
+        {
+            if(_animatorFeedback != null)
+            {
+                _animatorFeedback.SetTrigger("Detected");
+            }
+                    
+            
+            return;
+        }
+       
+        
+    }
+
+    public void NoDetected()
+    {
+        if (_animatorFeedback != null)
+        {
+            _animatorFeedback.SetTrigger("NoDetected");
+        }
     }
 }

@@ -63,7 +63,12 @@ public class Remumus : MonoBehaviour, ISpeakable, IDetectable
 
     public void Detected()
     {
-        _animatorFeedback.SetBool("IsDetected", true);
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _animatorFeedback.SetBool("IsDetected", true);
+            return;
+        }
+        NoDetected();
     }
 
     public void NoDetected()
