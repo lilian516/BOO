@@ -53,8 +53,12 @@ public class JoystickUI : MonoBehaviour, IChangeable
 
     private void OnDestroy()
     {
-        AngrySystem.Instance.OnChangeElements -= Change;
-        AngrySystem.Instance.OnResetElements -= ResetChange;
+        if(AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+        
     }
 }
 

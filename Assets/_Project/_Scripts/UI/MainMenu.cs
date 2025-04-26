@@ -43,17 +43,18 @@ public class MainMenu : MonoBehaviour
         Helpers.ShowCanva(_canvasGroup);
     }
 
-    public void OpenCredit(Image image)
+    public void OpenCredit()
     {
         _animatorTransition.SetTrigger("ClickCredit");
         Helpers.HideCanva(_canvasGroup);
         
     }
 
-    public void OpenLegal(Animator animator) {
+    public void OpenLegal() {
         //animator.SetTrigger("Click");
         _animatorTransition.SetTrigger("ClickLegal");
         Helpers.HideCanva(_canvasGroup);
+        Helpers.ShowCanva(_canvasGroup);
     }
 
     public void OpenTrophy()

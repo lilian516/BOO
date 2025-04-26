@@ -21,6 +21,7 @@ public class FliesSwarm : MonoBehaviour, IInteractable
                 break;
 
             case PlayerSkill.SmashSkill:
+                AngrySystem.Instance.ChangeCalmLimits();
                 StartCoroutine(SlapFlies());
                 break;
         }

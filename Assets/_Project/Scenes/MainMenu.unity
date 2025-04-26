@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 28448109}
   - component: {fileID: 28448111}
   - component: {fileID: 28448110}
-  - component: {fileID: 28448112}
   m_Layer: 0
   m_Name: CreditButton
   m_TagString: Untagged
@@ -208,10 +207,10 @@ MonoBehaviour:
       - m_Target: {fileID: 929716212}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OpenCredit
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 28448110}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -267,27 +266,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28448107}
   m_CullTransparentMesh: 1
---- !u!95 &28448112
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 28448107}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 662323edf9b386f429376e7c73b568ee, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &47451433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,7 +1237,6 @@ GameObject:
   - component: {fileID: 694266279}
   - component: {fileID: 694266278}
   - component: {fileID: 694266280}
-  - component: {fileID: 694266281}
   m_Layer: 0
   m_Name: LegalNotice
   m_TagString: Untagged
@@ -1371,36 +1348,15 @@ MonoBehaviour:
       - m_Target: {fileID: 929716212}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OpenLegal
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 694266281}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!95 &694266281
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694266276}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c95d198627303d448a0c12d08524066, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &710230804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,32 +1409,32 @@ PrefabInstance:
     - target: {fileID: 420902285468423030, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 420902285468423030, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 420902285468423030, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 734.832
       objectReference: {fileID: 0}
     - target: {fileID: 420902285468423030, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 118.9728
       objectReference: {fileID: 0}
     - target: {fileID: 420902285468423030, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 420902285468423030, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -59.4864
       objectReference: {fileID: 0}
     - target: {fileID: 1500491243069963089, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
@@ -1553,32 +1509,32 @@ PrefabInstance:
     - target: {fileID: 3335521417642260630, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3335521417642260630, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3335521417642260630, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 734.832
       objectReference: {fileID: 0}
     - target: {fileID: 3335521417642260630, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 118.9728
       objectReference: {fileID: 0}
     - target: {fileID: 3335521417642260630, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3335521417642260630, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -257.432
       objectReference: {fileID: 0}
     - target: {fileID: 4197750530237938732, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
@@ -1588,32 +1544,32 @@ PrefabInstance:
     - target: {fileID: 4682851486366252419, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4682851486366252419, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4682851486366252419, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 734.832
       objectReference: {fileID: 0}
     - target: {fileID: 4682851486366252419, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 118.9728
       objectReference: {fileID: 0}
     - target: {fileID: 4682851486366252419, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4682851486366252419, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -158.4592
       objectReference: {fileID: 0}
     - target: {fileID: 5452355747570938607, guid: fa55cf49880cedf4e982da07ee3383bf,
         type: 3}

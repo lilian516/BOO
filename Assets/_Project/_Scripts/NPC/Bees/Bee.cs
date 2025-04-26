@@ -242,6 +242,18 @@ public class Bee : MonoBehaviour, IInteractable, IChangeable
         _animator.SetTrigger("Idle");
     }
 
+    private void OnDestroy()
+    {
+        _eventPlayer.OnEndAttackAnim -= Attack;
+
+        if(AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+        
+    }
+
     private enum BeeState
     {
         Idle,

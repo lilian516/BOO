@@ -4355,6 +4355,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1193029900}
+    - targetCorrespondingSourceObject: {fileID: 1284078174216396755, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1646363883}
+    - targetCorrespondingSourceObject: {fileID: 1284078174216396755, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1646363882}
   m_SourcePrefab: {fileID: 100100000, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00, type: 3}
 --- !u!4 &178133451 stripped
 Transform:
@@ -28615,6 +28623,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1643115000}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646363881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1284078174216396755, guid: 60063eaec3b0fbd4fbbe01b9a1f6bf00,
+    type: 3}
+  m_PrefabInstance: {fileID: 178133450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1646363882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646363881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653e9180ab3f49e458f4820a339fc517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1646363883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646363881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.3511755, y: 1.1552911, z: 1.8129913}
+  m_Center: {x: 0.26689497, y: 0.15566692, z: -0.0000016689302}
 --- !u!1 &1650312682
 GameObject:
   m_ObjectHideFlags: 0
@@ -37322,6 +37369,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pf_Boat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276904597199438347, guid: 8cb139febfba7cf41b94c1afbf3d4535,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
