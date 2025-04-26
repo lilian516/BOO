@@ -101,6 +101,7 @@ MonoBehaviour:
   _animator: {fileID: 1922610363836313217}
   _eventPlayer: {fileID: 6932282215456427892}
   _animationPiqure: {fileID: 7400000, guid: 82744c6b3d1af844180dbe8e1dfae486, type: 2}
+  AnimationSmash: {fileID: 7400000, guid: 8e6edb3f8b96b8e40b4c96df36bd12d2, type: 2}
   _pathReferences: []
   _patrolDistance: 5
   _attackDistance: 2

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Remumus : MonoBehaviour, ISpeakable
+public class Remumus : MonoBehaviour, ISpeakable, IDetectable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] DialogueAsset _dryUnderwearDialogue;

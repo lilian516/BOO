@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fishman : MonoBehaviour, ISpeakable, IChangeable
+public class Fishman : MonoBehaviour, ISpeakable, IChangeable, IDetectable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] Animator _animator;

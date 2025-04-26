@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Child : MonoBehaviour, ISpeakable, IChangeable
+public class Child : MonoBehaviour, ISpeakable, IChangeable, IDetectable
 {
 
     [SerializeField] DialogueAsset _dialogue;

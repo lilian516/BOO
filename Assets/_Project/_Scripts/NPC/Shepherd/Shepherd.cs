@@ -2,7 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shepherd : MonoBehaviour, ISpeakable
+public class Shepherd : MonoBehaviour, ISpeakable, IDetectable
 {
     [SerializeField] private SheepDetector _detector;
 

@@ -34,20 +34,12 @@ public class NPC_Detector : MonoBehaviour, IChangeable
 
     private void OnTriggerExit(Collider other)
     {
-        ISpeakable speakable = other.gameObject.GetComponent<ISpeakable>();
-        if (speakable != null || other.gameObject.GetComponent<IClickable>() != null)
+        IDetectable detectable = other.gameObject.GetComponent<IDetectable>();
+        if (detectable != null)
         {
             _npcInRange--;
-            if (speakable != null)
-            {
-                speakable.NoDetected();
-            }
 
-            //if (other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null)
-            //    other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineSize", 0.0f);
-
-            if (other.GetComponent<Door>() != null)
-                other.GetComponent<Door>().DoorOutlineMaterial.SetFloat("_Outline_Thickness", 0.0f);
+            detectable.NoDetected();
 
             if (_npcInRange == 0)
                 OnStopDetectNPC?.Invoke();
@@ -58,34 +50,20 @@ public class NPC_Detector : MonoBehaviour, IChangeable
 
     private bool ToggleOutlineWithAnger(Collider other)
     {
-        ISpeakable speakable = other.gameObject.GetComponent<ISpeakable>();
-        if (speakable != null || other.gameObject.GetComponent<IClickable>() != null)
+        IDetectable detectable = other.gameObject.GetComponent<IDetectable>();
+        if (detectable != null)
         {
             if (AngrySystem.Instance != null)
             {
                 if (AngrySystem.Instance.IsAngry)
                 {
-                    if (speakable != null)
-                    {
-                        speakable.NoDetected();
-                    }
-                    //if (other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null)
-                    //    other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineSize", 0.0f);
 
-                    if (other.GetComponent<Door>() != null)
-                        other.GetComponent<Door>().DoorOutlineMaterial.SetFloat("_Outline_Thickness", 0.0f);
+                    detectable.NoDetected();
+                   
                 }
                 else
                 {
-                    if (speakable != null)
-                    {
-                        speakable.Detected();
-                    }
-                    //if (other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null)
-                    //    other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().material.SetFloat("_OutlineSize", 3.0f);
-
-                    if (other.GetComponent<Door>() != null)
-                        other.GetComponent<Door>().DoorOutlineMaterial.SetFloat("_Outline_Thickness", 0.01f);
+                    detectable.Detected();
                 }
             }
             return true;

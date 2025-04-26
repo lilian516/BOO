@@ -7,6 +7,7 @@ public class Bee : MonoBehaviour, IInteractable
     [SerializeField] Animator _animator;
     [SerializeField] BeeAnimEventPlayer _eventPlayer;
     [SerializeField] AnimationClip _animationPiqure;
+    public AnimationClip AnimationSmash;
 
     private BeeState _currentState;
 
@@ -50,11 +51,12 @@ public class Bee : MonoBehaviour, IInteractable
                 {
                     _currentState = BeeState.Patrol;
                 }
+                CheckPlayerIsAngry();
                 break;
             case BeeState.Patrol:
                 if (!_isResting)
                 {
-                    GoToPoint(_pathReferences[_currentIndex].position,_speed / 5);
+                    GoToPoint(_pathReferences[_currentIndex].position,_speed / 2);
 
                     CyclePoints();
                 }
@@ -77,6 +79,7 @@ public class Bee : MonoBehaviour, IInteractable
                     else
                         GetComponentInChildren<SpriteRenderer>().flipX = true;
                 }
+                CheckPlayerIsAngry();
                 break;
             case BeeState.Attack:
                 if (!_onCd)
@@ -109,7 +112,19 @@ public class Bee : MonoBehaviour, IInteractable
                     _currentState = BeeState.Idle;
                     _timeStep = 0.0f;
                 }
+                CheckPlayerIsAngry();
+
+
                     break;
+
+            case BeeState.Fear:
+                _animator.SetTrigger("Fear");
+                if (!AngrySystem.Instance.IsAngry)
+                {
+                    _currentState = BeeState.Idle;
+                    _animator.SetTrigger("Idle");
+                }
+                break;
             default:
                 break;
         }
@@ -211,10 +226,19 @@ public class Bee : MonoBehaviour, IInteractable
         }
 
     }
+
+    private void CheckPlayerIsAngry()
+    {
+        if (AngrySystem.Instance.IsAngry)
+        {
+            _currentState = BeeState.Fear;
+        }
+    }
     private enum BeeState
     {
         Idle,
         Patrol,
-        Attack
+        Attack,
+        Fear
     }
 }

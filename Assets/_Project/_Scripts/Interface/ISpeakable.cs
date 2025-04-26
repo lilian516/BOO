@@ -6,7 +6,5 @@ public interface ISpeakable
 {
     void Speak();
 
-    void Detected();
-
-    void NoDetected();
+   
 }
