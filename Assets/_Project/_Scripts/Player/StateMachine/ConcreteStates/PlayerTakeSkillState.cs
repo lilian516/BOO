@@ -54,7 +54,6 @@ public class PlayerTakeSkillState : PlayerState
 
     private void ExitTakeSkill()
     {
-        
         _stateMachine.ChangeState(_player.IdleState);
     }
 

@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class BlockWalking : MonoBehaviour
 {
-    public Player Player;
+    [SerializeField] private Player _player;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != 3)
             return;
 
-        Player.GetComponent<Player>().CanWalkForward = true;
+        _player.CanWalkForward = true;
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer != 3)
             return;
 
-        Player.GetComponent<Player>().CanWalkForward = false;
+        _player.RB.velocity = Vector3.zero;
+        _player.CanWalkForward = false;
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer != 3)
             return;
 
-        Player.GetComponent<Player>().CanWalkForward = true;
+        _player.CanWalkForward = true;
     }
 }
