@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Remumus : MonoBehaviour, ISpeakable
+public class Remumus : MonoBehaviour, ISpeakable, IDetectable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] DialogueAsset _dryUnderwearDialogue;
@@ -63,7 +63,12 @@ public class Remumus : MonoBehaviour, ISpeakable
 
     public void Detected()
     {
-        _animatorFeedback.SetBool("IsDetected", true);
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _animatorFeedback.SetBool("IsDetected", true);
+            return;
+        }
+        NoDetected();
     }
 
     public void NoDetected()

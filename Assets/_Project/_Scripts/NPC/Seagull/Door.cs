@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 
 
-public class Door : MonoBehaviour, IClickable
+public class Door : MonoBehaviour, IClickable, IDetectable
 {
 
     [SerializeField] Animator _animator;
     [SerializeField] Animator _animatorDoor;
     [SerializeField] Animator _animatorDoorModel;
-    public Material DoorOutlineMaterial;
+    [SerializeField] Material _doorOutlineMaterial;
 
     public bool IsKnocked = false;
     private bool _achivevementUnlock = false;
@@ -57,5 +57,20 @@ public class Door : MonoBehaviour, IClickable
             return;
 
         StartCoroutine(WaitForAchievement());
+    }
+
+    public void Detected()
+    {
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _doorOutlineMaterial.SetFloat("_Outline_Thickness", 0.01f);
+            return;
+        }
+        NoDetected();
+    }
+
+    public void NoDetected()
+    {
+        _doorOutlineMaterial.SetFloat("_Outline_Thickness", 0.0f);
     }
 }

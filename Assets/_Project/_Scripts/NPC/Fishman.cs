@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fishman : MonoBehaviour, ISpeakable, IChangeable
+public class Fishman : MonoBehaviour, ISpeakable, IChangeable, IDetectable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] Animator _animator;
@@ -40,7 +40,12 @@ public class Fishman : MonoBehaviour, ISpeakable, IChangeable
 
     public void Detected()
     {
-        _animatorFeedback.SetBool("IsDetected", true);
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _animatorFeedback.SetBool("IsDetected", true);
+            return;
+        }
+        NoDetected();
     }
 
     public void NoDetected()

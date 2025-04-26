@@ -2,7 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shepherd : MonoBehaviour, ISpeakable
+public class Shepherd : MonoBehaviour, ISpeakable, IDetectable
 {
     [SerializeField] private SheepDetector _detector;
 
@@ -75,7 +75,12 @@ public class Shepherd : MonoBehaviour, ISpeakable
 
     public void Detected()
     {
-        _animatorFeedback.SetBool("IsDetected", true);
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _animatorFeedback.SetBool("IsDetected", true);
+            return;
+        }
+        NoDetected();
     }
 
     public void NoDetected()

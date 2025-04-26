@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Child : MonoBehaviour, ISpeakable, IChangeable
+public class Child : MonoBehaviour, ISpeakable, IChangeable, IDetectable
 {
 
     [SerializeField] DialogueAsset _dialogue;
@@ -79,7 +79,14 @@ public class Child : MonoBehaviour, ISpeakable, IChangeable
 
     public void Detected()
     {
-        _animatorFeedback.SetBool("IsDetected", true);
+        if (!AngrySystem.Instance.IsAngry)
+        {
+            _animatorFeedback.SetBool("IsDetected", true);
+            return;
+        }
+        NoDetected();
+
+
     }
 
     public void NoDetected()
