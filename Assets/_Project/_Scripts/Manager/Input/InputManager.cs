@@ -22,8 +22,8 @@ public class InputManager : Singleton<InputManager>
     public delegate void CheckSpeakEvent();
     public event CheckSpeakEvent OnSpeak;
 
-    public delegate void SkillMenuEvent();
-    public event SkillMenuEvent OnSkillMenu;
+    public delegate void SkillButtonEvent();
+    public event SkillButtonEvent OnSkillButton;
 
     #endregion
 
@@ -191,7 +191,7 @@ public class InputManager : Singleton<InputManager>
 
     private void UseSkillPerformed()
     {
-        OnSkillMenu?.Invoke();
+        OnSkillButton?.Invoke();
     }
 
     private void CheckSpeakingPerformed()

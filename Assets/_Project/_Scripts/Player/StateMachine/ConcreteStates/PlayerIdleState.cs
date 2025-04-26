@@ -32,7 +32,7 @@ public class PlayerIdleState : PlayerState
             _player.PlayerFaceAnimator.enabled = true;
         }
 
-        _player.Input.OnSkillMenu += OnSkill;
+        _player.Input.OnSkillButton += OnSkill;
         _player.Input.OnSpeak += OnCheckSpeak;
 
         _player.RB.velocity *= 0.6f;
@@ -41,7 +41,7 @@ public class PlayerIdleState : PlayerState
     public override void ExitState()
     {
         base.ExitState();
-        _player.Input.OnSkillMenu -= OnSkill;
+        _player.Input.OnSkillButton -= OnSkill;
         _player.Input.OnSpeak -= OnCheckSpeak;
     }
 
