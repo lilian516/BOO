@@ -1,5 +1,143 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1554343284145578354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5271088726561640079}
+  - component: {fileID: 8269927533811878173}
+  - component: {fileID: 6274828953504790123}
+  m_Layer: 2
+  m_Name: DirectionalCapsule (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5271088726561640079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554343284145578354}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071064, y: -0.0007404929, z: 0.0007404929, w: 0.7071064}
+  m_LocalPosition: {x: 0.016000748, y: -0.84099996, z: -0.6999998}
+  m_LocalScale: {x: 0.11493758, y: 0.11493759, z: 0.11493759}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7023780948212558163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8269927533811878173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554343284145578354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e565021ce01c15a44ae951a1e36340d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 122024494719183058}
+--- !u!136 &6274828953504790123
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554343284145578354}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45
+  m_Height: 9.11
+  m_Direction: 2
+  m_Center: {x: 0, y: 2.77, z: 1.33}
+--- !u!1 &3021652267465132492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4320698704403395728}
+  - component: {fileID: 3517261577546735672}
+  - component: {fileID: 8436783349854851847}
+  m_Layer: 2
+  m_Name: DirectionalCapsule (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4320698704403395728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021652267465132492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071064, y: -0.0007404929, z: 0.0007404929, w: 0.7071064}
+  m_LocalPosition: {x: 0.016000748, y: -0.84099996, z: -0.6999998}
+  m_LocalScale: {x: 0.11493758, y: 0.11493759, z: 0.11493759}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7023780948212558163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3517261577546735672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021652267465132492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e565021ce01c15a44ae951a1e36340d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 122024494719183058}
+--- !u!136 &8436783349854851847
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021652267465132492}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45
+  m_Height: 9.11
+  m_Direction: 2
+  m_Center: {x: 0, y: 2.77, z: 1.33}
 --- !u!1 &3151340147365664228
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +479,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a57ace4491763245b16c95c52b530a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7672633896386469912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7023780948212558163}
+  m_Layer: 0
+  m_Name: Capsules
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7023780948212558163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672633896386469912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5663943835130743470}
+  - {fileID: 4320698704403395728}
+  - {fileID: 5271088726561640079}
+  m_Father: {fileID: 2900781405036674409}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8281203800571935103
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +616,7 @@ Transform:
   - {fileID: 7536430605088186298}
   - {fileID: 9078259945155868295}
   - {fileID: 8534692897701802906}
-  - {fileID: 5663943835130743470}
+  - {fileID: 7023780948212558163}
   - {fileID: 6847774662632344559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -517,7 +689,7 @@ MonoBehaviour:
   _eventPlayer: {fileID: 764901106248841688}
   DetectorRadius: 5
   DirectionalIndicator: {fileID: 3151340147365664228}
-  DirectionalCapsule: {fileID: 9213989879703775133}
+  DirectionalCapsuleContainer: {fileID: 7672633896386469912}
   DirectionalCapsuleOffset: {x: 0, y: 0, z: 0}
   CanWalkForward: 0
   _playerIdleStateDescriptor:
@@ -641,11 +813,11 @@ Transform:
   m_GameObject: {fileID: 9213989879703775133}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071064, y: -0.0007404929, z: 0.0007404929, w: 0.7071064}
-  m_LocalPosition: {x: 0.016000748, y: -0.84099996, z: -0.7}
+  m_LocalPosition: {x: 0.016000748, y: -0.84099996, z: -0.6999998}
   m_LocalScale: {x: 0.11493758, y: 0.11493759, z: 0.11493759}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2900781405036674409}
+  m_Father: {fileID: 7023780948212558163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1494146341223841007
 MonoBehaviour:

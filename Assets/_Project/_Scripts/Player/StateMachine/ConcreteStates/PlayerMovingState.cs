@@ -102,7 +102,7 @@ public class PlayerMovingState : PlayerState
 
         _player.LookDir = _moveDirection;
 
-        if (_player.CanWalkForward)
+        if (_player.ValidCapsuleDetector == 3)
         {
             float Speed = _desc.Speed * _joystick.control.magnitude;
             Speed = Mathf.Clamp(Speed, _desc.Speed / 3, _desc.Speed);
@@ -120,9 +120,13 @@ public class PlayerMovingState : PlayerState
         _player.PlayerAnimator.SetFloat("Speed", animSpeed);
         _player.PlayerFaceAnimator.SetFloat("Speed",animSpeed);
 
-        Vector3 CapsulePos = _player.transform.position + _player.DirectionalCapsuleOffset;
-        Vector3 Dir = InputManager.Instance.GetMoveDirection().normalized * 0.3f;
-        _player.DirectionalCapsule.transform.position = new Vector3(Dir.x + CapsulePos.x, CapsulePos.y, CapsulePos.z + Dir.y);
+        Vector3 capsuleBasePos = _player.transform.position + _player.DirectionalCapsuleOffset;
+        Vector3 moveDir = ((InputManager.Instance.GetMoveDirection().x * Vector3.right) + (InputManager.Instance.GetMoveDirection().y * Vector3.forward)).normalized * 0.3f;
+
+        _player.DirectionalCapsuleContainer.transform.GetChild(0).position = capsuleBasePos + Quaternion.AngleAxis(0, Vector3.up) * moveDir;
+        _player.DirectionalCapsuleContainer.transform.GetChild(1).position = capsuleBasePos + Quaternion.AngleAxis(45, Vector3.up) * moveDir;
+        _player.DirectionalCapsuleContainer.transform.GetChild(2).position = capsuleBasePos + Quaternion.AngleAxis(-45, Vector3.up) * moveDir;
+
     }
 
     private void OnSkill()
