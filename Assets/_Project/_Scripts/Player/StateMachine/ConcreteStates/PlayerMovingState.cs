@@ -45,7 +45,7 @@ public class PlayerMovingState : PlayerState
         _sprites = _player.GetComponentsInChildren<SpriteRenderer>();
         _player.PlayerAnimator.SetBool("IsMoving",true);
         _player.PlayerFaceAnimator.SetBool("IsMoving", true);
-        _player.Input.OnSkillMenu += OnSkill;
+        _player.Input.OnSkillButton += OnSkill;
         _time = 0;
         _desc.Speed = _player.CurrentSpeed;
 
@@ -57,7 +57,7 @@ public class PlayerMovingState : PlayerState
         base.ExitState();
         _player.PlayerAnimator.SetBool("IsMoving", false);
         _player.PlayerFaceAnimator.SetBool("IsMoving", false);
-        _player.Input.OnSkillMenu -= OnSkill;
+        _player.Input.OnSkillButton -= OnSkill;
     }
 
     public override void FrameUpdate()

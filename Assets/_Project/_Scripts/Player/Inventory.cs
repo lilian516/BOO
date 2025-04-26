@@ -37,7 +37,8 @@ public class Inventory : MonoBehaviour, IChangeable
         _skillImages.Clear();
         _currentSkill = null;
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
-        _skillButtonUI = GameManager.Instance.SkillStickParent.transform.GetChild(0).GetChild(1).gameObject;
+        _skillButtonUI = GameManager.Instance.SkillStickUI.gameObject;
+        _skillButtonUI.GetComponent<Animator>().enabled = false;
         _baseButtonSprite = _skillButtonUI.GetComponent<Image>().sprite;
 
 
@@ -50,7 +51,6 @@ public class Inventory : MonoBehaviour, IChangeable
             int index = i;
             skillUI.GetComponent<Button>().onClick.AddListener(delegate { SelectSkill(index); ChangeSkillImage(); });
 
-            InputManager.Instance.OnSkillMenu += ChangeSkillImage;
         }
         for (int i = 0; i < _skills.Count; i++)
         {
@@ -68,18 +68,10 @@ public class Inventory : MonoBehaviour, IChangeable
 
     void Update()
     {
-        
-        
     }
 
     private void SelectSkill(int index)
     {
-       if (AngrySystem.Instance.IsAngry)
-       {
-            ChangeCurrentSkill(_angrySkills);
-            return;
-       }
-        
        ChangeCurrentSkill(_skills[index]);
     }
 
@@ -200,23 +192,21 @@ public class Inventory : MonoBehaviour, IChangeable
 
     public void Change()
     {
-        for(int i = 0; i < _skills.Count; i++)
+        Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
+        _skillButtonUI.GetComponent<Animator>().enabled = true;
+        _skillButtonUI.GetComponent<Animator>().SetTrigger("UseSmash");
+
+        for (int i = 0; i < _skills.Count; i++)
         {
-            _skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = _angrySkills.GetSprite();
+            Helpers.HideCanva(_skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<CanvasGroup>());
         }
 
-        if (_skills.Count == 0)
-        {
-            Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
-            Helpers.ShowCanva(_skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<CanvasGroup>());
-            _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = _angrySkills.GetSprite();
-        }
+        _currentSkill = _angrySkills;
 
-        if (_currentSkill != null)
+        InputManager.Instance.OnSkillButton += delegate
         {
-            _currentSkill = _angrySkills;
-            _skillButtonUI.GetComponent<Image>().sprite = _angrySkills.GetSprite();
-        }
+            _skillButtonUI.GetComponent<Animator>().SetTrigger("UseSmash");
+        };
 
     }
 
@@ -224,18 +214,22 @@ public class Inventory : MonoBehaviour, IChangeable
     {
         for (int i = 0; i < _skills.Count; i++)
         {
-            _skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = _skills[i].GetSprite();
+            Helpers.ShowCanva(_skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<CanvasGroup>());
         }
 
         if (_skills.Count == 0)
         {
             Helpers.HideCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
-            Helpers.HideCanva(_skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<CanvasGroup>());
-            _skillCanvaGroup.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = null;
         }
 
         _currentSkill = null;
+        _skillButtonUI.GetComponent<Animator>().enabled = false;
         _skillButtonUI.GetComponent<Image>().sprite = _baseButtonSprite;
+
+        InputManager.Instance.OnSkillButton -= delegate
+        {
+            _skillButtonUI.GetComponent<Animator>().SetTrigger("UseSmash");
+        };
     }
 
     public void SetAngrySkill(Skill skill)
