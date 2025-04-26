@@ -17,7 +17,7 @@ public class JoystickUI : MonoBehaviour, IChangeable
         _middleCircle = transform.GetChild(1).gameObject;
         _joystick = transform.GetChild(2).gameObject;
         _baseRange = _joystick.GetComponent<OnScreenStick>().movementRange;
-        Debug.Log(_joystick);
+        
 
         AngrySystem.Instance.OnChangeElements += Change;
         AngrySystem.Instance.OnResetElements += ResetChange;
