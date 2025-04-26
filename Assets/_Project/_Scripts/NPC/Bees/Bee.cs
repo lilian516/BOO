@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bee : MonoBehaviour, IInteractable, IChangeable
+public class Bee : MonoBehaviour, IInteractable, IChangeable, ISmashable
 {
     [SerializeField] float _speed;
     [SerializeField] Animator _animator;
     [SerializeField] BeeAnimEventPlayer _eventPlayer;
     [SerializeField] AnimationClip _animationPiqure;
-    public AnimationClip AnimationSmash;
+    [SerializeField] AnimationClip _animationSmash;
 
     private BeeState _currentState;
 
@@ -252,6 +252,11 @@ public class Bee : MonoBehaviour, IInteractable, IChangeable
             AngrySystem.Instance.OnResetElements -= ResetChange;
         }
         
+    }
+
+    public void SetAnimationSmash(Skill smashSkill)
+    {
+        smashSkill.AnimationSkill = _animationSmash;
     }
 
     private enum BeeState

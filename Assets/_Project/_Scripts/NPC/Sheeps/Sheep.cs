@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 
-public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable
+public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmashable
 {
     [SerializeField] private PlayerSkill _currentInteract;
     public Vector3 PushedDirection;
@@ -23,7 +23,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable
 
     private Player _player;
 
-    public AnimationClip AnimationSmash;
+    [SerializeField] AnimationClip _animationSmash;
 
     void Start()
     {
@@ -227,5 +227,10 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable
         {
             _animatorFeedback.SetTrigger("NoDetected");
         }
+    }
+
+    public void SetAnimationSmash(Skill smashSkill)
+    {
+        smashSkill.AnimationSkill = _animationSmash;
     }
 }

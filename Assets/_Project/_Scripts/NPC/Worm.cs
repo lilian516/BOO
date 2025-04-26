@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Worm : MonoBehaviour, IInteractable
+public class Worm : MonoBehaviour, IInteractable, ISmashable
 {
 
     [SerializeField] private Transform[] _pathReferences;
+
+    [SerializeField] AnimationClip _animationSmash;
     private int _currentIndex;
 
     public float Speed;
@@ -72,5 +74,11 @@ public class Worm : MonoBehaviour, IInteractable
             _timeStep = 0.0f;
 
         }
+    }
+
+    public void SetAnimationSmash(Skill smashSkill)
+    {
+        smashSkill.AnimationSkill = _animationSmash;
+        
     }
 }

@@ -57,16 +57,13 @@ public class SmashSkill : Skill
                 ClosestColliderIndex = System.Array.IndexOf(hitColliders, collider);
             }
             _interactable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<IInteractable>();
-            Sheep sheep = hitColliders[ClosestColliderIndex].gameObject.GetComponent<Sheep>();
-            Bee bee = hitColliders[ClosestColliderIndex].gameObject.GetComponent<Bee>();
-            if (sheep != null)
+
+            ISmashable smashable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<ISmashable>();
+            
+            if (smashable != null)
             {
-                AnimationSkill = sheep.AnimationSmash;
+                smashable.SetAnimationSmash(this);
                 
-            }
-            else if(bee != null)
-            {
-                AnimationSkill = bee.AnimationSmash;
             }
             else
             {
