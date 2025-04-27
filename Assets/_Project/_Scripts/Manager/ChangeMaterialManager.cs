@@ -45,4 +45,12 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
     {
         
     }
+
+    private void OnDestroy()
+    {
+        foreach (MaterialChanger changer in _materials)
+        {
+            changer.Material.SetTexture("_BaseMap", changer.TextureBoo);
+        }
+    }
 }
