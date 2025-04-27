@@ -343,7 +343,7 @@ public class Player : MonoBehaviour, IChangeable
         PlayerFaceAnimator.enabled = true;
 
         CurrentSpeed = _minSpeed;
-        Debug.Log(StateMachine.CurrentState);
+        
         StateMachine.ChangeState(IdleState);
     }
     private void ChangeAnimatorToCurious()

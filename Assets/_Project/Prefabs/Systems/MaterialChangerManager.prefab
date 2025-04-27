@@ -69,3 +69,39 @@ MonoBehaviour:
   - Material: {fileID: 2100000, guid: b52f9e566a6aa4648a16f4b0400e049f, type: 2}
     TextureBoo: {fileID: 2800000, guid: 7dece99f5adfc4141bdffeba6e1fa091, type: 3}
     TextureDarkBoo: {fileID: 2800000, guid: e1eb9b401f5611a4cb5be903f642eeda, type: 3}
+  - Material: {fileID: 2100000, guid: 0c37cbdedcbd302419b46422175d883e, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 36a4b8b5a4d194445b9cbdd6241a3b16, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: a9c7a539c16b64b42b5dde4f593dcb72, type: 3}
+  - Material: {fileID: 2100000, guid: 61816dab9bf55d648ae1d254c91b0786, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 954e239076aa78848a6e6ed0828030ba, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 2f3a006714a76de4aae3e1ee057127ca, type: 3}
+  - Material: {fileID: 2100000, guid: 48989822e183dfb4185cac8de0098757, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 78fadb9df079b2f4a8d5babca93bae87, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 70fcdb86567d18f4b8c51ff7be7e0714, type: 3}
+  - Material: {fileID: 2100000, guid: a1fbef49d9b2c9047b9399e0da65a7c0, type: 2}
+    TextureBoo: {fileID: 2800000, guid: bc7655d71b765cf41a92ce0ae4e83a21, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 8143f1a6273d7964dbe6a209f0bfa5fc, type: 3}
+  - Material: {fileID: 2100000, guid: 2045f9b7b26c04a4ea56f56a96e470d9, type: 2}
+    TextureBoo: {fileID: 2800000, guid: a8f665c465e426844ae4d642a55b09b1, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 3006549d83099a645b18694ea742afb6, type: 3}
+  - Material: {fileID: 2100000, guid: ebb26cf0bb71d7646840d66fb47e16e5, type: 2}
+    TextureBoo: {fileID: 2800000, guid: c700a415b55f4dc4a8e1cc8fba74683f, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 87a19f6b5ba75c440ae5fbf95b2c422e, type: 3}
+  - Material: {fileID: 2100000, guid: 5f0d53f43edab8646a08f5ac88957b4a, type: 2}
+    TextureBoo: {fileID: 2800000, guid: e0011a580400afd41a182d324cfb7027, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: e2b41642dfd3e9d4e89cb3075e6b94ad, type: 3}
+  - Material: {fileID: 2100000, guid: 2a620b29395f63f44abf9e9d507394ad, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 69e8fa2fd6407b147bf434abed83c3f3, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: f94eeb647c712a340b60832392aecf52, type: 3}
+  - Material: {fileID: 2100000, guid: d990924aef7036247a9b1d392128b206, type: 2}
+    TextureBoo: {fileID: 2800000, guid: b701e92485a3d194ebc3d60ef618538b, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 37ea429437e45b646ad5eca867a225ab, type: 3}
+  - Material: {fileID: 2100000, guid: ddb631ef94a7aa24385f290fe2a42976, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 5cf47bd4d1d407848a5e1229edb3674c, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 6cffc6b880d657a44988990ad0910e54, type: 3}
+  - Material: {fileID: 2100000, guid: d8c3d384ecb1f7242a9dde211373b17f, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 3a068ccff924c6e458772ccb0642b58e, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: f6196c27b8ef9ed47a265dac9be2871b, type: 3}
+  - Material: {fileID: 2100000, guid: da2c1813e3359e742a2ae78fcc10f0cd, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 7d67c58c6da80004cab8aa312a0494a6, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 754a9079c8aa738419063d84e1e82b83, type: 3}

@@ -35,6 +35,21 @@ public class UiManagerInGame : MonoBehaviour, IChangeable
         if (AngrySystem.Instance.IsAngry)
         {
             Change();
+            switch (AngrySystem.Instance.CalmLimits)
+            {
+                
+
+                case 2:
+                    UpdateAngryModeSecond();
+                    break;
+                case 1:
+                    
+                    UpdateAngryModeFirst();
+                    break;
+
+
+            }
+            
         }
         else
         {
