@@ -82,7 +82,7 @@ public class AngrySystem : Singleton<AngrySystem>
             OnChangeElements?.Invoke();
             _angryLimits = _baseAngryLimits;
 
-            VibrationSystem.Instance.VibratePhone(50.0f, 3.0f);
+            VibrationSystem.Instance.VibratePhone(20.0f, 1.0f);
         }
     }
 

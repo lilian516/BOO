@@ -4,8 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneSystem : Singleton<LoadSceneSystem>
 {
-    public IEnumerator LoadTargetScenes(string[] targetScenes)
+    [SerializeField] private GameObject _loadingObject;
+    [SerializeField] private Animator _loadingScreenAnimator;
+
+
+    private bool _fakeLoading;
+    public IEnumerator LoadTargetScenes(string[] targetScenes, bool needLoadingScreen)
     {
+        if (needLoadingScreen)
+        {
+            _loadingObject.SetActive(true);
+            _loadingScreenAnimator.SetBool("IsLoading", true);
+        }
+
+        //yield return new WaitForSeconds(1.0f);
+
         foreach (string scene in targetScenes)
         {
             AsyncOperation sceneOperation = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
@@ -15,6 +28,13 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
             }
             yield return new WaitUntil(() => sceneOperation.isDone);
         }
+
+        if (!_fakeLoading)
+        {
+            _loadingObject.SetActive(false);
+            _loadingScreenAnimator.SetBool("IsLoading", false);
+        }
+
     }
     public IEnumerator UnloadTargetScenes(string[] targetScenes)
     {
@@ -27,5 +47,17 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
             }
             yield return new WaitUntil(() => sceneOperation.isDone);
         }
+    }
+
+    public IEnumerator FakeLoadingScreen(float duration)
+    {
+        _loadingObject.SetActive(true);
+        _loadingScreenAnimator.SetBool("IsLoading", true);
+        _fakeLoading = true;
+
+        yield return new WaitForSeconds(duration);
+        _loadingObject.SetActive(false);
+        _loadingScreenAnimator.SetBool("IsLoading", false);
+        _fakeLoading = false;
     }
 }

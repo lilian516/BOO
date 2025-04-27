@@ -53,20 +53,32 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public int KilledSheep;
 
     private bool _doIntro;
-
     private void Start()
     {
-        StartCoroutine(WaitForScenesAndInitialize());
-
+        _doIntro = true;
+        
         Application.targetFrameRate = 45;
         KilledSheep = 0;
-        _doIntro = true;
+
+        StartCoroutine(WaitForScenesAndInitialize());
     }
 
     private IEnumerator WaitForScenesAndInitialize()
     {
 
-        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene", "MainMenu" });
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene"}, true);
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, true);
+
+
+        if (_doIntro)
+        {
+            SoundSystem.Instance.PlaySoundFXClipByKey("Intro Boo Crash");
+            yield return LoadSceneSystem.Instance.FakeLoadingScreen(3.1f);
+        }
+        else
+        {
+            yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, true);
+        }
 
         MainCamera = GameObject.FindGameObjectWithTag(MAIN_CAMERA_TAG);
         MainVirtualCamera = GameObject.FindGameObjectWithTag(MAIN_VIRTUAL_CAMERA_TAG);
@@ -78,19 +90,12 @@ public class GameManager : Singleton<GameManager>
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
 
-        StartCoroutine(test());
-    }
-
-    private IEnumerator test()
-    {
-        yield return new WaitForSeconds(1.5f);
         Player.GetComponent<Player>().PlayerAnimator.enabled = true;
     }
-
     public IEnumerator LaunchGame()
     {
 
-        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "UIInGame"});
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "UIInGame"}, false);
 
         SkillStickParent = GameObject.FindGameObjectWithTag(SKILL_STICK_PARENT_TAG);
         SkillStickUI = GameObject.FindGameObjectWithTag(SKILL_STICK_UI_TAG);
@@ -130,7 +135,7 @@ public class GameManager : Singleton<GameManager>
     public IEnumerator BackToMainMenu()
     {
         SaveSystem.Instance.SaveAllData();
-        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" });
+        yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, false);
         
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
