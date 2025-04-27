@@ -9,10 +9,20 @@ public struct MaterialChanger
     public Texture2D TextureBoo;
     public Texture2D TextureDarkBoo;
 }
+
+[System.Serializable]
+public struct WaterChanger
+{
+    public GameObject Water;
+    public Material MaterialBoo;
+    public Material MaterialDarkBoo;
+}
 public class ChangeMaterialManager : MonoBehaviour, IChangeable
 {
 
     [SerializeField] List<MaterialChanger> _materials;
+    [SerializeField] WaterChanger _waterChanger;
+    
 
     public void Change()
     {
@@ -20,6 +30,7 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
         {
             changer.Material.SetTexture("_BaseMap", changer.TextureDarkBoo);
         }
+        _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialDarkBoo;
     }
 
     public void ResetChange()
@@ -28,6 +39,7 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
         {
             changer.Material.SetTexture("_BaseMap", changer.TextureBoo);
         }
+        _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialBoo;
     }
 
 
@@ -52,5 +64,6 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
         {
             changer.Material.SetTexture("_BaseMap", changer.TextureBoo);
         }
+        _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialBoo;
     }
 }

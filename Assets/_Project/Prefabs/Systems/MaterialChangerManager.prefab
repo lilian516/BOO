@@ -105,3 +105,7 @@ MonoBehaviour:
   - Material: {fileID: 2100000, guid: da2c1813e3359e742a2ae78fcc10f0cd, type: 2}
     TextureBoo: {fileID: 2800000, guid: 7d67c58c6da80004cab8aa312a0494a6, type: 3}
     TextureDarkBoo: {fileID: 2800000, guid: 754a9079c8aa738419063d84e1e82b83, type: 3}
+  _waterChanger:
+    Water: {fileID: 0}
+    MaterialBoo: {fileID: 2100000, guid: 37e6bb25fee76714c8dbac7b9f8e78d2, type: 2}
+    MaterialDarkBoo: {fileID: 2100000, guid: 3d4ecf19213c605438ace36fd058bd4c, type: 2}
