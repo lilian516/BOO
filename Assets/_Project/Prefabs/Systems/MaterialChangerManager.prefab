@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2789330101295135625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4841277408680028550}
+  - component: {fileID: 2325614684872545737}
+  m_Layer: 0
+  m_Name: MaterialChangerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4841277408680028550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2789330101295135625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2325614684872545737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2789330101295135625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66da30bd38fe8e4e94dafe1c657dd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _materials:
+  - Material: {fileID: 2100000, guid: 3feb944c18c247b47b26a21baa094cbf, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 0808da2ef46107a41a38c154136b7fc2, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 2990fe38cc9f45c47bc1fed4104fe23f, type: 3}
+  - Material: {fileID: 2100000, guid: 1829415efad9a6b41b6260efc7918cb2, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 6e70dd7a8aaf61b44ba74b6d6b166396, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 5641b1ad14b4c034284827ecea8e2ee7, type: 3}
+  - Material: {fileID: 2100000, guid: 32347eb832e7ba745a303d2f95a05678, type: 2}
+    TextureBoo: {fileID: 2800000, guid: e16f174707e56ad4bb3d12b01b544969, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: e53ae016636f6c24ab5fdcf65e304d29, type: 3}
+  - Material: {fileID: 2100000, guid: d9817977324119645a79dc207b2f8145, type: 2}
+    TextureBoo: {fileID: 2800000, guid: a7580d14e5e896b43a242ef780abfcf8, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: ac53e8254f8dc034bb9add8378bbd42a, type: 3}
+  - Material: {fileID: 2100000, guid: 7e5f3659c45c3c146993fbab3554af65, type: 2}
+    TextureBoo: {fileID: 2800000, guid: fc2dd36243fd503479f6ae5b89fa0768, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 4570ba83339b07a48ad40b5f00f7b5f4, type: 3}
+  - Material: {fileID: 2100000, guid: c6cfaa83a90c8e04c9ccd6fba5746731, type: 2}
+    TextureBoo: {fileID: 2800000, guid: a7a559db387a71043b3aa77bc1209729, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: b446f8525453da746a0164769973107c, type: 3}
+  - Material: {fileID: 2100000, guid: 4d8c5aa0e821c7843881041b1e851323, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 67280a4896cdfe147a5dd71106cfe62f, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 6d966d6401b0aaf4ab696a8d2b24aacd, type: 3}
+  - Material: {fileID: 2100000, guid: b52f9e566a6aa4648a16f4b0400e049f, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 7dece99f5adfc4141bdffeba6e1fa091, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: e1eb9b401f5611a4cb5be903f642eeda, type: 3}
