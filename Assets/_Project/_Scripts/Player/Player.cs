@@ -40,11 +40,11 @@ public class Player : MonoBehaviour, IChangeable
 
     public float DetectorRadius;
     public GameObject DirectionalIndicator;
-    public GameObject DirectionalCapsule;
-    [SerializeField] public Vector3 DirectionalCapsuleOffset;
+    public GameObject DirectionalCapsuleContainer;
+    [HideInInspector] public Vector3 DirectionalCapsuleOffset;
 
     private Inventory _inventory;
-    [HideInInspector] public bool CanWalkForward;
+    [HideInInspector] public int ValidCapsuleDetector;
 
     [Header("State Descriptors")]
     [Space(10f)]
@@ -109,11 +109,11 @@ public class Player : MonoBehaviour, IChangeable
         _minSpeed = _playerMovingStateDescriptor.Speed;
         CurrentSpeed = _minSpeed;
 
-        CanWalkForward = true;
+        ValidCapsuleDetector = 0;
         CurrentTriggerLevel = 0;
     
 
-        DirectionalCapsuleOffset = DirectionalCapsule.transform.localPosition;
+        DirectionalCapsuleOffset = DirectionalCapsuleContainer.transform.GetChild(0).transform.localPosition;
         DirectionalIndicator.SetActive(false);
 
         SkillDir = new Vector3(1,0,0);

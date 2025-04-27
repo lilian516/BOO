@@ -5,13 +5,18 @@ using UnityEngine;
 public class BlockWalking : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    private bool _alreadyValid;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != 3)
             return;
 
-        _player.CanWalkForward = true;
+        if (!_alreadyValid)
+        {
+            _player.ValidCapsuleDetector++;
+            _alreadyValid = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -19,13 +24,22 @@ public class BlockWalking : MonoBehaviour
             return;
 
         _player.RB.velocity = Vector3.zero;
-        _player.CanWalkForward = false;
+
+        if (_alreadyValid)
+        {
+            _player.ValidCapsuleDetector--;
+            _alreadyValid = false;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer != 3)
             return;
 
-        _player.CanWalkForward = true;
+        if (!_alreadyValid)
+        {
+            _player.ValidCapsuleDetector++;
+            _alreadyValid = true;
+        }
     }
 }
