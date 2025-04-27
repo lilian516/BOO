@@ -131,7 +131,10 @@ public class DialogueSystem : Singleton<DialogueSystem>
         OnEndDialogue?.Invoke();
 
         if (GameManager.Instance.Player.GetComponent<Player>().HasSkill())
+        {
             InputManager.Instance.EnableSkillStick();
+        }
+
     }
 
     public void AdvanceDialogue()
@@ -197,10 +200,11 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     private void TakeChoice()
     {
+        InputManager.Instance.EnableSkillStick();
+
         OnTakeEvent?.Invoke(ProcessingDialogue.TakeEventType);
         EndDialogue();
         GameManager.Instance.Player.GetComponent<Player>().AddSkill(ProcessingDialogue.SkillToGive, ProcessingDialogue.SkillDescriptor);
-        InputManager.Instance.EnableSkillStick();
 
         _choiceButton.onClick.RemoveAllListeners();
         _cancelButton.onClick.RemoveAllListeners();

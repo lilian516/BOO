@@ -94,9 +94,8 @@ public class Inventory : MonoBehaviour, IChangeable
 
     public void AddSkill(Skill skill, PlayerSkill playerSkill, bool isAngry = false)
     {
-        if (_skills.Count == 7)
+        if (_skills.Count == 3)
         {
-            Time.timeScale = 0;
             ManageInventory(skill, playerSkill);
             return;
         }
@@ -138,30 +137,43 @@ public class Inventory : MonoBehaviour, IChangeable
 
     private void ManageInventory(Skill skill, PlayerSkill playerSkill)
     {
+        Player player = GameManager.Instance.Player.GetComponent<Player>();
+
+        player.StateMachine.ChangeState(player.WaitingState);
+
         InputManager.Instance.DisableControllerStick();
+        InputManager.Instance.DisableSkillStick();
 
-        GameObject inventoryMenu = GameManager.Instance.InventoryFullMenu.transform.GetChild(0).gameObject;
+        GameObject inventoryMenu = GameManager.Instance.InventoryFullMenu;
+        Helpers.ShowCanva(inventoryMenu.GetComponent<CanvasGroup>());
 
-        inventoryMenu.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = skill.GetSprite();
-        inventoryMenu.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = skill.GetName();
+        inventoryMenu.transform.Find("NewSkill").GetComponent<Image>().sprite = skill.GetSprite();
 
-        for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
+        for(int i = 0; i < _skills.Count; i++)
         {
+            inventoryMenu.transform.Find("Skill"+ (i + 1)).GetComponent<Image>().sprite = _skills[i].GetSprite();
             int index = i;
-            _skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<Button>().onClick.AddListener(delegate { ReplaceSkill(index,skill, playerSkill); });
+            inventoryMenu.transform.Find("Skill"+ (i + 1)).GetComponent<Button>().onClick.AddListener(delegate { ReplaceSkill(index, skill, playerSkill); });
         }
+
+        _currentSkill = null;
+
     }
 
     private void StopManageInventory()
     {
-        Time.timeScale = 1;
+        Player player = GameManager.Instance.Player.GetComponent<Player>();
+
+        player.StateMachine.ChangeState(player.TakeSkillState);
+
         InputManager.Instance.EnableControllerSticks();
         InputManager.Instance.EnableSkillStick();
         Helpers.HideCanva(GameManager.Instance.InventoryFullMenu.GetComponent<CanvasGroup>());
 
-        for (int i = 0; i < _skillCanvaGroup.transform.childCount; i++)
+        for (int i = 0; i < _skills.Count; i++)
         {
-            _skillCanvaGroup.transform.GetChild(i).gameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+            int index = i;
+            GameManager.Instance.InventoryFullMenu.transform.Find("Skill" + (i + 1)).GetComponent<Button>().onClick.RemoveAllListeners();
         }
     }
 
