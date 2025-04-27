@@ -33,7 +33,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _foamAmount
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -59,22 +59,29 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _DetailColorSpeed: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WavesSpeed: 1
     - _depth: 0
     - _distortScale: 0.02
     - _distortionStrength: 0.08
     - _foamAmount: 1.5
-    - _foamCutoff: 5
-    - _foamScale: 3500
-    - _foamSpeed: 0.0005
-    - _mainTextureScale: 0.05
+    - _foamCutoff: 2.77
+    - _foamScale: 300
+    - _foamSpeed: 0.0008
+    - _mainTextureScale: 0.08
     - _movementSpeed: 0.05
     - _speedDistortX: 0.02
     - _speedDistortY: 0.01
     - _strength: 0
     - _tintOffset: 2
+    - _tintOffset2: -0.21
     m_Colors:
+    - _DetailsColor: {r: 0.4590483, g: 0.8867924, b: 0.4392132, a: 0}
+    - _DetailsDarkColor: {r: 0.37547597, g: 0.46152508, b: 1.0076064, a: 0}
+    - _DetailsLightColor: {r: 0.4590483, g: 0.8867924, b: 0.4392132, a: 0}
+    - _Displacement: {r: 0, g: 0.4, b: 0, a: 0}
     - _baseColor: {r: 0.26041287, g: 0.71959823, b: 0.78867924, a: 0.8}
     - _foamColor: {r: 1.662551, g: 1.662551, b: 1.662551, a: 0.3921569}
     - _secondaryColor: {r: 0.5069775, g: 0.833045, b: 0.8867924, a: 0.8}
