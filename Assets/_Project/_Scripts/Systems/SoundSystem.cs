@@ -391,6 +391,11 @@ public class SoundSystem : Singleton<SoundSystem>
         Destroy(audioSource.gameObject, clipLength);
     }
 
+    public float GetSFXLengthByKey(string key)
+    {
+        return GetSFXByKey(key).length;
+    }
+
     #endregion
 
     #region Coroutines
