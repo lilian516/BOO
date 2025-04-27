@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LoadSceneSystem : Singleton<LoadSceneSystem>
 {
     [SerializeField] private GameObject _loadingObject;
+    [SerializeField] CanvasGroup _canvasGroupLoading;
     [SerializeField] private Animator _loadingScreenAnimator;
 
 
@@ -13,7 +14,8 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
     {
         if (needLoadingScreen)
         {
-            _loadingObject.SetActive(true);
+            Helpers.ShowCanva(_canvasGroupLoading);
+            //_loadingObject.SetActive(true);
             _loadingScreenAnimator.SetBool("IsLoading", true);
         }
 
@@ -31,7 +33,8 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
 
         if (!_fakeLoading)
         {
-            _loadingObject.SetActive(false);
+            //_loadingObject.SetActive(false);
+            Helpers.HideCanva(_canvasGroupLoading);
             _loadingScreenAnimator.SetBool("IsLoading", false);
         }
 
@@ -51,12 +54,14 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
 
     public IEnumerator FakeLoadingScreen(float duration)
     {
-        _loadingObject.SetActive(true);
+        //_loadingObject.SetActive(true);
+        Helpers.ShowCanva(_canvasGroupLoading);
         _loadingScreenAnimator.SetBool("IsLoading", true);
         _fakeLoading = true;
 
         yield return new WaitForSeconds(duration);
-        _loadingObject.SetActive(false);
+        //_loadingObject.SetActive(false);
+        Helpers.HideCanva(_canvasGroupLoading);
         _loadingScreenAnimator.SetBool("IsLoading", false);
         _fakeLoading = false;
     }

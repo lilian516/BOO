@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingObject: {fileID: 1439582350}
+  _canvasGroupLoading: {fileID: 691198868}
   _loadingScreenAnimator: {fileID: 1937978895}
 --- !u!1 &347417591
 GameObject:
@@ -437,6 +438,7 @@ GameObject:
   - component: {fileID: 691198867}
   - component: {fileID: 691198866}
   - component: {fileID: 691198865}
+  - component: {fileID: 691198868}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -527,6 +529,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!225 &691198868
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691198863}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &695945569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7749059122009053777, guid: aaba1044546a6374bb1d40316a54726c,
@@ -715,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1439582351
 Transform:
   m_ObjectHideFlags: 0
