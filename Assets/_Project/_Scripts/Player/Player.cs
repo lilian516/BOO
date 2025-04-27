@@ -264,9 +264,11 @@ public class Player : MonoBehaviour, IChangeable
                 break;
         }
         ChangeAnimTakeSkill(descriptor.TakeAnimation);
-        StateMachine.ChangeState(TakeSkillState);
 
-        
+        if (_inventory.PlayerSkills.Count == 3)
+            return;
+
+        StateMachine.ChangeState(TakeSkillState);
 
     }
 

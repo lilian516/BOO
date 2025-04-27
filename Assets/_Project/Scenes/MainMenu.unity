@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d1c94aa7e00daf84ab3a25c6a0d7962e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0fae946e212ab9a4f8911839b3792a33, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2313,9 +2313,9 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 60b044231c8b0de459ff9e49757a2716, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: d1c94aa7e00daf84ab3a25c6a0d7962e, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 0fae946e212ab9a4f8911839b3792a33, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 431de1f53b504fa4e8a0b6aa457437fb, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 0fae946e212ab9a4f8911839b3792a33, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: d1c94aa7e00daf84ab3a25c6a0d7962e, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2342,7 +2342,7 @@ MonoBehaviour:
           m_StringArgument: French
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1136630733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,7 +4110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a65cf379ce79d36448fc488efa68fb7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90173930f497f074b9a2e8863318be11, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4158,9 +4158,9 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 51e85d56e7cb09240a8ced2ef32fda1f, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: a65cf379ce79d36448fc488efa68fb7f, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 90173930f497f074b9a2e8863318be11, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: a122108a026384740a531a33c97b18a3, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 90173930f497f074b9a2e8863318be11, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: a65cf379ce79d36448fc488efa68fb7f, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
