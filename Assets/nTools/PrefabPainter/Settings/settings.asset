@@ -8065,7 +8065,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 0
+      selected: 1
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: Grass21 copy
@@ -8697,7 +8697,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 1
+      selected: 0
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: Grass22 copy
@@ -17866,7 +17866,7 @@ MonoBehaviour:
       customPreviewImage: {fileID: 0}
     - name: Grass38
       settings:
-        brushRadius: 1
+        brushRadius: 0.18
         brushSpacing: 0.5
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
@@ -19132,7 +19132,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 1
+      selected: 0
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: FBX_Flower 2
@@ -19448,7 +19448,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 0
+      selected: 1
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: FBX_Flower 3
@@ -21036,7 +21036,7 @@ MonoBehaviour:
     levelsInWhite: 255
     levelsOutBlack: 0
     levelsOutWhite: 255
-  activeTab: 4
+  activeTab: 5
   paintOnSelected: 1
   paintLayers:
     serializedVersion: 2
