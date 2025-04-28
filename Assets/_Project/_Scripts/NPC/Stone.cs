@@ -53,6 +53,7 @@ public class Stone : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.StickSkill:
+                AchievementSystem.Instance.SucceedAchievement(AchievementCondition.Walking_Rock);
                 _isStopped = false;
                 _animator.SetTrigger("Return");
                 transform.position += new Vector3(0, 0.3f, 0);

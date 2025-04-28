@@ -104,11 +104,6 @@ public class Inventory : MonoBehaviour, IChangeable
             Helpers.ShowCanva(GameManager.Instance.SkillStickParent.GetComponent<CanvasGroup>());
         }
 
-        if ( !_achievementObtained)
-        {
-            VerifyAchivement(playerSkill);
-        }
-
         PlayerSkills.Add(playerSkill);
         _skills.Add(skill);
 
@@ -191,15 +186,6 @@ public class Inventory : MonoBehaviour, IChangeable
         _skillCanvaGroup.transform.GetChild(index).gameObject.GetComponent<Image>().sprite = skill.GetSprite();
 
         StopManageInventory();
-    }
-
-    private void VerifyAchivement(PlayerSkill skill)
-    {
-        if (skill == PlayerSkill.BubbleSkill && PlayerSkills.Contains(skill))
-        {
-            AchievementSystem.Instance.SucceedAchievement(AchievementCondition.Two_Bubbles_In_Inventory);
-            _achievementObtained = true;
-        }
     }
 
     public void Change()

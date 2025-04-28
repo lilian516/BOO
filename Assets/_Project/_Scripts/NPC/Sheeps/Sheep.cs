@@ -59,6 +59,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
 
                 AngrySystem.Instance.ChangeCalmLimits();
                 GameManager.Instance.KilledSheep++;
+                AchievementSystem.Instance.VerifyAchievement();
 
                 SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { "Mouton Fear One", "Mouton Fear Two", "Mouton Fear Three" },
                 transform.position,0.8f);
@@ -178,6 +179,8 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
             return;
         if (IsGoodPosition)
         {
+            AchievementSystem.Instance.SucceedAchievement(AchievementCondition.String_Sheep);
+
             _animator.SetTrigger("Fall");
             StartCoroutine(GoDown());
             StartCoroutine(WaitOneSecond());
