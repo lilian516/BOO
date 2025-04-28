@@ -21,6 +21,7 @@ TagManager:
   - DialogueSkillButton
   - DialogueQuitButton
   - MainVirtualCamera
+  - BlackScreen
   layers:
   - Default
   - TransparentFX
@@ -36,6 +37,7 @@ TagManager:
   - Outline
   - NavMeshIgnore
   - Flowers
+  - 
   - 
   - 
   - 

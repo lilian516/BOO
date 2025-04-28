@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     private const string ACHIEVEMENT_UI_TAG = "AchievementUI";
     private const string ACHIEVEMENT_LIST_TAG = "AchievementList";
 
+    private const string BLACKSCREEN_UI_TAG = "BlackScreen";
 
     [HideInInspector] public GameObject MainCamera;
     [HideInInspector] public GameObject MainVirtualCamera;
@@ -49,6 +50,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject UIAchievementButton;
     [HideInInspector] public GameObject UIAchievementMenu;
     [HideInInspector] public GameObject UIAchievementList;
+    [HideInInspector] public GameObject UIBlackscreen;
 
     [HideInInspector] public int KilledSheep;
 
@@ -104,6 +106,7 @@ public class GameManager : Singleton<GameManager>
         DialogueQuitBtn = GameObject.FindGameObjectWithTag(DIALOGUE_QUIT_BTN_TAG);
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
+        UIBlackscreen = GameObject.FindGameObjectWithTag(BLACKSCREEN_UI_TAG);
 
         UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);
 

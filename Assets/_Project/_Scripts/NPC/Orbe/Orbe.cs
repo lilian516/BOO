@@ -41,7 +41,7 @@ public class Orbe : MonoBehaviour, IClickable
         _player.StateMachine.ChangeState(_player.IdleState);
 
         CinematicSystem.Instance.OnEndCinematic -= CheckEndCinematic;
-
+        GameManager.Instance.UIBlackscreen.GetComponent<CanvasGroup>().alpha = 0f;
         Destroy(gameObject);
     }
 
@@ -61,6 +61,7 @@ public class Orbe : MonoBehaviour, IClickable
     {
 
         yield return new WaitForSeconds(1f);
+        GameManager.Instance.UIBlackscreen.GetComponent<CanvasGroup>().alpha = 1f;
         CinematicSystem.Instance.PlayCinematic("Remumus");
         CinematicSystem.Instance.OnEndCinematic += CheckEndCinematic;
     }
