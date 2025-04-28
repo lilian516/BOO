@@ -20,6 +20,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
     public Vector3 PositionToGo { get; set; }
     public bool CanGoTo { get; set; }
     public bool IsGoodPosition { get => _isGoodPosition; set => _isGoodPosition = value; }
+    public bool NeedToFaceRight { get; set; }
 
     private Player _player;
 
@@ -28,6 +29,8 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
     void Start()
     {
         PositionToGo = transform.GetChild(0).position;
+
+        NeedToFaceRight = true;
     }
 
     private void SetPlayer()

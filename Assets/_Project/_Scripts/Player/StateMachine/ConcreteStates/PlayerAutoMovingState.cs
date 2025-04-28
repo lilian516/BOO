@@ -76,7 +76,14 @@ public class PlayerAutoMovingState : PlayerState
         base.ExitState();
 
         if (_player.CurrentClickable.CanGoTo)
+        {
             _player.CurrentClickable.OnDestinationReached();
+
+            if (_player.CurrentClickable.NeedToFaceRight)
+                Flip(false);
+            else 
+                Flip(true);
+        }
 
         _desc.NavMeshAgentPlayer.enabled = false;
         _player.PlayerAnimator.SetBool("IsMoving", false);
