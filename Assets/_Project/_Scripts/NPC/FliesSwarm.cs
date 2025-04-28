@@ -7,9 +7,12 @@ public class FliesSwarm : MonoBehaviour, IInteractable
     private ParticleSystem.Particle[] _particles;
     [SerializeField] AnimationClip _animationPlayerAngry;
 
+    private bool _flyAway;
+
     private void Start()
     {
         _particles = new ParticleSystem.Particle[_flies.main.maxParticles];
+        _flyAway = false;
     }
 
     public void Interact(PlayerSkill playerSkill)
@@ -21,6 +24,10 @@ public class FliesSwarm : MonoBehaviour, IInteractable
                 break;
 
             case PlayerSkill.SmashSkill:
+                if (_flyAway)
+                    break;
+
+                _flyAway = true;
                 AngrySystem.Instance.ChangeCalmLimits();
                 StartCoroutine(SlapFlies());
                 break;
