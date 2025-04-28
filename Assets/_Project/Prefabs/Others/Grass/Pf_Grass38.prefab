@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2150841526759265920}
   - component: {fileID: 3565031854516309753}
+  - component: {fileID: 2883755988592189542}
   m_Layer: 0
-  m_Name: Pf_Grass36
+  m_Name: Pf_Grass38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b85896248f218f40a2036cb8b53d712, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6be93e35d21beac43a2f6cb7d7300019, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2883755988592189542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3977219301150943940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6073a52af166d0f48b67e1aca974499a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteBoo: {fileID: 21300000, guid: 6be93e35d21beac43a2f6cb7d7300019, type: 3}
+  _spriteDarkBoo: {fileID: 21300000, guid: b736a8785b0ab89469d8c22075c3b82c, type: 3}
