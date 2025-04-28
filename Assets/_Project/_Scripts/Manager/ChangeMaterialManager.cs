@@ -74,6 +74,11 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
         {
             _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialBoo;
         }
+        if(AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnChangeElements += Change;
+            AngrySystem.Instance.OnResetElements += ResetChange;
+        }
         
     }
 }

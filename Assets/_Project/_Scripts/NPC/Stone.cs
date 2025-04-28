@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Stone : MonoBehaviour, IInteractable
 {
@@ -75,6 +76,7 @@ public class Stone : MonoBehaviour, IInteractable
             // Ajouter l'animation de Boo qui trébuche
             if (!AngrySystem.Instance.IsAngry)
             {
+                Debug.Log(player.PlayerAnimator);
                 player.ChangeAnimAngry(animationClipFall);
                 player.StateMachine.ChangeState(player.AngryState);
             }

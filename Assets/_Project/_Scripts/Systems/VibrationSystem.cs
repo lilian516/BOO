@@ -8,8 +8,7 @@ public class VibrationSystem : Singleton<VibrationSystem>
 
     public bool IsToggled { get => _isToggled; set => _isToggled = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
         _isToggled = true;
     }

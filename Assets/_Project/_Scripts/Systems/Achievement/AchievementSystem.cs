@@ -17,10 +17,11 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
     [HideInInspector] public List<AchievementAsset> UIAchievementToUpdate;
 
-    private void Start()
+    public void Init()
     {
         _achievementConditionList = new List<AchievementCondition>(_achievementList.Count);
         _achievementUnlocked = new List<bool>(_achievementList.Count);
+        UIAchievementToUpdate = new List<AchievementAsset>(_achievementList.Count);
 
         for (int i = 0; i < _achievementList.Count; i++)
         {

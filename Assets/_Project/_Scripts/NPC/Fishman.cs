@@ -52,4 +52,13 @@ public class Fishman : MonoBehaviour, ISpeakable, IChangeable, IDetectable
     {
         _animatorFeedback.SetBool("IsDetected", false);
     }
+
+    private void OnDestroy()
+    {
+        if (AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+    }
 }

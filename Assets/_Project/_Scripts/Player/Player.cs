@@ -461,4 +461,16 @@ public class Player : MonoBehaviour, IChangeable
     {
         return _inventory.PlayerSkills.Count > 0;
     }
+
+    private void OnDestroy()
+    {
+        if (AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnFirstAngerOccurence -= ChangeAnimatorToTriggerOne;
+            AngrySystem.Instance.OnSecondAngerOccurence -= ChangeAnimatorToTriggerTwo;
+
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using TMPro;
@@ -30,6 +31,8 @@ public class GameManager : Singleton<GameManager>
     private const string ACHIEVEMENT_LIST_TAG = "AchievementList";
 
     private const string BLACKSCREEN_UI_TAG = "BlackScreen";
+    private const string RESET_BUTTON_TAG = "ResetBtn";
+
 
     [HideInInspector] public GameObject MainCamera;
     [HideInInspector] public GameObject MainVirtualCamera;
@@ -51,26 +54,34 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject UIAchievementMenu;
     [HideInInspector] public GameObject UIAchievementList;
     [HideInInspector] public GameObject UIBlackscreen;
+    [HideInInspector] public GameObject ResetButton;
 
     [HideInInspector] public int KilledSheep;
 
     private bool _doIntro;
     private void Start()
     {
-        _doIntro = true;
-        
-        Application.targetFrameRate = 45;
-        KilledSheep = 0;
-
         StartCoroutine(WaitForScenesAndInitialize());
     }
 
     private IEnumerator WaitForScenesAndInitialize()
     {
 
+        SaveSystem.Instance.Init();
+        VibrationSystem.Instance.Init();
+        AchievementSystem.Instance.Init();
+        AngrySystem.Instance.Init();
+
+        _doIntro = true;
+
+        Application.targetFrameRate = 45;
+        KilledSheep = 0;
+
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene"}, true);
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, true);
 
+        ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
+        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
 
         if (_doIntro)
         {
@@ -106,8 +117,6 @@ public class GameManager : Singleton<GameManager>
         DialogueQuitBtn = GameObject.FindGameObjectWithTag(DIALOGUE_QUIT_BTN_TAG);
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
-        UIBlackscreen = GameObject.FindGameObjectWithTag(BLACKSCREEN_UI_TAG);
-
         UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);
 
         DialogueSystem.Instance.Init();
@@ -123,7 +132,9 @@ public class GameManager : Singleton<GameManager>
 
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 2;
 
-        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" });
+        ResetButton.GetComponent<Button>().onClick.RemoveAllListeners();
+
+        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" }, false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -139,11 +150,14 @@ public class GameManager : Singleton<GameManager>
     {
         SaveSystem.Instance.SaveAllData();
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, false);
-        
+
+        ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
+        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
+
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
 
-        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "UIInGame" });
+        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "UIInGame" }, false);
     }
 
     public IEnumerator WaitForIntro()
@@ -156,5 +170,18 @@ public class GameManager : Singleton<GameManager>
 
         InputManager.Instance.EnableControllerSticks();
 
+    }
+
+    private void ResetGame()
+    {
+        Debug.Log("Reset");
+        StartCoroutine(UnloadAll());
+    }
+
+    private IEnumerator UnloadAll()
+    {
+        SaveSystem.Instance.ResetAllData();
+        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainScene", "MainMenu" }, true);
+        yield return WaitForScenesAndInitialize();
     }
 }

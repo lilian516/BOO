@@ -248,4 +248,13 @@ public class Inventory : MonoBehaviour, IChangeable
     {
         _angrySkills = skill;
     }
+
+    private void OnDestroy()
+    {
+        if (AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+    }
 }

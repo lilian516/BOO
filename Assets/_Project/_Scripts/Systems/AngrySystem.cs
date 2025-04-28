@@ -39,9 +39,7 @@ public class AngrySystem : Singleton<AngrySystem>
     public delegate void ResetChangedElements();
     public event ResetChangedElements OnResetElements;
 
-
-
-    void Start()
+    public void Init()
     {
         IsAngry = false;
         _baseAngryLimits = 3;

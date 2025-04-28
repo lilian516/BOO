@@ -22,6 +22,7 @@ TagManager:
   - DialogueQuitButton
   - MainVirtualCamera
   - BlackScreen
+  - ResetBtn
   layers:
   - Default
   - TransparentFX
