@@ -8,6 +8,7 @@ public class StickSkill : Skill
     {
         _desc = desc;
         AnimationSkill = _desc.AnimationSkill;
+        AnimatorTriggerName = "UseMauvis";
     }
 
 

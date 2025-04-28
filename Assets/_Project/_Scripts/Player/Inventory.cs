@@ -38,7 +38,6 @@ public class Inventory : MonoBehaviour, IChangeable
         _currentSkill = null;
         _skillCanvaGroup = GameManager.Instance.InventoryUI.GetComponent<CanvasGroup>();
         _skillButtonUI = GameManager.Instance.SkillStickUI.gameObject;
-        _skillButtonUI.GetComponent<Animator>().enabled = false;
         _baseButtonSprite = _skillButtonUI.GetComponent<Image>().sprite;
 
 
@@ -72,7 +71,18 @@ public class Inventory : MonoBehaviour, IChangeable
 
     private void SelectSkill(int index)
     {
-       ChangeCurrentSkill(_skills[index]);
+        InputManager.Instance.OnSkillButton -= delegate
+        {
+            _skillButtonUI.GetComponent<Animator>().SetTrigger(CurrentSkill.AnimatorTriggerName);
+        };
+        ChangeCurrentSkill(_skills[index]);
+
+        _skillButtonUI.GetComponent<Animator>().SetTrigger(CurrentSkill.AnimatorTriggerName);
+
+        InputManager.Instance.OnSkillButton += delegate
+        {
+            _skillButtonUI.GetComponent<Animator>().SetTrigger(CurrentSkill.AnimatorTriggerName);
+        };
     }
 
     private void ChangeSkillImage()
