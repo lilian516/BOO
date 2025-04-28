@@ -64,6 +64,10 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
         {
             changer.Material.SetTexture("_BaseMap", changer.TextureBoo);
         }
-        _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialBoo;
+        if(_waterChanger.Water != null)
+        {
+            _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialBoo;
+        }
+        
     }
 }

@@ -22,9 +22,12 @@ public class OrbTree : MonoBehaviour, IInteractable
         switch (playerSkill)
         {
             case PlayerSkill.PantsSkill:
-                rb.isKinematic = false;
-                GetComponent<Animator>().SetTrigger("Touched");
-                StartCoroutine(ReactivateOrb());
+                if (rb != null) {
+                    rb.isKinematic = false;
+                    GetComponent<Animator>().SetTrigger("Touched");
+                    StartCoroutine(ReactivateOrb());
+                }
+                
                 break;
         }
     }

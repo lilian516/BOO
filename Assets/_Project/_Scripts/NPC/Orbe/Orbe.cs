@@ -59,7 +59,7 @@ public class Orbe : MonoBehaviour, IClickable
     {
 
         yield return new WaitForSeconds(1f);
-        CinematicSystem.Instance.PlayCinematic("Test");
+        CinematicSystem.Instance.PlayCinematic("Remumus");
         CinematicSystem.Instance.OnEndCinematic += CheckEndCinematic;
     }
 
