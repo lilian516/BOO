@@ -106,7 +106,7 @@ MonoBehaviour:
   _canvasMainMenuGroup: {fileID: 0}
   _rectTransform: {fileID: 4099409187456892180}
   _scrollSpeed: 40
-  _endPosition: 1500
+  _endPosition: 3685
 --- !u!1 &3912003922544354209
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,10 +340,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "--- P\xF4le Vid\xE9o ---\r\n\r\n--- P\xF4le D\xE9veloppement ---\r\n\r\nLead
-    - Lilian Legoat\r\n...\r\n\r\n--- P\xF4le Artistique ---\r\n\r\n....\r\n\r\n---
-    P\xF4le Marketing ---\r\n\r\n....\r\n\r\n--- P\xF4le Sonore ---\r\n\r\n--- Porteurs
-    de Projet ---\r\n\r\n--- Chef de Projet ---\r\n\r\n-- Remerciements ---"
+  m_text: "Cr\xE9dits\n \n--- P\xF4le Vid\xE9o ---\nlead - Arnaud Barret\nSamuel
+    Fayret\n\n--- P\xF4le D\xE9veloppement ---\nLead - Lilian Lafin\nVictor martinan\nenzo
+    philippe \nVianney Fovet\nana\xEBlle romanzin\nTimothe imbert \nMatt\xE9o st\xE9panoni\n\n---
+    P\xF4le Artistique ---\nlead - Oscar duvaux\nillustrateur - Florent balvay\nArtiste
+    3D - Arnaud Quer \nAnimateur 2D - Alex prieur \nAnimateur 2D - L\xE9onard Treanton
+    \n\nAnimateur 2D - Marie demontis\nanimateur 2d - Alexandre cardot\nUI-UX Designer
+    - Matt\xE9o Cottel \n\n--- P\xF4le business ---\nLead - Coraline Laurent \ncommunication
+    - T\xE9mao Gachner\nlore/ cr\xE9a - Jimmy Enderle \nMarketing - Thomas laroche
+    \nythier Chambost\nbudget - Carla ray\xE9 \n\n--- P\xF4le Sonore ---\ncompositeur/
+    sound design - Nicolas klak\nSFX - Arnaud Barret\nSFX - Samuel Fayret\n\n---
+    Porteurs de Projet ---\nOscar duvaux \nArnaud quer \nFlorent balvay\n\n--- Chef
+    de Projet ---\nMaxence le fur\n\n-- Remerciements ---\nCamille Rivi\xE8re \nRodolphe
+    Bessey \nNicolas eskenazi\nSimon Moreau \ndelphine Carlier \n\nDavid Guionet\nPaul
+    Lecomte \nR\xE9my mattei \nAlex fr\xEAne \nolivier H\xE9rault\n\nAdrien constans\nseverine
+    schumacher\nAlexandre corte \nFabien thollot\nkaren lo-pinto\n\nThibault Dion
+    \nRomain Giovannini\nNicolas Klak\n\n\n\nLongue vie \xE0 Boo !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee28c6caa63ebdf45b1c92facdb303c5, type: 2}
   m_sharedMaterial: {fileID: 5789741213226240183, guid: ee28c6caa63ebdf45b1c92facdb303c5,
