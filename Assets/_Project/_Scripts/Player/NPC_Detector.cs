@@ -93,4 +93,12 @@ public class NPC_Detector : MonoBehaviour, IChangeable
         GetComponent<SphereCollider>().radius = radius;
     }
 
+    private void OnDestroy()
+    {
+        if (AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+    }
 }

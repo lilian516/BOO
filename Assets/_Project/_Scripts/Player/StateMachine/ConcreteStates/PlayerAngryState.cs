@@ -34,7 +34,7 @@ public class PlayerAngryState : PlayerState
             _player.StateMachine.ChangeState(_player.IdleState);
             return;
         }
-
+        Debug.Log(_player.PlayerAnimator);
         AngrySystem.Instance.OnChangeElements += OnIdle;
         _player.PlayerAnimator.SetTrigger("Angry");
         _player.PlayerFaceAnimator.enabled = false;

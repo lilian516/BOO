@@ -15,11 +15,8 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
         if (needLoadingScreen)
         {
             Helpers.ShowCanva(_canvasGroupLoading);
-            //_loadingObject.SetActive(true);
             _loadingScreenAnimator.SetBool("IsLoading", true);
         }
-
-        //yield return new WaitForSeconds(1.0f);
 
         foreach (string scene in targetScenes)
         {
@@ -33,14 +30,19 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
 
         if (!_fakeLoading)
         {
-            //_loadingObject.SetActive(false);
             Helpers.HideCanva(_canvasGroupLoading);
             _loadingScreenAnimator.SetBool("IsLoading", false);
         }
 
     }
-    public IEnumerator UnloadTargetScenes(string[] targetScenes)
+    public IEnumerator UnloadTargetScenes(string[] targetScenes, bool needLoadingScreen)
     {
+        if (needLoadingScreen)
+        {
+            Helpers.ShowCanva(_canvasGroupLoading);
+            _loadingScreenAnimator.SetBool("IsLoading", true);
+        }
+
         foreach (string scene in targetScenes)
         {
             AsyncOperation sceneOperation = SceneManager.UnloadSceneAsync(scene);
@@ -50,17 +52,22 @@ public class LoadSceneSystem : Singleton<LoadSceneSystem>
             }
             yield return new WaitUntil(() => sceneOperation.isDone);
         }
+
+
+        if (!_fakeLoading)
+        {
+            Helpers.HideCanva(_canvasGroupLoading);
+            _loadingScreenAnimator.SetBool("IsLoading", false);
+        }
     }
 
     public IEnumerator FakeLoadingScreen(float duration)
     {
-        //_loadingObject.SetActive(true);
         Helpers.ShowCanva(_canvasGroupLoading);
         _loadingScreenAnimator.SetBool("IsLoading", true);
         _fakeLoading = true;
 
         yield return new WaitForSeconds(duration);
-        //_loadingObject.SetActive(false);
         Helpers.HideCanva(_canvasGroupLoading);
         _loadingScreenAnimator.SetBool("IsLoading", false);
         _fakeLoading = false;

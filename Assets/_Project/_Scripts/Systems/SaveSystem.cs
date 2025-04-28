@@ -14,9 +14,8 @@ public class SaveSystem : Singleton<SaveSystem>
     private bool _isAllowedToSave;
     public bool IsAllowedToSave { get => _isAllowedToSave; set => _isAllowedToSave = value; }
 
-    private void Start()
+    public void Init()
     {
-
         _filePath = Application.persistentDataPath + "save.txt";
         if (File.Exists(_filePath))
         {

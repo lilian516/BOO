@@ -10,7 +10,8 @@ public class FanManager : MonoBehaviour
     private float _oldRotationSpeed;
     private float _newRotationSpeed;
     private float _timeStep;
-    void Start()
+
+    private void Start()
     {
         _currentRotationStrength = 1.0f;
         _currentRotationSpeed = 1.0f;

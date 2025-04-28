@@ -38,4 +38,13 @@ public class Seagull : MonoBehaviour, IChangeable
     {
         _animatorBigSeagull.SetBool("IsFear", false);
     }
+
+    private void OnDestroy()
+    {
+        if (AngrySystem.Instance != null)
+        {
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
+        }
+    }
 }
