@@ -158,8 +158,8 @@ public class GameManager : Singleton<GameManager>
         SaveSystem.Instance.SaveAllData();
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, false);
 
-        ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
-        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
+        //ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
+        //ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
