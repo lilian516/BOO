@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46dc299d00a7b34b84d4a7046abdc06, type: 3}
-  m_Name: SheepLover
+  m_Name: String
   m_EditorClassIdentifier: 
-  Name: Tout doux
-  Description: Tout gentil tout mignons
-  Sprite: {fileID: 21300000, guid: 7d47a01bbfca5ac4f91ec01a8da48f8c, type: 3}
-  Condition: 3
+  Name: Un mouton en string !?
+  Description: "Mais ils ont fum\xE9 quoi les arts"
+  Sprite: {fileID: 21300000, guid: 2af79231c0e80ea4f8f59761eb1e3ad4, type: 3}
+  Condition: 1

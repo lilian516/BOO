@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46dc299d00a7b34b84d4a7046abdc06, type: 3}
-  m_Name: SheepLover
+  m_Name: WalikingRock
   m_EditorClassIdentifier: 
-  Name: Tout doux
-  Description: Tout gentil tout mignons
-  Sprite: {fileID: 21300000, guid: 7d47a01bbfca5ac4f91ec01a8da48f8c, type: 3}
-  Condition: 3
+  Name: Cours caillou, cours !
+  Description: 'Je vais te faire courir !  '
+  Sprite: {fileID: 21300000, guid: f29c904e7c505094891efcae74cd8b57, type: 3}
+  Condition: 5

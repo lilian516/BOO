@@ -794,6 +794,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 338b79a7741ee6744b114855b8486751, type: 2}
   - {fileID: 11400000, guid: f59bbdab6a7f72843a1519e212a94a36, type: 2}
   - {fileID: 11400000, guid: 8b880ced738eab94597184144b993b05, type: 2}
+  - {fileID: 11400000, guid: 59cfa53c6dd0af541831a3110baf2e54, type: 2}
+  - {fileID: 11400000, guid: 5fa8f6b181d21b44a97f60ff20faf68c, type: 2}
   PetCount: 0
   UIAchievementToUpdate: []
 --- !u!1 &1530520699

@@ -35,7 +35,6 @@ public class AchievementSystem : Singleton<AchievementSystem>
     public void SucceedAchievement(AchievementCondition condition)
     {
         int index = _achievementConditionList.IndexOf(condition);
-
         if (_achievementUnlocked[index])
             return;
 
@@ -53,7 +52,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
     
     private IEnumerator ShowAchievement(int index, GameObject panel)
     {
-        panel.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = _achievementList[index].Name;
+        panel.transform.GetChild(0).GetComponent<Image>().sprite = _achievementList[index].Sprite;
         
         yield return new WaitForSeconds(3);
 
@@ -80,10 +79,16 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
     public void PetAchievement()
     {
-        if(PetCount == 10)
+        if(PetCount == 5)
         {
             SucceedAchievement(AchievementCondition.Sheep_Lover);
         }
+    }
+
+    public void VerifyAchievement()
+    {
+        if (GameManager.Instance.KilledSheep == 3)
+            SucceedAchievement(AchievementCondition.Killer);
     }
 
 }
@@ -91,7 +96,9 @@ public class AchievementSystem : Singleton<AchievementSystem>
 public enum AchievementCondition
 {
     None,
-    Two_Bubbles_In_Inventory,
+    String_Sheep,
     Knock_At_The_Door,
     Sheep_Lover,
+    Killer,
+    Walking_Rock,
 }
