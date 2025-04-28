@@ -1,15 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FliesSwarm : MonoBehaviour, IInteractable
 {
     [SerializeField] private ParticleSystem _flies;
     private ParticleSystem.Particle[] _particles;
     [SerializeField] AnimationClip _animationPlayerAngry;
+    private bool _isEnabled;
+    public GameObject EldenFlyPrefab;
 
     private void Start()
     {
         _particles = new ParticleSystem.Particle[_flies.main.maxParticles];
+        _isEnabled = true;
     }
 
     public void Interact(PlayerSkill playerSkill)
@@ -30,6 +34,7 @@ public class FliesSwarm : MonoBehaviour, IInteractable
 
     private IEnumerator SlapFlies()
     {
+        _isEnabled = false;
         _flies.GetParticles(_particles);
 
         for (int i = 0; i < _particles.Length; i++)
@@ -62,13 +67,21 @@ public class FliesSwarm : MonoBehaviour, IInteractable
         }
 
         Destroy(gameObject);
+
+        GameManager.Instance.KilledFly++;
+
+        if (GameManager.Instance.KilledFly >= 5)
+        {
+            GameObject newObject = Instantiate(EldenFlyPrefab, GameManager.Instance.Player.transform.position + new Vector3(10.0f, 0.0f, 0.0f), EldenFlyPrefab.transform.rotation);
+            SceneManager.MoveGameObjectToScene(newObject, SceneManager.GetSceneByName("MainScene"));
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.gameObject.GetComponent<Player>();
         if (player != null) {
-            if (!AngrySystem.Instance.IsAngry)
+            if (!AngrySystem.Instance.IsAngry && _isEnabled)
             {
                 player.ChangeAnimAngry(_animationPlayerAngry);
                 player.StateMachine.ChangeState(player.AngryState);

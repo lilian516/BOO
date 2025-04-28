@@ -51,6 +51,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject UIAchievementList;
 
     [HideInInspector] public int KilledSheep;
+    [HideInInspector] public int KilledFly;
 
     private bool _doIntro;
     private void Start()
@@ -59,6 +60,7 @@ public class GameManager : Singleton<GameManager>
         
         Application.targetFrameRate = 45;
         KilledSheep = 0;
+        KilledFly = 0;
 
         StartCoroutine(WaitForScenesAndInitialize());
     }
