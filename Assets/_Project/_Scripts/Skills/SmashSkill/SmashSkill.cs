@@ -9,6 +9,7 @@ public class SmashSkill : Skill
     public SmashSkill(Player player, SkillDescriptor desc) : base(player)
     {
         _desc = desc;
+        AnimatorTriggerName = "UseSmash";
     }
 
 

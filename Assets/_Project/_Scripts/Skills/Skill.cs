@@ -8,6 +8,8 @@ public class Skill
 
     protected SkillDescriptor _desc;
 
+    public string AnimatorTriggerName;
+
     public AnimationClip AnimationSkill;
     public Skill(Player player)
     {

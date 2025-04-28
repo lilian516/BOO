@@ -8,6 +8,7 @@ public class WindmillSkill : Skill
     {
         _desc = desc;
         AnimationSkill = _desc.AnimationSkill;
+        AnimatorTriggerName = "UseWind";
     }
 
     public override void UseSkill()

@@ -10,6 +10,7 @@ public class BubbleSkill : Skill
     {
         _desc = desc;
         AnimationSkill = _desc.AnimationSkill;
+        AnimatorTriggerName = "UseBubble";
     }
 
     public override void UseSkill()

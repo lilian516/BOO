@@ -8,6 +8,7 @@ public class PantsSkill : Skill
     {
         _desc = desc;
         AnimationSkill = _desc.AnimationSkill;
+        AnimatorTriggerName = "UseSlip";
     }
 
     public override void UseSkill()
