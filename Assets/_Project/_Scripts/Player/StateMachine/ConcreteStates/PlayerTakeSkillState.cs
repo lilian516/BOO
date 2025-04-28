@@ -16,7 +16,6 @@ public class PlayerTakeSkillState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-
         if(AngrySystem.Instance.IsAngry)
         {
             _playerStateMachine.ChangeState(_player.IdleState);

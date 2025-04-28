@@ -25,7 +25,7 @@ public class PlayerAutoMovingState : PlayerState
     public PlayerAutoMovingState(Player player, PlayerStateMachine playerStateMachine, Descriptor desc) : base(player, playerStateMachine)
     {
         _desc = desc;
-        _stoppingDistance = 0.05f;
+        _stoppingDistance = 0.1f;
     }
 
     public override void ChangeStateChecks()
@@ -66,15 +66,11 @@ public class PlayerAutoMovingState : PlayerState
 
         CheckCanGoToPosition();
 
-
-
-
-
     }
     public override void ExitState()
     {
         base.ExitState();
-
+        Debug.Log(_player.CurrentClickable.CanGoTo);
         if (_player.CurrentClickable.CanGoTo)
             _player.CurrentClickable.OnDestinationReached();
 

@@ -244,6 +244,7 @@ public class Player : MonoBehaviour, IChangeable
         {
 
             case PlayerSkill.Orb:
+                Debug.Log("pute");
                 break;
             case PlayerSkill.BubbleSkill:
                 BubbleSkill bubbleSkill = new BubbleSkill(this, descriptor);
@@ -265,7 +266,7 @@ public class Player : MonoBehaviour, IChangeable
         }
         ChangeAnimTakeSkill(descriptor.TakeAnimation);
 
-        if (_inventory.PlayerSkills.Count == 3)
+        if (_inventory.PlayerSkills.Count == 3 && playerSkill != PlayerSkill.Orb)
             return;
 
         StateMachine.ChangeState(TakeSkillState);
