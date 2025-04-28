@@ -13,12 +13,14 @@ public class Orbe : MonoBehaviour, IClickable
 
     
     public bool CanGoTo { get ; set ; }
+    public bool NeedToFaceRight { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
         //PositionToGo = _position;
         CanGoTo = true;
+        NeedToFaceRight = true;
     }
 
     // Update is called once per frame

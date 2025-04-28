@@ -17,12 +17,13 @@ public class Door : MonoBehaviour, IClickable, IDetectable
     private bool _achivevementUnlock = false;
     public Vector3 PositionToGo { get; set; }
     public bool CanGoTo { get; set; }
-
+    public bool NeedToFaceRight { get; set; }
 
     private void Start()
     {
         PositionToGo = transform.GetChild(0).position;
         CanGoTo = true;
+        NeedToFaceRight = false;
     }
 
     public void OnClick()
