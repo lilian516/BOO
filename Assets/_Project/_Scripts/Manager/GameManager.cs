@@ -57,10 +57,17 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject ResetButton;
 
     [HideInInspector] public int KilledSheep;
+    [HideInInspector] public int KilledFly;
 
     private bool _doIntro;
     private void Start()
     {
+        _doIntro = true;
+        
+        Application.targetFrameRate = 45;
+        KilledSheep = 0;
+        KilledFly = 0;
+
         StartCoroutine(WaitForScenesAndInitialize());
     }
 
