@@ -81,7 +81,7 @@ public class GameManager : Singleton<GameManager>
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, true);
 
         ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
-        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
+        //ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
 
         if (_doIntro)
         {
@@ -132,7 +132,7 @@ public class GameManager : Singleton<GameManager>
 
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 2;
 
-        ResetButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        //ResetButton.GetComponent<Button>().onClick.RemoveAllListeners();
 
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" }, false);
 
