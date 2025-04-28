@@ -18,7 +18,7 @@ public class Orbe : MonoBehaviour, IClickable
     // Start is called before the first frame update
     void Start()
     {
-        //PositionToGo = _position;
+        PositionToGo = _position.position;
         CanGoTo = true;
         NeedToFaceRight = true;
     }
@@ -47,7 +47,6 @@ public class Orbe : MonoBehaviour, IClickable
 
     public void OnClick()
     {
-        
     }
 
     IEnumerator WaitToAddSkill()
