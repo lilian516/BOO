@@ -50,7 +50,7 @@ public class Door : MonoBehaviour, IClickable, IDetectable
 
         _animator.SetTrigger("Vomit");
         _animatorDoor.SetTrigger("Knock");
-        //_animatorDoorModel.SetTrigger("Knock");
+        _animatorDoorModel.SetTrigger("Knock");
         IsKnocked = true;
 
         if (_achivevementUnlock)
