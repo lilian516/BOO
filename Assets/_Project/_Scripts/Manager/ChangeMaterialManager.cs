@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [System.Serializable]
 public struct MaterialChanger
@@ -22,7 +23,10 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
 
     [SerializeField] List<MaterialChanger> _materials;
     [SerializeField] WaterChanger _waterChanger;
-    
+    [SerializeField] Volume _globalVolume;
+    [SerializeField] VolumeProfile profilBoo;
+    [SerializeField] VolumeProfile profilDarkBoo;
+
 
     public void Change()
     {
@@ -31,6 +35,7 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
             changer.Material.SetTexture("_BaseMap", changer.TextureDarkBoo);
         }
         _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialDarkBoo;
+        _globalVolume.profile = profilDarkBoo;
     }
 
     public void ResetChange()
@@ -40,6 +45,7 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
             changer.Material.SetTexture("_BaseMap", changer.TextureBoo);
         }
         _waterChanger.Water.GetComponent<MeshRenderer>().material = _waterChanger.MaterialBoo;
+        _globalVolume.profile = profilBoo;
     }
 
 

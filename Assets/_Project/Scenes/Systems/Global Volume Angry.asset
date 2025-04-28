@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.342
+    m_Value: 0.504
   response:
     m_OverrideState: 1
     m_Value: 0.8
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.71906865, z: 0.53655136, w: -0.5783019}
@@ -201,7 +201,7 @@ MonoBehaviour:
   active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 0.151
+    m_Value: 0.2
   cropToFit:
     m_OverrideState: 0
     m_Value: 1
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0.14
@@ -303,7 +303,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 24
+    m_Value: 17
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 0.8066038, b: 0.8066038, a: 1}
@@ -331,16 +331,16 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.44
   intensity:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.5
   scatter:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.325
   clamp:
     m_OverrideState: 1
-    m_Value: 65472
+    m_Value: 65435.29
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}

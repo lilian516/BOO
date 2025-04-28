@@ -59,7 +59,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DetailColorSpeed: 0.005
+    - _ColorDetails_Scale: 250
+    - _DarkColorDetails_Scale: 300
+    - _DetailColorSpeed: 0.0005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WavesSpeed: 1

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class FlowerBee : MonoBehaviour
+public class FlowerBee : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform[] _pathReferences;
     [SerializeField] AnimationClip _animationPiqure;
@@ -95,5 +95,15 @@ public class FlowerBee : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         _isResting = false;
+    }
+
+    public void Interact(PlayerSkill playerSkill)
+    {
+        switch (playerSkill) {
+            case PlayerSkill.PantsSkill:
+                Destroy(gameObject); 
+                break;
+                
+        }
     }
 }

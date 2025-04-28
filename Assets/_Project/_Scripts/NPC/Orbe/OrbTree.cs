@@ -26,8 +26,9 @@ public class OrbTree : MonoBehaviour, IInteractable
                     rb.isKinematic = false;
                     GetComponent<Animator>().SetTrigger("Touched");
                     StartCoroutine(ReactivateOrb());
+                    return;
                 }
-                
+                GetComponent<Animator>().SetTrigger("Touched");
                 break;
         }
     }

@@ -20720,7 +20720,7 @@ MonoBehaviour:
     levelsInWhite: 255
     levelsOutBlack: 0
     levelsOutWhite: 255
-  activeTab: 5
+  activeTab: 4
   paintOnSelected: 1
   paintLayers:
     serializedVersion: 2

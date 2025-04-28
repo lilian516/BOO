@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 617371392874252593}
   - component: {fileID: 1421151783460952588}
   - component: {fileID: 5504396873967249795}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pf_SmallBee
   m_TagString: Untagged
   m_Icon: {fileID: 0}

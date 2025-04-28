@@ -105,7 +105,16 @@ MonoBehaviour:
   - Material: {fileID: 2100000, guid: da2c1813e3359e742a2ae78fcc10f0cd, type: 2}
     TextureBoo: {fileID: 2800000, guid: 7d67c58c6da80004cab8aa312a0494a6, type: 3}
     TextureDarkBoo: {fileID: 2800000, guid: 754a9079c8aa738419063d84e1e82b83, type: 3}
+  - Material: {fileID: 2100000, guid: 0a637ad1281d2274797da42ecebc76e6, type: 2}
+    TextureBoo: {fileID: 2800000, guid: 0f6a8b920b342aa4fbf96d3bb7b7de0a, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 8ae96e64270d96b419f769b940482aca, type: 3}
+  - Material: {fileID: 2100000, guid: 90d93b2f2e6cf2945827c963dc4476ae, type: 2}
+    TextureBoo: {fileID: 2800000, guid: a27bf1db801aed84688b774f55de12bc, type: 3}
+    TextureDarkBoo: {fileID: 2800000, guid: 8ebed7f5f6b57e7489c6fabb22e84cf1, type: 3}
   _waterChanger:
     Water: {fileID: 0}
     MaterialBoo: {fileID: 2100000, guid: 37e6bb25fee76714c8dbac7b9f8e78d2, type: 2}
     MaterialDarkBoo: {fileID: 2100000, guid: 3d4ecf19213c605438ace36fd058bd4c, type: 2}
+  _globalVolume: {fileID: 0}
+  profilBoo: {fileID: 11400000, guid: 5b8fdd9ff78155443bd321e89ebd3e39, type: 2}
+  profilDarkBoo: {fileID: 11400000, guid: b2b4d191a9e50404eb007d44bfe095c3, type: 2}

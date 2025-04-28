@@ -565,7 +565,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4640755743272402849
 MonoBehaviour:
@@ -687,11 +687,11 @@ MonoBehaviour:
   _darkBoo: {fileID: 9100000, guid: 36e10ae8084acc44392f0a5e827ff3b0, type: 2}
   _boo: {fileID: 9100000, guid: 506c3e72a61c24e4a83e08952dae8d7d, type: 2}
   _eventPlayer: {fileID: 764901106248841688}
-  DetectorRadius: 5
+  DetectorRadius: 2
   DirectionalIndicator: {fileID: 3151340147365664228}
   DirectionalCapsuleContainer: {fileID: 7672633896386469912}
   DirectionalCapsuleOffset: {x: 0, y: 0, z: 0}
-  CanWalkForward: 0
+  ValidCapsuleDetector: 0
   _playerIdleStateDescriptor:
     SpeedCurve:
       serializedVersion: 2
