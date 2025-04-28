@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteBoo: {fileID: 21300000, guid: 2115422bbc2ad7748ac903396ed18e91, type: 3}
-  _spriteDarkBoo: {fileID: 21300000, guid: 6d8e151770833dc46a95b6e870517f18, type: 3}
+  _spriteDarkBoo: {fileID: 21300000, guid: 3c275dd568e126f4a900f91a55513dbd, type: 3}

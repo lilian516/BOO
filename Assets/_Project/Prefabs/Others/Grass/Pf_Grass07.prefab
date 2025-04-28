@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236802221305830061}
   - component: {fileID: 8785189127144899744}
+  - component: {fileID: 9109239287030937683}
   m_Layer: 0
   m_Name: Pf_Grass07
   m_TagString: Untagged
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9109239287030937683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882940412734512202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6073a52af166d0f48b67e1aca974499a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteBoo: {fileID: 21300000, guid: 1575dea6855463f48aacd5044221a47c, type: 3}
+  _spriteDarkBoo: {fileID: 21300000, guid: 857b2de8b7b2da34bb5df8a08b3cc8c8, type: 3}
