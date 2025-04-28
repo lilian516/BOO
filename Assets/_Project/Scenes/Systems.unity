@@ -683,7 +683,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
-  m_AspectRatio: 2
+  m_AspectRatio: 1
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
@@ -968,10 +968,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 691198864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 375}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1937978895
 Animator:
@@ -1093,6 +1093,7 @@ MonoBehaviour:
   UIAchievementButton: {fileID: 0}
   UIAchievementMenu: {fileID: 0}
   UIAchievementList: {fileID: 0}
+  UIBlackscreen: {fileID: 0}
   KilledSheep: 0
 --- !u!1001 &1788961260732573966
 PrefabInstance:

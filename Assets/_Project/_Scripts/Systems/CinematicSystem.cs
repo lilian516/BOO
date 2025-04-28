@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -54,6 +55,7 @@ public class CinematicSystem : Singleton<CinematicSystem>
     public void PlayCinematic(string name)
     {
         ToggleVideo();
+        _videoPlayer.targetCamera = Camera.main;
         string videoPath = "Videos/" + name;
         VideoClip clip = Resources.Load<VideoClip>(videoPath);
         _videoPlayer.clip = clip;
