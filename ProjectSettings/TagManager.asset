@@ -23,6 +23,7 @@ TagManager:
   - MainVirtualCamera
   - BlackScreen
   - ResetBtn
+  - GameOverScreen
   layers:
   - Default
   - TransparentFX

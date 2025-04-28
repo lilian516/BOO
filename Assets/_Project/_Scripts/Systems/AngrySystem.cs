@@ -119,6 +119,11 @@ public class AngrySystem : Singleton<AngrySystem>
             _calmLimits= _baseCalmLimits;
 
             _remainingLives--;
+
+            if (_remainingLives == 0)
+            {
+                GameManager.Instance.GameOver();
+            }
         }
     }
 

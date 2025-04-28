@@ -88,7 +88,7 @@ public class GameManager : Singleton<GameManager>
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, true);
 
         ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
-        //ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
+        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
 
         if (_doIntro)
         {
@@ -139,7 +139,7 @@ public class GameManager : Singleton<GameManager>
 
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 2;
 
-        //ResetButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        ResetButton.GetComponent<Button>().onClick.RemoveAllListeners();
 
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" }, false);
 
@@ -158,8 +158,8 @@ public class GameManager : Singleton<GameManager>
         SaveSystem.Instance.SaveAllData();
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, false);
 
-        //ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
-        //ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
+        ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
+        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
@@ -189,6 +189,27 @@ public class GameManager : Singleton<GameManager>
     {
         SaveSystem.Instance.ResetAllData();
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainScene", "MainMenu" }, true);
+        yield return WaitForScenesAndInitialize();
+    }
+
+    [ContextMenu("Lose")]
+    public void GameOver()
+    {
+        InputManager.Instance.DisableControllerStick();
+        InputManager.Instance.DisableSkillStick();
+
+        GameObject gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen");
+        UIBlackscreen = GameObject.FindGameObjectWithTag(BLACKSCREEN_UI_TAG);
+        gameOverScreen.GetComponentInChildren<Animator>().SetTrigger("GameOver");
+        gameOverScreen.GetComponentInChildren<Button>().onClick.AddListener(delegate { StartCoroutine(Restart()); });
+
+        Helpers.ShowCanva(UIBlackscreen.GetComponent<CanvasGroup>());
+        Helpers.ShowCanva(gameOverScreen.GetComponent<CanvasGroup>());
+    }
+
+    private IEnumerator Restart()
+    {
+        yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainScene", "UIInGame" }, true);
         yield return WaitForScenesAndInitialize();
     }
 }
