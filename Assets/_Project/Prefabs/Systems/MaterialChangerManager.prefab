@@ -97,7 +97,7 @@ MonoBehaviour:
     TextureBoo: {fileID: 2800000, guid: b701e92485a3d194ebc3d60ef618538b, type: 3}
     TextureDarkBoo: {fileID: 2800000, guid: 37ea429437e45b646ad5eca867a225ab, type: 3}
   - Material: {fileID: 2100000, guid: ddb631ef94a7aa24385f290fe2a42976, type: 2}
-    TextureBoo: {fileID: 2800000, guid: 5cf47bd4d1d407848a5e1229edb3674c, type: 3}
+    TextureBoo: {fileID: 2800000, guid: 7f8c70130721e504b8ef3096df77d0d7, type: 3}
     TextureDarkBoo: {fileID: 2800000, guid: 6cffc6b880d657a44988990ad0910e54, type: 3}
   - Material: {fileID: 2100000, guid: d8c3d384ecb1f7242a9dde211373b17f, type: 2}
     TextureBoo: {fileID: 2800000, guid: 3a068ccff924c6e458772ccb0642b58e, type: 3}

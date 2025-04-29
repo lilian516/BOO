@@ -63,6 +63,7 @@ public class Orbe : MonoBehaviour, IClickable
 
         yield return new WaitForSeconds(1f);
         GameManager.Instance.UIBlackscreen.GetComponent<CanvasGroup>().alpha = 1f;
+        
         CinematicSystem.Instance.PlayCinematic("Remumus");
         CinematicSystem.Instance.OnEndCinematic += CheckEndCinematic;
     }
