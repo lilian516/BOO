@@ -49,4 +49,14 @@ public class PlayerSpeakingState : PlayerState
     {
         _player.Input.OnSpeak -= DialogueSystem.Instance.AdvanceDialogue;
     }
+
+    public override void Destroy()
+    {
+        if (DialogueSystem.Instance != null)
+        {
+            _player.Input.OnSpeak -= DialogueSystem.Instance.AdvanceDialogue;
+            DialogueSystem.Instance.OnChoice -= OnChoiceSelection;
+            DialogueSystem.Instance.OnEndDialogue -= OnExitSpeakState;
+        }
+    }
 }

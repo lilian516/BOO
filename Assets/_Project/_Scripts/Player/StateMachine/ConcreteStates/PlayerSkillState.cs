@@ -102,4 +102,10 @@ public class PlayerSkillState : PlayerState
         _sprites[0].flipX = flipped;
         _sprites[1].flipX = flipped;
     }
+
+    public override void Destroy()
+    {
+        _player.EventPlayer.OnEnterUseSkill -= UseSkill;
+        _player.OnEndAnimation -= StopUseSkill;
+    }
 }

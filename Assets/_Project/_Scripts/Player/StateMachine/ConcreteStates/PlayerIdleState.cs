@@ -131,7 +131,10 @@ public class PlayerIdleState : PlayerState
             }
         }
     }
-
-    
-
+   
+    public override void Destroy()
+    {
+        _player.Input.OnSkillButton -= OnSkill;
+        _player.Input.OnSpeak -= OnCheckSpeak;
+    }
 }

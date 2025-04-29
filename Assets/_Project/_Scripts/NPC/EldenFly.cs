@@ -11,6 +11,9 @@ public class EldenFly : MonoBehaviour, IInteractable
             case PlayerSkill.PantsSkill:
                 Destroy(gameObject);
                 break;
+            case PlayerSkill.SmashSkill:
+                Destroy(gameObject); 
+                break;
             default:
                 break;
         }

@@ -39,11 +39,8 @@ public class PlayerAngryState : PlayerState
         _player.PlayerFaceAnimator.enabled = false;
         _player.PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
-       
-
         _player.OnEndAnimation += GetAngry;
         _player.WaitForSkillAnimation();
-
     }
 
     public override void ExitState()
@@ -77,5 +74,10 @@ public class PlayerAngryState : PlayerState
         OnIdle();
     }
 
-   
+    public override void Destroy()
+    {
+        if (AngrySystem.Instance != null)
+            AngrySystem.Instance.OnChangeElements -= OnIdle;
+        _player.OnEndAnimation -= GetAngry;
+    }
 }
