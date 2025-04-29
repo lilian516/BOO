@@ -20,10 +20,14 @@ public class PlayerSpeakingState : PlayerState
         DialogueSystem.Instance.OnChoice += OnChoiceSelection;
         DialogueSystem.Instance.OnEndDialogue += OnExitSpeakState;
 
+        GameManager.Instance.Player.GetComponent<Player>().PlayerFaceAnimator.enabled = false;
+        GameManager.Instance.Player.GetComponent<Player>().PlayerFaceAnimator.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+
     }
 
     public override void ExitState()
     {
+        GameManager.Instance.Player.GetComponent<Player>().PlayerFaceAnimator.enabled = true;
         _player.Input.OnSpeak -= DialogueSystem.Instance.AdvanceDialogue;
         DialogueSystem.Instance.OnChoice -= OnChoiceSelection;
         DialogueSystem.Instance.OnEndDialogue -= OnExitSpeakState;
