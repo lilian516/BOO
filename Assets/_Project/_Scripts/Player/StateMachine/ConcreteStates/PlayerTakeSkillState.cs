@@ -56,6 +56,8 @@ public class PlayerTakeSkillState : PlayerState
         _stateMachine.ChangeState(_player.IdleState);
     }
 
-
-
+    public override void Destroy()
+    {
+        _player.EventPlayer.OnExitUseSkill -= ExitTakeSkill;
+    }
 }

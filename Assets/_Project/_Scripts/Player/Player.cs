@@ -470,5 +470,12 @@ public class Player : MonoBehaviour, IChangeable
             AngrySystem.Instance.OnChangeElements -= Change;
             AngrySystem.Instance.OnResetElements -= ResetChange;
         }
+
+        IdleState.Destroy();
+        AngryState.Destroy();
+        MovingState.Destroy();
+        SkillState.Destroy();
+        SpeakingState.Destroy();
+        TakeSkillState.Destroy();
     }
 }

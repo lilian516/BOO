@@ -20,4 +20,5 @@ public class PlayerState : State
     public override void FrameUpdate() { }
     public override void PhysicsUpdate() { }
     public override void ChangeStateChecks() { }
+    public override void Destroy() { }
 }
