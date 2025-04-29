@@ -12,6 +12,8 @@ public class DialogueAsset : ScriptableObject
     public Sprite RightCharacter;
     public Sprite LeftCharacter;
     public string Name;
+    public bool HasAnim;
+    public string AnimTriggerName;
     public Sprite DialogueBackground;
     [Space]
     public DialogueSection[] Sections;

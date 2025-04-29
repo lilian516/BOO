@@ -2,9 +2,11 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 [DefaultExecutionOrder(-2)]
@@ -88,9 +90,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
         if (_leftImage != null)
         {
-            _leftImage.gameObject.GetComponent<Animator>().SetTrigger(asset.Name);
-            GameManager.Instance.Player.GetComponent<Player>().PlayerAnimator.SetTrigger(asset.Name);
-
+            _leftImage.gameObject.GetComponent<Animator>().SetTrigger(asset.AnimTriggerName);
+            GameManager.Instance.Player.GetComponent<Player>().PlayerAnimator.SetTrigger(asset.AnimTriggerName);
         }
             
 
@@ -142,7 +143,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     public void AdvanceDialogue()
     {
-        if(_skipSentence || !_isPlayingSentence)
+        if (_skipSentence || !_isPlayingSentence)
         {
             _sentenceIndex++;
         }
