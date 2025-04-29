@@ -68,6 +68,8 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     public void BeginDialogue(DialogueAsset asset)
     {
+        Helpers.HideCanva(GameManager.Instance.PauseButton.GetComponent<CanvasGroup>());
+
         if (asset == null)
         {
             Debug.LogWarning("Dialogue started with unspecified or invalid Dialogue Asset !");
@@ -111,6 +113,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     public void EndDialogue()
     {
+        Helpers.ShowCanva(GameManager.Instance.PauseButton.GetComponent<CanvasGroup>());
 
         if (ProcessingDialogue.ClosureTriggerEvent)
         {

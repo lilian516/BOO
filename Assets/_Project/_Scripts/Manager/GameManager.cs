@@ -31,6 +31,7 @@ public class GameManager : Singleton<GameManager>
     private const string ACHIEVEMENT_LIST_TAG = "AchievementList";
 
     private const string BLACKSCREEN_UI_TAG = "BlackScreen";
+    private const string PAUSE_BUTTON_TAG = "PauseButton";
 
 
     [HideInInspector] public GameObject MainCamera;
@@ -43,6 +44,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject InventoryUI;
     [HideInInspector] public GameObject SkillStickParent;
     [HideInInspector] public GameObject SkillStickUI;
+    [HideInInspector] public GameObject PauseButton;
 
     
     [HideInInspector] public Inventory InventorySkill;
@@ -121,6 +123,7 @@ public class GameManager : Singleton<GameManager>
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
         UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);
         UIBlackscreen = GameObject.FindGameObjectWithTag(BLACKSCREEN_UI_TAG);
+        PauseButton = GameObject.FindGameObjectWithTag(PAUSE_BUTTON_TAG);
 
         DialogueSystem.Instance.Init();
         InventorySkill.Init();

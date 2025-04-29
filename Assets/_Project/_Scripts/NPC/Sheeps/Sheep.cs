@@ -17,6 +17,8 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
     private bool _isGoodPosition = false;
     private bool _petCd = false;
 
+    [SerializeField] private bool _isTutoSheep;
+
     public Vector3 PositionToGo { get; set; }
     public bool CanGoTo { get; set; }
     public bool IsGoodPosition { get => _isGoodPosition; set => _isGoodPosition = value; }
@@ -28,6 +30,7 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
 
     void Start()
     {
+
         PositionToGo = transform.GetChild(0).position;
 
         NeedToFaceRight = true;
@@ -156,7 +159,13 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
 
     public void OnClick()
     {
-       if(_currentInteract == PlayerSkill.BubbleSkill && !IsGoodPosition)
+        if (_isTutoSheep)
+        {
+            CanGoTo = false;
+            return;
+        }
+
+        if (_currentInteract == PlayerSkill.BubbleSkill && !IsGoodPosition)
         {
             CanGoTo = false;
             return;
@@ -174,6 +183,9 @@ public class Sheep : MonoBehaviour, IInteractable,IClickable,IDetectable, ISmash
 
     public void OnDestinationReached()
     {
+        if (_isTutoSheep)
+            return;
+
         if (_currentInteract == PlayerSkill.None && IsGoodPosition == true)
             return;
         if (IsGoodPosition)
