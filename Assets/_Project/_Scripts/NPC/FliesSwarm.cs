@@ -70,7 +70,7 @@ public class FliesSwarm : MonoBehaviour, IInteractable
 
         GameManager.Instance.KilledFly++;
 
-        if (GameManager.Instance.KilledFly >= 5)
+        if (GameManager.Instance.KilledFly >= 4)
         {
             GameObject newObject = Instantiate(EldenFlyPrefab, GameManager.Instance.Player.transform.position + new Vector3(10.0f, 0.0f, 0.0f), EldenFlyPrefab.transform.rotation);
             SceneManager.MoveGameObjectToScene(newObject, SceneManager.GetSceneByName("MainScene"));
