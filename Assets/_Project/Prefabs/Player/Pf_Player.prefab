@@ -725,7 +725,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    Speed: 2
+    Speed: 2.2
     DurationAcceleration: 0
   _playerAutoMovingStateDescriptor:
     NavMeshAgentPlayer: {fileID: 7979833001575883866}
