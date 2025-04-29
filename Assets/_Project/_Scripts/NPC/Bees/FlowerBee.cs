@@ -100,10 +100,12 @@ public class FlowerBee : MonoBehaviour, IInteractable
     public void Interact(PlayerSkill playerSkill)
     {
         switch (playerSkill) {
-            case PlayerSkill.PantsSkill:
-                Destroy(gameObject); 
+           
+            case PlayerSkill.SmashSkill:
+                AngrySystem.Instance.ChangeCalmLimits();
+                Destroy(gameObject);
                 break;
-                
+
         }
     }
 }
