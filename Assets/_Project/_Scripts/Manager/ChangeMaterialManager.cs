@@ -76,8 +76,8 @@ public class ChangeMaterialManager : MonoBehaviour, IChangeable
         }
         if(AngrySystem.Instance != null)
         {
-            AngrySystem.Instance.OnChangeElements += Change;
-            AngrySystem.Instance.OnResetElements += ResetChange;
+            AngrySystem.Instance.OnChangeElements -= Change;
+            AngrySystem.Instance.OnResetElements -= ResetChange;
         }
         
     }

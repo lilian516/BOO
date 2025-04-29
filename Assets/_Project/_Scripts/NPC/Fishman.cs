@@ -60,5 +60,10 @@ public class Fishman : MonoBehaviour, ISpeakable, IChangeable, IDetectable
             AngrySystem.Instance.OnChangeElements -= Change;
             AngrySystem.Instance.OnResetElements -= ResetChange;
         }
+        if (DialogueSystem.Instance != null)
+        {
+            DialogueSystem.Instance.OnEndDialogue -= StopTalkAnimation;
+        }
+        
     }
 }

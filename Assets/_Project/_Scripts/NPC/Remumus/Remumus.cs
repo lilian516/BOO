@@ -75,4 +75,13 @@ public class Remumus : MonoBehaviour, ISpeakable, IDetectable
     {
         _animatorFeedback.SetBool("IsDetected", false);
     }
+
+    private void OnDestroy()
+    {
+        if (DialogueSystem.Instance != null)
+        {
+            DialogueSystem.Instance.OnEndDialogue -= StopTalkAnimation;
+        }
+            
+    }
 }
