@@ -216,16 +216,6 @@ public class DialogueSystem : Singleton<DialogueSystem>
     public void UpdateSentence()
     {
         string sentence = GetSentence();
-        if(ProcessingDialogue.Name != "Seamone")
-        {
-            SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { ProcessingDialogue.Name+ " Dialogue One", ProcessingDialogue.Name + " Dialogue Two", ProcessingDialogue.Name + " Dialogue Three" }, 
-                GameManager.Instance.Player.transform.position);
-        }
-
-        
-
-
-
         if (!_isPlayingSentence)
         {
             StartCoroutine(ShowProgressiveText(sentence));
@@ -233,6 +223,15 @@ public class DialogueSystem : Singleton<DialogueSystem>
         else
         {
             _skipSentence = true;
+        }
+
+        if (!_skipSentence)
+        {
+            if(ProcessingDialogue.Name != "Seamone")
+            {
+                SoundSystem.Instance.PlayRandomSoundFXClipByKeys(new string[] { ProcessingDialogue.Name+ " Dialogue One", ProcessingDialogue.Name + " Dialogue Two", ProcessingDialogue.Name + " Dialogue Three" }, 
+                    GameManager.Instance.Player.transform.position);
+            }
         }
     }
 
