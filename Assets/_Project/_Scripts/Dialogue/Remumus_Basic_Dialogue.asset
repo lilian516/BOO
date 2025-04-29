@@ -22,8 +22,14 @@ MonoBehaviour:
   DialogueBackground: {fileID: 21300000, guid: f0da0f19abb19af4ea770a50fa688aa2, type: 3}
   Sections:
   - Sentences:
-    - "*souffle sur l'\xE9tendoir*\t"
-    - "Il faut mes slips s\xE8chent..."
+    - 'Hmmm... Mais qu''est-ce qui a bien pu clocher... '
+    - "J'ai encore d\xFB me fourcher la langue pendant le sort... C'\xE9tait une
+      histoire de slip \xE0 s\xE9cher"
+    - "Je crois que mon orbe s'est fractur\xE9, il doit bien y avoir des fragments
+      non, loin d'ici."
+    - "Tu n'aurais pas une id\xE9e pour s\xE9cher mon slip ?"
+    - "J'ai beau souffler dessus \xE7a n'y fait rien. Je suis trop vieux pour ces
+      b\xEAtises."
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 0

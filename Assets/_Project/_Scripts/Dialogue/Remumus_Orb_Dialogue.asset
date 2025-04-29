@@ -10,26 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1a2eaa57dcb92a45b9dfc54dad22e44, type: 3}
-  m_Name: Shepherd_Sad_Dialogue 1
+  m_Name: Remumus_Orb_Dialogue
   m_EditorClassIdentifier: 
   OpeningTriggerEvent: 0
   OpeningEventType: 0
   ClosureTriggerEvent: 0
   ClosureEventType: 0
-  RightCharacter: {fileID: 21300000, guid: 53f971e1d0b83264ea95c7c0a43bca25, type: 3}
+  RightCharacter: {fileID: 21300000, guid: c0e33b7dcbb23624ab19c97870f419ee, type: 3}
   LeftCharacter: {fileID: 21300000, guid: 565e1ce6843868448884e684626b9bda, type: 3}
-  Name: Mauvis
-  DialogueBackground: {fileID: 21300000, guid: 85c213532568aa44c9ae78fc6f43535a, type: 3}
+  Name: Remumus
+  DialogueBackground: {fileID: 21300000, guid: f0da0f19abb19af4ea770a50fa688aa2, type: 3}
   Sections:
   - Sentences:
-    - "Mes pauv\u2019 b\xEAtes, si seulement quelqu\u2019un les avaient FAIT PASSER
-      le pont\u2026"
-    - "Qui pourrait faire \xE7a \xE0 mes p'tiots..."
+    - "Mais c'est bien s\xFBr ! "
+    - "Eh bien j'ai fait n'importe quoi... et il s'est pass\xE9 n'importe quoi..."
+    - "Je ne me souviens pas assez... peut-\xEAtre devrions-nous retrouver plus de
+      fragments ?"
+    - "Certainement sur une autre \xEEle ? Il faudrait le bateau de Seamone pour
+      \xE7a."
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 0
   TakeEventType: 0
-  NextDialogue: {fileID: 0}
+  NextDialogue: {fileID: 11400000}
   SkillToGive: 0
   SkillDescriptor:
     Prefab: {fileID: 0}

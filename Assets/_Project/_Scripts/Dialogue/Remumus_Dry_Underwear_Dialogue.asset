@@ -22,8 +22,10 @@ MonoBehaviour:
   DialogueBackground: {fileID: 21300000, guid: f0da0f19abb19af4ea770a50fa688aa2, type: 3}
   Sections:
   - Sentences:
-    - "Tu as r\xE9ussi \xE0 s\xE9cher mes slips ? Trop fort !"
-    - "Pour te r\xE9compenser, en voil\xE0 un."
+    - Oh oui enfin mon slip !!
+    - Rien de tel pour abattre les mouches
+    - "Bien s\xFBr seul un vrai ma\xEEtre saura s'en sortir, entra\xEEne-toi contre
+      un arbre tu verras."
     TriggerEvent: 0
     EventType: 1
   ChoiceOnEnd: 1

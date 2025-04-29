@@ -26,9 +26,7 @@ MonoBehaviour:
       quand meume"
     - "T\u2019sais quoi, m\xEAme si c\u2019te gentille SEAMONE veut ma CANNE ou un
       B\xC2TON pour l\u2019BATEAU, j\u2019veux bien t\u2019la passer"
-    - 'Beau gosse va
-
-'
+    - Merci encore mon p'tiot !
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 1
