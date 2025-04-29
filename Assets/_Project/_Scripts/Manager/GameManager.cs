@@ -31,7 +31,6 @@ public class GameManager : Singleton<GameManager>
     private const string ACHIEVEMENT_LIST_TAG = "AchievementList";
 
     private const string BLACKSCREEN_UI_TAG = "BlackScreen";
-    private const string RESET_BUTTON_TAG = "ResetBtn";
 
 
     [HideInInspector] public GameObject MainCamera;
@@ -54,7 +53,6 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public GameObject UIAchievementMenu;
     [HideInInspector] public GameObject UIAchievementList;
     [HideInInspector] public GameObject UIBlackscreen;
-    [HideInInspector] public GameObject ResetButton;
 
     [HideInInspector] public int KilledSheep;
     [HideInInspector] public int KilledFly;
@@ -86,9 +84,6 @@ public class GameManager : Singleton<GameManager>
 
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainScene"}, true);
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, true);
-
-        ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
-        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
 
         if (_doIntro)
         {
@@ -140,8 +135,6 @@ public class GameManager : Singleton<GameManager>
 
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 2;
 
-        ResetButton.GetComponent<Button>().onClick.RemoveAllListeners();
-
         yield return LoadSceneSystem.Instance.UnloadTargetScenes(new string[] { "MainMenu" }, false);
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -158,9 +151,6 @@ public class GameManager : Singleton<GameManager>
     {
         SaveSystem.Instance.SaveAllData();
         yield return LoadSceneSystem.Instance.LoadTargetScenes(new string[] { "MainMenu" }, false);
-
-        ResetButton = GameObject.FindGameObjectWithTag(RESET_BUTTON_TAG);
-        ResetButton.GetComponent<Button>().onClick.AddListener(ResetGame);
 
         UIAchievementList = GameObject.FindGameObjectWithTag(ACHIEVEMENT_LIST_TAG);
         MainVirtualCamera.GetComponent<CinemachineVirtualCamera>().Priority = 0;
@@ -180,9 +170,8 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    private void ResetGame()
+    public void ResetGame()
     {
-        Debug.Log("Reset");
         StartCoroutine(UnloadAll());
     }
 
