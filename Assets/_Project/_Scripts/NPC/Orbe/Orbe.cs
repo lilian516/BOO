@@ -7,6 +7,7 @@ public class Orbe : MonoBehaviour, IClickable
 
     [SerializeField] SkillDescriptor _orbDescriptor;
     [SerializeField] Transform _position;
+    [SerializeField] Remumus _remumus;
 
     private Player _player;
     public Vector3 PositionToGo { get => _position.position; set => _position.position = value; }
@@ -37,6 +38,7 @@ public class Orbe : MonoBehaviour, IClickable
 
     private void CheckEndCinematic()
     {
+        _remumus.HasTakenOrbFragment = true;
         //Player player = GameManager.Instance.Player.GetComponent<Player>();
         _player.StateMachine.ChangeState(_player.IdleState);
 

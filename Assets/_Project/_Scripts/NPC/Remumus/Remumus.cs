@@ -6,21 +6,24 @@ public class Remumus : MonoBehaviour, ISpeakable, IDetectable
 {
     [SerializeField] DialogueAsset _basicDialogue;
     [SerializeField] DialogueAsset _dryUnderwearDialogue;
+    [SerializeField] DialogueAsset _orbDialogue;
     [SerializeField] bool _dryUnderwear = false;
     [SerializeField] Animator _animator;
     [SerializeField] Animator _animatorFeedback;
-
-
-
+    [HideInInspector] public bool HasTakenOrbFragment = false;
 
     public bool DryUnderwear { get => _dryUnderwear; set => _dryUnderwear = value; }
 
     public void Speak()
     {
         _animator.SetBool("IsTalking", true);
-        if (!_dryUnderwear)
+        if (!_dryUnderwear && !HasTakenOrbFragment)
         {
             DialogueSystem.Instance.BeginDialogue(_basicDialogue);
+        }
+        else if (HasTakenOrbFragment)
+        {
+            DialogueSystem.Instance.BeginDialogue(_orbDialogue);
         }
         else
         {

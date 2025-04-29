@@ -125,6 +125,7 @@ public class GameManager : Singleton<GameManager>
         InventoryUI = GameObject.FindGameObjectWithTag(INVENTORY_UI_TAG);
         InventoryFullMenu = GameObject.FindGameObjectWithTag(INVENTORY_FULL_TAG);
         UIAchievement = GameObject.FindGameObjectWithTag(ACHIEVEMENT_UI_TAG);
+        UIBlackscreen = GameObject.FindGameObjectWithTag(BLACKSCREEN_UI_TAG);
 
         DialogueSystem.Instance.Init();
         InventorySkill.Init();
