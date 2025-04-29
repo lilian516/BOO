@@ -74,10 +74,8 @@ public class Stone : MonoBehaviour, IInteractable
         if (player != null && _isStopped)
         {
 
-            // Ajouter l'animation de Boo qui trébuche
             if (!AngrySystem.Instance.IsAngry)
             {
-                Debug.Log(player.PlayerAnimator);
                 player.ChangeAnimAngry(animationClipFall);
                 player.StateMachine.ChangeState(player.AngryState);
             }

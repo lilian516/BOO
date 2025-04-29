@@ -244,7 +244,6 @@ public class Player : MonoBehaviour, IChangeable
         {
 
             case PlayerSkill.Orb:
-                Debug.Log("pute");
                 break;
             case PlayerSkill.BubbleSkill:
                 BubbleSkill bubbleSkill = new BubbleSkill(this, descriptor);
@@ -284,7 +283,6 @@ public class Player : MonoBehaviour, IChangeable
 
     public void ChangeAnimAngry(AnimationClip animationClipAngry)
     {
-
         _overrideController = new AnimatorOverrideController(PlayerAnimator.runtimeAnimatorController);
 
         _overrideController["A_Boo_Angry"] = animationClipAngry;
