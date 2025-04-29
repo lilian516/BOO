@@ -50,3 +50,36 @@ Espacially for gameplay developper
 Only Git master
 [MERGE] Commits de merge
 
+
+
+// Informations importantes
+
+Les Scènes importantes : 
+
+Assets -> _Project -> Scenes 
+Systems : load cette scène et lancer le jeu, vous pourrez tester le jeu ainsi
+
+Assets -> _Project -> Scenes -> UI
+MainMenu : le menu du jeu
+UIInGame : les UI pendant le jeu
+
+Assets -> _Project -> Scenes -> UI
+MainScene : La scène principale avec tout l'environnement
+
+
+Les scripts importants :
+
+Assets -> _Project -> _Scripts -> Player -> StateMachine
+StateMachine.cs : la logique de la state machine
+State.cs : la logique des states
+
+Assets -> _Project -> _Scripts -> Player -> StateMachine -> ConcreteStates
+Touts les States du Joueur sont ici
+
+Assets -> _Project -> _Scripts -> Manager -> Input
+InputManager.cs : le script qui gère les inputs de l'Input Action
+
+Assets -> _Project -> _Scripts -> Skills
+Skill.cs : le script de base skill
+On a ensuite les skills qui hérite de cette classe de base
+
