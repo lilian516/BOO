@@ -24,7 +24,7 @@ MonoBehaviour:
   - Sentences:
     - "Mes pauv\u2019 b\xEAtes, si seulement quelqu\u2019un les avaient FAIT PASSER
       le pont\u2026"
-    - "Tout \xE7a c\u2019est d\u2019la faute d\u2019l\u2019affreuse bouse bleue"
+    - "Qui pourrait faire \xE7a \xE0 mes p\u2019tiots\u2026"
     TriggerEvent: 0
     EventType: 0
   ChoiceOnEnd: 0
