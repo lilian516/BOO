@@ -12,8 +12,9 @@ public class ClothesDryer : MonoBehaviour, IInteractable
         {
             case PlayerSkill.WindSkill:
                 _remumus.DryUnderwear = true;
-                _remumus.GetAnimator().SetTrigger("TakeSlip");
                 GetComponent<SpriteRenderer>().sprite = _sprite;
+                _remumus.GetAnimator().SetTrigger("TakeSlip");
+                
                 break;
         }
     }
