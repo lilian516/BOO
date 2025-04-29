@@ -88,14 +88,14 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
         if (_leftImage != null)
         {
-            _leftImage.sprite = ProcessingDialogue.LeftCharacter;
-            
+            _leftImage.gameObject.GetComponent<Animator>().SetTrigger(asset.Name);
+            GameManager.Instance.Player.GetComponent<Player>().PlayerAnimator.SetTrigger(asset.Name);
+
         }
             
 
         if (_rightImage != null)
         {
-            //_rightImage.sprite = ProcessingDialogue.RightCharacter;
             _rightImage.gameObject.GetComponent<Animator>().SetTrigger(asset.Name);
         }
             
@@ -110,6 +110,7 @@ public class DialogueSystem : Singleton<DialogueSystem>
 
     public void EndDialogue()
     {
+
         if (ProcessingDialogue.ClosureTriggerEvent)
         {
             OnDialogueEvent?.Invoke(ProcessingDialogue.ClosureEventType);
@@ -124,7 +125,9 @@ public class DialogueSystem : Singleton<DialogueSystem>
         _fadeCanvasBox.interactable = false;
         _fadeCanvasBox.blocksRaycasts = false;
 
+        GameManager.Instance.Player.GetComponent<Player>().PlayerAnimator.SetTrigger("EndDialogue");
         _rightImage.gameObject.GetComponent<Animator>().SetTrigger("EndDialogue");
+        _leftImage.gameObject.GetComponent<Animator>().SetTrigger("EndDialogue");
         _choiceButton.onClick.RemoveAllListeners();
         _cancelButton.onClick.RemoveAllListeners();
 
