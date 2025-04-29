@@ -64,7 +64,7 @@ public class GameManager : Singleton<GameManager>
     {
         _doIntro = true;
         
-        Application.targetFrameRate = 45;
+        //Application.targetFrameRate = 45;
         KilledSheep = 0;
         KilledFly = 0;
 
