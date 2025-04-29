@@ -45,6 +45,7 @@ public class SmashSkill : Skill
         int ClosestColliderIndex = 0;
         float ClosestColliderLength = 10000.0f;
         float CurrentColliderDistance;
+        ISmashable smashable = null;
 
         foreach (Collider collider in hitColliders)
         {
@@ -59,17 +60,17 @@ public class SmashSkill : Skill
             }
             _interactable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<IInteractable>();
 
-            ISmashable smashable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<ISmashable>();
+            smashable = hitColliders[ClosestColliderIndex].gameObject.GetComponent<ISmashable>();
             
-            if (smashable != null)
-            {
-                smashable.SetAnimationSmash(this);
+        }
+        if (smashable != null)
+        {
+            smashable.SetAnimationSmash(this);
                 
-            }
-            else
-            {
-                AnimationSkill = _desc.AnimationSkill;
-            }
+        }
+        else
+        {
+            AnimationSkill = _desc.AnimationSkill;
         }
 
         
