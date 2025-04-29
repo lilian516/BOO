@@ -1146,7 +1146,6 @@ MonoBehaviour:
   UIAchievementMenu: {fileID: 0}
   UIAchievementList: {fileID: 0}
   UIBlackscreen: {fileID: 0}
-  ResetButton: {fileID: 0}
   KilledSheep: 0
   KilledFly: 0
 --- !u!1001 &1788961260732573966

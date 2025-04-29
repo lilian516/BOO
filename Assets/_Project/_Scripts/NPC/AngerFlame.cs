@@ -13,7 +13,7 @@ public class AngerFlame : MonoBehaviour, IChangeable
         AngrySystem.Instance.OnResetElements += ResetChange;
 
         _maxScale = 0.2f;
-        _minScale = 0.1f;
+        _minScale = 0.0f;
     }
 
     public void Change()
