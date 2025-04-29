@@ -1170,6 +1170,7 @@ GameObject:
   - component: {fileID: 598042401}
   - component: {fileID: 598042400}
   - component: {fileID: 598042403}
+  - component: {fileID: 598042404}
   m_Layer: 0
   m_Name: PauseButton
   m_TagString: PauseButton
@@ -1299,6 +1300,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &598042404
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598042398}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &781928249
 GameObject:
   m_ObjectHideFlags: 0

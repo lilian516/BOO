@@ -71,18 +71,17 @@ public class Inventory : MonoBehaviour, IChangeable
 
     private void SelectSkill(int index)
     {
-        InputManager.Instance.OnSkillButton -= delegate
-        {
-            _skillButtonUI.GetComponent<Animator>().SetTrigger(CurrentSkill.AnimatorTriggerName);
-        };
+        InputManager.Instance.OnSkillButton -= SetCurrentAnim;
         ChangeCurrentSkill(_skills[index]);
 
         _skillButtonUI.GetComponent<Animator>().SetTrigger(CurrentSkill.AnimatorTriggerName);
 
-        InputManager.Instance.OnSkillButton += delegate
-        {
-            _skillButtonUI.GetComponent<Animator>().SetTrigger(CurrentSkill.AnimatorTriggerName);
-        };
+        InputManager.Instance.OnSkillButton += SetCurrentAnim;
+    }
+
+    private void SetCurrentAnim()
+    {
+        _skillButtonUI.GetComponent<Animator>().SetTrigger(CurrentSkill.AnimatorTriggerName);
     }
 
     private void ChangeSkillImage()
@@ -211,11 +210,13 @@ public class Inventory : MonoBehaviour, IChangeable
 
         _currentSkill = _angrySkills;
 
-        InputManager.Instance.OnSkillButton += delegate
-        {
-            _skillButtonUI.GetComponent<Animator>().SetTrigger("UseSmash");
-        };
+        InputManager.Instance.OnSkillButton += SetAngryAnimTrigger;
 
+    }
+
+    private void SetAngryAnimTrigger()
+    {
+        _skillButtonUI.GetComponent<Animator>().SetTrigger("UseSmash");
     }
 
     public void ResetChange()
@@ -234,10 +235,7 @@ public class Inventory : MonoBehaviour, IChangeable
         _skillButtonUI.GetComponent<Animator>().enabled = false;
         _skillButtonUI.GetComponent<Image>().sprite = _baseButtonSprite;
 
-        InputManager.Instance.OnSkillButton -= delegate
-        {
-            _skillButtonUI.GetComponent<Animator>().SetTrigger("UseSmash");
-        };
+        InputManager.Instance.OnSkillButton -= SetAngryAnimTrigger;
     }
 
     public void SetAngrySkill(Skill skill)
@@ -247,6 +245,12 @@ public class Inventory : MonoBehaviour, IChangeable
 
     private void OnDestroy()
     {
+        if(InputManager.Instance != null)
+        {
+            InputManager.Instance.OnSkillButton -= SetAngryAnimTrigger;
+            InputManager.Instance.OnSkillButton -= SetCurrentAnim;
+        }
+
         if (AngrySystem.Instance != null)
         {
             AngrySystem.Instance.OnChangeElements -= Change;

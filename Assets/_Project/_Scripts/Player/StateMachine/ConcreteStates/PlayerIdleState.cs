@@ -117,7 +117,6 @@ public class PlayerIdleState : PlayerState
             }
             IClickable clickable = hit.collider.gameObject.GetComponent<IClickable>();
 
-            Debug.Log(hit.collider.gameObject.name);
             if(clickable != null)
             {
                 if (Vector3.Distance(_player.transform.position, hit.transform.position) <= _player.DetectorRadius)

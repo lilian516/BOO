@@ -10,7 +10,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
     [SerializeField] private List<AchievementAsset> _achievementList;
     private List<bool> _achievementUnlocked;
     #region Achievement Variable
-    public int PetCount = 0;
+    public int PetCount;
     #endregion
 
     private List<AchievementCondition> _achievementConditionList;
@@ -19,6 +19,7 @@ public class AchievementSystem : Singleton<AchievementSystem>
 
     public void Init()
     {
+        PetCount = 0;
         _achievementConditionList = new List<AchievementCondition>(_achievementList.Count);
         _achievementUnlocked = new List<bool>(_achievementList.Count);
         UIAchievementToUpdate = new List<AchievementAsset>(_achievementList.Count);
