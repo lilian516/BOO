@@ -10,10 +10,13 @@ public class FliesSwarm : MonoBehaviour, IInteractable
     private bool _isEnabled;
     public GameObject EldenFlyPrefab;
 
+    private bool _flyAway;
+
     private void Start()
     {
         _particles = new ParticleSystem.Particle[_flies.main.maxParticles];
         _isEnabled = true;
+        _flyAway = false;
     }
 
     public void Interact(PlayerSkill playerSkill)
@@ -25,6 +28,10 @@ public class FliesSwarm : MonoBehaviour, IInteractable
                 break;
 
             case PlayerSkill.SmashSkill:
+                if (_flyAway)
+                    break;
+
+                _flyAway = true;
                 AngrySystem.Instance.ChangeCalmLimits();
                 StartCoroutine(SlapFlies());
                 break;
